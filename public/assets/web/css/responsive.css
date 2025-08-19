@@ -1,0 +1,552 @@
+@media only screen and (max-width: 1199px) {
+
+    .background-shape {
+        display: none;
+    }
+
+    .title h3 {
+        width: 30%;
+    }
+
+    .footer-part button {
+        padding-left: 6px;
+        padding-right: 6px;
+    }
+
+    .banner-content-box {
+        width: 80%;
+    }
+
+    .menubar ul li a {
+        padding: 5px 7px;
+    }
+
+
+
+}
+
+@media only screen and (max-width: 991px) {
+    .logo img {
+        width: 215px;
+    }
+
+    h2 {
+        font-weight: 600;
+        font-size: 35px;
+    }
+
+    h3 {
+        font-weight: 500;
+        font-size: 28px;
+    }
+
+
+
+    .banner h3 {
+        width: 100%;
+    }
+
+    /* Pickup part */
+    .background-shape {
+        display: none;
+    }
+
+    .pickup-service h4 {
+        font-weight: 500;
+        font-size: 30px;
+    }
+
+    /* Promoting part */
+    .promoting-content {
+        width: 100%;
+    }
+
+    .promoting-part h2 {
+        line-height: 45px;
+    }
+
+    /* Service part */
+    .title h3 {
+        width: 100%;
+    }
+
+    /* About us */
+    .aboutus-text {
+        margin-left: -60px;
+    }
+
+    .menubar ul li a {
+        font-size: 13px;
+    }
+
+    .logo img {
+        max-width: 100px;
+    }
+
+    .footer-logo img {
+        width: 120px;
+    }
+
+    .banner-overlay {
+        height: 300px;
+    }
+
+
+
+}
+
+@media only screen and (max-width: 767px) {
+    h2 {
+        font-weight: 600;
+        font-size: 30px;
+        color: var(--wc);
+    }
+
+    h3 {
+        font-weight: 500;
+        font-size: 26px;
+    }
+
+    h4 {
+        font-weight: 500;
+        font-size: 26px;
+    }
+
+    h6 {
+        font-weight: 500;
+        font-size: 16px;
+    }
+
+    p {
+        font-weight: 400;
+        font-size: 15px;
+        line-height: 22px;
+    }
+
+
+    .custom-btn a {
+        font-weight: 500;
+        font-size: 15px;
+        padding: 12px 22px;
+        margin-left: 10px;
+    }
+
+    .small-text {
+        font-size: 15px;
+    }
+
+    /* Banner part */
+    .banner h3 {
+        width: 90%;
+        margin-left: 10px;
+    }
+
+    .detailicon p {
+        font-size: 12px;
+    }
+
+    .propertycategory ul li {
+        font-size: 12px;
+    }
+
+    .propertydetailbox h3{
+        font-size: 15px;
+    }
+
+    .propertydetailbox p{
+        font-size: 12px;
+    }
+
+
+    .detailicon p{
+        margin: 0;
+        padding: 0;
+    }
+
+    #view img{
+        width: 100% !important;
+    }
+
+    #view{
+        height: 100% !important;
+    }
+
+    #pics-thumbs{
+        margin: 0 20px;
+    }
+
+    #nav-left-thumbs{
+        left: 0px;
+    }
+    #nav-right-thumbs{
+        right: 0px;
+    }
+    /* Pickup item part */
+    .background-shape {
+        display: none;
+    }
+
+    .pickup-service h4 {
+        font-weight: 500;
+        font-size: 24px;
+    }
+
+    .pickup-item h5 {
+        line-height: 25px;
+    }
+
+    .contact-btn a {
+        font-weight: 500;
+        font-size: 15px;
+        padding: 9px 18px;
+    }
+
+
+
+    /* Our service part */
+    .title img {
+        display: none;
+    }
+
+    .title h3 {
+        width: 100%;
+    }
+
+    /* About us part */
+    .aboutus-text {
+        margin-left: 0px;
+    }
+
+    .banner h1 {
+        font-size: 40px;
+        line-height: 55px;
+    }
+
+    .banner-overlay {
+        height: 220px;
+    }
+
+    .org-card {
+        display: table-cell;
+    }
+
+
+
+    .search_form {
+        margin: 0 auto;
+        width: 95%;
+    }
+
+    .home-section h1 {
+        font-size: 28px;
+        line-height: 30px;
+    }
+
+    .app-text h5 {
+        font-size: 24px;
+    }
+
+}
+
+
+@media only screen and (max-width:575px) {
+    h2 {
+        font-weight: 600;
+        font-size: 30px;
+        color: var(--wc);
+    }
+
+    h3 {
+        font-weight: 500;
+        font-size: 26px;
+    }
+
+    h4 {
+        font-weight: 500;
+        font-size: 26px;
+    }
+
+    h6 {
+        font-weight: 500;
+        font-size: 16px;
+    }
+
+    p {
+        font-weight: 400;
+        font-size: 15px;
+        line-height: 22px;
+    }
+
+
+    .custom-btn a {
+        font-weight: 500;
+        font-size: 15px;
+        padding: 12px 22px;
+        margin-left: 10px;
+    }
+
+    .small-text {
+        font-size: 15px;
+    }
+
+    /* Banner part */
+    .banner h3 {
+        width: 90%;
+        margin-left: 10px;
+    }
+
+    .detailicon p {
+        font-size: 12px;
+    }
+
+    .propertycategory ul li {
+        font-size: 12px;
+    }
+
+    /* Pickup item part */
+    .background-shape {
+        display: none;
+    }
+
+    .pickup-service h4 {
+        font-weight: 500;
+        font-size: 24px;
+    }
+
+    .pickup-item h5 {
+        line-height: 25px;
+    }
+
+    .contact-btn a {
+        font-weight: 500;
+        font-size: 15px;
+        padding: 9px 18px;
+    }
+
+    /* promoting part */
+    .promoting-part h2 {
+        line-height: 35px;
+    }
+
+    .promoting-content {
+        width: 100%;
+    }
+
+    /* Our service part */
+    .title img {
+        display: none;
+    }
+
+    .title h3 {
+        width: 100%;
+    }
+
+    /* About us part */
+    .aboutus-text {
+        margin-left: 0px;
+    }
+
+    /* LOGIN PAGE RESPONSIVE */
+    .welcome {
+        padding: 30px;
+    }
+
+    .welcome h5 {
+        font-size: 25px;
+        margin-bottom: 50px;
+    }
+
+    .welcome h3 {
+        font-weight: 500;
+        font-size: 25px;
+        width: 60%;
+        margin-bottom: 75px;
+    }
+
+    .login-form {
+        padding: 20px;
+    }
+
+    .signup-link p {
+        left: 22px;
+        bottom: 0px;
+    }
+
+    .banner-overlay {
+        height: 180px;
+    }
+
+    .pickup-item h5 {
+        line-height: 25px;
+        font-size: 14px;
+        text-align: center;
+        margin: 0;
+    }
+
+    .org-card {
+        display: table-cell;
+    }
+
+
+    .search_form {
+        margin: 0 auto;
+    }
+
+    .home-section h1 {
+        font-size: 24px;
+        line-height: 30px;
+    }
+
+
+    .app-text h5 {
+        margin-top: 40px;
+        font-size: 24px;
+    }
+
+
+
+}
+
+@media only screen and (max-width: 400px) {
+    h2 {
+        font-weight: 600;
+        font-size: 30px;
+        color: var(--wc);
+    }
+
+    h3 {
+        font-weight: 500;
+        font-size: 26px;
+    }
+
+    h4 {
+        font-weight: 500;
+        font-size: 26px;
+    }
+
+    h6 {
+        font-weight: 500;
+        font-size: 16px;
+    }
+
+    p {
+        font-weight: 400;
+        font-size: 15px;
+        line-height: 22px;
+    }
+
+
+    .custom-btn a {
+        font-weight: 500;
+        font-size: 15px;
+        padding: 12px 22px;
+        margin-left: 10px;
+    }
+
+    .small-text {
+        font-size: 15px;
+    }
+
+    /* Banner part */
+    .banner h3 {
+        width: 90%;
+        margin-left: 10px;
+    }
+
+
+    /* Pickup item part */
+    .background-shape {
+        display: none;
+    }
+
+    .pickup-service h4 {
+        font-weight: 500;
+        font-size: 24px;
+    }
+
+    .pickup-item h5 {
+        line-height: 25px;
+        font-size: 14px;
+        text-align: center;
+    }
+
+    .contact-btn a {
+        font-weight: 500;
+        font-size: 15px;
+        padding: 9px 18px;
+    }
+
+    /* promoting part */
+    .promoting-part h2 {
+        line-height: 35px;
+    }
+
+    .promoting-content {
+        width: 100%;
+    }
+
+    /* Our service part */
+    .title img {
+        display: none;
+    }
+
+    .title h3 {
+        width: 100%;
+    }
+
+    /* About us part */
+    .aboutus-text {
+        margin-left: 0px;
+    }
+
+    /* SERVICE PAGE RESPONSIVE */
+
+    .whatsapp-info {
+        padding: 40px 0px;
+    }
+
+    .whatsapp-info img {
+        width: 70px;
+    }
+
+    .whatsapp-info h6 {
+        font-size: 15px;
+    }
+
+    .whatsapp-info h2 {
+        font-size: 22px;
+    }
+
+    /* LOGIN PAGE RESPONSIVE */
+    .welcome {
+        padding: 30px;
+    }
+
+    .welcome h5 {
+        font-size: 25px;
+        margin-bottom: 50px;
+    }
+
+    .welcome h3 {
+        font-weight: 500;
+        font-size: 25px;
+        width: 60%;
+        margin-bottom: 75px;
+    }
+
+    .login-form {
+        padding: 20px;
+    }
+
+    .signup-link p {
+        left: 22px;
+        bottom: 0px;
+    }
+
+    .org-card {
+        display: table-cell;
+    }
+
+
+
+}

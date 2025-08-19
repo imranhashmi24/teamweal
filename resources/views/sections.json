@@ -1,0 +1,235 @@
+{
+    "breadcrumb": {
+        "builder": true,
+        "no_selection": true,
+        "name": "Breadcrumb Section",
+        "content": {
+            "images": {
+                "image": {
+                    "size": "1350x360"
+                }
+            }
+        }
+    },
+    "app_download": {
+        "builder": true,
+        "no_selection": false,
+        "name": "App Download",
+        "content": {
+            "images": {
+                "image": {
+                    "size": "640x465"
+                },
+                "app_store": {
+                    "size": "180x65"
+                },
+                "google_play": {
+                    "size": "180x65"
+                }
+            },
+            "heading": "text",
+            "heading_ar": "text",
+            "subheading": "text",
+            "subheading_ar": "text",
+            "description": "textarea-nic",
+            "description_ar": "textarea-nic",
+            "app_store_link": "text",
+            "google_store_link": "text"
+        }
+    },
+    "social_media": {
+        "builder": true,
+        "no_selection": true,
+        "name": "Social Media Section",
+        "element": {
+            "name": "text",
+            "link": "text",
+            "icon": "icon",
+            "modal": true
+        }
+    },
+    "footer": {
+        "builder": true,
+        "no_selection": true,
+        "name": "Footer Section",
+        "content": {
+            "address": "text",
+            "address_ar": "text",
+            "email": "text",
+            "mobile": "text"
+        }
+    },
+    "about_section": {
+        "builder": true,
+        "no_selection": false,
+        "name": "About Section",
+        "content": {
+            "images": {
+                "image": {
+                    "size": "615x340"
+                }
+            },
+            "heading": "text",
+            "heading_ar": "text",
+            "sub_heading": "text",
+            "sub_heading_ar": "text",
+            "title": "text",
+            "title_ar": "text",
+            "description": "textarea-nic",
+            "description_ar": "textarea-nic"
+        }
+    },
+    "blog": {
+        "builder": true,
+        "no_selection": false,
+        "name": "Blog Section",
+        "content": {
+            "title": "text",
+            "sub_title": "textarea-nic"
+        }
+    },
+    "service_section": {
+        "builder": true,
+        "no_selection": false,
+        "name": "Service Section",
+        "content": {
+            "heading": "text",
+            "heading_ar": "text"
+        },
+        "element": {
+            "images": {
+                "image": {
+                    "size": "380x235"
+                }
+            },
+            "title": "text",
+            "title_ar": "text",
+            "short_description": "textarea-nic",
+            "short_description_ar": "textarea-nic",
+            "button_url": "text",
+            "modal": false
+        }
+    },
+    "banner": {
+        "builder": true,
+        "no_selection": true,
+        "name": "Banner Section",
+        "element": {
+            "images": {
+                "slider": {
+                    "size": "1350x360"
+                },
+                "slider_ar": {
+                    "size": "1350x360"
+                }
+            },
+            "title": "text",
+            "title_ar": "text",
+            "description": "textarea-nic",
+            "description_ar": "textarea-nic",
+            "modal": false
+        }
+    },
+
+    "policy_pages": {
+        "builder": true,
+        "no_selection": true,
+        "name": "Policy Pages",
+        "element": {
+            "title": "text",
+            "details": "textarea-nic",
+            "details_ar": "textarea-nic",
+            "modal": false
+        }
+    },
+
+    "target_groups": {
+        "builder": true,
+        "no_selection": false,
+        "name": "Target Groups",
+        "content": {
+            "head": "text",
+            "head_ar": "text"
+        },
+        "element": {
+            "images": {
+                "image": {
+                    "size": "60x60"
+                }
+            },
+            "title": "text",
+            "title_ar": "text",
+            "modal": true
+        }
+    },
+
+    "training_tracks": {
+        "builder": true,
+        "no_selection": false,
+        "name": "Training Tracks",
+        "content": {
+            "header": "text",
+            "header_ar": "text",
+            "sub_header": "text",
+            "sub_header_ar": "text"
+        },
+        "element": {
+            "images": {
+                "image": {
+                    "size": "305x180"
+                }
+            },
+            "title": "text",
+            "title_ar": "text",
+            "modal": true
+        }
+    },
+
+    "our_goals": {
+        "builder": true,
+        "no_selection": true,
+        "name": "Our goals",
+        "element": {
+            "images": {
+                "image": {
+                    "size": "40x40"
+                }
+            },
+            "title": "text",
+            "title_ar": "text",
+            "modal": true
+        }
+    },
+    "our_vision_and_mission": {
+        "builder": true,
+        "no_selection": true,
+        "name": "Our vision",
+        "content": {
+            "images": {
+                "vision": {
+                    "size": "400x400"
+                }
+            },
+            "vision_title": "text",
+            "vision_title_ar": "text",
+            "vision_text": "textarea-nic",
+            "vision_text_ar": "textarea-nic"
+        }
+    },
+    "our_message": {
+        "builder": true,
+        "no_selection": true,
+        "name": "Our Message",
+        "content": {
+            "images": {
+                "message": {
+                    "size": "400x400"
+                }
+            },
+            "message_title": "text",
+            "message_title_ar": "text",
+            "message_text": "textarea-nic",
+            "message_text_ar": "textarea-nic"
+        }
+    }
+}

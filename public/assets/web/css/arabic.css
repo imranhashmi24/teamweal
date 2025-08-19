@@ -1,0 +1,94 @@
+
+/*@font-face {*/
+/*    font-family: 'MOLarabicRegular';*/
+/*    src: url('./../../font/molarabic/MOLarabic\ Regular.ttf') format('truetype');*/
+/*    font-weight: normal;*/
+/*    font-style: normal;*/
+/*}*/
+
+body {
+    font-family: 'MOLarabicRegular', sans-serif;
+}
+
+.menubar ul{
+    text-align: left;
+}
+
+.footer-box ul li{
+    padding-left: 0;
+    padding-right: 28px;
+}
+.footer-box ul li img{
+    left: inherit;
+    right: 0;
+}
+.mobile-menu {
+    left: inherit;
+    right: -380px;
+}
+.mobileAdd {
+    left: inherit;
+    right: 0 !important;
+}
+.mobile-logo i{
+    float: left;
+}
+.banner h1 {
+    line-height: 90px;
+}
+.header-top .menubar li a{
+    text-align: right;
+}
+.sub-menu {
+    right: inherit;
+    left: 0;
+}
+.menubar ul li button {
+    text-align: right;
+}
+.footer-title .paragraph::after{
+    left: inherit;
+    right: 0;
+}
+.login-form .custom-control{
+    text-align: right;
+}
+.menubar{
+    float: right;
+}
+.categories ul li p {
+    right: inherit;
+    left: 20px;
+}
+
+.home-section h1{
+    text-align: right;
+}
+.propertycityname {
+    right: 25px;
+    left: inherit !important;
+}
+
+select.form-select{
+    background-position: left 0.75rem center;
+}
+.input-group .input-group-text{
+    border-radius: 0;
+    border-top-left-radius: 5px !important;
+    border-bottom-left-radius: 5px !important;
+}
+.input-group .form-control{
+    border-radius: 0;
+    border-top-right-radius: 5px !important;
+    border-bottom-right-radius: 5px !important;
+    border-left: none;
+}
+
+.acq-list ul li img {
+    left: inherit;
+    right: 0;
+}
+.acq-list ul li {
+    padding-left: 0;
+    padding-right: 35px !important;
+}
