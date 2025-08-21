@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Aug 04, 2025 at 04:04 AM
+-- Generation Time: Aug 21, 2025 at 03:53 AM
 -- Server version: 8.0.30
--- PHP Version: 8.3.24
+-- PHP Version: 8.2.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `demo_admin`
+-- Database: `temweal`
 --
 
 -- --------------------------------------------------------
@@ -29,13 +29,13 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `admins` (
   `id` bigint UNSIGNED NOT NULL,
-  `name` varchar(40) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `email` varchar(40) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `username` varchar(40) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `email` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `username` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
-  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `remember_token` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `remember_token` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -56,9 +56,9 @@ INSERT INTO `admins` (`id`, `name`, `email`, `username`, `email_verified_at`, `i
 CREATE TABLE `admin_notifications` (
   `id` bigint UNSIGNED NOT NULL,
   `user_id` int UNSIGNED NOT NULL DEFAULT '0',
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `is_read` tinyint(1) NOT NULL DEFAULT '0',
-  `click_url` text COLLATE utf8mb4_unicode_ci,
+  `click_url` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -132,8 +132,8 @@ INSERT INTO `admin_notifications` (`id`, `user_id`, `title`, `is_read`, `click_u
 
 CREATE TABLE `admin_password_resets` (
   `id` bigint UNSIGNED NOT NULL,
-  `email` varchar(40) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `token` varchar(40) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `email` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `token` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `status` tinyint(1) NOT NULL DEFAULT '1',
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -159,10 +159,10 @@ INSERT INTO `admin_password_resets` (`id`, `email`, `token`, `status`, `created_
 
 CREATE TABLE `all_categories` (
   `id` bigint UNSIGNED NOT NULL,
-  `type` varchar(40) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `title_ar` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `type` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `title_ar` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `status` tinyint NOT NULL DEFAULT '1',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -183,10 +183,10 @@ INSERT INTO `all_categories` (`id`, `type`, `title`, `title_ar`, `image`, `statu
 
 CREATE TABLE `authorities` (
   `id` bigint UNSIGNED NOT NULL,
-  `type` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `logo` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `title_ar` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `logo` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `title_ar` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -241,14 +241,14 @@ INSERT INTO `authorities` (`id`, `type`, `logo`, `title`, `title_ar`, `created_a
 CREATE TABLE `blogs` (
   `id` bigint UNSIGNED NOT NULL,
   `blog_category_id` bigint UNSIGNED NOT NULL,
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `title_ar` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `slug` text COLLATE utf8mb4_unicode_ci,
-  `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `description_ar` text COLLATE utf8mb4_unicode_ci,
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `title_ar` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slug` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description_ar` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `view` int DEFAULT '0',
-  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `status` enum('active','inactive') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'active',
+  `image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` enum('active','inactive') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'active',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -270,9 +270,9 @@ INSERT INTO `blogs` (`id`, `blog_category_id`, `title`, `title_ar`, `slug`, `des
 
 CREATE TABLE `blog_categories` (
   `id` bigint UNSIGNED NOT NULL,
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `title_ar` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `title_ar` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `status` tinyint NOT NULL DEFAULT '1',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -294,9 +294,9 @@ INSERT INTO `blog_categories` (`id`, `title`, `title_ar`, `image`, `status`, `cr
 CREATE TABLE `categories` (
   `id` bigint UNSIGNED NOT NULL,
   `parent_id` int DEFAULT '0',
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `name_ar` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name_ar` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `is_featured` tinyint DEFAULT NULL,
   `position` int NOT NULL DEFAULT '30',
   `created_at` timestamp NULL DEFAULT NULL,
@@ -364,7 +364,7 @@ INSERT INTO `categories` (`id`, `parent_id`, `name`, `name_ar`, `image`, `is_fea
 --
 
 CREATE TABLE `ch_favorites` (
-  `id` char(36) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` char(36) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `user_id` bigint NOT NULL,
   `favorite_id` bigint NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -385,11 +385,11 @@ INSERT INTO `ch_favorites` (`id`, `user_id`, `favorite_id`, `created_at`, `updat
 --
 
 CREATE TABLE `ch_messages` (
-  `id` char(36) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` char(36) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `from_id` bigint NOT NULL,
   `to_id` bigint NOT NULL,
-  `body` varchar(5000) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `attachment` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `body` varchar(5000) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `attachment` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `seen` tinyint(1) NOT NULL DEFAULT '0',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -425,11 +425,11 @@ INSERT INTO `ch_messages` (`id`, `from_id`, `to_id`, `body`, `attachment`, `seen
 CREATE TABLE `cities` (
   `id` bigint UNSIGNED NOT NULL,
   `country_id` int NOT NULL DEFAULT '0',
-  `lat` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `lng` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `name_ar` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `lat` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `lng` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name_ar` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -452,13 +452,13 @@ INSERT INTO `cities` (`id`, `country_id`, `lat`, `lng`, `name`, `name_ar`, `imag
 
 CREATE TABLE `contact_people` (
   `id` bigint UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `phone` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `city` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `phone` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `city` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `category_id` int NOT NULL,
-  `type` enum('sms','email') COLLATE utf8mb4_unicode_ci NOT NULL,
+  `type` enum('sms','email') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `status` tinyint(1) NOT NULL DEFAULT '1',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -479,13 +479,13 @@ INSERT INTO `contact_people` (`id`, `name`, `title`, `phone`, `email`, `city`, `
 
 CREATE TABLE `countries` (
   `id` bigint UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `name_ar` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `iso_code_2` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `iso_code_3` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `country_code` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `flag` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name_ar` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `iso_code_2` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `iso_code_3` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `country_code` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `flag` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slug` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `sort_order` int UNSIGNED DEFAULT NULL,
   `is_active` tinyint(1) NOT NULL DEFAULT '1',
   `deleted_at` timestamp NULL DEFAULT NULL,
@@ -762,10 +762,10 @@ INSERT INTO `countries` (`id`, `name`, `name_ar`, `iso_code_2`, `iso_code_3`, `c
 CREATE TABLE `districts` (
   `id` bigint UNSIGNED NOT NULL,
   `country_id` bigint UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `name_ar` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `icon` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `description` text COLLATE utf8mb4_unicode_ci,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name_ar` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `icon` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -786,11 +786,11 @@ INSERT INTO `districts` (`id`, `country_id`, `name`, `name_ar`, `icon`, `descrip
 
 CREATE TABLE `domain_configs` (
   `id` bigint UNSIGNED NOT NULL,
-  `title` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `logo` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `domain` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `note` text COLLATE utf8mb4_unicode_ci,
-  `config` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `title` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `logo` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `domain` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `note` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `config` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `status` tinyint(1) NOT NULL DEFAULT '1',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -811,13 +811,13 @@ INSERT INTO `domain_configs` (`id`, `title`, `logo`, `domain`, `note`, `config`,
 
 CREATE TABLE `extensions` (
   `id` bigint UNSIGNED NOT NULL,
-  `act` varchar(40) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `name` varchar(40) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `description` text COLLATE utf8mb4_unicode_ci,
-  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `script` text COLLATE utf8mb4_unicode_ci,
-  `shortcode` text COLLATE utf8mb4_unicode_ci COMMENT 'object',
-  `support` text COLLATE utf8mb4_unicode_ci COMMENT 'help section',
+  `act` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `script` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `shortcode` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci COMMENT 'object',
+  `support` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci COMMENT 'help section',
   `status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '1=>enable, 2=>disable',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -841,11 +841,11 @@ INSERT INTO `extensions` (`id`, `act`, `name`, `description`, `image`, `script`,
 
 CREATE TABLE `failed_jobs` (
   `id` bigint UNSIGNED NOT NULL,
-  `uuid` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `connection` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `uuid` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `connection` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `queue` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `payload` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `exception` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `failed_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -878,8 +878,8 @@ CREATE TABLE `favorites` (
 
 CREATE TABLE `forms` (
   `id` bigint UNSIGNED NOT NULL,
-  `act` varchar(40) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `form_data` text COLLATE utf8mb4_unicode_ci,
+  `act` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `form_data` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -925,9 +925,9 @@ INSERT INTO `forms` (`id`, `act`, `form_data`, `created_at`, `updated_at`) VALUE
 
 CREATE TABLE `frontends` (
   `id` bigint UNSIGNED NOT NULL,
-  `data_keys` varchar(40) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `data_values` longtext COLLATE utf8mb4_unicode_ci,
-  `tempname` varchar(40) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `data_keys` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `data_values` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `tempname` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -943,7 +943,7 @@ INSERT INTO `frontends` (`id`, `data_keys`, `data_values`, `tempname`, `created_
 (43, 'policy_pages.element', '{\"title\":\"Terms of Service\",\"details\":\"<div class=\\\"mb-5\\\" style=\\\"color:rgb(111,111,111);font-family:Nunito, sans-serif;margin-bottom:3rem;\\\"><p style=\\\"margin-right:0px;margin-bottom:15px;margin-left:0px;padding:0px;text-align:justify;color:rgb(0,0,0);font-family:\'Open Sans\', Arial, sans-serif;font-size:14px;letter-spacing:normal;\\\">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of \\\"de Finibus Bonorum et Malorum\\\" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, \\\"Lorem ipsum dolor sit amet..\\\", comes from a line in section 1.10.32.<\\/p><p style=\\\"margin-right:0px;margin-bottom:15px;margin-left:0px;padding:0px;text-align:justify;color:rgb(0,0,0);font-family:\'Open Sans\', Arial, sans-serif;font-size:14px;letter-spacing:normal;\\\">The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from \\\"de Finibus Bonorum et Malorum\\\" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.<\\/p><\\/div>\",\"details_ar\":\"<p style=\\\"margin-right:0px;margin-bottom:15px;margin-left:0px;padding:0px;text-align:justify;\\\"><font color=\\\"#000000\\\" face=\\\"Open Sans, Arial, sans-serif\\\"><span style=\\\"font-size:14px;letter-spacing:normal;\\\">\\u062e\\u0644\\u0627\\u0641\\u0627\\u064b \\u0644\\u0644\\u0627\\u0639\\u062a\\u0642\\u0627\\u062f \\u0627\\u0644\\u0634\\u0627\\u0626\\u0639\\u060c \\u0641\\u0625\\u0646 \\u0644\\u0648\\u0631\\u064a\\u0645 \\u0625\\u064a\\u0628\\u0633\\u0648\\u0645 \\u0644\\u064a\\u0633 \\u0645\\u062c\\u0631\\u062f \\u0646\\u0635 \\u0639\\u0634\\u0648\\u0627\\u0626\\u064a. \\u0644\\u0647\\u0627 \\u062c\\u0630\\u0648\\u0631 \\u0641\\u064a \\u0642\\u0637\\u0639\\u0629 \\u0645\\u0646 \\u0627\\u0644\\u0623\\u062f\\u0628 \\u0627\\u0644\\u0644\\u0627\\u062a\\u064a\\u0646\\u064a \\u0627\\u0644\\u0643\\u0644\\u0627\\u0633\\u064a\\u0643\\u064a \\u0645\\u0646 45 \\u0642\\u0628\\u0644 \\u0627\\u0644\\u0645\\u064a\\u0644\\u0627\\u062f\\u060c \\u0645\\u0645\\u0627 \\u064a\\u062c\\u0639\\u0644\\u0647\\u0627 \\u0623\\u0643\\u062b\\u0631 \\u0645\\u0646 2000 \\u0633\\u0646\\u0629. \\u0642\\u0627\\u0645 \\u0631\\u064a\\u062a\\u0634\\u0627\\u0631\\u062f \\u0645\\u0643\\u0644\\u064a\\u0646\\u062a\\u0648\\u0643\\u060c \\u0623\\u0633\\u062a\\u0627\\u0630 \\u0627\\u0644\\u0644\\u063a\\u0629 \\u0627\\u0644\\u0644\\u0627\\u062a\\u064a\\u0646\\u064a\\u0629 \\u0641\\u064a \\u0643\\u0644\\u064a\\u0629 \\u0647\\u0627\\u0645\\u0628\\u062f\\u0646 \\u0633\\u064a\\u062f\\u0646\\u064a \\u0641\\u064a \\u0641\\u064a\\u0631\\u062c\\u064a\\u0646\\u064a\\u0627\\u060c \\u0628\\u0627\\u0644\\u0628\\u062d\\u062b \\u0639\\u0646 \\u0648\\u0627\\u062d\\u062f\\u0629 \\u0645\\u0646 \\u0623\\u0643\\u062b\\u0631 \\u0627\\u0644\\u0643\\u0644\\u0645\\u0627\\u062a \\u0627\\u0644\\u0644\\u0627\\u062a\\u064a\\u0646\\u064a\\u0629 \\u063a\\u0645\\u0648\\u0636\\u064b\\u0627\\u060c \\u0648\\u0647\\u064a consectetur\\u060c \\u0645\\u0646 \\u0645\\u0642\\u0637\\u0639 \\u0644\\u0648\\u0631\\u064a\\u0645 \\u0625\\u064a\\u0628\\u0633\\u0648\\u0645\\u060c \\u0648\\u0645\\u0646 \\u062e\\u0644\\u0627\\u0644 \\u062a\\u0635\\u0641\\u062d \\u0645\\u0631\\u0627\\u062c\\u0639 \\u0627\\u0644\\u0643\\u0644\\u0645\\u0629 \\u0641\\u064a \\u0627\\u0644\\u0623\\u062f\\u0628 \\u0627\\u0644\\u0643\\u0644\\u0627\\u0633\\u064a\\u0643\\u064a\\u060c \\u0627\\u0643\\u062a\\u0634\\u0641 \\u0627\\u0644\\u0645\\u0635\\u062f\\u0631 \\u0627\\u0644\\u0630\\u064a \\u0644\\u0627 \\u0634\\u0643 \\u0641\\u064a\\u0647. \\u064a\\u0623\\u062a\\u064a \\u0646\\u0635 \\u0644\\u0648\\u0631\\u064a\\u0645 \\u0625\\u064a\\u0628\\u0633\\u0648\\u0645 \\u0645\\u0646 \\u0627\\u0644\\u0623\\u0642\\u0633\\u0627\\u0645 1.10.32 \\u06481.10.33 \\u0645\\u0646 \\u0643\\u062a\\u0627\\u0628 \\\"de Finibus Bonorum et Malorum\\\" (\\u0623\\u0642\\u0635\\u0649 \\u0627\\u0644\\u062e\\u064a\\u0631 \\u0648\\u0627\\u0644\\u0634\\u0631) \\u0644\\u0634\\u064a\\u0634\\u0631\\u0648\\u0646\\u060c \\u0648\\u0627\\u0644\\u0630\\u064a \\u0643\\u062a\\u0628\\u0647 \\u0639\\u0627\\u0645 45 \\u0642\\u0628\\u0644 \\u0627\\u0644\\u0645\\u064a\\u0644\\u0627\\u062f. \\u0647\\u0630\\u0627 \\u0627\\u0644\\u0643\\u062a\\u0627\\u0628 \\u0639\\u0628\\u0627\\u0631\\u0629 \\u0639\\u0646 \\u0623\\u0637\\u0631\\u0648\\u062d\\u0629 \\u0639\\u0646 \\u0646\\u0638\\u0631\\u064a\\u0629 \\u0627\\u0644\\u0623\\u062e\\u0644\\u0627\\u0642\\u060c \\u0648\\u0627\\u0644\\u062a\\u064a \\u062d\\u0638\\u064a\\u062a \\u0628\\u0634\\u0639\\u0628\\u064a\\u0629 \\u0643\\u0628\\u064a\\u0631\\u0629 \\u062e\\u0644\\u0627\\u0644 \\u0639\\u0635\\u0631 \\u0627\\u0644\\u0646\\u0647\\u0636\\u0629. \\u0627\\u0644\\u0633\\u0637\\u0631 \\u0627\\u0644\\u0623\\u0648\\u0644 \\u0645\\u0646 \\u0644\\u0648\\u0631\\u064a\\u0645 \\u0625\\u064a\\u0628\\u0633\\u0648\\u0645\\u060c \\\"Lorem ipsum dolor sit amet..\\\"\\u060c \\u064a\\u0623\\u062a\\u064a \\u0645\\u0646 \\u0633\\u0637\\u0631 \\u0641\\u064a \\u0627\\u0644\\u0642\\u0633\\u0645 1.10.32.<\\/span><\\/font><\\/p><p style=\\\"margin-right:0px;margin-bottom:15px;margin-left:0px;padding:0px;text-align:justify;\\\"><font color=\\\"#000000\\\" face=\\\"Open Sans, Arial, sans-serif\\\"><span style=\\\"font-size:14px;letter-spacing:normal;\\\"><br \\/><\\/span><\\/font><\\/p><p style=\\\"margin-right:0px;margin-bottom:15px;margin-left:0px;padding:0px;text-align:justify;\\\"><font color=\\\"#000000\\\" face=\\\"Open Sans, Arial, sans-serif\\\"><span style=\\\"font-size:14px;letter-spacing:normal;\\\">\\u0627\\u0644\\u062c\\u0632\\u0621 \\u0627\\u0644\\u0642\\u064a\\u0627\\u0633\\u064a \\u0645\\u0646 \\u0646\\u0635 \\u0644\\u0648\\u0631\\u064a\\u0645 \\u0625\\u064a\\u0628\\u0633\\u0648\\u0645 \\u0627\\u0644\\u0645\\u0633\\u062a\\u062e\\u062f\\u0645 \\u0645\\u0646\\u0630 \\u0627\\u0644\\u0642\\u0631\\u0646 \\u0627\\u0644\\u0633\\u0627\\u062f\\u0633 \\u0639\\u0634\\u0631 \\u0645\\u0643\\u0631\\u0631 \\u0623\\u062f\\u0646\\u0627\\u0647 \\u0644\\u0644\\u0645\\u0647\\u062a\\u0645\\u064a\\u0646. \\u062a\\u0645 \\u0623\\u064a\\u0636\\u064b\\u0627 \\u0625\\u0639\\u0627\\u062f\\u0629 \\u0625\\u0646\\u062a\\u0627\\u062c \\u0627\\u0644\\u0623\\u0642\\u0633\\u0627\\u0645 1.10.32 \\u06481.10.33 \\u0645\\u0646 \\u0643\\u062a\\u0627\\u0628 \\\"de Finibus Bonorum et Malorum\\\" \\u0644\\u0634\\u064a\\u0634\\u0631\\u0648\\u0646 \\u0641\\u064a \\u0634\\u0643\\u0644\\u0647\\u0627 \\u0627\\u0644\\u0623\\u0635\\u0644\\u064a \\u062a\\u0645\\u0627\\u0645\\u064b\\u0627\\u060c \\u0645\\u0635\\u062d\\u0648\\u0628\\u0629 \\u0628\\u0646\\u0633\\u062e \\u0625\\u0646\\u062c\\u0644\\u064a\\u0632\\u064a\\u0629 \\u0645\\u0646 \\u062a\\u0631\\u062c\\u0645\\u0629 \\u0639\\u0627\\u0645 1914 \\u0628\\u0648\\u0627\\u0633\\u0637\\u0629 H. Rackham.<\\/span><\\/font><\\/p>\"}', 'basic', '2021-06-09 08:51:18', '2024-02-13 21:15:08'),
 (44, 'maintenance.data', '{\"description\":\"<div class=\\\"mb-5\\\" style=\\\"color: rgb(111, 111, 111); font-family: Nunito, sans-serif; margin-bottom: 3rem !important;\\\"><h3 class=\\\"mb-3\\\" style=\\\"text-align: center; font-weight: 600; line-height: 1.3; font-size: 24px; font-family: Exo, sans-serif; color: rgb(54, 54, 54);\\\">What information do we collect?<\\/h3><p class=\\\"font-18\\\" style=\\\"text-align: center; margin-right: 0px; margin-left: 0px; font-size: 18px !important;\\\">We gather data from you when you register on our site, submit a request, buy any services, react to an overview, or round out a structure. At the point when requesting any assistance or enrolling on our site, as suitable, you might be approached to enter your: name, email address, or telephone number. You may, nonetheless, visit our site anonymously.<\\/p><\\/div>\"}', NULL, '2020-07-04 23:42:52', '2024-01-02 22:32:57'),
 (46, 'app_download.content', '{\"has_image\":\"1\",\"heading\":\"Your gate to commercial properties\",\"heading_ar\":\"\\u0628\\u0648\\u0627\\u0628\\u062a\\u0643 \\u0644\\u0644\\u0639\\u0642\\u0627\\u0631\\u0627\\u062a \\u0627\\u0644\\u062a\\u062c\\u0627\\u0631\\u064a\\u0629\",\"subheading\":\"Search easily for your desired properties\",\"subheading_ar\":\"\\u0627\\u0628\\u062d\\u062b \\u0628\\u0643\\u0644 \\u0633\\u0647\\u0648\\u0644\\u0629 \\u0648\\u064a\\u0633\\u0631 \\u0639\\u0646 \\u0627\\u0644\\u0639\\u0642\\u0627\\u0631\\u0627\\u062a \\u0627\\u0644\\u0645\\u0646\\u0627\\u0633\\u0628\\u0629 \\u0644\\u0643\",\"description\":\"Properties for sales, rent, auctions, and other services, all in one place\",\"description_ar\":\"\\u0639\\u0642\\u0627\\u0631\\u0627\\u062a \\u0644\\u0644\\u0628\\u064a\\u0639, \\u0644\\u0644\\u0627\\u064a\\u062c\\u0627\\u0631, \\u0645\\u0632\\u0627\\u062f\\u0627\\u062a, \\u0648\\u062e\\u062f\\u0645\\u0627\\u062a \\u0623\\u062e\\u0631\\u0649, \\u0643\\u0644\\u0647\\u0627 \\u0628\\u0645\\u0643\\u0627\\u0646 \\u0648\\u0627\\u062d\\u062f\",\"app_store_link\":\"#\",\"google_store_link\":\"#\",\"image\":\"65b3eb80741051706290048.png\",\"app_store\":\"65b3eb81481401706290049.png\",\"google_play\":\"65b3eb81494e21706290049.png\"}', 'basic', '2024-01-26 11:27:28', '2024-02-27 05:37:41'),
-(51, 'marketing.element', '{\"has_image\":\"1\",\"title\":\"FSfsf\",\"description\":\"afafafasfasf\",\"marketing\":\"65bb17432f0a41706760003.png\"}', 'basic', '2024-01-31 22:00:03', '2024-01-31 22:00:04'),
+(51, 'marketing.element', '{\"has_image\":\"1\",\"title\":\"Data Analysis\",\"title_ar\":\"\\u062a\\u062d\\u0644\\u064a\\u0644  \\u0627\\u0644\\u0628\\u064a\\u0627\\u0646\\u0627\\u062a\",\"image\":\"68a588cce765d1755678924.png\"}', 'basic', '2024-01-31 22:00:03', '2025-08-20 02:35:26'),
 (52, 'marketing_banner.element', '{\"has_image\":\"1\",\"title\":\"Marketing\",\"description\":\"t is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it h\",\"image\":\"65beef0239a0a1707011842.png\"}', 'basic', '2024-02-03 19:57:22', '2024-02-03 19:57:23'),
 (53, 'marketing_banner.content', '{\"has_image\":\"1\",\"title\":\"Marketing\",\"title_ar\":\"\\u062a\\u0633\\u0648\\u064a\\u0642\",\"marketing_banner\":\"\",\"image\":\"65beef5b176801707011931.png\"}', 'basic', '2024-02-03 19:58:51', '2024-04-14 23:04:58'),
 (54, 'marketing_service.element', '{\"has_image\":[\"1\"],\"title\":\"Marketing Services\",\"title_ar\":\"\\u062e\\u062f\\u0645\\u0627\\u062a \\u0627\\u0644\\u062a\\u0633\\u0648\\u064a\\u0642\",\"description\":\"<span style=\\\"color:rgb(108,117,125);font-family:Inter, sans-serif;letter-spacing:normal;\\\">Providing integrated services, specializing in providing e-marketing services, designing business identities, in addition to web and programming solutions, web hosting services and servers.<\\/span><br \\/>\",\"description_ar\":\"\\u062a\\u0642\\u062f\\u064a\\u0645 \\u062e\\u062f\\u0645\\u0627\\u062a \\u0645\\u062a\\u0643\\u0627\\u0645\\u0644\\u0629\\u060c \\u0645\\u062a\\u062e\\u0635\\u0635\\u0629 \\u0641\\u064a \\u062a\\u0642\\u062f\\u064a\\u0645 \\u062e\\u062f\\u0645\\u0627\\u062a \\u0627\\u0644\\u062a\\u0633\\u0648\\u064a\\u0642 \\u0627\\u0644\\u0625\\u0644\\u0643\\u062a\\u0631\\u0648\\u0646\\u064a\\u060c \\u062a\\u0635\\u0645\\u064a\\u0645 \\u0627\\u0644\\u0647\\u0648\\u064a\\u0627\\u062a \\u0627\\u0644\\u062a\\u062c\\u0627\\u0631\\u064a\\u0629\\u060c \\u0628\\u0627\\u0644\\u0625\\u0636\\u0627\\u0641\\u0629 \\u0625\\u0644\\u0649 \\u062d\\u0644\\u0648\\u0644 \\u0627\\u0644\\u0648\\u064a\\u0628 \\u0648\\u0627\\u0644\\u0628\\u0631\\u0645\\u062c\\u0629\\u060c \\u062e\\u062f\\u0645\\u0627\\u062a \\u0627\\u0633\\u062a\\u0636\\u0627\\u0641\\u0629 \\u0627\\u0644\\u0645\\u0648\\u0627\\u0642\\u0639 \\u0648\\u0627\\u0644\\u062e\\u0648\\u0627\\u062f\\u0645.<br \\/>\",\"service_request_url\":\"marketing-request\",\"image\":\"65bef194791c21707012500.png\"}', 'basic', '2024-02-03 20:08:20', '2024-02-05 21:23:08'),
@@ -1232,7 +1232,83 @@ INSERT INTO `frontends` (`id`, `data_keys`, `data_values`, `tempname`, `created_
 (339, 'our_goals.element', '{\"has_image\":\"1\",\"title\":\"Classification and qualification of government agencies.\",\"title_ar\":\"\\u062a\\u0635\\u0646\\u064a\\u0641 \\u0648\\u062a\\u0623\\u0647\\u064a\\u0644 \\u0627\\u0644\\u062c\\u0647\\u0627\\u062a \\u0627\\u0644\\u062d\\u0643\\u0648\\u0645\\u064a\\u0629.\",\"image\":\"66546db99cfef1716809145.png\"}', NULL, '2024-05-27 09:25:45', '2024-05-27 09:28:26'),
 (340, 'legal_business_banner.content', '{\"has_image\":\"1\",\"title\":\"Opportunity of Legal support\",\"title_ar\":\"\\u0641\\u0631\\u0635\\u0629 \\u0627\\u0644\\u062f\\u0639\\u0645 \\u0627\\u0644\\u0642\\u0627\\u0646\\u0648\\u0646\\u064a\",\"description\":\"<p class=\\\"mb-5\\\" style=\\\"font-family:Century, ArbFONTS;line-height:24px;font-size:16px;letter-spacing:normal;\\\">The leadership incubator provides solutions for companies that need legal services, such as compliance of the company\'s activities, rights and interests of the law when it comes to legal services for companies<\\/p>\",\"description_ar\":\"\\u062a\\u0642\\u062f\\u0645 \\u062d\\u0627\\u0636\\u0646\\u0629 \\u0627\\u0644\\u0631\\u064a\\u0627\\u062f\\u0629 \\u062d\\u0644\\u0648\\u0644\\u0627\\u064b \\u0644\\u0644\\u0634\\u0631\\u0643\\u0627\\u062a \\u0627\\u0644\\u062a\\u064a \\u062a\\u062d\\u062a\\u0627\\u062c \\u0625\\u0644\\u0649 \\u062e\\u062f\\u0645\\u0627\\u062a \\u0642\\u0627\\u0646\\u0648\\u0646\\u064a\\u0629\\u060c \\u0645\\u062b\\u0644 \\u0627\\u0645\\u062a\\u062b\\u0627\\u0644 \\u0623\\u0646\\u0634\\u0637\\u0629 \\u0627\\u0644\\u0634\\u0631\\u0643\\u0629 \\u0648\\u062d\\u0642\\u0648\\u0642\\u0647\\u0627 \\u0648\\u0645\\u0635\\u0627\\u0644\\u062d\\u0647\\u0627 \\u0644\\u0644\\u0642\\u0627\\u0646\\u0648\\u0646 \\u0639\\u0646\\u062f\\u0645\\u0627 \\u064a\\u062a\\u0639\\u0644\\u0642 \\u0627\\u0644\\u0623\\u0645\\u0631 \\u0628\\u0627\\u0644\\u062e\\u062f\\u0645\\u0627\\u062a \\u0627\\u0644\\u0642\\u0627\\u0646\\u0648\\u0646\\u064a\\u0629 \\u0644\\u0644\\u0634\\u0631\\u0643\\u0627\\u062a<br \\/>\",\"image\":\"665c0486134df1717306502.png\"}', NULL, '2024-06-01 23:35:02', '2024-06-01 23:35:03'),
 (341, 'consulting_and_studies_banner.content', '{\"has_image\":\"1\",\"title\":\"Consulting and Studies\",\"title_ar\":\"\\u0627\\u0644\\u0627\\u0633\\u062a\\u0634\\u0627\\u0631\\u0627\\u062a \\u0648\\u0627\\u0644\\u062f\\u0631\\u0627\\u0633\\u0627\\u062a\",\"description\":\"<span style=\\\"font-family:Century, ArbFONTS;font-size:16px;letter-spacing:normal;\\\">Riyada Online Consulting and Studies focuses on providing knowledge of content and an information base for everything related to the public, private and non-profit sectors of research, studies, references and best practices documented globally - electronically and on paper, to become an essential reference for workers, researchers and scholars in this field.<\\/span><br \\/>\",\"description_ar\":\"\\u062a\\u0631\\u0643\\u0632 \\u0631\\u064a\\u0627\\u062f\\u0629 \\u0644\\u0644\\u0627\\u0633\\u062a\\u0634\\u0627\\u0631\\u0627\\u062a \\u0648\\u0627\\u0644\\u062f\\u0631\\u0627\\u0633\\u0627\\u062a \\u0627\\u0644\\u0625\\u0644\\u0643\\u062a\\u0631\\u0648\\u0646\\u064a\\u0629 \\u0639\\u0644\\u0649 \\u062a\\u0648\\u0641\\u064a\\u0631 \\u0627\\u0644\\u0645\\u0639\\u0631\\u0641\\u0629 \\u0628\\u0627\\u0644\\u0645\\u062d\\u062a\\u0648\\u0649 \\u0648\\u0642\\u0627\\u0639\\u062f\\u0629 \\u0627\\u0644\\u0645\\u0639\\u0644\\u0648\\u0645\\u0627\\u062a \\u0644\\u0643\\u0644 \\u0645\\u0627 \\u064a\\u062a\\u0639\\u0644\\u0642 \\u0628\\u0627\\u0644\\u0642\\u0637\\u0627\\u0639\\u0627\\u062a \\u0627\\u0644\\u0639\\u0627\\u0645\\u0629 \\u0648\\u0627\\u0644\\u062e\\u0627\\u0635\\u0629 \\u0648\\u063a\\u064a\\u0631 \\u0627\\u0644\\u0631\\u0628\\u062d\\u064a\\u0629 \\u0645\\u0646 \\u0623\\u0628\\u062d\\u0627\\u062b \\u0648\\u062f\\u0631\\u0627\\u0633\\u0627\\u062a \\u0648\\u0645\\u0631\\u0627\\u062c\\u0639 \\u0648\\u0623\\u0641\\u0636\\u0644 \\u0627\\u0644\\u0645\\u0645\\u0627\\u0631\\u0633\\u0627\\u062a \\u0627\\u0644\\u0645\\u0648\\u062b\\u0642\\u0629 \\u0639\\u0627\\u0644\\u0645\\u064a\\u064b\\u0627 - \\u0625\\u0644\\u0643\\u062a\\u0631\\u0648\\u0646\\u064a\\u064b\\u0627 \\u0648\\u0648\\u0631\\u0642\\u064a\\u064b\\u0627\\u060c \\u0644\\u062a\\u0635\\u0628\\u062d \\u0645\\u0631\\u062c\\u0639\\u064b\\u0627 \\u0623\\u0633\\u0627\\u0633\\u064a\\u064b\\u0627 \\u0644\\u0644\\u0639\\u0627\\u0645\\u0644\\u064a\\u0646 \\u0648\\u0627\\u0644\\u0628\\u0627\\u062d\\u062b\\u064a\\u0646 \\u0648\\u0627\\u0644\\u0639\\u0644\\u0645\\u0627\\u0621 \\u0641\\u064a \\u0647\\u0630\\u0627 \\u0627\\u0644\\u0645\\u062c\\u0627\\u0644.<br \\/>\",\"image\":\"665c0666726461717306982.png\"}', NULL, '2024-06-01 23:43:02', '2024-06-01 23:43:02'),
-(342, 'blog.content', '{\"title\":\"Test\",\"sub_title\":\"\\u064a\\u0628\\u0633\\u064a\\u0628\\u0633\\u064a\\u0628\\u0633\"}', NULL, '2025-07-03 09:33:14', '2025-07-03 09:33:14');
+(342, 'blog.content', '{\"title\":\"Test\",\"sub_title\":\"\\u064a\\u0628\\u0633\\u064a\\u0628\\u0633\\u064a\\u0628\\u0633\"}', NULL, '2025-07-03 09:33:14', '2025-07-03 09:33:14'),
+(343, 'investment_opportunities.content', '{\"has_image\":\"1\",\"title\":\"Investment Opportunities\",\"title_ar\":\"\\u0627\\u0644\\u0641\\u0631\\u0635 \\u0627\\u0644\\u0627\\u0633\\u062a\\u062b\\u0645\\u0627\\u0631\\u064a\\u0629\",\"sub_title\":\"Explore a variety of curated investment opportunities across sectors such as technology, retail, agriculture, sustainability, and more. Our platform connects investors with innovative projects seeking funding through equity crowdfunding, sukuk offerings, and other smart investment models.\",\"sub_title_ar\":\"\\u0627\\u0633\\u062a\\u0643\\u0634\\u0641 \\u0645\\u062c\\u0645\\u0648\\u0639\\u0629 \\u0645\\u062a\\u0646\\u0648\\u0639\\u0629 \\u0645\\u0646 \\u0627\\u0644\\u0641\\u0631\\u0635 \\u0627\\u0644\\u0627\\u0633\\u062a\\u062b\\u0645\\u0627\\u0631\\u064a\\u0629 \\u0627\\u0644\\u0645\\u062e\\u062a\\u0627\\u0631\\u0629 \\u0628\\u0639\\u0646\\u0627\\u064a\\u0629 \\u0641\\u064a \\u0642\\u0637\\u0627\\u0639\\u0627\\u062a \\u0645\\u062b\\u0644 \\u0627\\u0644\\u062a\\u0642\\u0646\\u064a\\u0629\\u060c \\u0627\\u0644\\u062a\\u062c\\u0632\\u0626\\u0629\\u060c \\u0627\\u0644\\u0632\\u0631\\u0627\\u0639\\u0629\\u060c \\u0627\\u0644\\u0627\\u0633\\u062a\\u062f\\u0627\\u0645\\u0629\\u060c \\u0648\\u063a\\u064a\\u0631\\u0647\\u0627. \\u062a\\u0631\\u0628\\u0637 \\u0645\\u0646\\u0635\\u062a\\u0646\\u0627 \\u0627\\u0644\\u0645\\u0633\\u062a\\u062b\\u0645\\u0631\\u064a\\u0646 \\u0628\\u0627\\u0644\\u0645\\u0634\\u0627\\u0631\\u064a\\u0639 \\u0627\\u0644\\u0645\\u0628\\u062a\\u0643\\u0631\\u0629 \\u0627\\u0644\\u0628\\u0627\\u062d\\u062b\\u0629 \\u0639\\u0646 \\u062a\\u0645\\u0648\\u064a\\u0644 \\u0645\\u0646 \\u062e\\u0644\\u0627\\u0644 \\u0646\\u0645\\u0627\\u0630\\u062c \\u0630\\u0643\\u064a\\u0629 \\u0645\\u062b\\u0644 \\u0627\\u0644\\u0627\\u0633\\u062a\\u062b\\u0645\\u0627\\u0631 \\u0627\\u0644\\u062c\\u0645\\u0627\\u0639\\u064a \\u0628\\u0627\\u0644\\u0623\\u0633\\u0647\\u0645\\u060c \\u0627\\u0644\\u0635\\u0643\\u0648\\u0643\\u060c \\u0648\\u063a\\u064a\\u0631\\u0647\\u0627.\",\"image\":\"68a3fac9b72bb1755577033.png\"}', NULL, '2025-08-18 22:17:11', '2025-08-18 22:17:13'),
+(344, 'why_finance_incubator.content', '{\"has_image\":\"1\",\"title\":\"Why \\\"Finance Incubator\\\"?\",\"title_ar\":\"\\u0644\\u0645\\u0627\\u0630\\u0627 \\\"\\u062d\\u0627\\u0636\\u0646\\u0629 \\u0627\\u0644\\u062a\\u0645\\u0648\\u064a\\u0644\\\"\\u061f\",\"sub_title\":\"In a fast-paced and interconnected world, the Finance Incubator provides a unified, smart platform that combines funding services with developmental and community-based investment opportunities. We empower individuals and organizations, accelerating their access to the right financial and investment solutions. We believe that integration between awareness, marketing, and digital services is the key to impact and sustainability.\",\"sub_title_ar\":\"\\u0641\\u064a \\u0639\\u0627\\u0644\\u0645 \\u0645\\u062a\\u0633\\u0627\\u0631\\u0639 \\u0648\\u0645\\u062a\\u0631\\u0627\\u0628\\u0637\\u060c \\u0646\\u062d\\u0646 \\u0641\\u064a \\u062d\\u0627\\u0636\\u0646\\u0629 \\u0627\\u0644\\u062a\\u0645\\u0648\\u064a\\u0644 \\u0646\\u0642\\u062f\\u0645 \\u0645\\u0646\\u0635\\u0629 \\u0645\\u0648\\u062d\\u062f\\u0629 \\u0630\\u0643\\u064a\\u0629 \\u062a\\u062c\\u0645\\u0639 \\u0628\\u064a\\u0646 \\u062e\\u062f\\u0645\\u0627\\u062a \\u0627\\u0644\\u062a\\u0645\\u0648\\u064a\\u0644\\u060c \\u0648\\u0641\\u0631\\u0635 \\u0627\\u0644\\u0627\\u0633\\u062a\\u062b\\u0645\\u0627\\u0631 \\u0627\\u0644\\u062a\\u0646\\u0645\\u0648\\u064a \\u0648\\u0627\\u0644\\u0645\\u062c\\u062a\\u0645\\u0639\\u064a\\u060c \\u0628\\u0645\\u0627 \\u064a\\u0633\\u0647\\u0645 \\u0641\\u064a \\u062a\\u0645\\u0643\\u064a\\u0646 \\u0627\\u0644\\u0623\\u0641\\u0631\\u0627\\u062f \\u0648\\u0627\\u0644\\u0645\\u0646\\u0634\\u0622\\u062a\\u060c \\u0648\\u062a\\u0633\\u0631\\u064a\\u0639 \\u0648\\u0635\\u0648\\u0644\\u0647\\u0645 \\u0625\\u0644\\u0649 \\u0627\\u0644\\u062d\\u0644\\u0648\\u0644 \\u0627\\u0644\\u0645\\u0627\\u0644\\u064a\\u0629 \\u0648\\u0627\\u0644\\u0627\\u0633\\u062a\\u062b\\u0645\\u0627\\u0631\\u064a\\u0629 \\u0627\\u0644\\u0645\\u0646\\u0627\\u0633\\u0628\\u0629. \\u0646\\u062d\\u0646 \\u0646\\u0624\\u0645\\u0646 \\u0628\\u0623\\u0646 \\u0627\\u0644\\u062a\\u0643\\u0627\\u0645\\u0644 \\u0628\\u064a\\u0646 \\u0627\\u0644\\u062a\\u0648\\u0639\\u064a\\u0629\\u060c \\u0648\\u0627\\u0644\\u062a\\u0633\\u0648\\u064a\\u0642\\u060c \\u0648\\u0627\\u0644\\u062e\\u062f\\u0645\\u0627\\u062a \\u0627\\u0644\\u0631\\u0642\\u0645\\u064a\\u0629 \\u0647\\u0648 \\u0627\\u0644\\u0645\\u0641\\u062a\\u0627\\u062d \\u0644\\u062a\\u062d\\u0642\\u064a\\u0642 \\u0627\\u0644\\u0623\\u062b\\u0631 \\u0648\\u0627\\u0644\\u0627\\u0633\\u062a\\u062f\\u0627\\u0645\\u0629.\",\"image\":\"68a40033b47c41755578419.png\"}', NULL, '2025-08-18 22:40:19', '2025-08-18 22:40:19'),
+(345, 'what_makes_us_unique.content', '{\"has_image\":\"1\",\"title\":\"What Makes Us Unique?\",\"title_ar\":\"\\u0645\\u0627 \\u0627\\u0644\\u0630\\u064a \\u064a\\u0645\\u064a\\u0632\\u0646\\u0627\\u061f\",\"image_left\":\"68a404a1611401755579553.png\",\"image_right\":\"68a404a186d271755579553.png\"}', NULL, '2025-08-18 22:59:13', '2025-08-18 22:59:13'),
+(346, 'what_makes_us_unique.element', '{\"has_image\":\"1\",\"title\":\"We raise financial and investment awareness through smart content that respects consumer protection principles and builds trust among all parties\",\"title_ar\":\"\\u0646\\u0631\\u0641\\u0639 \\u0627\\u0644\\u0648\\u0639\\u064a \\u0627\\u0644\\u0645\\u0627\\u0644\\u064a \\u0648\\u0627\\u0644\\u0627\\u0633\\u062a\\u062b\\u0645\\u0627\\u0631\\u064a \\u0639\\u0628\\u0631 \\u0645\\u062d\\u062a\\u0648\\u0649 \\u062a\\u0648\\u0639\\u0648\\u064a \\u0630\\u0643\\u064a \\u064a\\u0631\\u0627\\u0639\\u064a \\u0642\\u0648\\u0627\\u0639\\u062f \\u062d\\u0645\\u0627\\u064a\\u0629 \\u0627\\u0644\\u0645\\u0633\\u062a\\u0647\\u0644\\u0643\\u060c \\u0648\\u064a\\u0639\\u0632\\u0632 \\u0627\\u0644\\u062b\\u0642\\u0629 \\u0628\\u064a\\u0646 \\u0627\\u0644\\u0623\\u0637\\u0631\\u0627\\u0641\",\"image\":\"68a404c17ac521755579585.png\"}', NULL, '2025-08-18 22:59:45', '2025-08-18 22:59:45'),
+(347, 'what_makes_us_unique.element', '{\"has_image\":\"1\",\"title\":\"We help build corporate identity for projects through specialized marketing and promotional services for developmental and community initiatives\",\"title_ar\":\"\\u0646\\u0628\\u0646\\u064a \\u0627\\u0644\\u0647\\u0648\\u064a\\u0629 \\u0627\\u0644\\u0645\\u0624\\u0633\\u0633\\u064a\\u0629 \\u0644\\u0644\\u0645\\u0634\\u0627\\u0631\\u064a\\u0639 \\u0645\\u0646 \\u062e\\u0644\\u0627\\u0644 \\u062e\\u062f\\u0645\\u0627\\u062a \\u062a\\u0633\\u0648\\u064a\\u0642 \\u0648\\u062a\\u0631\\u0648\\u064a\\u062c \\u0645\\u062a\\u062e\\u0635\\u0635\\u0629 \\u0644\\u0644\\u0645\\u0628\\u0627\\u062f\\u0631\\u0627\\u062a \\u0627\\u0644\\u062a\\u0646\\u0645\\u0648\\u064a\\u0629 \\u0648\\u0627\\u0644\\u0645\\u062c\\u062a\\u0645\\u0639\\u064a\\u0629\",\"image\":\"68a407a567eef1755580325.png\"}', NULL, '2025-08-18 23:12:05', '2025-08-18 23:12:05'),
+(348, 'what_makes_us_unique.element', '{\"has_image\":\"1\",\"title\":\"We shorten the path to financing through direct connection between funding providers and beneficiaries via unified application forms and a smart platform.\",\"title_ar\":\"\\u0646\\u062e\\u062a\\u0635\\u0631 \\u0627\\u0644\\u0637\\u0631\\u064a\\u0642 \\u0625\\u0644\\u0649 \\u0627\\u0644\\u062a\\u0645\\u0648\\u064a\\u0644 \\u0628\\u0631\\u0628\\u0637 \\u0645\\u0628\\u0627\\u0634\\u0631 \\u0628\\u064a\\u0646 \\u0627\\u0644\\u062c\\u0647\\u0627\\u062a \\u0627\\u0644\\u062a\\u0645\\u0648\\u064a\\u0644\\u064a\\u0629 \\u0648\\u0627\\u0644\\u0645\\u0633\\u062a\\u0641\\u064a\\u062f\\u064a\\u0646\\u060c \\u0639\\u0628\\u0631 \\u0646\\u0645\\u0627\\u0630\\u062c \\u0637\\u0644\\u0628 \\u0645\\u0648\\u062d\\u062f\\u0629 \\u0648\\u0645\\u0646\\u0635\\u0629 \\u0630\\u0643\\u064a\\u0629\",\"image\":\"68a4080ed6fcf1755580430.png\"}', NULL, '2025-08-18 23:13:50', '2025-08-18 23:13:50'),
+(349, 'what_makes_us_unique.element', '{\"has_image\":\"1\",\"title\":\"We offer specialized, integrated expertise that goes beyond traditional marketing, delivering measurable results and greater sustainability compared to relying on a single entity\",\"title_ar\":\"\\u0646\\u0642\\u062f\\u0645 \\u062e\\u0628\\u0631\\u0627\\u062a \\u0645\\u062a\\u062e\\u0635\\u0635\\u0629 \\u0648\\u0645\\u062a\\u0643\\u0627\\u0645\\u0644\\u0629 \\u062a\\u062a\\u062c\\u0627\\u0648\\u0632 \\u062d\\u062f\\u0648\\u062f \\u0627\\u0644\\u062a\\u0633\\u0648\\u064a\\u0642 \\u0627\\u0644\\u062a\\u0642\\u0644\\u064a\\u062f\\u064a\\u060c \\u0644\\u0646\\u0642\\u062f\\u0645 \\u0646\\u062a\\u0627\\u0626\\u062c \\u0642\\u0627\\u0628\\u0644\\u0629 \\u0644\\u0644\\u0642\\u064a\\u0627\\u0633 \\u0648\\u0623\\u0643\\u062b\\u0631 \\u0627\\u0633\\u062a\\u062f\\u0627\\u0645\\u0629 \\u0645\\u0646 \\u0627\\u0644\\u0627\\u0639\\u062a\\u0645\\u0627\\u062f \\u0639\\u0644\\u0649 \\u062c\\u0647\\u0629 \\u0645\\u0646\\u0641\\u0631\\u062f\\u0629.\",\"image\":\"68a40870b21771755580528.png\"}', NULL, '2025-08-18 23:15:28', '2025-08-18 23:15:28'),
+(350, 'smart_settlement.content', '{\"has_image\":\"1\",\"title\":\"Smart Settlement & Collection Solutions\",\"title_ar\":\"\\u062d\\u0644\\u0648\\u0644 \\u062a\\u0633\\u0648\\u064a\\u0629 \\u0648\\u062a\\u062d\\u0635\\u064a\\u0644 \\u0630\\u0643\\u064a\\u0629\",\"sub_title\":\"We provide you with professional services to manage your financial obligations securely and efficiently \\u2014 without the need for litigation.\",\"sub_title_ar\":\"\\u0646\\u0648\\u0641\\u0651\\u0631 \\u0644\\u0643 \\u062e\\u062f\\u0645\\u0627\\u062a \\u0627\\u062d\\u062a\\u0631\\u0627\\u0641\\u064a\\u0629 \\u0644\\u0625\\u062f\\u0627\\u0631\\u0629 \\u0627\\u0644\\u062a\\u0632\\u0627\\u0645\\u0627\\u062a\\u0643 \\u0627\\u0644\\u0645\\u0627\\u0644\\u064a\\u0629 \\u0628\\u0637\\u0631\\u064a\\u0642\\u0629 \\u0622\\u0645\\u0646\\u0629 \\u0648\\u0633\\u0631\\u064a\\u0639\\u0629\\u060c \\u062f\\u0648\\u0646 \\u0627\\u0644\\u062d\\u0627\\u062c\\u0629 \\u0644\\u0644\\u062c\\u0648\\u0621 \\u0625\\u0644\\u0649 \\u0627\\u0644\\u0642\\u0636\\u0627\\u0621.\",\"heading\":\"Our services include:\",\"heading_ar\":\"\\u062e\\u062f\\u0645\\u0627\\u062a\\u0646\\u0627 \\u062a\\u0634\\u0645\\u0644:\",\"image_left\":\"68a4188864d761755584648.png\",\"image_right\":\"68a41888915d41755584648.png\"}', NULL, '2025-08-19 00:24:08', '2025-08-19 00:28:09'),
+(352, 'smart_settlement.element', '{\"title\":\"Settlement of debts and obligations among partners and heirs\",\"title_ar\":\"\\u062a\\u0633\\u0648\\u064a\\u0629 \\u0627\\u0644\\u062f\\u064a\\u0648\\u0646 \\u0648\\u0627\\u0644\\u062a\\u0632\\u0627\\u0645\\u0627\\u062a \\u0627\\u0644\\u0634\\u0631\\u0643\\u0627\\u0621 \\u0648\\u0627\\u0644\\u0648\\u0631\\u062b\\u0629.\"}', NULL, '2025-08-19 00:28:29', '2025-08-19 00:28:29'),
+(353, 'smart_settlement.element', '{\"title\":\"Collection of commercial receivables and defaulted debts\",\"title_ar\":\"\\u062a\\u062d\\u0635\\u064a\\u0644 \\u0627\\u0644\\u0630\\u0645\\u0645 \\u0627\\u0644\\u062a\\u062c\\u0627\\u0631\\u064a\\u0629 \\u0648\\u0627\\u0644\\u0645\\u062f\\u064a\\u0648\\u0646\\u064a\\u0627\\u062a \\u0627\\u0644\\u0645\\u062a\\u0639\\u062b\\u0631\\u0629.\"}', NULL, '2025-08-19 01:05:38', '2025-08-19 01:05:38'),
+(354, 'smart_settlement.element', '{\"title\":\"Payment scheduling and amicable negotiations\",\"title_ar\":\"\\u062c\\u062f\\u0648\\u0644\\u0629 \\u0627\\u0644\\u062f\\u0641\\u0639\\u0627\\u062a \\u0648\\u0627\\u0644\\u0645\\u0641\\u0627\\u0648\\u0636\\u0627\\u062a \\u0627\\u0644\\u0648\\u062f\\u064a\\u0629.\"}', NULL, '2025-08-19 01:06:01', '2025-08-19 01:06:01'),
+(355, 'smart_settlement.element', '{\"title\":\"Digital solutions for protecting rights and resolving disputes\",\"title_ar\":\"\\u062d\\u0644\\u0648\\u0644 \\u0625\\u0644\\u0643\\u062a\\u0631\\u0648\\u0646\\u064a\\u0629 \\u0644\\u062d\\u0641\\u0638 \\u0627\\u0644\\u062d\\u0642\\u0648\\u0642 \\u0648\\u0625\\u0646\\u0647\\u0627\\u0621 \\u0627\\u0644\\u0646\\u0632\\u0627\\u0639\\u0627\\u062a\"}', NULL, '2025-08-19 01:06:21', '2025-08-19 01:06:21'),
+(356, 'smart_settlement.element', '{\"title\":\"Legal and financial advisory support services\",\"title_ar\":\"\\u062e\\u062f\\u0645\\u0627\\u062a \\u0627\\u0633\\u062a\\u0634\\u0627\\u0631\\u064a\\u0629 \\u0642\\u0627\\u0646\\u0648\\u0646\\u064a\\u0629 \\u0648\\u062a\\u0645\\u0648\\u064a\\u0644\\u064a\\u0629 \\u062f\\u0627\\u0639\\u0645\\u0629\"}', NULL, '2025-08-19 01:06:41', '2025-08-19 01:06:41'),
+(357, 'subscribe.content', '{\"has_image\":\"1\",\"heading\":\"Subscribe to Our  Newsletter\",\"heading_ar\":\"\\u0627\\u0634\\u062a\\u0631\\u0643 \\u0641\\u064a \\u0646\\u0634\\u0631\\u062a\\u0646\\u0627 \\u0627\\u0644\\u0625\\u062e\\u0628\\u0627\\u0631\\u064a\\u0629\",\"title\":\"Be the first to know about new opportunities, events, and upcoming courses.\",\"title_ar\":\"\\u0643\\u0646 \\u0623\\u0648\\u0644 \\u0645\\u0646 \\u064a\\u0639\\u0631\\u0641 \\u0639\\u0646 \\u0627\\u0644\\u0641\\u0631\\u0635 \\u0627\\u0644\\u062c\\u062f\\u064a\\u062f\\u0629 \\u0648\\u0627\\u0644\\u0623\\u062d\\u062f\\u0627\\u062b \\u0648\\u0627\\u0644\\u062f\\u0648\\u0631\\u0627\\u062a \\u0627\\u0644\\u0642\\u0627\\u062f\\u0645\\u0629.\",\"image\":\"68a426866e2271755588230.png\"}', NULL, '2025-08-19 01:23:50', '2025-08-19 01:23:52'),
+(358, 'hero_section.content', '{\"has_image\":\"1\",\"title\":\"Finance Incubator \\u2013\",\"title_ar\":\"\\u062d\\u0627\\u0636\\u0646\\u0629 \\u0627\\u0644\\u062a\\u0645\\u0648\\u064a\\u0644 \\u2013\",\"heading\":\"The Integrated Platform for Developmental and Social Investment\",\"heading_ar\":\"\\u0627\\u0644\\u0645\\u0646\\u0635\\u0629 \\u0627\\u0644\\u0634\\u0627\\u0645\\u0644\\u0629 \\u0644\\u0644\\u062a\\u0645\\u0648\\u064a\\u0644 \\u0648\\u0627\\u0644\\u0627\\u0633\\u062a\\u062b\\u0645\\u0627\\u0631 \\u0627\\u0644\\u062a\\u0646\\u0645\\u0648\\u064a \\u0648\\u0627\\u0644\\u0627\\u062c\\u062a\\u0645\\u0627\\u0639\\u064a\",\"description\":\"A unified platform that brings together financing services from developmental and financial institutions, along with investment opportunities in promising projects and community-driven initiatives. It offers marketing, training, and employment tools to empower investors, funders, and entrepreneurs in building impactful and sustainable economic and social partnerships.\",\"description_ar\":\"\\u0645\\u0646\\u0635\\u0629 \\u0645\\u0648\\u062d\\u062f\\u0629 \\u062a\\u062c\\u0645\\u0639 \\u0628\\u064a\\u0646 \\u062e\\u062f\\u0645\\u0627\\u062a \\u0627\\u0644\\u062a\\u0645\\u0648\\u064a\\u0644 \\u0645\\u0646 \\u0627\\u0644\\u062c\\u0647\\u0627\\u062a \\u0627\\u0644\\u062a\\u0646\\u0645\\u0648\\u064a\\u0629 \\u0648\\u0627\\u0644\\u0645\\u0627\\u0644\\u064a\\u0629\\u060c \\u0648\\u0641\\u0631\\u0635 \\u0627\\u0644\\u0627\\u0633\\u062a\\u062b\\u0645\\u0627\\u0631 \\u0641\\u064a \\u0627\\u0644\\u0645\\u0634\\u0627\\u0631\\u064a\\u0639 \\u0627\\u0644\\u0648\\u0627\\u0639\\u062f\\u0629 \\u0648\\u0627\\u0644\\u0645\\u0628\\u0627\\u062f\\u0631\\u0627\\u062a \\u0627\\u0644\\u0645\\u062c\\u062a\\u0645\\u0639\\u064a\\u0629\\u060c \\u0648\\u062a\\u0648\\u0641\\u0651\\u0631 \\u0623\\u062f\\u0648\\u0627\\u062a \\u062a\\u0633\\u0648\\u064a\\u0642\\u064a\\u0629\\u060c \\u0648\\u062a\\u062f\\u0631\\u064a\\u0628\\u064a\\u0629\\u060c \\u0648\\u062a\\u0634\\u063a\\u064a\\u0644\\u064a\\u0629 \\u0644\\u062a\\u0645\\u0643\\u064a\\u0646 \\u0627\\u0644\\u0645\\u0633\\u062a\\u062b\\u0645\\u0631\\u064a\\u0646 \\u0648\\u0627\\u0644\\u0645\\u0645\\u0648\\u0644\\u064a\\u0646 \\u0648\\u0631\\u0648\\u0651\\u0627\\u062f \\u0627\\u0644\\u0623\\u0639\\u0645\\u0627\\u0644 \\u0645\\u0646 \\u0628\\u0646\\u0627\\u0621 \\u0634\\u0631\\u0627\\u0643\\u0627\\u062a \\u0630\\u0627\\u062a \\u0623\\u062b\\u0631 \\u0627\\u0642\\u062a\\u0635\\u0627\\u062f\\u064a \\u0648\\u0627\\u062c\\u062a\\u0645\\u0627\\u0639\\u064a \\u0645\\u0633\\u062a\\u062f\\u0627\\u0645\",\"image\":\"68a4289730e531755588759.png\"}', NULL, '2025-08-19 01:32:39', '2025-08-19 01:35:52'),
+(359, 'browse_by_category.element', '{\"has_image\":\"1\",\"title\":\"Startups & Small Enterprises\",\"title_ar\":\"\\u0627\\u0644\\u0634\\u0631\\u0643\\u0627\\u062a \\u0627\\u0644\\u0646\\u0627\\u0634\\u0626\\u0629 \\u0648\\u0627\\u0644\\u0645\\u0646\\u0634\\u0622\\u062a \\u0627\\u0644\\u0635\\u063a\\u064a\\u0631\\u0629\",\"image\":\"68a42c6f4c1471755589743.png\"}', NULL, '2025-08-19 01:49:03', '2025-08-19 01:49:03');
+INSERT INTO `frontends` (`id`, `data_keys`, `data_values`, `tempname`, `created_at`, `updated_at`) VALUES
+(361, 'browse_by_category.element', '{\"has_image\":\"1\",\"title\":\"Real Estate Funds\",\"title_ar\":\"\\u0627\\u0644\\u0635\\u0646\\u0627\\u062f\\u064a\\u0642 \\u0627\\u0644\\u0639\\u0642\\u0627\\u0631\\u064a\\u0629\",\"image\":\"68a430998487a1755590809.png\"}', NULL, '2025-08-19 02:06:49', '2025-08-19 02:06:49'),
+(362, 'browse_by_category.element', '{\"has_image\":\"1\",\"title\":\"Green & Sustainable Projects\",\"title_ar\":\"\\u0627\\u0644\\u0645\\u0634\\u0627\\u0631\\u064a\\u0639 \\u0627\\u0644\\u062e\\u0636\\u0631\\u0627\\u0621 \\u0648\\u0627\\u0644\\u0645\\u0633\\u062a\\u062f\\u0627\\u0645\\u0629\",\"image\":\"68a430b32752e1755590835.png\"}', NULL, '2025-08-19 02:07:15', '2025-08-19 02:07:15'),
+(363, 'browse_by_category.element', '{\"has_image\":\"1\",\"title\":\"Industrial & Innovation Projects\",\"title_ar\":\"\\u0627\\u0644\\u0635\\u0646\\u0627\\u0639\\u0629 \\u0648\\u0627\\u0644\\u0627\\u0628\\u062a\\u0643\\u0627\\u0631\",\"image\":\"68a430c6a6e681755590854.png\"}', NULL, '2025-08-19 02:07:34', '2025-08-19 02:07:34'),
+(364, 'browse_by_category.element', '{\"has_image\":\"1\",\"title\":\"Technology & Digital Platforms\",\"title_ar\":\"\\u0627\\u0644\\u062a\\u0642\\u0646\\u064a\\u0629 \\u0648\\u0627\\u0644\\u0645\\u0646\\u0635\\u0627\\u062a \\u0627\\u0644\\u0631\\u0642\\u0645\\u064a\\u0629\",\"image\":\"68a430fcdcf7c1755590908.png\"}', NULL, '2025-08-19 02:08:28', '2025-08-19 02:08:28'),
+(365, 'browse_by_category.element', '{\"has_image\":\"1\",\"title\":\"Financing Opportunities & Sukuks\",\"title_ar\":\"\\u0627\\u0644\\u0641\\u0631\\u0635 \\u0627\\u0644\\u062a\\u0645\\u0648\\u064a\\u0644\\u064a\\u0629 \\u0648\\u0627\\u0644\\u0635\\u0643\\u0648\\u0643\",\"image\":\"68a43114dbf631755590932.png\"}', NULL, '2025-08-19 02:08:52', '2025-08-19 02:08:52'),
+(366, 'browse_by_category.element', '{\"has_image\":\"1\",\"title\":\"Social Impact Projects\",\"title_ar\":\"\\u0627\\u0644\\u0645\\u0634\\u0627\\u0631\\u064a\\u0639 \\u0630\\u0627\\u062a \\u0627\\u0644\\u0623\\u062b\\u0631 \\u0627\\u0644\\u0627\\u062c\\u062a\\u0645\\u0627\\u0639\\u064a\",\"image\":\"68a4312cc89131755590956.png\"}', NULL, '2025-08-19 02:09:16', '2025-08-19 02:09:16'),
+(367, 'investment_opportunities_top.content', '{\"has_image\":\"1\",\"heading\":\"Investment Opportunities\",\"heading_ar\":\"\\u0627\\u0644\\u0641\\u0631\\u0635 \\u0627\\u0644\\u0627\\u0633\\u062a\\u062b\\u0645\\u0627\\u0631\\u064a\\u0629\",\"title\":\"Explore a variety of curated investment opportunities across sectors such as technology, retail, agriculture, sustainability, and more. Our platform connects investors with innovative projects seeking funding through equity crowdfunding, sukuk offerings, and other smart investment models.\",\"title_ar\":\"\\u0627\\u0633\\u062a\\u0643\\u0634\\u0641 \\u0645\\u062c\\u0645\\u0648\\u0639\\u0629 \\u0645\\u062a\\u0646\\u0648\\u0639\\u0629 \\u0645\\u0646 \\u0627\\u0644\\u0641\\u0631\\u0635 \\u0627\\u0644\\u0627\\u0633\\u062a\\u062b\\u0645\\u0627\\u0631\\u064a\\u0629 \\u0627\\u0644\\u0645\\u062e\\u062a\\u0627\\u0631\\u0629 \\u0628\\u0639\\u0646\\u0627\\u064a\\u0629 \\u0641\\u064a \\u0642\\u0637\\u0627\\u0639\\u0627\\u062a \\u0645\\u062b\\u0644 \\u0627\\u0644\\u062a\\u0642\\u0646\\u064a\\u0629\\u060c \\u0627\\u0644\\u062a\\u062c\\u0632\\u0626\\u0629\\u060c \\u0627\\u0644\\u0632\\u0631\\u0627\\u0639\\u0629\\u060c \\u0627\\u0644\\u0627\\u0633\\u062a\\u062f\\u0627\\u0645\\u0629\\u060c \\u0648\\u063a\\u064a\\u0631\\u0647\\u0627. \\u062a\\u0631\\u0628\\u0637 \\u0645\\u0646\\u0635\\u062a\\u0646\\u0627 \\u0627\\u0644\\u0645\\u0633\\u062a\\u062b\\u0645\\u0631\\u064a\\u0646 \\u0628\\u0627\\u0644\\u0645\\u0634\\u0627\\u0631\\u064a\\u0639 \\u0627\\u0644\\u0645\\u0628\\u062a\\u0643\\u0631\\u0629 \\u0627\\u0644\\u0628\\u0627\\u062d\\u062b\\u0629 \\u0639\\u0646 \\u062a\\u0645\\u0648\\u064a\\u0644 \\u0645\\u0646 \\u062e\\u0644\\u0627\\u0644 \\u0646\\u0645\\u0627\\u0630\\u062c \\u0630\\u0643\\u064a\\u0629 \\u0645\\u062b\\u0644 \\u0627\\u0644\\u0627\\u0633\\u062a\\u062b\\u0645\\u0627\\u0631 \\u0627\\u0644\\u062c\\u0645\\u0627\\u0639\\u064a \\u0628\\u0627\\u0644\\u0623\\u0633\\u0647\\u0645\\u060c \\u0627\\u0644\\u0635\\u0643\\u0648\\u0643\\u060c \\u0648\\u063a\\u064a\\u0631\\u0647\\u0627\",\"image\":\"68a46770de7361755604848.png\"}', NULL, '2025-08-19 06:00:48', '2025-08-19 06:00:50'),
+(368, 'digital_marketing.element', '{\"title\":\"Embeded finance enables digital platforms (e-commerce platforms and retail stores) to seamlessly integrate digital banking services\",\"title_ar\":\"\\u0627\\u0644\\u062a\\u0645\\u0648\\u064a\\u0644 \\u0627\\u0644\\u0645\\u062f\\u0645\\u062c \\u064a\\u0645\\u0643\\u0646 \\u0627\\u0644\\u0645\\u0646\\u0635\\u0627\\u062a \\u0627\\u0644\\u0631\\u0642\\u0645\\u064a\\u0629 \\\"\\u0645\\u0646\\u0635\\u0627\\u062a \\u0627\\u0644\\u062a\\u062c\\u0627\\u0631\\u0629 \\u0627\\u0644\\u0625\\u0644\\u0643\\u062a\\u0631\\u0648\\u0646\\u064a\\u0629 \\u0648\\u0645\\u062a\\u0627\\u062c\\u0631 \\u0627\\u0644\\u062a\\u062c\\u0632\\u0626\\u0629\\\" \\u0645\\u0646 \\u062f\\u0645\\u062c \\u0633\\u0644\\u0633 \\u0644\\u0644\\u062e\\u062f\\u0645\\u0627\\u062a \\u0627\\u0644\\u0645\\u0635\\u0631\\u0641\\u064a\\u0629 \\u0627\\u0644\\u0631\\u0642\\u0645\\u064a\\u0629\"}', NULL, '2025-08-20 00:15:50', '2025-08-20 00:15:50'),
+(369, 'digital_marketing.element', '{\"title\":\"Digital marketing by providing integrated marketing services, including marketing the services and products of financial entities and institutions\",\"title_ar\":\"\\u0627\\u0644\\u062a\\u0633\\u0648\\u064a\\u0642 \\u0627\\u0644\\u0631\\u0642\\u0645\\u064a \\u0628\\u062a\\u0642\\u062f\\u064a\\u0645 \\u062e\\u062f\\u0645\\u0627\\u062a \\u062a\\u0633\\u0648\\u064a\\u0642 \\u0645\\u062a\\u0643\\u0627\\u0645\\u0644\\u0629 \\u0645\\u0646\\u0647\\u0627 \\u062a\\u0633\\u0648\\u064a\\u0642 \\u062e\\u062f\\u0645\\u0627\\u062a \\u0648\\u0645\\u0646\\u062a\\u062c\\u0627\\u062a \\u0627\\u0644\\u062c\\u0647\\u0627\\u062a \\u0648\\u0627\\u0644\\u0645\\u0624\\u0633\\u0633\\u0627\\u062a \\u0627\\u0644\\u0645\\u0627\\u0644\\u064a\\u0629\"}', NULL, '2025-08-20 00:16:12', '2025-08-20 00:16:12'),
+(370, 'embedded_finance.content', '{\"has_image\":\"1\",\"title\":\"Embedded Finance\",\"title_ar\":\"\\u0627\\u0644\\u062a\\u0645\\u0648\\u064a\\u0644 \\u0627\\u0644\\u0645\\u062f\\u0645\\u062c\",\"sub_title\":\"We enable digital platforms (e-commerce platforms and retail stores) to use the \\u201cbuy now, pay later\\u201d option, to seamlessly integrate digital banking services, including:\",\"sub_title_ar\":\"\\u0646\\u062d\\u0646 \\u0646\\u0645\\u0643\\u0646 \\u0627\\u0644\\u0645\\u0646\\u0635\\u0627\\u062a \\u0627\\u0644\\u0631\\u0642\\u0645\\u064a\\u0629 \\\"\\u0645\\u0646\\u0635\\u0627\\u062a \\u0627\\u0644\\u062a\\u062c\\u0627\\u0631\\u0629 \\u0627\\u0644\\u0625\\u0644\\u0643\\u062a\\u0631\\u0648\\u0646\\u064a\\u0629 \\u0648\\u0645\\u062a\\u0627\\u062c\\u0631 \\u0627\\u0644\\u062a\\u062c\\u0632\\u0626\\u0629\\\" \\u0627\\u0633\\u062a\\u062e\\u062f\\u0627\\u0645 \\u062e\\u064a\\u0627\\u0631 \\\"\\u0627\\u0634\\u062a\\u0631\\u0650 \\u0627\\u0644\\u0622\\u0646 \\u0648\\u0627\\u062f\\u0641\\u0639 \\u0644\\u0627\\u062d\\u0642\\u064b\\u0627\\\" \\u060c \\u0645\\u0646 \\u062f\\u0645\\u062c \\u0633\\u0644\\u0633 \\u0644\\u0644\\u062e\\u062f\\u0645\\u0627\\u062a \\u0627\\u0644\\u0645\\u0635\\u0631\\u0641\\u064a\\u0629 \\u0627\\u0644\\u0631\\u0642\\u0645\\u064a\\u0629  \\u0648\\u064a\\u0634\\u0645\\u0644\",\"image\":\"68a569945e6171755670932.png\"}', NULL, '2025-08-20 00:22:10', '2025-08-20 00:22:12'),
+(371, 'embedded_finance.element', '{\"title\":\"Easy access to flexible financing solutions, facilitating and simplifying the customer journey\",\"title_ar\":\"\\u0633\\u0647\\u0648\\u0644\\u0629 \\u0627\\u0644\\u0648\\u0635\\u0648\\u0644 \\u0625\\u0644\\u0649 \\u062d\\u0644\\u0648\\u0644 \\u062a\\u0645\\u0648\\u064a\\u0644 \\u0645\\u0631\\u0646\\u0629 \\u0648\\u062a\\u0633\\u0647\\u064a\\u0644 \\u0648\\u062a\\u0628\\u0633\\u064a\\u0637 \\u0631\\u062d\\u0644\\u0629 \\u0627\\u0644\\u0639\\u0645\\u064a\\u0644\"}', NULL, '2025-08-20 00:22:38', '2025-08-20 00:22:38'),
+(372, 'embedded_finance.element', '{\"title\":\"Financial inclusion for groups that do not have access to banking services\",\"title_ar\":\"\\u0627\\u0644\\u0634\\u0645\\u0648\\u0644 \\u0627\\u0644\\u0645\\u0627\\u0644\\u064a \\u0644\\u0644\\u0641\\u0626\\u0627\\u062a \\u0627\\u0644\\u062a\\u064a \\u0644\\u0627 \\u064a\\u062a\\u0627\\u062d \\u0644\\u0647\\u0627 \\u0627\\u0644\\u0648\\u0635\\u0648\\u0644 \\u0627\\u0644\\u0649 \\u0627\\u0644\\u062e\\u062f\\u0645\\u0627\\u062a \\u0627\\u0644\\u0645\\u0635\\u0631\\u0641\\u064a\\u0629\"}', NULL, '2025-08-20 00:23:02', '2025-08-20 00:23:02'),
+(373, 'embedded_finance.element', '{\"title\":\"Providing an additional source of income for the platform and retaining customers\",\"title_ar\":\"\\u062a\\u0648\\u0641\\u064a\\u0631 \\u0645\\u0635\\u062f\\u0631 \\u062f\\u062e\\u0644 \\u0625\\u0636\\u0627\\u0641\\u064a \\u0644\\u0644\\u0645\\u0646\\u0635\\u0629 \\u0648\\u0627\\u0644\\u0627\\u062d\\u062a\\u0641\\u0627\\u0638 \\u0628\\u0627\\u0644\\u0639\\u0645\\u0644\\u0627\\u0621\"}', NULL, '2025-08-20 00:23:22', '2025-08-20 00:23:22'),
+(374, 'embedded_finance_product_solutions.element', '{\"title\":\"Embedded Lending\",\"title_ar\":\"\\u0627\\u0644\\u0625\\u0642\\u0631\\u0627\\u0636 \\u0627\\u0644\\u0645\\u062f\\u0645\\u062c\",\"sub_title\":\"Embedded lending allows consumers to access loans directly during the purchase process and is a buy now, pay later (BNPL) option that allows customers to complete the purchase and pay later in installments\",\"sub_title_ar\":\"\\u064a\\u0633\\u0645\\u062d \\u0627\\u0644\\u0625\\u0642\\u0631\\u0627\\u0636 \\u0627\\u0644\\u0645\\u062f\\u0645\\u062c \\u0628\\u0627\\u0644\\u0625\\u0642\\u0631\\u0627\\u0636 \\u0648\\u0627\\u0644\\u062a\\u0633\\u0647\\u064a\\u0644\\u0627\\u062a \\u0627\\u0644\\u0627\\u0626\\u062a\\u0645\\u0627\\u0646\\u064a\\u0629 \\u0644\\u0644\\u0645\\u0633\\u062a\\u0647\\u0644\\u0643\\u064a\\u0646 \\u0628\\u0627\\u0644\\u0648\\u0635\\u0648\\u0644 \\u0625\\u0644\\u0649 \\u0627\\u0644\\u0642\\u0631\\u0648\\u0636 \\u0645\\u0628\\u0627\\u0634\\u0631\\u0629 \\u0623\\u062b\\u0646\\u0627\\u0621 \\u0639\\u0645\\u0644\\u064a\\u0629 \\u0627\\u0644\\u0634\\u0631\\u0627\\u0621 \\u0648\\u0647\\u0648 \\u062e\\u064a\\u0627\\u0631 \\u0627\\u0634\\u062a\\u0631 \\u0627\\u0644\\u0622\\u0646 \\u0648\\u0627\\u062f\\u0641\\u0639 \\u0644\\u0627\\u062d\\u0642\\u0627\\u064b (BNPL) \\u0645\\u0645\\u0627 \\u064a\\u062a\\u064a\\u062d \\u0644\\u0644\\u0632\\u0628\\u0627\\u0626\\u0646 \\u0625\\u0643\\u0645\\u0627\\u0644 \\u0627\\u0644\\u0634\\u0631\\u0627\\u0621 \\u0648\\u0627\\u0644\\u062f\\u0641\\u0639 \\u0644\\u0627\\u062d\\u0642\\u0627\\u064b \\u0639\\u0644\\u0649 \\u062f\\u0641\\u0639\\u0627\\u062a\"}', NULL, '2025-08-20 01:12:35', '2025-08-20 01:13:18'),
+(375, 'embedded_finance_product_solutions.element', '{\"title\":\"Embedded Insurance\",\"title_ar\":\"\\u0627\\u0644\\u062a\\u0623\\u0645\\u064a\\u0646 \\u0627\\u0644\\u0645\\u062f\\u0645\\u062c\",\"sub_title\":\"Refers to the integration of insurance products directly into the purchase process of goods or services\",\"sub_title_ar\":\"\\u064a\\u0634\\u064a\\u0631 \\u0625\\u0644\\u0649 \\u062f\\u0645\\u062c \\u0645\\u0646\\u062a\\u062c\\u0627\\u062a \\u0627\\u0644\\u062a\\u0623\\u0645\\u064a\\u0646 \\u0645\\u0628\\u0627\\u0634\\u0631\\u0629 \\u0641\\u064a \\u0639\\u0645\\u0644\\u064a\\u0629 \\u0634\\u0631\\u0627\\u0621 \\u0627\\u0644\\u0633\\u0644\\u0639 \\u0623\\u0648 \\u0627\\u0644\\u062e\\u062f\\u0645\\u0627\\u062a\"}', NULL, '2025-08-20 01:19:11', '2025-08-20 01:19:11'),
+(376, 'embedded_finance_product_solutions.element', '{\"title\":\"Embedded Payments\",\"title_ar\":\"\\u0627\\u0644\\u0645\\u062f\\u0641\\u0648\\u0639\\u0627\\u062a \\u0627\\u0644\\u0645\\u062f\\u0645\\u062c\",\"sub_title\":\"Allows users to make payments directly within an app or website without leaving it to complete the transaction Allows customers to pay quickly without entering data repeatedly\",\"sub_title_ar\":\"\\u062a\\u0633\\u0645\\u062d \\u0644\\u0644\\u0645\\u0633\\u062a\\u062e\\u062f\\u0645\\u064a\\u0646 \\u0628\\u0625\\u062c\\u0631\\u0627\\u0621 \\u0627\\u0644\\u0645\\u062f\\u0641\\u0648\\u0639\\u0627\\u062a \\u0645\\u0628\\u0627\\u0634\\u0631\\u0629 \\u062f\\u0627\\u062e\\u0644 \\u0627\\u0644\\u062a\\u0637\\u0628\\u064a\\u0642 \\u0623\\u0648 \\u0627\\u0644\\u0645\\u0648\\u0642\\u0639 \\u0627\\u0644\\u0625\\u0644\\u0643\\u062a\\u0631\\u0648\\u0646\\u064a \\u062f\\u0648\\u0646 \\u0645\\u063a\\u0627\\u062f\\u0631\\u062a\\u0647 \\u0644\\u0625\\u062a\\u0645\\u0627\\u0645 \\u0627\\u0644\\u0639\\u0645\\u0644\\u064a\\u0629 \\u0645\\u0645\\u0627 \\u064a\\u062a\\u064a\\u062d \\u0644\\u0644\\u0632\\u0628\\u0627\\u0626\\u0646 \\u0627\\u0644\\u062f\\u0641\\u0639 \\u0628\\u0633\\u0631\\u0639\\u0629 \\u062f\\u0648\\u0646 \\u0625\\u062f\\u062e\\u0627\\u0644 \\u0627\\u0644\\u0628\\u064a\\u0627\\u0646\\u0627\\u062a \\u0645\\u0631\\u0627\\u0631\\u0627\\u064b\"}', NULL, '2025-08-20 01:20:27', '2025-08-20 01:20:27'),
+(377, 'embedded_finance_product_solutions.element', '{\"title\":\"Deposit Accounts and Product Issuance\",\"title_ar\":\"\\u062d\\u0633\\u0627\\u0628\\u0627\\u062a \\u0627\\u0644\\u0648\\u062f\\u0627\\u0626\\u0639 \\u0648\\u0625\\u0635\\u062f\\u0627\\u0631 \\u0627\\u0644\\u0645\\u0646\\u062a\\u062c\\u0627\\u062a\",\"sub_title\":\"Through non-traditional channels such as loyalty apps or e-commerce sites, consumers can create accounts or obtain debit cards using embedded deposit accounts and card issuance products, increasing access to banking services\",\"sub_title_ar\":\"\\u0645\\u0646 \\u062e\\u0644\\u0627\\u0644 \\u0642\\u0646\\u0648\\u0627\\u062a \\u063a\\u064a\\u0631 \\u062a\\u0642\\u0644\\u064a\\u062f\\u064a\\u0629 \\u0645\\u062b\\u0644 \\u062a\\u0637\\u0628\\u064a\\u0642\\u0627\\u062a \\u0627\\u0644\\u0648\\u0644\\u0627\\u0621 \\u0623\\u0648 \\u0645\\u0648\\u0627\\u0642\\u0639 \\u0627\\u0644\\u062a\\u062c\\u0627\\u0631\\u0629 \\u0627\\u0644\\u0625\\u0644\\u0643\\u062a\\u0631\\u0648\\u0646\\u064a\\u0629\\u060c \\u064a\\u0645\\u0643\\u0646 \\u0644\\u0644\\u0645\\u0633\\u062a\\u0647\\u0644\\u0643\\u064a\\u0646 \\u0625\\u0646\\u0634\\u0627\\u0621 \\u062d\\u0633\\u0627\\u0628\\u0627\\u062a \\u0623\\u0648 \\u0627\\u0644\\u062d\\u0635\\u0648\\u0644 \\u0639\\u0644\\u0649 \\u0628\\u0637\\u0627\\u0642\\u0627\\u062a \\u062e\\u0635\\u0645 \\u0628\\u0627\\u0633\\u062a\\u062e\\u062f\\u0627\\u0645 \\u062d\\u0633\\u0627\\u0628\\u0627\\u062a \\u0627\\u0644\\u0648\\u062f\\u0627\\u0626\\u0639 \\u0627\\u0644\\u0645\\u062f\\u0645\\u062c\\u0629 \\u0648\\u0645\\u0646\\u062a\\u062c\\u0627\\u062a \\u0625\\u0635\\u062f\\u0627\\u0631 \\u0627\\u0644\\u0628\\u0637\\u0627\\u0642\\u0627\\u062a\\u060c \\u0645\\u0645\\u0627 \\u064a\\u0632\\u064a\\u062f \\u0645\\u0646 \\u0633\\u0647\\u0648\\u0644\\u0629 \\u0627\\u0644\\u0648\\u0635\\u0648\\u0644 \\u0625\\u0644\\u0649 \\u0627\\u0644\\u062e\\u062f\\u0645\\u0627\\u062a \\u0627\\u0644\\u0645\\u0635\\u0631\\u0641\\u064a\\u0629\"}', NULL, '2025-08-20 01:21:04', '2025-08-20 01:21:04'),
+(378, 'embedded_finance_product_solutions.element', '{\"title\":\"Paid cards linked to these accounts\",\"title_ar\":\"\\u0627\\u0644\\u0628\\u0637\\u0627\\u0642\\u0627\\u062a \\u0627\\u0644\\u0645\\u062f\\u0641\\u0648\\u0639\\u0629 \\u0627\\u0644\\u0645\\u0631\\u062a\\u0628\\u0637\\u0629 \\u0628\\u0647\\u0630\\u0647 \\u0627\\u0644\\u062d\\u0633\\u0627\\u0628\\u0627\\u062a\",\"sub_title\":\"provide greater flexibility, especially for gig economy workers who need immediate access to their earnings These services provide immediate access to financial institutions by integrating traditional banking services into everyday digital interactions\",\"sub_title_ar\":\"\\u062a\\u0648\\u0641\\u0631 \\u0645\\u0631\\u0648\\u0646\\u0629 \\u0623\\u0643\\u0628\\u0631\\u060c \\u062e\\u0627\\u0635\\u0629 \\u0644\\u0644\\u0639\\u0627\\u0645\\u0644\\u064a\\u0646 \\u0641\\u064a \\u0627\\u0644\\u0627\\u0642\\u062a\\u0635\\u0627\\u062f \\u0627\\u0644\\u0645\\u0624\\u0642\\u062a \\u0627\\u0644\\u0630\\u064a\\u0646 \\u064a\\u062d\\u062a\\u0627\\u062c\\u0648\\u0646 \\u0625\\u0644\\u0649 \\u0627\\u0644\\u0648\\u0635\\u0648\\u0644 \\u0627\\u0644\\u0641\\u0648\\u0631\\u064a \\u0644\\u0623\\u0631\\u0628\\u0627\\u062d\\u0647\\u0645 \\u062a\\u0648\\u0641\\u0631 \\u0647\\u0630\\u0647 \\u0627\\u0644\\u062e\\u062f\\u0645\\u0627\\u062a \\u0648\\u0635\\u0648\\u0644\\u064b\\u0627 \\u0641\\u0648\\u0631\\u064a\\u064b\\u0627 \\u0625\\u0644\\u0649 \\u0627\\u0644\\u0645\\u0624\\u0633\\u0633\\u0627\\u062a \\u0627\\u0644\\u0645\\u0627\\u0644\\u064a\\u0629 \\u0639\\u0646 \\u0637\\u0631\\u064a\\u0642 \\u062f\\u0645\\u062c \\u0627\\u0644\\u062e\\u062f\\u0645\\u0627\\u062a \\u0627\\u0644\\u0645\\u0635\\u0631\\u0641\\u064a\\u0629 \\u0627\\u0644\\u062a\\u0642\\u0644\\u064a\\u062f\\u064a\\u0629 \\u0641\\u064a \\u0627\\u0644\\u062a\\u0641\\u0627\\u0639\\u0644\\u0627\\u062a \\u0627\\u0644\\u0631\\u0642\\u0645\\u064a\\u0629 \\u0627\\u0644\\u064a\\u0648\\u0645\\u064a\\u0629\"}', NULL, '2025-08-20 01:21:52', '2025-08-20 01:21:52'),
+(379, 'embedded_finance_product_solutions.element', '{\"title\":\"Investment Advice and Portfolio Management\",\"title_ar\":\"\\u0646\\u0635\\u0627\\u0626\\u062d \\u0627\\u0644\\u0627\\u0633\\u062a\\u062b\\u0645\\u0627\\u0631 \\u0648\\u0625\\u062f\\u0627\\u0631\\u0629 \\u0627\\u0644\\u0645\\u062d\\u0627\\u0641\\u0638\",\"sub_title\":\"Investment advice and portfolio management tools are integrated into many trading platforms and brokerage firms These tools can provide specific recommendations For consumers based on their financial situation and investment goals.\",\"sub_title_ar\":\"\\u0646\\u0635\\u0627\\u0626\\u062d \\u0627\\u0644\\u0627\\u0633\\u062a\\u062b\\u0645\\u0627\\u0631 \\u0648\\u0623\\u062f\\u0648\\u0627\\u062a \\u0625\\u062f\\u0627\\u0631\\u0629 \\u0627\\u0644\\u0645\\u062d\\u0627\\u0641\\u0638 \\u062a\\u064f\\u062f\\u0645\\u062c \\u0641\\u064a \\u0627\\u0644\\u0639\\u062f\\u064a\\u062f \\u0645\\u0646 \\u0645\\u0646\\u0635\\u0627\\u062a \\u0627\\u0644\\u062a\\u062f\\u0627\\u0648\\u0644 \\u0648\\u0634\\u0631\\u0643\\u0627\\u062a \\u0627\\u0644\\u0648\\u0633\\u0627\\u0637\\u0629 \\u064a\\u0645\\u0643\\u0646 \\u0644\\u0647\\u0630\\u0647 \\u0627\\u0644\\u0623\\u062f\\u0648\\u0627\\u062a \\u062a\\u0642\\u062f\\u064a\\u0645 \\u062a\\u0648\\u0635\\u064a\\u0627\\u062a \\u0645\\u062d\\u062f\\u062f\\u0629 \\u0644\\u0644\\u0645\\u0633\\u062a\\u0647\\u0644\\u0643\\u064a\\u0646 \\u0628\\u0646\\u0627\\u0621\\u064b \\u0639\\u0644\\u0649 \\u062d\\u0627\\u0644\\u062a\\u0647\\u0645 \\u0627\\u0644\\u0645\\u0627\\u0644\\u064a\\u0629 \\u0648\\u0623\\u0647\\u062f\\u0627\\u0641\\u0647\\u0645 \\u0627\\u0644\\u0627\\u0633\\u062a\\u062b\\u0645\\u0627\\u0631\\u064a\\u0629\"}', NULL, '2025-08-20 01:22:27', '2025-08-20 01:22:27'),
+(380, 'marketing.element', '{\"has_image\":\"1\",\"title\":\"Designing commercial identities\",\"title_ar\":\"\\u062a\\u0635\\u0645\\u064a\\u0645 \\u0627\\u0644\\u0647\\u0648\\u064a\\u0627\\u062a \\u0627\\u0644\\u062a\\u062c\\u0627\\u0631\\u064a\\u0629\",\"image\":\"68a58a9cc75021755679388.png\"}', NULL, '2025-08-20 02:43:08', '2025-08-20 02:43:08'),
+(381, 'marketing.element', '{\"has_image\":\"1\",\"title\":\"Production of video and animation\",\"title_ar\":\"\\u0627\\u0646\\u062a\\u0627\\u062c \\u0641\\u064a\\u062f\\u064a\\u0648\\u0647\\u0627\\u062a \\u0645\\u0635\\u0648\\u0631\\u0629 \\u0648\\u0645\\u062a\\u062d\\u0631\\u0643\\u0647\",\"image\":\"68a58b06c61061755679494.png\"}', NULL, '2025-08-20 02:44:54', '2025-08-20 02:44:54'),
+(382, 'marketing.element', '{\"has_image\":\"1\",\"title\":\"AI\",\"title_ar\":\"\\u0627\\u0644\\u0630\\u0643\\u0627\\u0621 \\u0627\\u0644\\u0635\\u0646\\u0627\\u0639\\u064a\",\"image\":\"68a58b1fe116e1755679519.png\"}', NULL, '2025-08-20 02:45:19', '2025-08-20 02:45:19'),
+(383, 'marketing.element', '{\"has_image\":\"1\",\"title\":\"Photography\",\"title_ar\":\"\\u0627\\u0644\\u062a\\u0635\\u0648\\u064a\\u0631\",\"image\":\"68a58b379dfe11755679543.png\"}', NULL, '2025-08-20 02:45:43', '2025-08-20 02:45:43'),
+(384, 'marketing.element', '{\"has_image\":\"1\",\"title\":\"SEO\",\"title_ar\":\"\\u062a\\u062d\\u0633\\u064a\\u0646 \\u0645\\u062d\\u0631\\u0643\\u0627\\u062a \\u0627\\u0644\\u0628\\u062d\\u062b\",\"image\":\"68a58b54536f81755679572.png\"}', NULL, '2025-08-20 02:46:12', '2025-08-20 02:46:12'),
+(385, 'marketing.element', '{\"has_image\":\"1\",\"title\":\"Chatbot\",\"title_ar\":\"\\u0627\\u0644\\u0634\\u0627\\u062a \\u0628\\u0648\\u062a\",\"image\":\"68a58b6e2fa361755679598.png\"}', NULL, '2025-08-20 02:46:38', '2025-08-20 02:46:38'),
+(386, 'marketing.element', '{\"has_image\":\"1\",\"title\":\"Social Networking\",\"title_ar\":\"\\u0627\\u0644\\u062a\\u0648\\u0627\\u0635\\u0644 \\u0627\\u0644\\u0627\\u062c\\u062a\\u0645\\u0627\\u0639\\u064a\",\"image\":\"68a58ba8a22d81755679656.png\"}', NULL, '2025-08-20 02:47:36', '2025-08-20 02:47:36'),
+(387, 'marketing.element', '{\"has_image\":\"1\",\"title\":\"Media Ads\",\"title_ar\":\"\\u0625\\u0639\\u0644\\u0627\\u0646\\u0627\\u062a  \\u0627\\u0644\\u0648\\u0633\\u0627\\u0626\\u0637\",\"image\":\"68a58bc4d336c1755679684.png\"}', NULL, '2025-08-20 02:48:04', '2025-08-20 02:48:04'),
+(388, 'marketing.element', '{\"has_image\":\"1\",\"title\":\"Podcast\",\"title_ar\":\"\\u0627\\u0644\\u0628\\u0648\\u062f\\u0643\\u0627\\u0633\\u062a\",\"image\":\"68a58bdfbcfdc1755679711.png\"}', NULL, '2025-08-20 02:48:31', '2025-08-20 02:48:31'),
+(389, 'marketing.element', '{\"has_image\":\"1\",\"title\":\"Web and programmin\",\"title_ar\":\"\\u062d\\u0644\\u0648\\u0644 \\u0627\\u0644\\u0648\\u064a\\u0628 \\u0648\\u0627\\u0644\\u0628\\u0631\\u0645\\u062c\\u0629\",\"image\":\"68a58c0768b2e1755679751.png\"}', NULL, '2025-08-20 02:49:11', '2025-08-20 02:54:04'),
+(390, 'marketing.element', '{\"has_image\":\"1\",\"title\":\"Call center\",\"title_ar\":\"\\u0627\\u0644\\u0643\\u0648\\u0644 \\u0633\\u0646\\u062a\\u0631\",\"image\":\"68a58c5107cb01755679825.png\"}', NULL, '2025-08-20 02:50:25', '2025-08-20 02:50:25'),
+(391, 'marketing.element', '{\"has_image\":\"1\",\"title\":\"Banners\",\"title_ar\":\"\\u0627\\u0644\\u0644\\u0627\\u0641\\u062a\\u0627\\u062a\",\"image\":\"68a58c67bfc8f1755679847.png\"}', NULL, '2025-08-20 02:50:47', '2025-08-20 02:50:47'),
+(392, 'marketing.element', '{\"has_image\":\"1\",\"title\":\"Publications\",\"title_ar\":\"\\u0627\\u0644\\u0645\\u0637\\u0628\\u0648\\u0639\\u0627\\u062a\",\"image\":\"68a58c7de19b61755679869.png\"}', NULL, '2025-08-20 02:51:09', '2025-08-20 02:51:09'),
+(393, 'marketing.element', '{\"has_image\":\"1\",\"title\":\"TV\",\"title_ar\":\"\\u0627\\u0644\\u062a\\u0644\\u0641\\u0632\\u064a\\u0648\\u0646\",\"image\":\"68a58ca4c3ca71755679908.png\"}', NULL, '2025-08-20 02:51:28', '2025-08-20 02:51:48'),
+(394, 'marketing.element', '{\"has_image\":\"1\",\"title\":\"Radio\",\"title_ar\":\"\\u0627\\u0644\\u0631\\u0627\\u062f\\u064a\\u0648\",\"image\":\"68a58cba31d151755679930.png\"}', NULL, '2025-08-20 02:52:10', '2025-08-20 02:55:25'),
+(395, 'marketing.element', '{\"has_image\":\"1\",\"title\":\"Social responsibility programs\",\"title_ar\":\"\\u0628\\u0631\\u0627\\u0645\\u062c \\u0627\\u0644\\u0645\\u0633\\u0624\\u0648\\u0644\\u064a\\u0629 \\u0627\\u0644\\u0645\\u062c\\u062a\\u0645\\u0639\\u064a\\u0629\",\"image\":\"68a58cd1ac2581755679953.png\"}', NULL, '2025-08-20 02:52:33', '2025-08-20 02:52:33'),
+(396, 'marketing.element', '{\"has_image\":\"1\",\"title\":\"Events\",\"title_ar\":\"\\u0627\\u0644\\u0641\\u0639\\u0627\\u0644\\u064a\\u0627\\u062a\",\"image\":\"68a58ce47c4ad1755679972.png\"}', NULL, '2025-08-20 02:52:52', '2025-08-20 02:52:52'),
+(397, 'smart_collection.content', '{\"has_image\":\"1\",\"title\":\"Manage your financial obligations with flexibility and security\",\"title_ar\":\"\\u0625\\u062f\\u0627\\u0631\\u0629 \\u0627\\u0644\\u062a\\u0632\\u0627\\u0645\\u0627\\u062a\\u0643 \\u0627\\u0644\\u0645\\u0627\\u0644\\u064a\\u0629 \\u0628\\u0645\\u0631\\u0648\\u0646\\u0629 \\u0648\\u0623\\u0645\\u0627\\u0646\",\"sub_title\":\"We offer integrated services to handle financial obligations and disputes in a professional and efficient manner\\u2014without the need for legal proceedings. Our solutions are designed to accelerate collections, facilitate fair settlements for all parties, and ensure confidentiality and privacy.\",\"sub_title_ar\":\"\\u0646\\u0648\\u0641\\u0631 \\u0644\\u0643 \\u062e\\u062f\\u0645\\u0627\\u062a \\u0645\\u062a\\u0643\\u0627\\u0645\\u0644\\u0629 \\u0644\\u0645\\u0639\\u0627\\u0644\\u062c\\u0629 \\u0627\\u0644\\u0627\\u0644\\u062a\\u0632\\u0627\\u0645\\u0627\\u062a \\u0648\\u0627\\u0644\\u0646\\u0632\\u0627\\u0639\\u0627\\u062a \\u0627\\u0644\\u0645\\u0627\\u0644\\u064a\\u0629 \\u0628\\u0637\\u0631\\u064a\\u0642\\u0629 \\u0627\\u062d\\u062a\\u0631\\u0627\\u0641\\u064a\\u0629 \\u0648\\u0641\\u0639\\u0651\\u0627\\u0644\\u0629\\u060c \\u062f\\u0648\\u0646 \\u0627\\u0644\\u062d\\u0627\\u062c\\u0629 \\u0644\\u0644\\u062c\\u0648\\u0621 \\u0625\\u0644\\u0649 \\u0627\\u0644\\u0642\\u0636\\u0627\\u0621. \\u0635\\u064f\\u0645\\u0645\\u062a \\u062d\\u0644\\u0648\\u0644\\u0646\\u0627 \\u0644\\u062a\\u0633\\u0631\\u064a\\u0639 \\u0627\\u0644\\u062a\\u062d\\u0635\\u064a\\u0644\\u060c \\u0648\\u062a\\u0633\\u0647\\u064a\\u0644 \\u0627\\u0644\\u0648\\u0635\\u0648\\u0644 \\u0625\\u0644\\u0649 \\u0627\\u062a\\u0641\\u0627\\u0642\\u0627\\u062a \\u0645\\u0631\\u0636\\u064a\\u0629 \\u0644\\u062c\\u0645\\u064a\\u0639 \\u0627\\u0644\\u0623\\u0637\\u0631\\u0627\\u0641\\u060c \\u0645\\u0639 \\u0627\\u0644\\u062d\\u0641\\u0627\\u0638 \\u0639\\u0644\\u0649 \\u0627\\u0644\\u0633\\u0631\\u064a\\u0629 \\u0648\\u0627\\u0644\\u062e\\u0635\\u0648\\u0635\\u064a\\u0629\",\"image\":\"68a5a8ff38a6b1755687167.png\"}', NULL, '2025-08-20 04:52:47', '2025-08-20 04:52:47'),
+(398, 'services_offered.element', '{\"title\":\"Financial Dispute Settlement\",\"title_ar\":\"\\u062a\\u0633\\u0648\\u064a\\u0629 \\u0627\\u0644\\u0646\\u0632\\u0627\\u0639\\u0627\\u062a \\u0627\\u0644\\u0645\\u0627\\u0644\\u064a\\u0629\",\"sub_title\":\"Legal and amicable solutions for settling disputes between partners, heirs, or business parties\",\"sub_title_ar\":\"\\u062d\\u0644\\u0648\\u0644 \\u0648\\u062f\\u0651\\u064a\\u0629 \\u0648\\u0642\\u0627\\u0646\\u0648\\u0646\\u064a\\u0629 \\u0644\\u062a\\u0633\\u0648\\u064a\\u0629 \\u0627\\u0644\\u0646\\u0632\\u0627\\u0639\\u0627\\u062a \\u0628\\u064a\\u0646 \\u0627\\u0644\\u0634\\u0631\\u0643\\u0627\\u0621\\u060c \\u0627\\u0644\\u0648\\u0631\\u062b\\u0629\\u060c \\u0623\\u0648 \\u0627\\u0644\\u0623\\u0637\\u0631\\u0627\\u0641 \\u0627\\u0644\\u062a\\u062c\\u0627\\u0631\\u064a\\u0629.\"}', NULL, '2025-08-20 04:57:49', '2025-08-20 04:57:49'),
+(399, 'services_offered.element', '{\"title\":\"Debt Collection Services\",\"title_ar\":\"\\u062a\\u062d\\u0635\\u064a\\u0644 \\u0627\\u0644\\u0630\\u0645\\u0645 \\u0627\\u0644\\u0645\\u062a\\u0639\\u062b\\u0631\\u0629\",\"sub_title\":\"Professional collection of outstanding receivables for individuals and businesses, preserving both rights and relationships.\",\"sub_title_ar\":\"\\u062a\\u062d\\u0635\\u064a\\u0644 \\u0645\\u0633\\u062a\\u062d\\u0642\\u0627\\u062a \\u0627\\u0644\\u0623\\u0641\\u0631\\u0627\\u062f \\u0648\\u0627\\u0644\\u0645\\u0646\\u0634\\u0622\\u062a \\u0628\\u0637\\u0631\\u0642 \\u0627\\u062d\\u062a\\u0631\\u0627\\u0641\\u064a\\u0629 \\u062a\\u0636\\u0645\\u0646 \\u0627\\u0644\\u062d\\u0642\\u0648\\u0642 \\u0648\\u062a\\u0631\\u0627\\u0639\\u064a \\u0627\\u0644\\u0639\\u0644\\u0627\\u0642\\u0627\\u062a\"}', NULL, '2025-08-20 05:04:17', '2025-08-20 05:04:17'),
+(400, 'services_offered.element', '{\"title\":\"Payment Scheduling & Settlements\",\"title_ar\":\"\\u062c\\u062f\\u0648\\u0644\\u0629 \\u0648\\u062a\\u0633\\u0648\\u064a\\u0627\\u062a \\u0645\\u0627\\u0644\\u064a\\u0629\",\"sub_title\":\"Flexible installment plans and negotiation strategies that protect all parties\\u2019 interests.\",\"sub_title_ar\":\"\\u062a\\u0646\\u0638\\u064a\\u0645 \\u062f\\u0641\\u0639\\u0627\\u062a \\u0627\\u0644\\u0645\\u0633\\u062a\\u062d\\u0642\\u0627\\u062a \\u0639\\u0628\\u0631 \\u062e\\u0637\\u0637 \\u062c\\u062f\\u0648\\u0644\\u0629 \\u0645\\u0631\\u0646\\u0629 \\u0648\\u0645\\u0641\\u0627\\u0648\\u0636\\u0627\\u062a \\u062a\\u062d\\u0641\\u0638 \\u0645\\u0635\\u0627\\u0644\\u062d \\u062c\\u0645\\u064a\\u0639 \\u0627\\u0644\\u0623\\u0637\\u0631\\u0627\\u0641\"}', NULL, '2025-08-20 05:06:04', '2025-08-20 05:06:04'),
+(401, 'services_offered.element', '{\"title\":\"Digital Tools for Collection & Documentation\",\"title_ar\":\"\\u062d\\u0644\\u0648\\u0644 \\u0625\\u0644\\u0643\\u062a\\u0631\\u0648\\u0646\\u064a\\u0629 \\u0644\\u0644\\u062a\\u062d\\u0635\\u064a\\u0644 \\u0648\\u0627\\u0644\\u062a\\u0648\\u062b\\u064a\\u0642\",\"sub_title\":\"Electronic solutions to document rights, store transactions, and validate agreements securely\",\"sub_title_ar\":\"\\u0623\\u062f\\u0648\\u0627\\u062a \\u0631\\u0642\\u0645\\u064a\\u0629 \\u0644\\u0625\\u062b\\u0628\\u0627\\u062a \\u0627\\u0644\\u062d\\u0642\\u0648\\u0642\\u060c \\u0648\\u062d\\u0641\\u0638 \\u0627\\u0644\\u0645\\u0639\\u0627\\u0645\\u0644\\u0627\\u062a\\u060c \\u0648\\u062a\\u0648\\u062b\\u064a\\u0642 \\u0627\\u0644\\u0627\\u062a\\u0641\\u0627\\u0642\\u0627\\u062a \\u0625\\u0644\\u0643\\u062a\\u0631\\u0648\\u0646\\u064a\\u064b\\u0627\"}', NULL, '2025-08-20 05:07:12', '2025-08-20 05:07:12'),
+(402, 'services_offered.element', '{\"title\":\"Legal & Financial Advisory\",\"title_ar\":\"\\u0627\\u0633\\u062a\\u0634\\u0627\\u0631\\u0627\\u062a \\u0642\\u0627\\u0646\\u0648\\u0646\\u064a\\u0629 \\u0648\\u0645\\u0627\\u0644\\u064a\\u0629\",\"sub_title\":\"Specialized consulting to address complex cases and guide optimal decisions\",\"sub_title_ar\":\"\\u062f\\u0639\\u0645 \\u0627\\u0633\\u062a\\u0634\\u0627\\u0631\\u064a \\u0645\\u062a\\u062e\\u0635\\u0635 \\u0644\\u0645\\u0639\\u0627\\u0644\\u062c\\u0629 \\u0627\\u0644\\u062d\\u0627\\u0644\\u0627\\u062a \\u0627\\u0644\\u0645\\u0639\\u0642\\u062f\\u0629 \\u0648\\u0627\\u062a\\u062e\\u0627\\u0630 \\u0627\\u0644\\u0642\\u0631\\u0627\\u0631 \\u0627\\u0644\\u0623\\u0646\\u0633\\u0628\"}', NULL, '2025-08-20 05:08:16', '2025-08-20 05:08:16'),
+(403, 'who_can_benefit.content', '{\"has_image\":\"1\",\"title\":\"Who Can Benefit?\",\"title_ar\":\"\\u0644\\u0645\\u0646 \\u0647\\u0630\\u0647 \\u0627\\u0644\\u062e\\u062f\\u0645\\u0627\\u062a\\u061f\",\"sub_title\":\"Do you have a financial obligation or dispute you\'d like to settle?\",\"sub_title_ar\":\"\\u0647\\u0644 \\u0644\\u062f\\u064a\\u0643 \\u0642\\u0636\\u064a\\u0629 \\u0623\\u0648 \\u0627\\u0644\\u062a\\u0632\\u0627\\u0645 \\u0645\\u0627\\u0644\\u064a \\u062a\\u0631\\u063a\\u0628 \\u0628\\u062a\\u0633\\u0648\\u064a\\u062a\\u0647\\u061f\",\"image\":\"68a60a9bac75f1755712155.png\"}', NULL, '2025-08-20 11:49:15', '2025-08-20 11:49:17'),
+(404, 'who_can_benefit.element', '{\"title\":\"Entrepreneurs and small to medium-sized enterprises\",\"title_ar\":\"\\u0631\\u0648\\u0651\\u0627\\u062f \\u0627\\u0644\\u0623\\u0639\\u0645\\u0627\\u0644 \\u0648\\u0627\\u0644\\u0645\\u0646\\u0634\\u0622\\u062a \\u0627\\u0644\\u0635\\u063a\\u064a\\u0631\\u0629 \\u0648\\u0627\\u0644\\u0645\\u062a\\u0648\\u0633\\u0637\\u0629.\"}', NULL, '2025-08-20 11:49:40', '2025-08-20 11:49:40'),
+(405, 'who_can_benefit.element', '{\"title\":\"Business partners or heirs involved in liquidation or separation\",\"title_ar\":\"\\u0627\\u0644\\u0634\\u0631\\u0643\\u0627\\u0621 \\u0627\\u0644\\u062a\\u062c\\u0627\\u0631\\u064a\\u0648\\u0646 \\u0623\\u0648 \\u0627\\u0644\\u0648\\u0631\\u062b\\u0629 \\u0641\\u064a \\u062d\\u0627\\u0644\\u0627\\u062a \\u0627\\u0644\\u062a\\u0635\\u0641\\u064a\\u0629 \\u0623\\u0648 \\u0627\\u0644\\u0627\\u0646\\u0641\\u0635\\u0627\\u0644\"}', NULL, '2025-08-20 11:50:01', '2025-08-20 11:50:01'),
+(406, 'who_can_benefit.element', '{\"title\":\"Individuals or entities facing collection difficulties or financial obligations\",\"title_ar\":\"\\u0627\\u0644\\u0623\\u0641\\u0631\\u0627\\u062f \\u0623\\u0648 \\u0627\\u0644\\u062c\\u0647\\u0627\\u062a \\u0627\\u0644\\u062a\\u064a \\u062a\\u0648\\u0627\\u062c\\u0647 \\u062a\\u0639\\u062b\\u0631\\u064b\\u0627 \\u0641\\u064a \\u0627\\u0644\\u062a\\u062d\\u0635\\u064a\\u0644 \\u0623\\u0648 \\u0627\\u0644\\u0627\\u0644\\u062a\\u0632\\u0627\\u0645 \\u0627\\u0644\\u0645\\u0627\\u0644\\u064a\"}', NULL, '2025-08-20 11:50:23', '2025-08-20 11:50:23'),
+(407, 'open_banking_services.content', '{\"has_image\":\"1\",\"title\":\"Open Banking Services \\u2013 A Gateway to Financial Innovation\",\"title_ar\":\"\\u0627\\u0644\\u062e\\u062f\\u0645\\u0627\\u062a \\u0627\\u0644\\u0645\\u0635\\u0631\\u0641\\u064a\\u0629 \\u0627\\u0644\\u0645\\u0641\\u062a\\u0648\\u062d\\u0629 \\u2013 \\u0628\\u0648\\u0627\\u0628\\u0629 \\u0627\\u0644\\u0627\\u0628\\u062a\\u0643\\u0627\\u0631 \\u0627\\u0644\\u0645\\u0627\\u0644\\u064a\",\"sub_title\":\"In the midst of rapid digital transformation in the financial sector, open banking has emerged as a powerful enabler for startups, developers, and tech solution providers. By securely connecting banks and financial entities through standardized APIs, it unlocks innovative opportunities to deliver more efficient and transparent financial services for individuals and businesses alike\",\"sub_title_ar\":\"\\u0641\\u064a \\u0625\\u0637\\u0627\\u0631 \\u0627\\u0644\\u062a\\u062d\\u0648\\u0644 \\u0627\\u0644\\u0631\\u0642\\u0645\\u064a \\u0627\\u0644\\u0645\\u062a\\u0633\\u0627\\u0631\\u0639 \\u062f\\u0627\\u062e\\u0644 \\u0627\\u0644\\u0642\\u0637\\u0627\\u0639 \\u0627\\u0644\\u0645\\u0627\\u0644\\u064a\\u060c \\u0623\\u0635\\u0628\\u062d\\u062a \\u0627\\u0644\\u062e\\u062f\\u0645\\u0627\\u062a \\u0627\\u0644\\u0645\\u0635\\u0631\\u0641\\u064a\\u0629 \\u0627\\u0644\\u0645\\u0641\\u062a\\u0648\\u062d\\u0629 \\u0645\\u0646 \\u0623\\u0647\\u0645 \\u0627\\u0644\\u0623\\u062f\\u0648\\u0627\\u062a \\u0627\\u0644\\u062f\\u0627\\u0639\\u0645\\u0629 \\u0644\\u0646\\u0645\\u0648 \\u0627\\u0644\\u0634\\u0631\\u0643\\u0627\\u062a \\u0627\\u0644\\u0646\\u0627\\u0634\\u0626\\u0629 \\u0648\\u0627\\u0644\\u0645\\u0637\\u0648\\u0631\\u064a\\u0646 \\u0648\\u0645\\u0642\\u062f\\u0651\\u0645\\u064a \\u0627\\u0644\\u062d\\u0644\\u0648\\u0644 \\u0627\\u0644\\u062a\\u0642\\u0646\\u064a\\u0629. \\u0645\\u0646 \\u062e\\u0644\\u0627\\u0644 \\u0627\\u0644\\u0631\\u0628\\u0637 \\u0627\\u0644\\u0645\\u0628\\u0627\\u0634\\u0631 \\u0628\\u064a\\u0646 \\u0627\\u0644\\u0628\\u0646\\u0648\\u0643 \\u0648\\u0627\\u0644\\u062c\\u0647\\u0627\\u062a \\u0627\\u0644\\u0645\\u0627\\u0644\\u064a\\u0629 \\u0639\\u0628\\u0631 \\u0648\\u0627\\u062c\\u0647\\u0627\\u062a \\u0628\\u0631\\u0645\\u062c\\u064a\\u0629 (APIs)\\u060c \\u062a\\u0646\\u0634\\u0623 \\u0641\\u0631\\u0635 \\u0645\\u0628\\u062a\\u0643\\u0631\\u0629 \\u0644\\u062a\\u0642\\u062f\\u064a\\u0645 \\u062e\\u062f\\u0645\\u0627\\u062a \\u0623\\u0643\\u062b\\u0631 \\u0643\\u0641\\u0627\\u0621\\u0629 \\u0648\\u0634\\u0641\\u0627\\u0641\\u064a\\u0629 \\u0644\\u0644\\u0645\\u0633\\u062a\\u0647\\u0644\\u0643\\u064a\\u0646 \\u0648\\u0627\\u0644\\u0634\\u0631\\u0643\\u0627\\u062a \\u0639\\u0644\\u0649 \\u062d\\u062f \\u0633\\u0648\\u0627\\u0621\",\"image\":\"68a611f1779a51755714033.png\"}', NULL, '2025-08-20 12:20:33', '2025-08-20 12:20:33'),
+(408, 'our_services.element', '{\"has_image\":\"1\",\"title\":\"Secure Bank Integration\",\"title_ar\":\"\\u0631\\u0628\\u0637 \\u0622\\u0645\\u0646 \\u0645\\u0639 \\u0627\\u0644\\u0628\\u0646\\u0648\\u0643\",\"sub_title\":\"Enable access to account and transaction data in a licensed and secure environment\",\"sub_title_ar\":\"\\u062a\\u0645\\u0643\\u064a\\u0646 \\u0627\\u0644\\u0648\\u0635\\u0648\\u0644 \\u0625\\u0644\\u0649 \\u0628\\u064a\\u0627\\u0646\\u0627\\u062a \\u0627\\u0644\\u062d\\u0633\\u0627\\u0628\\u0627\\u062a \\u0648\\u0627\\u0644\\u0645\\u0639\\u0627\\u0645\\u0644\\u0627\\u062a \\u0628\\u0637\\u0631\\u064a\\u0642\\u0629 \\u0622\\u0645\\u0646\\u0629 \\u0648\\u0645\\u0631\\u062e\\u0635\\u0629\",\"image\":\"68a68fb387a331755746227.png\"}', NULL, '2025-08-20 21:17:07', '2025-08-20 21:17:07'),
+(409, 'our_services.element', '{\"has_image\":\"1\",\"title\":\"Enhanced User Financial Experience\",\"title_ar\":\"\\u062a\\u062d\\u0633\\u064a\\u0646 \\u062a\\u062c\\u0631\\u0628\\u0629 \\u0627\\u0644\\u0645\\u0633\\u062a\\u062e\\u062f\\u0645 \\u0627\\u0644\\u0645\\u0627\\u0644\\u064a\",\"sub_title\":\"Develop new applications and technologies that empower customers in managing their finances\",\"sub_title_ar\":\"\\u062a\\u0637\\u0648\\u064a\\u0631 \\u062a\\u0637\\u0628\\u064a\\u0642\\u0627\\u062a \\u0648\\u062a\\u0642\\u0646\\u064a\\u0627\\u062a \\u062c\\u062f\\u064a\\u062f\\u0629 \\u062a\\u0639\\u0632\\u0632 \\u0645\\u0646 \\u062a\\u062c\\u0631\\u0628\\u0629 \\u0627\\u0644\\u0639\\u0645\\u064a\\u0644 \\u0641\\u064a \\u0625\\u062f\\u0627\\u0631\\u0629 \\u0623\\u0645\\u0648\\u0627\\u0644\\u0647 \\u0648\\u062e\\u062f\\u0645\\u0627\\u062a\\u0647\",\"image\":\"68a69297a15a51755746967.png\"}', NULL, '2025-08-20 21:29:27', '2025-08-20 21:29:27'),
+(410, 'our_services.element', '{\"has_image\":\"1\",\"title\":\"Financial Data Analytics\",\"title_ar\":\"\\u062e\\u062f\\u0645\\u0627\\u062a \\u062a\\u062d\\u0644\\u064a\\u0644 \\u0627\\u0644\\u0628\\u064a\\u0627\\u0646\\u0627\\u062a \\u0627\\u0644\\u0645\\u0627\\u0644\\u064a\\u0629\",\"sub_title\":\"Provide smart insights and detailed analytics to support better decision-making.\",\"sub_title_ar\":\"\\u062a\\u0642\\u062f\\u064a\\u0645 \\u0631\\u0624\\u0649 \\u0630\\u0643\\u064a\\u0629 \\u0648\\u062a\\u062d\\u0644\\u064a\\u0644\\u0627\\u062a \\u062f\\u0642\\u064a\\u0642\\u0629 \\u0644\\u062f\\u0639\\u0645 \\u0627\\u062a\\u062e\\u0627\\u0630 \\u0627\\u0644\\u0642\\u0631\\u0627\\u0631\",\"image\":\"68a692d84e6141755747032.png\"}', NULL, '2025-08-20 21:30:32', '2025-08-20 21:30:32'),
+(411, 'our_services.element', '{\"has_image\":\"1\",\"title\":\"Smart Lending Solutions\",\"title_ar\":\"\\u062d\\u0644\\u0648\\u0644 \\u0627\\u0644\\u0625\\u0642\\u0631\\u0627\\u0636 \\u0627\\u0644\\u0630\\u0643\\u064a\",\"sub_title\":\"Accelerate and simplify creditworthiness assessment using real-time bank data\",\"sub_title_ar\":\"\\u062a\\u0633\\u0631\\u064a\\u0639 \\u0648\\u062a\\u0628\\u0633\\u064a\\u0637 \\u062a\\u0642\\u064a\\u064a\\u0645 \\u0627\\u0644\\u062c\\u062f\\u0627\\u0631\\u0629 \\u0627\\u0644\\u0627\\u0626\\u062a\\u0645\\u0627\\u0646\\u064a\\u0629 \\u0628\\u0646\\u0627\\u0621\\u064b \\u0639\\u0644\\u0649 \\u0627\\u0644\\u0628\\u064a\\u0627\\u0646\\u0627\\u062a \\u0627\\u0644\\u0628\\u0646\\u0643\\u064a\\u0629 \\u0627\\u0644\\u0641\\u0639\\u0644\\u064a\\u0629\",\"image\":\"68a693245f8091755747108.png\"}', NULL, '2025-08-20 21:31:48', '2025-08-20 21:31:48'),
+(412, 'our_services.element', '{\"has_image\":\"1\",\"title\":\"Subscription- and Usage-Based Models\",\"title_ar\":\"\\u0646\\u0645\\u0627\\u0630\\u062c \\u0623\\u0639\\u0645\\u0627\\u0644 \\u0642\\u0627\\u0626\\u0645\\u0629 \\u0639\\u0644\\u0649 \\u0627\\u0644\\u0627\\u0634\\u062a\\u0631\\u0627\\u0643 \\u0623\\u0648 \\u0627\\u0644\\u062f\\u0641\\u0639 \\u0645\\u0642\\u0627\\u0628\\u0644 \\u0627\\u0644\\u0627\\u0633\\u062a\\u062e\\u062f\\u0627\\u0645:\",\"sub_title\":\"Support the creation of sustainable business models for tech-driven startups\",\"sub_title_ar\":\"\\u062f\\u0639\\u0645 \\u062a\\u0637\\u0648\\u064a\\u0631 \\u0646\\u0645\\u0627\\u0630\\u062c \\u062a\\u062c\\u0627\\u0631\\u064a\\u0629 \\u0645\\u0633\\u062a\\u062f\\u0627\\u0645\\u0629 \\u0644\\u0644\\u0645\\u0634\\u0627\\u0631\\u064a\\u0639 \\u0627\\u0644\\u062a\\u0642\\u0646\\u064a\\u0629\",\"image\":\"68a693683d3c41755747176.png\"}', NULL, '2025-08-20 21:32:56', '2025-08-20 21:32:56'),
+(413, 'our_services.element', '{\"has_image\":\"1\",\"title\":\"Regulatory Compliance Support\",\"title_ar\":\"\\u0627\\u0644\\u0627\\u0645\\u062a\\u062b\\u0627\\u0644 \\u0644\\u0644\\u062a\\u0634\\u0631\\u064a\\u0639\\u0627\\u062a:\",\"sub_title\":\"Assist businesses in aligning with open banking regulations set by central authorities.\",\"sub_title_ar\":\"\\u062f\\u0639\\u0645 \\u0627\\u0644\\u0634\\u0631\\u0643\\u0627\\u062a \\u0641\\u064a \\u0627\\u0644\\u062a\\u0648\\u0627\\u0641\\u0642 \\u0645\\u0639 \\u0644\\u0648\\u0627\\u0626\\u062d \\u0627\\u0644\\u0645\\u0635\\u0631\\u0641\\u064a\\u0629 \\u0627\\u0644\\u0645\\u0641\\u062a\\u0648\\u062d\\u0629 \\u0627\\u0644\\u0635\\u0627\\u062f\\u0631\\u0629 \\u0639\\u0646 \\u0627\\u0644\\u0628\\u0646\\u0643 \\u0627\\u0644\\u0645\\u0631\\u0643\\u0632\\u064a\",\"image\":\"68a6939e9f4591755747230.png\"}', NULL, '2025-08-20 21:33:50', '2025-08-20 21:33:50'),
+(414, 'target_audience.element', '{\"has_image\":\"1\",\"title\":\"Fintech Companies\",\"title_ar\":\"\\u0634\\u0631\\u0643\\u0627\\u062a \\u0627\\u0644\\u062a\\u0642\\u0646\\u064a\\u0629 \\u0627\\u0644\\u0645\\u0627\\u0644\\u064a\\u0629 (Fintech)\",\"image\":\"68a694b5d21261755747509.png\"}', NULL, '2025-08-20 21:38:29', '2025-08-20 21:38:29'),
+(415, 'target_audience.element', '{\"has_image\":\"1\",\"title\":\"Digital & Traditional Banks\",\"title_ar\":\"\\u0627\\u0644\\u0628\\u0646\\u0648\\u0643 \\u0627\\u0644\\u0631\\u0642\\u0645\\u064a\\u0629 \\u0648\\u0627\\u0644\\u062a\\u0642\\u0644\\u064a\\u062f\\u064a\\u0629\",\"image\":\"68a694ce0864b1755747534.png\"}', NULL, '2025-08-20 21:38:54', '2025-08-20 21:38:54'),
+(416, 'target_audience.element', '{\"has_image\":\"1\",\"title\":\"Developers & Programmers\",\"title_ar\":\"\\u0627\\u0644\\u0645\\u0637\\u0648\\u0631\\u0648\\u0646 \\u0648\\u0627\\u0644\\u0645\\u0628\\u0631\\u0645\\u062c\\u0648\\u0646\",\"image\":\"68a694f65cec31755747574.png\"}', NULL, '2025-08-20 21:39:34', '2025-08-20 21:39:34'),
+(417, 'target_audience.element', '{\"has_image\":\"1\",\"title\":\"Payment & Financial Reporting Solution Providers\",\"title_ar\":\"\\u0645\\u0642\\u062f\\u0645\\u0648 \\u062d\\u0644\\u0648\\u0644 \\u0627\\u0644\\u062f\\u0641\\u0639 \\u0648\\u0627\\u0644\\u062a\\u0642\\u0627\\u0631\\u064a\\u0631 \\u0627\\u0644\\u0645\\u0627\\u0644\\u064a\\u0629\",\"image\":\"68a695294f11b1755747625.png\"}', NULL, '2025-08-20 21:40:25', '2025-08-20 21:40:25'),
+(418, 'target_audience.element', '{\"has_image\":\"1\",\"title\":\"Insurance, Financing, and Investment Firms\",\"title_ar\":\"\\u0634\\u0631\\u0643\\u0627\\u062a \\u0627\\u0644\\u062a\\u0623\\u0645\\u064a\\u0646\\u060c \\u0627\\u0644\\u062a\\u0645\\u0648\\u064a\\u0644\\u060c \\u0648\\u0627\\u0644\\u0627\\u0633\\u062a\\u062b\\u0645\\u0627\\u0631\",\"image\":\"68a6954343d2b1755747651.png\"}', NULL, '2025-08-20 21:40:51', '2025-08-20 21:40:51'),
+(419, 'ready_to_build.content', '{\"title\":\"Ready to Build the Future of Finance?\",\"title_ar\":\"\\u062c\\u0627\\u0647\\u0632 \\u0644\\u062a\\u0637\\u0648\\u064a\\u0631 \\u062d\\u0644\\u0648\\u0644\\u0643 \\u0627\\u0644\\u0645\\u0627\\u0644\\u064a\\u0629\\u061f\",\"sub_title\":\"Join our financial innovation hub and start leveraging open banking services to create cutting-edge financial solutions\",\"sub_title_ar\":\"\\u0627\\u0646\\u0636\\u0645 \\u0625\\u0644\\u0649 \\u062d\\u0627\\u0636\\u0646\\u0629 \\u0627\\u0644\\u062a\\u0645\\u0648\\u064a\\u0644 \\u0648\\u0627\\u0628\\u062f\\u0623 \\u0641\\u064a \\u0627\\u0644\\u0627\\u0633\\u062a\\u0641\\u0627\\u062f\\u0629 \\u0645\\u0646 \\u062e\\u062f\\u0645\\u0627\\u062a \\u0627\\u0644\\u0645\\u0635\\u0631\\u0641\\u064a\\u0629 \\u0627\\u0644\\u0645\\u0641\\u062a\\u0648\\u062d\\u0629 \\u0644\\u0627\\u0628\\u062a\\u0643\\u0627\\u0631 \\u0645\\u0646\\u062a\\u062c\\u0627\\u062a \\u0645\\u0627\\u0644\\u064a\\u0629 \\u0645\\u0633\\u062a\\u0642\\u0628\\u0644\\u064a\\u0629\"}', NULL, '2025-08-20 21:49:31', '2025-08-20 21:49:31');
 
 -- --------------------------------------------------------
 
@@ -1242,7 +1318,7 @@ INSERT INTO `frontends` (`id`, `data_keys`, `data_values`, `tempname`, `created_
 
 CREATE TABLE `fvts` (
   `id` bigint UNSIGNED NOT NULL,
-  `type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `property_id` int DEFAULT NULL,
   `user_id` int DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -1269,16 +1345,16 @@ INSERT INTO `fvts` (`id`, `type`, `property_id`, `user_id`, `created_at`, `updat
 
 CREATE TABLE `general_settings` (
   `id` bigint UNSIGNED NOT NULL,
-  `site_name` varchar(40) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `cur_text` varchar(40) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'currency text',
-  `cur_sym` varchar(40) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'currency symbol',
-  `email_from` varchar(40) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `email_template` text COLLATE utf8mb4_unicode_ci,
-  `sms_body` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `sms_from` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `mail_config` text COLLATE utf8mb4_unicode_ci COMMENT 'email configuration',
-  `sms_config` text COLLATE utf8mb4_unicode_ci,
-  `global_shortcodes` text COLLATE utf8mb4_unicode_ci,
+  `site_name` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `cur_text` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'currency text',
+  `cur_sym` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'currency symbol',
+  `email_from` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `email_template` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `sms_body` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `sms_from` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `mail_config` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci COMMENT 'email configuration',
+  `sms_config` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `global_shortcodes` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `ev` tinyint(1) NOT NULL DEFAULT '0' COMMENT 'email verification, 0 - dont check, 1 - check',
   `en` tinyint(1) NOT NULL DEFAULT '0' COMMENT 'email notification, 0 - dont send, 1 - send',
   `sv` tinyint(1) NOT NULL DEFAULT '0' COMMENT 'mobile verication, 0 - dont check, 1 - check',
@@ -1298,7 +1374,7 @@ CREATE TABLE `general_settings` (
 --
 
 INSERT INTO `general_settings` (`id`, `site_name`, `cur_text`, `cur_sym`, `email_from`, `email_template`, `sms_body`, `sms_from`, `mail_config`, `sms_config`, `global_shortcodes`, `ev`, `en`, `sv`, `sn`, `force_ssl`, `maintenance_mode`, `secure_password`, `agree`, `multi_language`, `registration`, `created_at`, `updated_at`) VALUES
-(1, 'Technology Incubator', 'Saudi Riyal', 'SAR', 'info@demo.teincu.com', '<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">\r\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\r\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n    <title></title>\r\n\r\n\r\n\r\n\r\n    <div style=\"max-width: 600px; margin: 0 auto;\">\r\n        <div style=\"text-align: center;\"><img src=\"https://demo.teincu.com/assets/images/logoIcon/logo.png\" alt=\"Logo\" align=\"none\"><br><h1 style=\"font-size: 20px; margin: 0; padding-top: 10px;\">Hello {{fullname}} ({{username}})</h1>\r\n        </div>\r\n        <div style=\"background: #ffffff; margin-top: 20px; padding: 0 20px 20px 20px;\">\r\n            <div style=\"text-align: center; padding-top: 10px;\">\r\n                <img src=\"email.png\" alt=\"\" style=\"width: 80px;\">\r\n            </div>\r\n\r\n            <div style=\"padding: 40px 0;\">\r\n                {{message}}\r\n\r\n            </div>\r\n            <div style=\"border-top:1px solid #EAEFF2; text-align:center; padding-top: 15px; font-size: 18px;\">\r\n                © 2024<img style=\"color: var(--bs-card-color); font-size: 15px; font-weight: var(--bs-body-font-weight); text-align: var(--bs-body-text-align);\"><span style=\"color: var(--bs-card-color); font-weight: var(--bs-body-font-weight);\">&nbsp;{{site_name}} . All Rights Reserved.</span></div>\r\n        </div>\r\n    </div>', 'hi {{fullname}} ({{username}}), {{message}}', 'Technology Incubator', '{\"name\":\"smtp\",\"host\":\"demo.teincu.com\",\"port\":\"465\",\"enc\":\"ssl\",\"username\":\"info@demo.teincu.com\",\"password\":\"demo.teincu.com\"}', '{\"name\":\"nexmo\",\"clickatell\":{\"api_key\":\"----------------\"},\"infobip\":{\"username\":\"------------8888888\",\"password\":\"-----------------\"},\"message_bird\":{\"api_key\":\"-------------------\"},\"nexmo\":{\"api_key\":\"----------------------\",\"api_secret\":\"----------------------\"},\"sms_broadcast\":{\"username\":\"----------------------\",\"password\":\"-----------------------------\"},\"twilio\":{\"account_sid\":\"-----------------------\",\"auth_token\":\"---------------------------\",\"from\":\"----------------------\"},\"text_magic\":{\"username\":\"-----------------------\",\"apiv2_key\":\"-------------------------------\"},\"custom\":{\"method\":\"get\",\"url\":\"https:\\/\\/hostname\\/demo-api-v1\",\"headers\":{\"name\":[\"api_key\"],\"value\":[\"test_api 555\"]},\"body\":{\"name\":[\"from_number\"],\"value\":[\"5657545757\"]}}}', '{\n    \"site_name\":\"Name of your site\",\n    \"site_currency\":\"Currency of your site\",\n    \"currency_symbol\":\"Symbol of currency\"\n}', 0, 1, 0, 0, 1, 0, 0, 1, 1, 1, NULL, '2025-07-08 07:42:51');
+(1, 'Teamweal Inclubator', 'Saudi Riyal', 'SAR', 'info@demo.teincu.com', '<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">\r\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\r\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n    <title></title>\r\n\r\n\r\n\r\n\r\n    <div style=\"max-width: 600px; margin: 0 auto;\">\r\n        <div style=\"text-align: center;\"><img src=\"https://demo.teincu.com/assets/images/logoIcon/logo.png\" alt=\"Logo\" align=\"none\"><br><h1 style=\"font-size: 20px; margin: 0; padding-top: 10px;\">Hello {{fullname}} ({{username}})</h1>\r\n        </div>\r\n        <div style=\"background: #ffffff; margin-top: 20px; padding: 0 20px 20px 20px;\">\r\n            <div style=\"text-align: center; padding-top: 10px;\">\r\n                <img src=\"email.png\" alt=\"\" style=\"width: 80px;\">\r\n            </div>\r\n\r\n            <div style=\"padding: 40px 0;\">\r\n                {{message}}\r\n\r\n            </div>\r\n            <div style=\"border-top:1px solid #EAEFF2; text-align:center; padding-top: 15px; font-size: 18px;\">\r\n                © 2024<img style=\"color: var(--bs-card-color); font-size: 15px; font-weight: var(--bs-body-font-weight); text-align: var(--bs-body-text-align);\"><span style=\"color: var(--bs-card-color); font-weight: var(--bs-body-font-weight);\">&nbsp;{{site_name}} . All Rights Reserved.</span></div>\r\n        </div>\r\n    </div>', 'hi {{fullname}} ({{username}}), {{message}}', 'Technology Incubator', '{\"name\":\"smtp\",\"host\":\"demo.teincu.com\",\"port\":\"465\",\"enc\":\"ssl\",\"username\":\"info@demo.teincu.com\",\"password\":\"demo.teincu.com\"}', '{\"name\":\"nexmo\",\"clickatell\":{\"api_key\":\"----------------\"},\"infobip\":{\"username\":\"------------8888888\",\"password\":\"-----------------\"},\"message_bird\":{\"api_key\":\"-------------------\"},\"nexmo\":{\"api_key\":\"----------------------\",\"api_secret\":\"----------------------\"},\"sms_broadcast\":{\"username\":\"----------------------\",\"password\":\"-----------------------------\"},\"twilio\":{\"account_sid\":\"-----------------------\",\"auth_token\":\"---------------------------\",\"from\":\"----------------------\"},\"text_magic\":{\"username\":\"-----------------------\",\"apiv2_key\":\"-------------------------------\"},\"custom\":{\"method\":\"get\",\"url\":\"https:\\/\\/hostname\\/demo-api-v1\",\"headers\":{\"name\":[\"api_key\"],\"value\":[\"test_api 555\"]},\"body\":{\"name\":[\"from_number\"],\"value\":[\"5657545757\"]}}}', '{\n    \"site_name\":\"Name of your site\",\n    \"site_currency\":\"Currency of your site\",\n    \"currency_symbol\":\"Symbol of currency\"\n}', 0, 1, 0, 0, 1, 0, 0, 1, 1, 1, NULL, '2025-08-19 22:43:29');
 
 -- --------------------------------------------------------
 
@@ -1308,16 +1384,16 @@ INSERT INTO `general_settings` (`id`, `site_name`, `cur_text`, `cur_sym`, `email
 
 CREATE TABLE `histories` (
   `id` bigint UNSIGNED NOT NULL,
-  `type` enum('sms','email') COLLATE utf8mb4_unicode_ci DEFAULT 'sms',
+  `type` enum('sms','email') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT 'sms',
   `group_id` int DEFAULT NULL,
-  `subject` text COLLATE utf8mb4_unicode_ci,
-  `message` text COLLATE utf8mb4_unicode_ci,
-  `email` text COLLATE utf8mb4_unicode_ci,
-  `phone` text COLLATE utf8mb4_unicode_ci,
-  `code` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `subject` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `message` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `email` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `phone` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `code` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `domain` int DEFAULT NULL,
-  `template_code` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `attachment` longtext COLLATE utf8mb4_unicode_ci,
+  `template_code` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `attachment` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `status` int NOT NULL DEFAULT '0',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -1347,13 +1423,30 @@ INSERT INTO `histories` (`id`, `type`, `group_id`, `subject`, `message`, `email`
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `investments`
+--
+
+CREATE TABLE `investments` (
+  `id` bigint UNSIGNED NOT NULL,
+  `investment_category_id` bigint UNSIGNED NOT NULL,
+  `content` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `content_ar` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` tinyint NOT NULL DEFAULT '1',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `jobs`
 --
 
 CREATE TABLE `jobs` (
   `id` bigint UNSIGNED NOT NULL,
-  `queue` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `queue` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `payload` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `attempts` tinyint UNSIGNED NOT NULL,
   `reserved_at` int UNSIGNED DEFAULT NULL,
   `available_at` int UNSIGNED NOT NULL,
@@ -1368,8 +1461,8 @@ CREATE TABLE `jobs` (
 
 CREATE TABLE `languages` (
   `id` bigint UNSIGNED NOT NULL,
-  `name` varchar(40) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `code` varchar(40) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `code` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `is_default` tinyint(1) NOT NULL DEFAULT '0' COMMENT '0: not default language, 1: default language',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -1391,17 +1484,17 @@ INSERT INTO `languages` (`id`, `name`, `code`, `is_default`, `created_at`, `upda
 
 CREATE TABLE `mail_boxes` (
   `id` bigint UNSIGNED NOT NULL,
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `subject` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `domain` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `subject` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `domain` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `category_id` int NOT NULL,
-  `attachment` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `per_hour_limit` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '40',
-  `date` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `time` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `body` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `template_code` text COLLATE utf8mb4_unicode_ci,
-  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'draft',
+  `attachment` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `per_hour_limit` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '40',
+  `date` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `time` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `body` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `template_code` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `status` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'draft',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -1414,10 +1507,10 @@ CREATE TABLE `mail_boxes` (
 
 CREATE TABLE `mail_categories` (
   `id` bigint UNSIGNED NOT NULL,
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `title_ar` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `title_ar` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `parent_id` int DEFAULT NULL,
-  `type` enum('EMAIL','SMS') COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `type` enum('EMAIL','SMS') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `status` tinyint NOT NULL DEFAULT '1',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -1528,15 +1621,15 @@ INSERT INTO `mail_categories` (`id`, `title`, `title_ar`, `parent_id`, `type`, `
 CREATE TABLE `marketing_requests` (
   `id` bigint UNSIGNED NOT NULL,
   `user_id` int DEFAULT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `job_title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `company` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `mobile` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `job_title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `company` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `mobile` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `country_id` bigint UNSIGNED DEFAULT NULL,
   `city_id` bigint UNSIGNED DEFAULT NULL,
-  `activity` text COLLATE utf8mb4_unicode_ci,
-  `sectors` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `activity` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `sectors` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `status` tinyint NOT NULL DEFAULT '0' COMMENT '0=pending,1=accept,2=reject',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -1564,14 +1657,14 @@ INSERT INTO `marketing_requests` (`id`, `user_id`, `name`, `job_title`, `company
 
 CREATE TABLE `messages` (
   `id` bigint UNSIGNED NOT NULL,
-  `first_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `last_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `phone` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `interested_project` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `capital` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `message` longtext COLLATE utf8mb4_unicode_ci,
-  `reply` longtext COLLATE utf8mb4_unicode_ci,
+  `first_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `last_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `phone` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `interested_project` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `capital` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `message` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `reply` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `seen_at` datetime DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -1765,7 +1858,7 @@ INSERT INTO `messages` (`id`, `first_name`, `last_name`, `email`, `phone`, `inte
 
 CREATE TABLE `migrations` (
   `id` int UNSIGNED NOT NULL,
-  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `migration` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -1845,12 +1938,12 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 CREATE TABLE `notification_logs` (
   `id` bigint UNSIGNED NOT NULL,
   `user_id` int UNSIGNED NOT NULL DEFAULT '0',
-  `sender` varchar(40) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `sent_from` varchar(40) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `sent_to` varchar(40) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `subject` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `message` text COLLATE utf8mb4_unicode_ci,
-  `notification_type` varchar(40) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `sender` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `sent_from` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `sent_to` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `subject` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `message` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `notification_type` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -2115,12 +2208,12 @@ INSERT INTO `notification_logs` (`id`, `user_id`, `sender`, `sent_from`, `sent_t
 
 CREATE TABLE `notification_templates` (
   `id` bigint UNSIGNED NOT NULL,
-  `act` varchar(40) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `name` varchar(40) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `subj` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `email_body` text COLLATE utf8mb4_unicode_ci,
-  `sms_body` text COLLATE utf8mb4_unicode_ci,
-  `shortcodes` text COLLATE utf8mb4_unicode_ci,
+  `act` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `subj` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `email_body` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `sms_body` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `shortcodes` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `email_status` tinyint(1) NOT NULL DEFAULT '1',
   `sms_status` tinyint(1) NOT NULL DEFAULT '1',
   `created_at` timestamp NULL DEFAULT NULL,
@@ -2147,11 +2240,11 @@ INSERT INTO `notification_templates` (`id`, `act`, `name`, `subj`, `email_body`,
 --
 
 CREATE TABLE `oauth_access_tokens` (
-  `id` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `user_id` bigint UNSIGNED DEFAULT NULL,
   `client_id` bigint UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `scopes` text COLLATE utf8mb4_unicode_ci,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `scopes` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `revoked` tinyint(1) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
@@ -2177,10 +2270,10 @@ INSERT INTO `oauth_access_tokens` (`id`, `user_id`, `client_id`, `name`, `scopes
 --
 
 CREATE TABLE `oauth_auth_codes` (
-  `id` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `user_id` bigint UNSIGNED NOT NULL,
   `client_id` bigint UNSIGNED NOT NULL,
-  `scopes` text COLLATE utf8mb4_unicode_ci,
+  `scopes` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `revoked` tinyint(1) NOT NULL,
   `expires_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -2194,10 +2287,10 @@ CREATE TABLE `oauth_auth_codes` (
 CREATE TABLE `oauth_clients` (
   `id` bigint UNSIGNED NOT NULL,
   `user_id` bigint UNSIGNED DEFAULT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `secret` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `provider` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `redirect` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `secret` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `provider` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `redirect` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `personal_access_client` tinyint(1) NOT NULL,
   `password_client` tinyint(1) NOT NULL,
   `revoked` tinyint(1) NOT NULL,
@@ -2240,8 +2333,8 @@ INSERT INTO `oauth_personal_access_clients` (`id`, `client_id`, `created_at`, `u
 --
 
 CREATE TABLE `oauth_refresh_tokens` (
-  `id` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `access_token_id` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `access_token_id` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `revoked` tinyint(1) NOT NULL,
   `expires_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -2255,11 +2348,11 @@ CREATE TABLE `oauth_refresh_tokens` (
 CREATE TABLE `opportunities` (
   `id` bigint UNSIGNED NOT NULL,
   `authority_id` bigint UNSIGNED DEFAULT NULL,
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `title_ar` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `thumb` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `overview` longtext COLLATE utf8mb4_unicode_ci,
-  `overview_ar` longtext COLLATE utf8mb4_unicode_ci,
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `title_ar` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `thumb` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `overview` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `overview_ar` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -2325,34 +2418,34 @@ INSERT INTO `opportunities` (`id`, `authority_id`, `title`, `title_ar`, `thumb`,
 CREATE TABLE `orders` (
   `id` bigint UNSIGNED NOT NULL,
   `service_id` bigint UNSIGNED DEFAULT NULL,
-  `mobile` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `mobile` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `country_id` int DEFAULT NULL,
   `city_id` int DEFAULT NULL,
-  `message` text COLLATE utf8mb4_unicode_ci,
+  `message` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `user_id` bigint UNSIGNED DEFAULT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `contact` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `budget` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `project_quality` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `nature_of_project` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `nature_of_activity` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `active_place` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `website` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `project_location` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `previous_experience` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `aim` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `test` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `person_in_charge` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `company_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `job_title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `company_activity` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `company_headquarter` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `investment_cost` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `nature_of_finane` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `project_equipment` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `description` text COLLATE utf8mb4_unicode_ci,
-  `reply_message` longtext COLLATE utf8mb4_unicode_ci,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `contact` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `budget` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `project_quality` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `nature_of_project` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `nature_of_activity` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `active_place` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `website` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `project_location` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `previous_experience` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `aim` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `test` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `person_in_charge` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `company_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `job_title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `company_activity` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `company_headquarter` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `investment_cost` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `nature_of_finane` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `project_equipment` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `reply_message` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `seen` tinyint(1) DEFAULT NULL,
   `c_seen_at` datetime DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -5483,9 +5576,9 @@ INSERT INTO `orders` (`id`, `service_id`, `mobile`, `country_id`, `city_id`, `me
 
 CREATE TABLE `pages` (
   `id` bigint UNSIGNED NOT NULL,
-  `name` varchar(40) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `slug` varchar(40) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `secs` text COLLATE utf8mb4_unicode_ci,
+  `name` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `slug` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `secs` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `is_default` tinyint(1) NOT NULL DEFAULT '0',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -5497,8 +5590,16 @@ CREATE TABLE `pages` (
 
 INSERT INTO `pages` (`id`, `name`, `slug`, `secs`, `is_default`, `created_at`, `updated_at`) VALUES
 (1, 'HOME', '/', NULL, 1, '2020-07-11 06:23:58', '2024-05-22 08:01:31'),
-(36, 'Contact Us', 'contact-us', NULL, 0, '2024-05-19 01:18:17', '2024-05-19 01:18:17'),
-(37, 'About Us', 'about-us', NULL, 0, '2024-05-19 02:34:53', '2024-05-19 02:34:53');
+(37, 'About Us', 'about-us', NULL, 0, '2024-05-19 02:34:53', '2024-05-19 02:34:53'),
+(38, 'Sectors', 'sectors', NULL, 0, '2025-08-17 23:23:35', '2025-08-17 23:23:35'),
+(39, 'Embedded Finance', 'embedded-finance', NULL, 0, '2025-08-17 23:24:02', '2025-08-17 23:24:02'),
+(40, 'Smart Collection', 'smart-collection', NULL, 0, '2025-08-17 23:24:28', '2025-08-17 23:24:28'),
+(41, 'Open Banking', 'open-banking', NULL, 0, '2025-08-17 23:24:45', '2025-08-17 23:24:45'),
+(42, 'Events', 'events', NULL, 0, '2025-08-17 23:25:18', '2025-08-17 23:25:18'),
+(43, 'Marketing', 'marketing', NULL, 0, '2025-08-17 23:25:46', '2025-08-17 23:25:46'),
+(44, 'Jobs', 'jobs', NULL, 0, '2025-08-17 23:26:15', '2025-08-17 23:26:15'),
+(45, 'Contact Us', 'contact-us', NULL, 0, '2025-08-17 23:26:55', '2025-08-17 23:26:55'),
+(51, 'Investmentor Account', 'investment-opportunities', NULL, 0, '2025-08-20 04:41:57', '2025-08-20 04:41:57');
 
 -- --------------------------------------------------------
 
@@ -5507,8 +5608,8 @@ INSERT INTO `pages` (`id`, `name`, `slug`, `secs`, `is_default`, `created_at`, `
 --
 
 CREATE TABLE `password_resets` (
-  `email` varchar(40) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `token` varchar(40) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `email` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `token` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -5537,8 +5638,8 @@ INSERT INTO `password_resets` (`email`, `token`, `created_at`) VALUES
 --
 
 CREATE TABLE `password_reset_tokens` (
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -5550,11 +5651,11 @@ CREATE TABLE `password_reset_tokens` (
 
 CREATE TABLE `personal_access_tokens` (
   `id` bigint UNSIGNED NOT NULL,
-  `tokenable_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tokenable_type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `tokenable_id` bigint UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `abilities` text COLLATE utf8mb4_unicode_ci,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `abilities` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `last_used_at` timestamp NULL DEFAULT NULL,
   `expires_at` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -5569,10 +5670,10 @@ CREATE TABLE `personal_access_tokens` (
 
 CREATE TABLE `sms_configs` (
   `id` bigint UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `code` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `config` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `status` enum('Daft','Active','Inactive') COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `code` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `config` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` enum('Daft','Active','Inactive') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -5585,10 +5686,10 @@ CREATE TABLE `sms_configs` (
 
 CREATE TABLE `sms_histories` (
   `id` bigint UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `mobile` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `message` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `status` enum('Daft','Pending','Delivered','Failed') COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `mobile` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `message` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` enum('Daft','Pending','Delivered','Failed') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -5602,15 +5703,15 @@ CREATE TABLE `sms_histories` (
 CREATE TABLE `social_invest_requests` (
   `id` bigint UNSIGNED NOT NULL,
   `user_id` int DEFAULT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `budget` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `sectors` longtext COLLATE utf8mb4_unicode_ci,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `mobile` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `budget` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `sectors` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `mobile` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `country_id` bigint UNSIGNED DEFAULT NULL,
   `city_id` bigint UNSIGNED DEFAULT NULL,
   `property_type_id` bigint UNSIGNED DEFAULT NULL,
-  `description` text COLLATE utf8mb4_unicode_ci,
+  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `status` tinyint NOT NULL DEFAULT '0',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -5634,9 +5735,9 @@ INSERT INTO `social_invest_requests` (`id`, `user_id`, `name`, `budget`, `sector
 CREATE TABLE `subproperty_types` (
   `id` bigint UNSIGNED NOT NULL,
   `property_type_id` bigint UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `name_ar` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name_ar` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `status` int NOT NULL DEFAULT '1',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -5663,7 +5764,7 @@ INSERT INTO `subproperty_types` (`id`, `property_type_id`, `name`, `name_ar`, `i
 
 CREATE TABLE `subscribers` (
   `id` bigint UNSIGNED NOT NULL,
-  `email` varchar(40) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `email` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -5679,7 +5780,8 @@ INSERT INTO `subscribers` (`id`, `email`, `created_at`, `updated_at`) VALUES
 (4, 'fijex13977@dovesilo.com', '2024-07-10 15:40:28', '2024-07-10 15:40:28'),
 (5, 'howidaelnagar15@gmail.com', '2024-07-29 09:02:22', '2024-07-29 09:02:22'),
 (6, 'dodaali.ammar1@gmail.com', '2025-05-26 06:34:34', '2025-05-26 06:34:34'),
-(7, 'dodaali.ammar@gmail.com', '2025-07-03 08:08:52', '2025-07-03 08:08:52');
+(7, 'dodaali.ammar@gmail.com', '2025-07-03 08:08:52', '2025-07-03 08:08:52'),
+(8, 'gafargaon.gc1950@gmail.com', '2025-08-19 01:25:12', '2025-08-19 01:25:12');
 
 -- --------------------------------------------------------
 
@@ -5690,7 +5792,7 @@ INSERT INTO `subscribers` (`id`, `email`, `created_at`, `updated_at`) VALUES
 CREATE TABLE `support_attachments` (
   `id` bigint UNSIGNED NOT NULL,
   `support_message_id` int UNSIGNED DEFAULT NULL,
-  `attachment` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `attachment` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -5727,7 +5829,7 @@ CREATE TABLE `support_messages` (
   `id` bigint UNSIGNED NOT NULL,
   `support_ticket_id` int UNSIGNED NOT NULL DEFAULT '0',
   `admin_id` int UNSIGNED NOT NULL DEFAULT '0',
-  `message` longtext COLLATE utf8mb4_unicode_ci,
+  `message` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -5781,10 +5883,10 @@ INSERT INTO `support_messages` (`id`, `support_ticket_id`, `admin_id`, `message`
 CREATE TABLE `support_tickets` (
   `id` bigint UNSIGNED NOT NULL,
   `user_id` int DEFAULT '0',
-  `name` varchar(40) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `email` varchar(40) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `ticket` varchar(40) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `subject` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `email` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `ticket` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `subject` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `status` tinyint(1) NOT NULL DEFAULT '0' COMMENT '0: Open, 1: Answered, 2: Replied, 3: Closed',
   `last_reply` datetime DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -5827,12 +5929,12 @@ INSERT INTO `support_tickets` (`id`, `user_id`, `name`, `email`, `ticket`, `subj
 
 CREATE TABLE `templates` (
   `id` bigint UNSIGNED NOT NULL,
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `code` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `subject` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `message_body` text COLLATE utf8mb4_unicode_ci,
-  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `short_code` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `code` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `subject` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `message_body` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `short_code` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `status` tinyint(1) NOT NULL DEFAULT '1',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -5854,56 +5956,56 @@ INSERT INTO `templates` (`id`, `title`, `code`, `subject`, `message_body`, `imag
 
 CREATE TABLE `users` (
   `id` bigint UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `username` varchar(40) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `username` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `country_id` int UNSIGNED DEFAULT '0',
-  `city` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `mobile` varchar(40) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `address` text COLLATE utf8mb4_unicode_ci,
-  `job_title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `val_license_number` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `city` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `mobile` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `address` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `job_title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `val_license_number` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '0: banned, 1: active',
   `ev` tinyint(1) NOT NULL DEFAULT '0' COMMENT '0: email unverified, 1: email verified',
   `sv` tinyint(1) NOT NULL DEFAULT '0' COMMENT '0: mobile unverified, 1: mobile verified',
   `profile_complete` tinyint(1) NOT NULL DEFAULT '0',
-  `person_in_charge` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `company_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `website` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `services_provided` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `ver_code` varchar(40) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'stores verification code',
+  `person_in_charge` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `company_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `website` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `services_provided` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `ver_code` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'stores verification code',
   `ver_code_send_at` datetime DEFAULT NULL COMMENT 'verification send time',
-  `ban_reason` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `ban_reason` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `remember_token` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `active_status` tinyint(1) NOT NULL DEFAULT '0',
-  `avatar` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'avatar.png',
+  `avatar` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'avatar.png',
   `dark_mode` tinyint(1) NOT NULL DEFAULT '0',
-  `messenger_color` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `company_activity` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `address_headquarter` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `commercial_registration_no` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `age_of_company` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `number_of_work_team` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `pre_experience_project` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `entity_type` enum('Individual','Establishment','Company') COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `service_description` text COLLATE utf8mb4_unicode_ci,
+  `messenger_color` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `company_activity` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `address_headquarter` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `commercial_registration_no` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `age_of_company` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `number_of_work_team` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `pre_experience_project` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `entity_type` enum('Individual','Establishment','Company') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `service_description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `target_clients` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
-  `preferred_communication` enum('Email','Phone','WhatsApp') COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `best_time_to_contact` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `estimated_response_time` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `commercial_registration_file` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `preferred_communication` enum('Email','Phone','WhatsApp') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `best_time_to_contact` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `estimated_response_time` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `commercial_registration_file` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `certificates` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
   `portfolio_files` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
-  `company_profile` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `social_media` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `company_profile` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `social_media` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `category_id` int UNSIGNED DEFAULT NULL,
   `sub_category_id` int DEFAULT NULL
-) ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `users`
@@ -5941,14 +6043,14 @@ INSERT INTO `users` (`id`, `name`, `username`, `email`, `image`, `country_id`, `
 CREATE TABLE `user_logins` (
   `id` bigint UNSIGNED NOT NULL,
   `user_id` int UNSIGNED NOT NULL DEFAULT '0',
-  `user_ip` varchar(40) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `city` varchar(40) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `country` varchar(40) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `country_code` varchar(40) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `longitude` varchar(40) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `latitude` varchar(40) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `browser` varchar(40) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `os` varchar(40) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `user_ip` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `city` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `country` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `country_code` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `longitude` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `latitude` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `browser` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `os` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -6162,6 +6264,12 @@ ALTER TABLE `general_settings`
 -- Indexes for table `histories`
 --
 ALTER TABLE `histories`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `investments`
+--
+ALTER TABLE `investments`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -6467,7 +6575,7 @@ ALTER TABLE `forms`
 -- AUTO_INCREMENT for table `frontends`
 --
 ALTER TABLE `frontends`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=343;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=420;
 
 --
 -- AUTO_INCREMENT for table `fvts`
@@ -6486,6 +6594,12 @@ ALTER TABLE `general_settings`
 --
 ALTER TABLE `histories`
   MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT for table `investments`
+--
+ALTER TABLE `investments`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `jobs`
@@ -6569,7 +6683,7 @@ ALTER TABLE `orders`
 -- AUTO_INCREMENT for table `pages`
 --
 ALTER TABLE `pages`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -6605,7 +6719,7 @@ ALTER TABLE `subproperty_types`
 -- AUTO_INCREMENT for table `subscribers`
 --
 ALTER TABLE `subscribers`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `support_attachments`
