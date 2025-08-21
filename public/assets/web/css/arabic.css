@@ -92,3 +92,11 @@ select.form-select{
     padding-left: 0;
     padding-right: 35px !important;
 }
+
+.left-img {
+    position: absolute;
+    bottom: -133px;
+    left: -151px !important;
+    border: 5px solid #ffffff;
+    border-radius: 15px;
+}

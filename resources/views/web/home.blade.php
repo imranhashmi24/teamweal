@@ -46,22 +46,7 @@
 @section('content')
 
     {{-- ===================================== Hero secton Start=================================== --}}
-    <section class="hero-section d-flex align-items-center">
-        <div class="container">
-            <div class="col-lg-8">
-                <h1>Finance Incubator –</h1>
-                <h2>The Integrated Platform for Developmental and Social Investment</h2>
-                <p>
-                    A unified platform that brings together financing services from developmental and financial
-                    institutions,
-                    along with investment opportunities in promising projects and community-driven initiatives. It offers
-                    marketing, training, and employment tools to empower investors, funders, and entrepreneurs in building
-                    impactful and sustainable economic and social partnerships.
-                </p>
-                <a href="#" class="btn btn-custom mt-3">Create Investor Account</a>
-            </div>
-        </div>
-    </section>
+   @include('sections.hero_section')
 
     {{-- ===================================== Hero secton End=================================== --}}
 
@@ -146,52 +131,156 @@
 
 
     {{-- ===================================== Service secton End=================================== --}}
-    {{-- ===================================== Service secton End=================================== --}}
-
-    <div class="container py-5">
-        <!-- Section Title -->
-        <div class="section-title">
-            <h2>Private Sector</h2>
-            <a href="#">Finance</a>
-        </div>
-
-        <div class="row g-4">
-            <!-- Card 1 -->
-            <div class="col-lg-4 col-md-6 mb-3">
-                <div class="card h-100">
-                    <div class="card-header bg-light p-0">
-                        <i class="fa-solid fa-circle-check text-primary me-2 mt-1"></i>
-                    </div>
-                    <div class="card-body d-flex flex-column bg-white">
-                        <h5 class="mb-3">Real Estate Development Fund</h5>
-                        <ul class="list-unstyled mb-4">
-                            <li class="d-flex mb-1">
+    {{-- ===================================== Private Sector secton End=================================== --}}
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="text-center privet-sector mb-5">
+                <h2 class="">Private Sector</h2>
+                <a href="#" class="Sector-link">Finance</a>
+            </div>
+    
+            <div class="row g-4">
+                <!-- Card Start -->
+                <div class="col-md-4">
+                    <div class="card h-100 p-4 bg-white rounded-4">
+                        <div class="d-flex mb-3">
+                            <img src="{{ asset('assets/web/img/sector-icon.png') }}" alt="Sector Icon"
+                                class="img-fluid sector-icon">
+                        </div>
+                        <h5 class="text-center mb-4 fw-semibold">Real Estate Development Fund</h5>
+                        <ul class="list-unstyled ps-0">
+                            <li class="d-flex align-items-start mb-2">
                                 <i class="fa-solid fa-circle-check text-primary me-2 mt-1"></i>
-                                <p class="mb-0">Personal Financing</p>
+                                <span>Personal Financing</span>
                             </li>
-                            <li class="d-flex mb-1">
+                            <li class="d-flex align-items-start mb-2">
                                 <i class="fa-solid fa-circle-check text-primary me-2 mt-1"></i>
-                                <p class="mb-0">Personal Financing</p>
+                                <span>Consumer Financing</span>
                             </li>
-                            <li class="d-flex mb-1">
+                            <li class="d-flex align-items-start mb-2">
                                 <i class="fa-solid fa-circle-check text-primary me-2 mt-1"></i>
-                                <p class="mb-0">Personal Financing</p>
+                                <span>Mortgage Financing</span>
                             </li>
-
+                            <li class="d-flex align-items-start mb-2">
+                                <i class="fa-solid fa-circle-check text-primary me-2 mt-1"></i>
+                                <span>Financing via Digital Wallets</span>
+                            </li>
                         </ul>
-                        <!-- Button at bottom -->
                         <div class="mt-auto">
-                            <a href="#" class="btn btn-request">Request Service</a>
+                            <a href="#" class="btn btn-sector">Send Request</a>
                         </div>
                     </div>
                 </div>
+                <div class="col-md-4">
+                    <div class="card h-100 p-4 bg-white rounded-4">
+                        <div class="d-flex mb-3">
+                            <img src="{{ asset('assets/web/img/sector-icon.png') }}" alt="Sector Icon"
+                                class="img-fluid sector-icon">
+                        </div>
+                        <h5 class="text-center mb-4 fw-semibold">Real Estate Development Fund</h5>
+                        <ul class="list-unstyled ps-0">
+                            <li class="d-flex align-items-start mb-2">
+                                <i class="fa-solid fa-circle-check text-primary me-2 mt-1"></i>
+                                <span>Personal Financing</span>
+                            </li>
+                            <li class="d-flex align-items-start mb-2">
+                                <i class="fa-solid fa-circle-check text-primary me-2 mt-1"></i>
+                                <span>Consumer Financing</span>
+                            </li>
+                            <li class="d-flex align-items-start mb-2">
+                                <i class="fa-solid fa-circle-check text-primary me-2 mt-1"></i>
+                                <span>Mortgage Financing</span>
+                            </li>
+                            <li class="d-flex align-items-start mb-2">
+                                <i class="fa-solid fa-circle-check text-primary me-2 mt-1"></i>
+                                <span>Financing via Digital Wallets</span>
+                            </li>
+                            <li class="d-flex align-items-start mb-2">
+                                <i class="fa-solid fa-circle-check text-primary me-2 mt-1"></i>
+                                <span>Financing via Digital Wallets</span>
+                            </li>
+                            <li class="d-flex align-items-start mb-2">
+                                <i class="fa-solid fa-circle-check text-primary me-2 mt-1"></i>
+                                <span>Financing via Digital Wallets</span>
+                            </li>
+                        </ul>
+                        <div class="mt-auto">
+                            <a href="#" class="btn btn-sector">Send Request</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 p-4 bg-white rounded-4">
+                        <div class="d-flex mb-3">
+                            <img src="{{ asset('assets/web/img/sector-icon.png') }}" alt="Sector Icon"
+                                class="img-fluid sector-icon">
+                        </div>
+                        <h5 class="text-center mb-4 fw-semibold">Real Estate Development Fund</h5>
+                        <ul class="list-unstyled ps-0">
+                            <li class="d-flex align-items-start mb-2">
+                                <i class="fa-solid fa-circle-check text-primary me-2 mt-1"></i>
+                                <span>Personal Financing</span>
+                            </li>
+                            <li class="d-flex align-items-start mb-2">
+                                <i class="fa-solid fa-circle-check text-primary me-2 mt-1"></i>
+                                <span>Consumer Financing</span>
+                            </li>
+                            <li class="d-flex align-items-start mb-2">
+                                <i class="fa-solid fa-circle-check text-primary me-2 mt-1"></i>
+                                <span>Mortgage Financing</span>
+                            </li>
+                            <li class="d-flex align-items-start mb-2">
+                                <i class="fa-solid fa-circle-check text-primary me-2 mt-1"></i>
+                                <span>Financing via Digital Wallets</span>
+                            </li>
+                            <li class="d-flex align-items-start mb-2">
+                                <i class="fa-solid fa-circle-check text-primary me-2 mt-1"></i>
+                                <span>Financing via Digital Wallets</span>
+                            </li>
+                            <li class="d-flex align-items-start mb-2">
+                                <i class="fa-solid fa-circle-check text-primary me-2 mt-1"></i>
+                                <span>Financing via Digital Wallets</span>
+                            </li>
+                            <li class="d-flex align-items-start mb-2">
+                                <i class="fa-solid fa-circle-check text-primary me-2 mt-1"></i>
+                                <span>Financing via Digital Wallets</span>
+                            </li>
+                            <li class="d-flex align-items-start mb-2">
+                                <i class="fa-solid fa-circle-check text-primary me-2 mt-1"></i>
+                                <span>Financing via Digital Wallets</span>
+                            </li>
+                            <li class="d-flex align-items-start mb-2">
+                                <i class="fa-solid fa-circle-check text-primary me-2 mt-1"></i>
+                                <span>Financing via Digital Wallets</span>
+                            </li>
+                            <li class="d-flex align-items-start mb-2">
+                                <i class="fa-solid fa-circle-check text-primary me-2 mt-1"></i>
+                                <span>Financing via Digital Wallets</span>
+                            </li>
+                        </ul>
+                        <div class="mt-auto">
+                            <a href="#" class="btn btn-sector">Send Request</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card End -->
+    
+                <!-- Repeat cards for other services... -->
+    
             </div>
-
         </div>
-    </div>
-    {{-- ===================================== Service secton End=================================== --}}
+    </section>
+   
+    {{-- ===================================== Private Sector secton End=================================== --}}
 
-
+    @include('sections.investment_opportunities')
+    @include('sections.browse_by_category')
+    @include('sections.ready_to_invest')    
+    @include('sections.why_finance_incubator')    
+    @include('sections.what_makes_us_unique')
+    @include('sections.our_financial')
+    @include('sections.smart_settlement')
+    @include('sections.subscribe')
 
 
     @if (@$sections->secs != null)

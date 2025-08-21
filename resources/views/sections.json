@@ -1,4 +1,350 @@
 {
+    "hero_section": {
+        "builder": true,
+        "no_selection": false,
+        "name": "Hero Section",
+        "content": {
+            "images": {
+                "image": {
+                    "size": "1920x656"
+                }
+            },
+            "title": "text",
+            "title_ar": "text",
+            "heading": "text",
+            "heading_ar": "text",
+            "description": "text",
+            "description_ar": "text"
+        }
+    },
+    "investment_opportunities": {
+        "builder": true,
+        "no_selection": true,
+        "name": "Investment Opportunities",
+        "content": {
+            "images": {
+                "image": {
+                    "size": "700x400"
+                }
+            },
+            "title": "text",
+            "title_ar": "text",
+            "sub_title": "text",
+            "sub_title_ar": "text"
+        }
+    },
+    "browse_by_category": {
+        "builder": true,
+        "no_selection": true,
+        "name": "Browse by Category",
+        "element": {
+            "images": {
+                "image": {
+                    "size": "40x40"
+                }
+            },
+            "title": "text",
+            "title_ar": "text",
+            "modal": true
+        }
+    },
+    "why_finance_incubator": {
+        "builder": true,
+        "no_selection": true,
+        "name": "Why Finance Incubator",
+        "content": {
+            "images": {
+                "image": {
+                    "size": "700x400"
+                }
+            },
+            "title": "text",
+            "title_ar": "text",
+            "sub_title": "text",
+            "sub_title_ar": "text"
+        }
+    },
+    "what_makes_us_unique": {
+        "builder": true,
+        "no_selection": true,
+        "name": "What Makes Us Unique",
+        "content": {
+            "images": {
+                "image_left": {
+                    "size": "567x400"
+                },
+                "image_right": {
+                    "size": "346x270"
+                }
+            },
+            "title": "text",
+            "title_ar": "text"
+        },
+        "element": {
+            "images": {
+                "image": {
+                    "size": "40x40"
+                }
+            },
+            "title": "text",
+            "title_ar": "text",
+            "modal": true
+        }
+    },
+    "smart_settlement": {
+        "builder": true,
+        "no_selection": true,
+        "name": "Smart Settlement",
+        "content": {
+            "images": {
+                "image_left": {
+                    "size": "567x400"
+                },
+                "image_right": {
+                    "size": "346x270"
+                }
+            },
+            "title": "text",
+            "title_ar": "text",
+            "sub_title": "text",
+            "sub_title_ar": "text",
+            "heading": "text",
+            "heading_ar": "text"
+        },
+        "element": {
+            "title": "text",
+            "title_ar": "text",
+            "modal": true
+        }
+    },
+    "subscribe": {
+        "builder": true,
+        "no_selection": false,
+        "name": "Subscribe to Our Newsletter",
+        "content": {
+            "images": {
+                "image": {
+                    "size": "676x450"
+                }
+            },
+            "heading": "text",
+            "heading_ar": "text",
+            "title": "text",
+            "title_ar": "text"
+        }
+    },
+    "digital_marketing": {
+        "builder": true,
+        "no_selection": false,
+        "name": "Digital marketing by providing",
+        "element": {
+            "title": "text",
+            "title_ar": "text",
+            "modal": true
+        }
+    },
+
+    "investment_opportunities_top": {
+        "builder": true,
+        "no_selection": false,
+        "name": "investment opportunities top",
+        "content": {
+            "images": {
+                "image": {
+                    "size": "651x400"
+                }
+            },
+            "heading": "text",
+            "heading_ar": "text",
+            "title": "text",
+            "title_ar": "text"
+        }
+    },
+    "create_investor_account": {
+        "builder": true,
+        "no_selection": true,
+        "name": "Create Investor Account",
+        "content": {
+            "images": {
+                "image_left": {
+                    "size": "700x400"
+                },
+                "image_right": {
+                    "size": "412x313"
+                }
+            },
+            "title": "text",
+            "title_ar": "text",
+            "sub_title": "text",
+            "sub_title_ar": "text"
+        },
+        "element": {
+            "images": {
+                "image": {
+                    "size": "25x25"
+                }
+            },
+            "title": "text",
+            "title_ar": "text",
+            "modal": true
+        }
+    },
+    "embedded_finance": {
+        "builder": true,
+        "no_selection": true,
+        "name": "Embedded Finance",
+        "content": {
+            "images": {
+                "image": {
+                    "size": "700x400"
+                }
+            },
+            "title": "text",
+            "title_ar": "text",
+            "sub_title": "text",
+            "sub_title_ar": "text"
+        },
+        "element": {
+            "title": "text",
+            "title_ar": "text",
+            "modal": true
+        }
+    },
+    "embedded_finance_product_solutions": {
+        "builder": true,
+        "no_selection": true,
+        "name": "Embedded Financial Product Solutions",
+        "element": {
+            "title": "text",
+            "title_ar": "text",
+            "sub_title": "text",
+            "sub_title_ar": "text",
+            "modal": true
+        }
+    },
+    "marketing": {
+        "builder": true,
+        "no_selection": true,
+        "name": "Marketing",
+        "element": {
+            "images": {
+                "image": {
+                    "size": "300x210"
+                }
+            },
+            "title": "text",
+            "title_ar": "text",
+            "modal": true
+        }
+    },
+    "smart_collection": {
+        "builder": true,
+        "no_selection": true,
+        "name": "Manage your financial",
+        "content": {
+            "images": {
+                "image": {
+                    "size": "700x400"
+                }
+            },
+            "title": "text",
+            "title_ar": "text",
+            "sub_title": "text",
+            "sub_title_ar": "text"
+        }
+    },
+    "services_offered": {
+        "builder": true,
+        "no_selection": true,
+        "name": "Services Offered",
+        "element": {
+            "title": "text",
+            "title_ar": "text",
+            "sub_title": "text",
+            "sub_title_ar": "text",
+            "modal": true
+        }
+    },
+    "who_can_benefit": {
+        "builder": true,
+        "no_selection": true,
+        "name": "Who Can Benefit",
+        "content": {
+            "images": {
+                "image": {
+                    "size": "700x400"
+                }
+            },
+            "title": "text",
+            "title_ar": "text",
+            "sub_title": "text",
+            "sub_title_ar": "text"
+        },
+        "element": {
+            "title": "text",
+            "title_ar": "text",
+            "modal": true
+        }
+    },
+    "open_banking_services": {
+        "builder": true,
+        "no_selection": true,
+        "name": "Open Banking Services",
+        "content": {
+            "images": {
+                "image": {
+                    "size": "700x400"
+                }
+            },
+            "title": "text",
+            "title_ar": "text",
+            "sub_title": "text",
+            "sub_title_ar": "text"
+        }
+    },
+    "our_services": {
+        "builder": true,
+        "no_selection": true,
+        "name": "Our Services Open Banking Page",
+        "element": {
+            "images": {
+                "image": {
+                    "size": "40x40"
+                }
+            },
+            "title": "text",
+            "title_ar": "text",
+            "sub_title": "text",
+            "sub_title_ar": "text",
+            "modal": true
+        }
+    },
+    "target_audience": {
+        "builder": true,
+        "no_selection": true,
+        "name": "Target Audience",
+        "element": {
+            "images": {
+                "image": {
+                    "size": "40x40"
+                }
+            },
+            "title": "text",
+            "title_ar": "text",
+            "modal": true
+        }
+    },
+    "ready_to_build": {
+        "builder": true,
+        "no_selection": true,
+        "name": "Ready to Build",
+        "content": {
+            "title": "text",
+            "title_ar": "text",
+            "sub_title": "text",
+            "sub_title_ar": "text"
+        }
+    },
     "breadcrumb": {
         "builder": true,
         "no_selection": true,
@@ -130,7 +476,6 @@
             "modal": false
         }
     },
-
     "policy_pages": {
         "builder": true,
         "no_selection": true,
@@ -142,7 +487,6 @@
             "modal": false
         }
     },
-
     "target_groups": {
         "builder": true,
         "no_selection": false,
@@ -162,7 +506,6 @@
             "modal": true
         }
     },
-
     "training_tracks": {
         "builder": true,
         "no_selection": false,
@@ -184,7 +527,6 @@
             "modal": true
         }
     },
-
     "our_goals": {
         "builder": true,
         "no_selection": true,

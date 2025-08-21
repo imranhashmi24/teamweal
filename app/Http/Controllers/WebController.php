@@ -63,6 +63,11 @@ class WebController extends Controller
         $sections = Page::where('slug', 'marketing')->first();
         return view('web.pages.marketing', compact('sections'));
     }
+    public function investmentOpportunities()
+    {
+        $sections = Page::where('slug', 'investment-opportunities')->first();
+        return view('web.pages.investment-opportunities', compact('sections'));
+    }
 
     public function contactSubmit(Request $request)
     {

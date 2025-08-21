@@ -2,12 +2,9 @@
 @section('content')
 
 
+@include('sections.smart_collection')
+@include('sections.services_offered')
+@include('sections.who_can_benefit')
 
-
-
-    @if ($sections != null)
-        @foreach (json_decode($sections) as $sec)
-            @include('sections.' . $sec)
-        @endforeach
-    @endif
+    
 @endsection

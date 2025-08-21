@@ -74,12 +74,15 @@ Route::controller(WebController::class)->group(function () {
 
         Route::get('sectors', 'sectors')->name('sectors');
       
-        Route::get('embedded-finance', 'embedded-finance')->name('embedded-finance');
-        Route::get('smart-collection', 'smart-collection')->name('smart-collection');
-        Route::get('open-banking', 'open-banking')->name('open-banking');
+        Route::get('embedded-finance', 'embeddedFinance')->name('embedded-finance');
+        Route::get('smart-collection', 'smartCollection')->name('smart-collection');
+        Route::get('open-banking', 'openBanking')->name('open-banking');
         Route::get('events', 'events')->name('events');
         Route::get('marketing', 'marketing')->name('marketing');
         Route::get('jobs', 'jobs')->name('jobs');
+        Route::get('investment-opportunities', 'investmentOpportunities')->name('investment-opportunities');
+      
+        
 
 
 
