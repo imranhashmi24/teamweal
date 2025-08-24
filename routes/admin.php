@@ -4,31 +4,40 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\CityController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ReportController;
 use App\Http\Controllers\Admin\CountryController;
+use App\Http\Controllers\Admin\MessageController;
+use App\Http\Controllers\Admin\ProjectController;
+use App\Http\Controllers\Admin\ServiceController;
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\FrontendController;
 use App\Http\Controllers\Admin\LanguageController;
+use App\Http\Controllers\Admin\AuthorityController;
 use App\Http\Controllers\Admin\ExtensionController;
-use App\Http\Controllers\Admin\GeneralSettingController;
-use App\Http\Controllers\Admin\NotificationController;
 use App\Http\Controllers\Admin\Auth\LoginController;
+use App\Http\Controllers\Admin\OurServiceController;
 use App\Http\Controllers\Admin\SubscriberController;
 use App\Http\Controllers\Admin\AllCategoryController;
 use App\Http\Controllers\Admin\ManageUsersController;
+use App\Http\Controllers\Admin\OpportunityController;
 use App\Http\Controllers\Admin\PageBuilderController;
 use App\Http\Controllers\Admin\BlogCategoryController;
+use App\Http\Controllers\Admin\NotificationController;
+use App\Http\Controllers\Admin\PreviousWorkController;
+use App\Http\Controllers\Admin\RequestOrderController;
 use App\Http\Controllers\Admin\SupportTicketController;
+use App\Http\Controllers\Admin\GeneralSettingController;
+use App\Http\Controllers\Admin\OurServiceFormController;
+use App\Http\Controllers\Admin\OurServiceListController;
 use App\Http\Controllers\Admin\Auth\ResetPasswordController;
 use App\Http\Controllers\Admin\Auth\ForgotPasswordController;
 use App\Http\Controllers\Admin\Request\AuctionFormRequestController;
-use App\Http\Controllers\Admin\ServiceController;
-use App\Http\Controllers\Admin\CategoryController;
-use App\Http\Controllers\Admin\AuthorityController;
-use App\Http\Controllers\Admin\MessageController;
-use App\Http\Controllers\Admin\OpportunityController;
-use App\Http\Controllers\Admin\PreviousWorkController;
-use App\Http\Controllers\Admin\ProjectController;
-use App\Http\Controllers\Admin\OrderController;
+use App\Http\Controllers\Admin\PrivateSectors\PrivateSectorController;
+use App\Http\Controllers\Admin\PrivateSectors\PrivateSectorFormController;
+use App\Http\Controllers\Admin\PrivateSectors\PrivateSectorListController;
+use App\Http\Controllers\Admin\InvestmentOpportunities\InvestmentOpportunityController;
+use App\Http\Controllers\Admin\InvestmentOpportunities\InvestmentOpportunityCategoryController;
 
 Route::get('/login', [LoginController::class, 'showLogin'])->name('login');
 Route::post('/login', [LoginController::class, 'Login']);
@@ -256,100 +265,125 @@ Route::middleware('admin')->group(function () {
         Route::get('/status/{id}', [AllCategoryController::class, 'status'])->name('status');
     });
 
-    // Auction request route
-    Route::group(['prefix' => 'auction-request', 'as' => 'auction.request.'], function () {
-        Route::get('/', [AuctionFormRequestController::class, 'index'])->name('index');
-        Route::get('/pending', [AuctionFormRequestController::class, 'pending'])->name('pending');
-        Route::get('/published', [AuctionFormRequestController::class, 'accepted'])->name('accepted');
-        Route::get('/rejected', [AuctionFormRequestController::class, 'rejected'])->name('rejected');
-        Route::get('/status/{id}/{status}', [AuctionFormRequestController::class, 'status'])->name('status');
-        Route::get('/show/{id}', [AuctionFormRequestController::class, 'show'])->name('show');
+
+    Route::group(['prefix' => 'our-service', 'as' => 'our_service.'], function () {
+        Route::get('/', [OurServiceController::class, 'index'])->name('index');
+        Route::get('/create', [OurServiceController::class, 'create'])->name('create');
+        Route::post('/store/{id?}', [OurServiceController::class, 'store'])->name('store');
+        Route::get('/edit/{id}', [OurServiceController::class, 'edit'])->name('edit');
+        Route::post('/update/{id}', [OurServiceController::class, 'update'])->name('update');        
+        Route::post('/status/{id}', [OurServiceController::class, 'status'])->name('status');
+        Route::post('/delete/{id}', [OurServiceController::class, 'destroy'])->name('delete');
+
+        // Our Service List
+        Route::group(['prefix' => 'lists', 'as' => 'lists.'], function () {
+            Route::get('/{service_id}', [OurServiceListController::class, 'index'])->name('index');
+            Route::get('/create/{service_id}', [OurServiceListController::class, 'create'])->name('create');
+            Route::post('/store/{service_id}', [OurServiceListController::class, 'store'])->name('store');
+            Route::get('/edit/{service_id}/{id}', [OurServiceListController::class, 'edit'])->name('edit');
+            Route::post('/update/{service_id}/{id}', [OurServiceListController::class, 'update'])->name('update');
+            Route::post('/status/{service_id}/{id}', [OurServiceListController::class, 'status'])->name('status');
+            Route::post('/delete/{service_id}/{id}', [OurServiceListController::class, 'destroy'])->name('delete');
+        });
+
+        //Our Service Form
+        Route::group(['prefix' => 'forms', 'as' => 'forms.'], function () {
+            Route::get('/{service_id}', [OurServiceFormController::class, 'index'])->name('index');
+            Route::get('/create/{service_id}', [OurServiceFormController::class, 'create'])->name('create');
+            Route::post('/store/{service_id}', [OurServiceFormController::class, 'store'])->name('store');
+            Route::get('/edit/{service_id}/{id}', [OurServiceFormController::class, 'edit'])->name('edit');
+            Route::post('/update/{service_id}/{id}', [OurServiceFormController::class, 'update'])->name('update');
+            Route::post('/status/{service_id}/{id}', [OurServiceFormController::class, 'status'])->name('status');
+            Route::post('/delete/{service_id}/{id}', [OurServiceFormController::class, 'destroy'])->name('delete');
+        });
+
     });
 
-    Route::group(['prefix' => 'service', 'as' => 'service.'], function () {
-        Route::get('/', [ServiceController::class, 'index'])->name('index');
-        Route::get('/create', [ServiceController::class, 'create'])->name('create');
-        Route::post('/store', [ServiceController::class, 'store'])->name('store');
-        Route::get('/edit/{id}', [ServiceController::class, 'edit'])->name('edit');
-        Route::put('/update/{id}', [ServiceController::class, 'update'])->name('update');
-        Route::get('/show/{slug}', [ServiceController::class, 'show'])->name('show');
-        Route::delete('/delete/{id}', [ServiceController::class, 'destroy'])->name('delete');
+
+    Route::group(['prefix' => 'private-sectors', 'as' => 'private_sectors.'], function () {
+        Route::get('/', [PrivateSectorController::class, 'index'])->name('index');
+        Route::get('/create', [PrivateSectorController::class, 'create'])->name('create');
+        Route::post('/store/{id?}', [PrivateSectorController::class, 'store'])->name('store');
+        Route::get('/edit/{id}', [PrivateSectorController::class, 'edit'])->name('edit');
+        Route::post('/update/{id}', [PrivateSectorController::class, 'update'])->name('update');        
+        Route::post('/status/{id}', [PrivateSectorController::class, 'status'])->name('status');
+        Route::post('/delete/{id}', [PrivateSectorController::class, 'destroy'])->name('delete');
+
+        // Our Service List
+        Route::group(['prefix' => 'lists', 'as' => 'lists.'], function () {
+            Route::get('/{service_id}', [PrivateSectorListController::class, 'index'])->name('index');
+            Route::get('/create/{service_id}', [PrivateSectorListController::class, 'create'])->name('create');
+            Route::post('/store/{service_id}', [PrivateSectorListController::class, 'store'])->name('store');
+            Route::get('/edit/{service_id}/{id}', [PrivateSectorListController::class, 'edit'])->name('edit');
+            Route::post('/update/{service_id}/{id}', [PrivateSectorListController::class, 'update'])->name('update');
+            Route::post('/status/{service_id}/{id}', [PrivateSectorListController::class, 'status'])->name('status');
+            Route::post('/delete/{service_id}/{id}', [PrivateSectorListController::class, 'destroy'])->name('delete');
+        });
+
+        //Our Service Form
+        Route::group(['prefix' => 'forms', 'as' => 'forms.'], function () {
+            Route::get('/{service_id}', [PrivateSectorFormController::class, 'index'])->name('index');
+            Route::get('/create/{service_id}', [PrivateSectorFormController::class, 'create'])->name('create');
+            Route::post('/store/{service_id}', [PrivateSectorFormController::class, 'store'])->name('store');
+            Route::get('/edit/{service_id}/{id}', [PrivateSectorFormController::class, 'edit'])->name('edit');
+            Route::post('/update/{service_id}/{id}', [PrivateSectorFormController::class, 'update'])->name('update');
+            Route::post('/status/{service_id}/{id}', [PrivateSectorFormController::class, 'status'])->name('status');
+            Route::post('/delete/{service_id}/{id}', [PrivateSectorFormController::class, 'destroy'])->name('delete');
+        });
+
     });
 
-    Route::group(['prefix' => 'categories', 'as' => 'categories.'], function () {
-        Route::get('/', [CategoryController::class, 'index'])->name('index');
-        Route::get('/create', [CategoryController::class, 'create'])->name('create');
-        Route::post('/store', [CategoryController::class, 'store'])->name('store');
-        Route::get('/edit/{id}', [CategoryController::class, 'edit'])->name('edit');
-        Route::put('/update/{id}', [CategoryController::class, 'update'])->name('update');
-        Route::get('/show/{id}', [CategoryController::class, 'show'])->name('show');
-        Route::delete('/delete/{id}', [CategoryController::class, 'destroy'])->name('delete');
+
+    Route::group(['prefix' => 'investment-opportunities', 'as' => 'investment_opportunities.'], function () {
+        Route::get('/', [InvestmentOpportunityController::class, 'index'])->name('index');
+        Route::get('/create', [InvestmentOpportunityController::class, 'create'])->name('create');
+        Route::post('/store/{id?}', [InvestmentOpportunityController::class, 'store'])->name('store');
+        Route::get('/edit/{id}', [InvestmentOpportunityController::class, 'edit'])->name('edit');
+        Route::post('/update/{id}', [InvestmentOpportunityController::class, 'update'])->name('update');        
+        Route::post('/status/{id}', [InvestmentOpportunityController::class, 'status'])->name('status');
+        Route::post('/delete/{id}', [InvestmentOpportunityController::class, 'destroy'])->name('delete');
+
+
+        Route::group(['prefix' => 'categories', 'as' => 'categories.'], function () {
+            Route::get('/', [InvestmentOpportunityCategoryController::class, 'index'])->name('index');
+            Route::get('/create', [InvestmentOpportunityCategoryController::class, 'create'])->name('create');
+            Route::post('/store', [InvestmentOpportunityCategoryController::class, 'store'])->name('store');
+            Route::get('/edit/{id}', [InvestmentOpportunityCategoryController::class, 'edit'])->name('edit');
+            Route::post('/update/{id}', [InvestmentOpportunityCategoryController::class, 'update'])->name('update');
+            Route::post('/status/{id}', [InvestmentOpportunityCategoryController::class, 'status'])->name('status');
+            Route::post('/delete/{id}', [InvestmentOpportunityCategoryController::class, 'destroy'])->name('delete');
+        });
+
+        // Our Service List
+        Route::group(['prefix' => 'lists', 'as' => 'lists.'], function () {
+            Route::get('/{service_id}', [PrivateSectorListController::class, 'index'])->name('index');
+            Route::get('/create/{service_id}', [PrivateSectorListController::class, 'create'])->name('create');
+            Route::post('/store/{service_id}', [PrivateSectorListController::class, 'store'])->name('store');
+            Route::get('/edit/{service_id}/{id}', [PrivateSectorListController::class, 'edit'])->name('edit');
+            Route::post('/update/{service_id}/{id}', [PrivateSectorListController::class, 'update'])->name('update');
+            Route::post('/status/{service_id}/{id}', [PrivateSectorListController::class, 'status'])->name('status');
+            Route::post('/delete/{service_id}/{id}', [PrivateSectorListController::class, 'destroy'])->name('delete');
+        });
+
+        //Our Service Form
+        Route::group(['prefix' => 'forms', 'as' => 'forms.'], function () {
+            Route::get('/{service_id}', [PrivateSectorFormController::class, 'index'])->name('index');
+            Route::get('/create/{service_id}', [PrivateSectorFormController::class, 'create'])->name('create');
+            Route::post('/store/{service_id}', [PrivateSectorFormController::class, 'store'])->name('store');
+            Route::get('/edit/{service_id}/{id}', [PrivateSectorFormController::class, 'edit'])->name('edit');
+            Route::post('/update/{service_id}/{id}', [PrivateSectorFormController::class, 'update'])->name('update');
+            Route::post('/status/{service_id}/{id}', [PrivateSectorFormController::class, 'status'])->name('status');
+            Route::post('/delete/{service_id}/{id}', [PrivateSectorFormController::class, 'destroy'])->name('delete');
+        });
+
     });
 
-    Route::group(['prefix' => 'authorities', 'as' => 'authorities.'], function () {
-        Route::get('/', [AuthorityController::class, 'index'])->name('index');
-        Route::get('/create', [AuthorityController::class, 'create'])->name('create');
-        Route::post('/store', [AuthorityController::class, 'store'])->name('store');
-        Route::get('/edit/{id}', [AuthorityController::class, 'edit'])->name('edit');
-        Route::put('/update/{id}', [AuthorityController::class, 'update'])->name('update');
-        Route::get('/show/{id}', [AuthorityController::class, 'show'])->name('show');
-        Route::delete('/delete/{id}', [AuthorityController::class, 'destroy'])->name('delete');
-    });
 
-    Route::group(['prefix' => 'opportunities', 'as' => 'opportunities.'], function () {
-        Route::get('/', [OpportunityController::class, 'index'])->name('index');
-        Route::get('/create', [OpportunityController::class, 'create'])->name('create');
-        Route::post('/store', [OpportunityController::class, 'store'])->name('store');
-        Route::get('/edit/{id}', [OpportunityController::class, 'edit'])->name('edit');
-        Route::put('/update/{id}', [OpportunityController::class, 'update'])->name('update');
-        Route::get('/show/{id}', [OpportunityController::class, 'show'])->name('show');
-        Route::delete('/delete/{id}', [OpportunityController::class, 'destroy'])->name('delete');
+    Route::group(['prefix' => 'request-order', 'as' => 'request_order.'], function () {
+        Route::get('/', [RequestOrderController::class, 'index'])->name('index');
+        Route::get('/show/{id}', [RequestOrderController::class, 'show'])->name('show');
+        Route::post('/update/{id}', [RequestOrderController::class, 'update'])->name('update');        
+        Route::post('/status/{id}', [RequestOrderController::class, 'status'])->name('status');
+        Route::post('/delete/{id}', [RequestOrderController::class, 'destroy'])->name('delete');
     });
-
-    Route::group(['prefix' => 'previous-works', 'as' => 'previous-works.'], function () {
-        Route::get('/', [PreviousWorkController::class, 'index'])->name('index');
-        Route::get('/create', [PreviousWorkController::class, 'create'])->name('create');
-        Route::post('/store', [PreviousWorkController::class, 'store'])->name('store');
-        Route::get('/edit/{id}', [PreviousWorkController::class, 'edit'])->name('edit');
-        Route::put('/update/{id}', [PreviousWorkController::class, 'update'])->name('update');
-        Route::get('/show/{id}', [PreviousWorkController::class, 'show'])->name('show');
-        Route::delete('/delete/{id}', [PreviousWorkController::class, 'destroy'])->name('delete');
-    });
-
-    Route::group(['prefix' => 'projects', 'as' => 'projects.'], function () {
-        Route::get('/', [ProjectController::class, 'index'])->name('index');
-        Route::get('/create', [ProjectController::class, 'create'])->name('create');
-        Route::post('/store', [ProjectController::class, 'store'])->name('store');
-        Route::get('/edit/{id}', [ProjectController::class, 'edit'])->name('edit');
-        Route::put('/update/{id}', [ProjectController::class, 'update'])->name('update');
-        Route::get('/show/{id}', [ProjectController::class, 'show'])->name('show');
-        Route::delete('/delete/{id}', [ProjectController::class, 'destroy'])->name('delete');
-    });
-
-    Route::group(['prefix' => 'orders', 'as' => 'orders.'], function () {
-        Route::get('/', [OrderController::class, 'index'])->name('index');
-        Route::get('/create', [OrderController::class, 'create'])->name('create');
-        Route::post('/store', [OrderController::class, 'store'])->name('store');
-        Route::get('/edit/{id}', [OrderController::class, 'edit'])->name('edit');
-        Route::put('/update/{id}', [OrderController::class, 'update'])->name('update');
-        Route::get('/show/{id}', [OrderController::class, 'show'])->name('show');
-        Route::delete('/delete/{id}', [OrderController::class, 'destroy'])->name('delete');
-    });
-
-     Route::group(['prefix' => 'messages', 'as' => 'messages.'], function () {
-        Route::get('/', [MessageController::class, 'index'])->name('index');
-        Route::get('/create', [MessageController::class, 'create'])->name('create');
-        Route::post('/store', [MessageController::class, 'store'])->name('store');
-        Route::get('/edit/{id}', [MessageController::class, 'edit'])->name('edit');
-        Route::put('/update/{id}', [MessageController::class, 'update'])->name('update');
-        Route::get('/show/{id}', [MessageController::class, 'show'])->name('show');
-        Route::delete('/delete/{id}', [MessageController::class, 'destroy'])->name('delete');
-    });
-    
-    Route::get('service-requests', [\App\Http\Controllers\Admin\ServiceRequestController::class, 'index'])->name('service-request.index');
-    Route::get('service-requests/show/{id}', [\App\Http\Controllers\Admin\ServiceRequestController::class, 'show'])->name('service-request.show');
-    Route::post('service-requests/update-status/{id}', [\App\Http\Controllers\Admin\ServiceRequestController::class, 'updateStatus'])
-        ->name('service-requests.update-status');
-    Route::get('service-requests/download/{id}', [\App\Http\Controllers\Admin\ServiceRequestController::class, 'downloadAttachment'])
-        ->name('service-requests.download');
 });

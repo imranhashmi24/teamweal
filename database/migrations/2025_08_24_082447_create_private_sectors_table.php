@@ -11,15 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('investments', function (Blueprint $table) {
+        Schema::create('private_sectors', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('investment_category_id')->constrained();
-            $table->text('content');
-            $table->text('content_ar');
+            $table->string('title');
+            $table->string('title_ar');
+            $table->text('description')->nullable();
+            $table->text('description_ar')->nullable();
             $table->string('image')->nullable();
-            $table->tinyInteger('status')->default(1);
+            $table->enum('status', ['active', 'inactive'])->default('active');
             $table->timestamps();
-
         });
     }
 
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('investments');
+        Schema::dropIfExists('private_sectors');
     }
 };

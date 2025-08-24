@@ -54,78 +54,64 @@
 
     <section class="py-5">
         <div class="container">
+            
             <!-- Title -->
             <div class="section-title">
-                <h2>Our Market Place</h2>
+                <h2>{{ __('Our Market Place') }}</h2>
                 <div class="divider"><span></span>◆<span></span></div>
                 <p>
-                    Empowering individuals and businesses to explore and apply for funding and support services provided by
-                    government development funds through a unified platform — with ease and transparency.
+                    {{ __('Empowering individuals and businesses to explore and apply for funding and support services provided by
+                    government development funds through a unified platform — with ease and transparency.') }}
                 </p>
                 <h5 class="mt-4 fw-bold">
-                    Development Funds and Banks Affiliated with the National Development Fund
+                    {{ __('Development Funds and Banks Affiliated with the National Development Fund') }}
                 </h5>
             </div>
 
+
+            @if ($our_services->count() > 0)
+                
+        
             <!-- Cards -->
             <div class="row g-4">
 
                 <!-- Card 1 -->
-                @for ($i = 0; $i < 12; $i++)
+                @foreach ($our_services as $our_service)
                     <div class="col-lg-4 col-md-6 mb-3">
                         <div class="card h-100">
                             <div class="card-header bg-light text-center p-0">
-                                <img src="{{ asset('assets/web/img/service-img.png') }}" alt="" class="img-fluid">
+                                <img src="{{ getImage(getFilepath('our_service') . '/' . $our_service->image) }}" alt="" class="img-fluid">
                             </div>
                             <div class="card-body d-flex flex-column bg-white">
-                                <h5 class="mb-3">Real Estate Development Fund</h5>
+                                <h5 class="mb-3">{{ $our_service?->lang('title') }}</h5>
                                 <ul class="list-unstyled mb-4">
-                                    <li class="d-flex mb-2">
-                                        <i class="fa-solid fa-circle-check text-primary me-2 mt-1"></i>
-                                        <div>
-                                            <span class="fw-bold">Subsidized Housing Loan:</span>
-                                            <span> Providing subsidized home loans to citizens in partnership with
-                                                banks.</span>
-                                        </div>
-                                    </li>
-                                    <li class="d-flex mb-2">
-                                        <i class="fa-solid fa-circle-check text-primary me-2 mt-1"></i>
-                                        <div>
-                                            <span class="fw-bold">Self-Build Financing:</span>
-                                            <span> Supporting citizens in building their own homes on private land.</span>
-                                        </div>
-                                    </li>
-                                    <li class="d-flex mb-2">
-                                        <i class="fa-solid fa-circle-check text-primary me-2 mt-1"></i>
-                                        <div>
-                                            <span class="fw-bold">Mortgage:</span>
-                                            <span> Financing solutions for housing and land purchase.</span>
-                                        </div>
-                                    </li>
-                                    <li class="d-flex mb-2">
-                                        <i class="fa-solid fa-circle-check text-primary me-2 mt-1"></i>
-                                        <div>
-                                            <span class="fw-bold">Mortgage:</span>
-                                            <span> Financing solutions for housing and land purchase.</span>
-                                        </div>
-                                    </li>
-                                    <li class="d-flex mb-2">
-                                        <i class="fa-solid fa-circle-check text-primary me-2 mt-1"></i>
-                                        <div>
-                                            <span class="fw-bold">Mortgage:</span>
-                                            <span> Financing solutions for housing and land purchase.</span>
-                                        </div>
-                                    </li>
+
+                                    @if ($our_service->lists->count() > 0)
+                                        @foreach ($our_service->lists as $list)
+                                            <li class="d-flex mb-2">
+                                                <i class="fa-solid fa-circle-check text-primary me-2 mt-1"></i>
+                                                <div>
+                                                    <span class="fw-bold">{{ $list?->lang('title') }}</span>
+                                                </div>
+                                            </li>
+                                        @endforeach
+                                    @endif
                                 </ul>
+
                                 <!-- Button at bottom -->
+
                                 <div class="mt-auto">
-                                    <a href="#" class="btn btn-request">Request Service</a>
+                                    <a href="{{ route('our-service-request.index', ['id' => base64urlEncode($our_service->id)]) }}" class="btn btn-request">Request Service</a>
                                 </div>
+
                             </div>
                         </div>
                     </div>
-                @endfor
+                @endforeach
             </div>
+            @else
+                <p>{{ __('No services found') }}</p>
+            @endif
         </div>
     </section>
 
@@ -135,139 +121,42 @@
     <section class="py-5 bg-light">
         <div class="container">
             <div class="text-center privet-sector mb-5">
-                <h2 class="">Private Sector</h2>
-                <a href="#" class="Sector-link">Finance</a>
+                <h2 class="">{{ __('Private Sector') }}</h2>
+                <a href="#" class="Sector-link">{{ __('Finance') }}</a>
             </div>
     
+            @if ($private_sectors->count() > 0)
             <div class="row g-4">
                 <!-- Card Start -->
+
+                @foreach ($private_sectors as $private_sector)
                 <div class="col-md-4">
                     <div class="card h-100 p-4 bg-white rounded-4">
                         <div class="d-flex mb-3">
-                            <img src="{{ asset('assets/web/img/sector-icon.png') }}" alt="Sector Icon"
+                            <img src="{{ getImage(getFilepath('private_sector') . '/' . $private_sector->image) }}" alt="Sector Icon"
                                 class="img-fluid sector-icon">
                         </div>
-                        <h5 class="text-center mb-4 fw-semibold">Real Estate Development Fund</h5>
+                        <h5 class="text-center mb-4 fw-semibold">{{ $private_sector?->lang('title') }}</h5>
                         <ul class="list-unstyled ps-0">
-                            <li class="d-flex align-items-start mb-2">
-                                <i class="fa-solid fa-circle-check text-primary me-2 mt-1"></i>
-                                <span>Personal Financing</span>
-                            </li>
-                            <li class="d-flex align-items-start mb-2">
-                                <i class="fa-solid fa-circle-check text-primary me-2 mt-1"></i>
-                                <span>Consumer Financing</span>
-                            </li>
-                            <li class="d-flex align-items-start mb-2">
-                                <i class="fa-solid fa-circle-check text-primary me-2 mt-1"></i>
-                                <span>Mortgage Financing</span>
-                            </li>
-                            <li class="d-flex align-items-start mb-2">
-                                <i class="fa-solid fa-circle-check text-primary me-2 mt-1"></i>
-                                <span>Financing via Digital Wallets</span>
-                            </li>
+                            @if ($private_sector->lists->count() > 0)
+                                @foreach ($private_sector->lists as $list)
+                                    <li class="d-flex align-items-start mb-2">
+                                        <i class="fa-solid fa-circle-check text-primary me-2 mt-1"></i>
+                                        <span>{{ $list?->lang('title') }}</span>
+                                    </li>
+                                @endforeach
+                            @endif
                         </ul>
                         <div class="mt-auto">
-                            <a href="#" class="btn btn-sector">Send Request</a>
+                            <a href="{{ route('private-sector-request.index', ['id' => base64urlEncode($private_sector->id)]) }}" class="btn btn-sector">Send Request</a>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="card h-100 p-4 bg-white rounded-4">
-                        <div class="d-flex mb-3">
-                            <img src="{{ asset('assets/web/img/sector-icon.png') }}" alt="Sector Icon"
-                                class="img-fluid sector-icon">
-                        </div>
-                        <h5 class="text-center mb-4 fw-semibold">Real Estate Development Fund</h5>
-                        <ul class="list-unstyled ps-0">
-                            <li class="d-flex align-items-start mb-2">
-                                <i class="fa-solid fa-circle-check text-primary me-2 mt-1"></i>
-                                <span>Personal Financing</span>
-                            </li>
-                            <li class="d-flex align-items-start mb-2">
-                                <i class="fa-solid fa-circle-check text-primary me-2 mt-1"></i>
-                                <span>Consumer Financing</span>
-                            </li>
-                            <li class="d-flex align-items-start mb-2">
-                                <i class="fa-solid fa-circle-check text-primary me-2 mt-1"></i>
-                                <span>Mortgage Financing</span>
-                            </li>
-                            <li class="d-flex align-items-start mb-2">
-                                <i class="fa-solid fa-circle-check text-primary me-2 mt-1"></i>
-                                <span>Financing via Digital Wallets</span>
-                            </li>
-                            <li class="d-flex align-items-start mb-2">
-                                <i class="fa-solid fa-circle-check text-primary me-2 mt-1"></i>
-                                <span>Financing via Digital Wallets</span>
-                            </li>
-                            <li class="d-flex align-items-start mb-2">
-                                <i class="fa-solid fa-circle-check text-primary me-2 mt-1"></i>
-                                <span>Financing via Digital Wallets</span>
-                            </li>
-                        </ul>
-                        <div class="mt-auto">
-                            <a href="#" class="btn btn-sector">Send Request</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card h-100 p-4 bg-white rounded-4">
-                        <div class="d-flex mb-3">
-                            <img src="{{ asset('assets/web/img/sector-icon.png') }}" alt="Sector Icon"
-                                class="img-fluid sector-icon">
-                        </div>
-                        <h5 class="text-center mb-4 fw-semibold">Real Estate Development Fund</h5>
-                        <ul class="list-unstyled ps-0">
-                            <li class="d-flex align-items-start mb-2">
-                                <i class="fa-solid fa-circle-check text-primary me-2 mt-1"></i>
-                                <span>Personal Financing</span>
-                            </li>
-                            <li class="d-flex align-items-start mb-2">
-                                <i class="fa-solid fa-circle-check text-primary me-2 mt-1"></i>
-                                <span>Consumer Financing</span>
-                            </li>
-                            <li class="d-flex align-items-start mb-2">
-                                <i class="fa-solid fa-circle-check text-primary me-2 mt-1"></i>
-                                <span>Mortgage Financing</span>
-                            </li>
-                            <li class="d-flex align-items-start mb-2">
-                                <i class="fa-solid fa-circle-check text-primary me-2 mt-1"></i>
-                                <span>Financing via Digital Wallets</span>
-                            </li>
-                            <li class="d-flex align-items-start mb-2">
-                                <i class="fa-solid fa-circle-check text-primary me-2 mt-1"></i>
-                                <span>Financing via Digital Wallets</span>
-                            </li>
-                            <li class="d-flex align-items-start mb-2">
-                                <i class="fa-solid fa-circle-check text-primary me-2 mt-1"></i>
-                                <span>Financing via Digital Wallets</span>
-                            </li>
-                            <li class="d-flex align-items-start mb-2">
-                                <i class="fa-solid fa-circle-check text-primary me-2 mt-1"></i>
-                                <span>Financing via Digital Wallets</span>
-                            </li>
-                            <li class="d-flex align-items-start mb-2">
-                                <i class="fa-solid fa-circle-check text-primary me-2 mt-1"></i>
-                                <span>Financing via Digital Wallets</span>
-                            </li>
-                            <li class="d-flex align-items-start mb-2">
-                                <i class="fa-solid fa-circle-check text-primary me-2 mt-1"></i>
-                                <span>Financing via Digital Wallets</span>
-                            </li>
-                            <li class="d-flex align-items-start mb-2">
-                                <i class="fa-solid fa-circle-check text-primary me-2 mt-1"></i>
-                                <span>Financing via Digital Wallets</span>
-                            </li>
-                        </ul>
-                        <div class="mt-auto">
-                            <a href="#" class="btn btn-sector">Send Request</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Card End -->
-    
-                <!-- Repeat cards for other services... -->
-    
+                @endforeach
             </div>
+            @else
+                <p>{{ __('No private sectors found') }}</p>
+            @endif
         </div>
     </section>
    

@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Aug 21, 2025 at 03:53 AM
+-- Generation Time: Aug 24, 2025 at 12:16 PM
 -- Server version: 8.0.30
--- PHP Version: 8.2.29
+-- PHP Version: 8.3.24
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `temweal`
+-- Database: `teamweal_v2`
 --
 
 -- --------------------------------------------------------
@@ -1429,13 +1429,69 @@ INSERT INTO `histories` (`id`, `type`, `group_id`, `subject`, `message`, `email`
 CREATE TABLE `investments` (
   `id` bigint UNSIGNED NOT NULL,
   `investment_category_id` bigint UNSIGNED NOT NULL,
-  `content` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `content_ar` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `content` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `content_ar` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `status` tinyint NOT NULL DEFAULT '1',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `investment_opportunities`
+--
+
+CREATE TABLE `investment_opportunities` (
+  `id` bigint UNSIGNED NOT NULL,
+  `category_id` bigint UNSIGNED DEFAULT NULL,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `title_ar` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci,
+  `description_ar` text COLLATE utf8mb4_unicode_ci,
+  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` enum('active','inactive') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'active',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `investment_opportunities`
+--
+
+INSERT INTO `investment_opportunities` (`id`, `category_id`, `title`, `title_ar`, `description`, `description_ar`, `image`, `status`, `created_at`, `updated_at`) VALUES
+(1, 1, 'Digital apps & innovative platforms', 'التطبيقات الرقمية والمنصات المبتكرة', NULL, NULL, '68ab004d939d41756037197.png', 'active', '2025-08-24 05:56:01', '2025-08-24 06:06:37');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `investment_opportunity_categories`
+--
+
+CREATE TABLE `investment_opportunity_categories` (
+  `id` bigint UNSIGNED NOT NULL,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `title_ar` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `parent_id` bigint UNSIGNED DEFAULT NULL,
+  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` enum('active','inactive') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'active',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `investment_opportunity_categories`
+--
+
+INSERT INTO `investment_opportunity_categories` (`id`, `title`, `title_ar`, `parent_id`, `image`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'Startups & Small Enterprises', 'الشركات الناشئة والمؤسسات الصغيرة', NULL, '68aaff1e932c21756036894.png', 'active', '2025-08-24 05:52:23', '2025-08-24 06:01:34'),
+(2, 'Real Estate Funds', 'صناديق العقارات', NULL, '68aaff3e8e1f71756036926.png', 'active', '2025-08-24 06:02:06', '2025-08-24 06:02:06'),
+(3, 'Green & Sustainable Projects', 'مشاريع خضراء ومستدامة', NULL, '68aaff522d38c1756036946.png', 'active', '2025-08-24 06:02:26', '2025-08-24 06:02:26'),
+(4, 'Industrial & Innovation Projects', 'المشاريع الصناعية والابتكارية', NULL, '68aaff671fec71756036967.png', 'active', '2025-08-24 06:02:47', '2025-08-24 06:02:47'),
+(5, 'Technology & Digital Platforms', 'التكنولوجيا والمنصات الرقمية', NULL, '68aaff7fa9b8b1756036991.png', 'active', '2025-08-24 06:03:11', '2025-08-24 06:03:11'),
+(6, 'Social Impact Projects', 'مشاريع التأثير الاجتماعي', NULL, '68aaff980bcea1756037016.png', 'active', '2025-08-24 06:03:36', '2025-08-24 06:03:36'),
+(7, 'Financing Opportunities & Sukuks', 'فرص التمويل والصكوك', NULL, '68aaffaed1b741756037038.png', 'active', '2025-08-24 06:03:58', '2025-08-24 06:03:58');
 
 -- --------------------------------------------------------
 
@@ -1927,7 +1983,18 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (116, '2024_05_09_100342_create_event_news_table', 24),
 (117, '2024_05_11_070310_create_event_asks_table', 25),
 (118, '2024_05_12_051615_create_property_form_requests_table', 26),
-(119, '2024_05_12_052405_create_auction_form_requests_table', 26);
+(119, '2024_05_12_052405_create_auction_form_requests_table', 26),
+(122, '2025_08_23_030150_create_our_services_table', 27),
+(123, '2025_08_23_030320_create_our_service_lists_table', 27),
+(124, '2025_08_23_030527_create_our_service_forms_table', 27),
+(125, '2025_08_23_030613_create_our_service_requests_table', 27),
+(126, '2025_08_24_082446_create_request_orders_table', 28),
+(127, '2025_08_24_082447_create_private_sectors_table', 29),
+(129, '2025_08_24__082449_create_private_sector_forms_table', 29),
+(133, '2025_08_24_082448_create_private_sector_lists_table', 30),
+(134, '2025_08_24_082450_create_private_sector_forms_table', 30),
+(135, '2025_08_24_113923_create_investment_opportunity_categories_table', 31),
+(136, '2025_08_24_114052_create_investment_opportunities_table', 31);
 
 -- --------------------------------------------------------
 
@@ -5571,6 +5638,105 @@ INSERT INTO `orders` (`id`, `service_id`, `mobile`, `country_id`, `city_id`, `me
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `our_services`
+--
+
+CREATE TABLE `our_services` (
+  `id` bigint UNSIGNED NOT NULL,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `title_ar` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `description_ar` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` enum('active','inactive') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'active',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `our_services`
+--
+
+INSERT INTO `our_services` (`id`, `title`, `title_ar`, `description`, `description_ar`, `image`, `status`, `created_at`, `updated_at`) VALUES
+(2, 'Real Estate Development Fund', 'صندوق التنمية العقارية', NULL, NULL, '68aabe34324981756020276.png', 'active', '2025-08-23 01:41:04', '2025-08-24 01:24:39');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `our_service_forms`
+--
+
+CREATE TABLE `our_service_forms` (
+  `id` bigint UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name_ar` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `type` enum('text','number','email','select','radio','checkbox','date','time','datetime','file','image') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'text',
+  `required` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'no',
+  `placeholder` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `placeholder_ar` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `options` json DEFAULT NULL,
+  `options_ar` json DEFAULT NULL,
+  `col` int DEFAULT '12',
+  `our_service_id` bigint UNSIGNED NOT NULL,
+  `status` enum('active','inactive') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'active',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `our_service_forms`
+--
+
+INSERT INTO `our_service_forms` (`id`, `name`, `name_ar`, `type`, `required`, `placeholder`, `placeholder_ar`, `options`, `options_ar`, `col`, `our_service_id`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'Name', 'Name Arabic', 'text', 'yes', 'Enter your name english', 'Enter your name arabic', '[null]', '[null]', 12, 2, 'active', '2025-08-24 00:16:29', '2025-08-24 00:16:29'),
+(2, 'Required Services', 'Required Services Arabic', 'checkbox', 'yes', NULL, NULL, '[\"IT services\", \"Bussines Service\", \"Web Service\"]', '[\"IT Service Arabic\", \"Bussines Service Arabic\", \"Web Service Arabic\"]', 12, 2, 'active', '2025-08-24 00:21:55', '2025-08-24 00:40:28');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `our_service_lists`
+--
+
+CREATE TABLE `our_service_lists` (
+  `id` bigint UNSIGNED NOT NULL,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `title_ar` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `our_service_id` bigint UNSIGNED NOT NULL,
+  `status` enum('active','inactive') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'active',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `our_service_lists`
+--
+
+INSERT INTO `our_service_lists` (`id`, `title`, `title_ar`, `our_service_id`, `status`, `created_at`, `updated_at`) VALUES
+(2, 'Subsidized Housing Loan: Providing subsidized home loans to citizens in partnership with banks.', 'قرض الإسكان المدعوم: تقديم قروض سكنية مدعومة للمواطنين بالشراكة مع البنوك.', 2, 'active', '2025-08-23 02:17:00', '2025-08-24 01:25:38');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `our_service_requests`
+--
+
+CREATE TABLE `our_service_requests` (
+  `id` bigint UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name_ar` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `phone` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `message` text COLLATE utf8mb4_unicode_ci,
+  `form_data` json DEFAULT NULL,
+  `our_service_id` bigint UNSIGNED NOT NULL,
+  `status` enum('active','inactive') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'active',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `pages`
 --
 
@@ -5661,6 +5827,114 @@ CREATE TABLE `personal_access_tokens` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `private_sectors`
+--
+
+CREATE TABLE `private_sectors` (
+  `id` bigint UNSIGNED NOT NULL,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `title_ar` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `description_ar` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` enum('active','inactive') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'active',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `private_sectors`
+--
+
+INSERT INTO `private_sectors` (`id`, `title`, `title_ar`, `description`, `description_ar`, `image`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'Real Estate Development Fund', 'صندوق التنمية العقارية', NULL, NULL, '68aaedcb248fa1756032459.png', 'active', '2025-08-24 04:47:39', '2025-08-24 04:47:39');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `private_sector_forms`
+--
+
+CREATE TABLE `private_sector_forms` (
+  `id` bigint UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name_ar` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `type` enum('text','number','email','select','radio','checkbox','date','time','datetime','file','image') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'text',
+  `required` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'no',
+  `placeholder` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `placeholder_ar` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `options` json DEFAULT NULL,
+  `options_ar` json DEFAULT NULL,
+  `col` int DEFAULT '12',
+  `service_id` bigint UNSIGNED NOT NULL,
+  `status` enum('active','inactive') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'active',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `private_sector_forms`
+--
+
+INSERT INTO `private_sector_forms` (`id`, `name`, `name_ar`, `type`, `required`, `placeholder`, `placeholder_ar`, `options`, `options_ar`, `col`, `service_id`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'Name', 'اسم', 'text', 'yes', 'Enter your name', 'أدخل اسمك', '[null]', '[null]', 12, 1, 'active', '2025-08-24 04:55:50', '2025-08-24 04:55:50'),
+(2, 'Required Sectors', 'القطاعات المطلوبة', 'checkbox', 'no', NULL, NULL, '[\"Test 1\", \"Test 2\", \"Test 3\"]', '[\"الاختبار 1\", \"الاختبار 1\", \"الاختبار 1\"]', 12, 1, 'active', '2025-08-24 04:56:55', '2025-08-24 04:57:47'),
+(3, 'Attachments', 'المرفقات', 'file', 'yes', NULL, NULL, 'null', 'null', 12, 1, 'active', '2025-08-24 04:57:27', '2025-08-24 04:57:42');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `private_sector_lists`
+--
+
+CREATE TABLE `private_sector_lists` (
+  `id` bigint UNSIGNED NOT NULL,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `title_ar` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `service_id` bigint UNSIGNED NOT NULL,
+  `status` enum('active','inactive') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'active',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `private_sector_lists`
+--
+
+INSERT INTO `private_sector_lists` (`id`, `title`, `title_ar`, `service_id`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'Personal Financing', 'التمويل الشخصي', 1, 'active', '2025-08-24 04:52:34', '2025-08-24 04:52:34');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `request_orders`
+--
+
+CREATE TABLE `request_orders` (
+  `id` bigint UNSIGNED NOT NULL,
+  `user_id` bigint UNSIGNED DEFAULT NULL,
+  `service_id` bigint UNSIGNED NOT NULL,
+  `type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `form_data` json DEFAULT NULL,
+  `form_checkbox` json DEFAULT NULL,
+  `form_radio` json DEFAULT NULL,
+  `form_file` json DEFAULT NULL,
+  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `is_seen` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `request_orders`
+--
+
+INSERT INTO `request_orders` (`id`, `user_id`, `service_id`, `type`, `form_data`, `form_checkbox`, `form_radio`, `form_file`, `status`, `is_seen`, `created_at`, `updated_at`) VALUES
+(3, 0, 1, 'PrivateSector', '{\"name\": \"hello test private sector request\"}', '{\"required_sectors\": [\"Test 1\", \"Test 2\", \"Test 3\"]}', '[]', '[]', 'pending', '0', '2025-08-24 05:03:56', '2025-08-24 05:03:56');
 
 -- --------------------------------------------------------
 
@@ -6273,6 +6547,18 @@ ALTER TABLE `investments`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `investment_opportunities`
+--
+ALTER TABLE `investment_opportunities`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `investment_opportunity_categories`
+--
+ALTER TABLE `investment_opportunity_categories`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `jobs`
 --
 ALTER TABLE `jobs`
@@ -6375,6 +6661,33 @@ ALTER TABLE `orders`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `our_services`
+--
+ALTER TABLE `our_services`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `our_service_forms`
+--
+ALTER TABLE `our_service_forms`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `our_service_forms_our_service_id_foreign` (`our_service_id`);
+
+--
+-- Indexes for table `our_service_lists`
+--
+ALTER TABLE `our_service_lists`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `our_service_lists_our_service_id_foreign` (`our_service_id`);
+
+--
+-- Indexes for table `our_service_requests`
+--
+ALTER TABLE `our_service_requests`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `our_service_requests_our_service_id_foreign` (`our_service_id`);
+
+--
 -- Indexes for table `pages`
 --
 ALTER TABLE `pages`
@@ -6393,6 +6706,30 @@ ALTER TABLE `personal_access_tokens`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `personal_access_tokens_token_unique` (`token`),
   ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
+
+--
+-- Indexes for table `private_sectors`
+--
+ALTER TABLE `private_sectors`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `private_sector_forms`
+--
+ALTER TABLE `private_sector_forms`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `private_sector_lists`
+--
+ALTER TABLE `private_sector_lists`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `request_orders`
+--
+ALTER TABLE `request_orders`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `sms_configs`
@@ -6602,6 +6939,18 @@ ALTER TABLE `investments`
   MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `investment_opportunities`
+--
+ALTER TABLE `investment_opportunities`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `investment_opportunity_categories`
+--
+ALTER TABLE `investment_opportunity_categories`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
 -- AUTO_INCREMENT for table `jobs`
 --
 ALTER TABLE `jobs`
@@ -6641,7 +6990,7 @@ ALTER TABLE `messages`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=120;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=137;
 
 --
 -- AUTO_INCREMENT for table `notification_logs`
@@ -6680,6 +7029,30 @@ ALTER TABLE `orders`
   MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3091;
 
 --
+-- AUTO_INCREMENT for table `our_services`
+--
+ALTER TABLE `our_services`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `our_service_forms`
+--
+ALTER TABLE `our_service_forms`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `our_service_lists`
+--
+ALTER TABLE `our_service_lists`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `our_service_requests`
+--
+ALTER TABLE `our_service_requests`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `pages`
 --
 ALTER TABLE `pages`
@@ -6690,6 +7063,30 @@ ALTER TABLE `pages`
 --
 ALTER TABLE `personal_access_tokens`
   MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `private_sectors`
+--
+ALTER TABLE `private_sectors`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `private_sector_forms`
+--
+ALTER TABLE `private_sector_forms`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `private_sector_lists`
+--
+ALTER TABLE `private_sector_lists`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `request_orders`
+--
+ALTER TABLE `request_orders`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `sms_configs`
@@ -6766,6 +7163,24 @@ ALTER TABLE `user_logins`
 --
 ALTER TABLE `opportunities`
   ADD CONSTRAINT `opportunities_authority_id_foreign` FOREIGN KEY (`authority_id`) REFERENCES `authorities` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `our_service_forms`
+--
+ALTER TABLE `our_service_forms`
+  ADD CONSTRAINT `our_service_forms_our_service_id_foreign` FOREIGN KEY (`our_service_id`) REFERENCES `our_services` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `our_service_lists`
+--
+ALTER TABLE `our_service_lists`
+  ADD CONSTRAINT `our_service_lists_our_service_id_foreign` FOREIGN KEY (`our_service_id`) REFERENCES `our_services` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `our_service_requests`
+--
+ALTER TABLE `our_service_requests`
+  ADD CONSTRAINT `our_service_requests_our_service_id_foreign` FOREIGN KEY (`our_service_id`) REFERENCES `our_services` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -7,6 +7,7 @@ use App\Http\Controllers\SearchController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SupportController;
 use App\Http\Controllers\PropertyController;
+use App\Http\Controllers\WebRequestController;
 use App\Http\Controllers\User\FavoriteController;
 
 Route::get('/clear', function () {
@@ -33,6 +34,20 @@ Route::get('search', [SearchController::class, 'search'])->name('search');
 
 Route::prefix('services')->group(function () {
     Route::post('register', [\App\Http\Controllers\Admin\ServiceRequestController::class, 'store'])->name('services.form.submit');
+});
+
+
+
+Route::controller(WebRequestController::class)->group(function () {
+    // our service request
+
+    Route::get('our-service-request', 'ourServiceRequest')->name('our-service-request.index');
+    Route::post('our-service-request', 'store')->name('our-service-request.store');
+
+    // private sector request
+    Route::get('private-sector-request', 'privateSectorRequest')->name('private-sector-request.index');
+    
+    
 });
 
 

@@ -18,30 +18,84 @@
             </a>
         </li>
 
-        <li class="menu-label">@lang('Requests')</li>
-        <li class="sidebar--menu {{ menuActive('admin.service-request.*') }}">
-            <a href="{{ route('admin.service-request.index') }}">
-                <div class="parent-icon"><i class="bi bi-arrow-up-left-square"></i>
+
+        <li class="menu-label">@lang('Request')</li>
+        <li class="sidebar--menu sidebar--dropdown {{ menuActive(['admin.request_order*']) }}">
+            <a href="javascript:;" class="has-arrow">
+                <div class="parent-icon"><i class="bi bi-globe-asia-australia"></i>
                 </div>
-                <div class="menu-title">@lang('Service Requests')</div>
+                <div class="menu-title">@lang('Request')</div>
             </a>
+            <ul>
+                @foreach (requestTypes() as $type)
+                    <li class="{{ menuActive('admin.request_order*') }}">
+                        <a href="{{ route('admin.request_order.index', ['type' => $type['model']]) }}"><i
+                                class="bi bi-record-circle"></i>
+                            {{ app()->getLocale() == 'ar' ? $type['name_ar'] : $type['name'] }}
+                        </a>
+                    </li>
+                @endforeach
+            </ul>
         </li>
-        <li class="sidebar--menu {{ menuActive('admin.orders*') }}">
-            <a href="{{ route('admin.orders.index') }}">
-                <div class="parent-icon"><i class="bi bi-arrow-up-left-square"></i>
-                </div>
-                <div class="menu-title">@lang('Requests')</div>
-            </a>
-        </li>
-        <li class="menu-label">@lang('Messages')</li>
-        <li class="sidebar--menu {{ menuActive('admin.messages*') }}">
-            <a href="{{ route('admin.messages.index') }}">
-                <div class="parent-icon"><i class="bi bi-envelope"></i>
-                </div>
-                <div class="menu-title">@lang('Messages')</div>
-            </a>
-        </li>
+        
+
         <li class="menu-label">@lang('Services')</li>
+        <li
+            class="sidebar--menu sidebar--dropdown {{ menuActive(['admin.our_service*']) }}">
+
+            <a href="javascript:;" class="has-arrow">
+                <div class="parent-icon"><i class="bi bi-globe-asia-australia"></i>
+                </div>
+                <div class="menu-title">@lang('Our Services')</div>
+            </a>
+
+            <ul>
+                <li class="{{ menuActive('admin.our_service*') }}">
+                    <a href="{{ route('admin.our_service.index') }}"><i
+                            class="bi bi-record-circle"></i>@lang('Our Services')</a>
+                </li>
+            </ul>
+        </li>
+
+        <li
+            class="sidebar--menu sidebar--dropdown {{ menuActive(['admin.private_sectors*']) }}">
+
+            <a href="javascript:;" class="has-arrow">
+                <div class="parent-icon"><i class="bi bi-globe-asia-australia"></i>
+                </div>
+                <div class="menu-title">@lang('Private Sectors')</div>
+            </a>
+
+            <ul>
+                <li class="{{ menuActive('admin.private_sectors*') }}">
+                    <a href="{{ route('admin.private_sectors.index') }}"><i
+                            class="bi bi-record-circle"></i>@lang('Private Sectors')</a>
+                </li>
+            </ul>
+        </li>
+
+
+        <li
+            class="sidebar--menu sidebar--dropdown {{ menuActive(['admin.investment_opportunities*']) }}">
+
+            <a href="javascript:;" class="has-arrow">
+                <div class="parent-icon"><i class="bi bi-globe-asia-australia"></i>
+                </div>
+                <div class="menu-title">@lang('Investment Opportunities')</div>
+            </a>
+
+            <ul>
+                <li class="{{ menuActive('admin.investment_opportunities*') }}">
+                    <a href="{{ route('admin.investment_opportunities.index') }}"><i
+                            class="bi bi-record-circle"></i>@lang('Investment Opportunities')</a>
+                </li>
+                <li class="{{ menuActive('admin.investment_opportunities.categories*') }}">
+                    <a href="{{ route('admin.investment_opportunities.categories.index') }}"><i
+                            class="bi bi-record-circle"></i>@lang('Categories')</a>
+                </li>
+            </ul>
+        </li>
+
         <li
             class="sidebar--menu sidebar--dropdown {{ menuActive(['admin.country*', 'admin.city*']) }}">
             <a href="javascript:;" class="has-arrow">
@@ -56,42 +110,6 @@
                 </li>
                 <li class="{{ menuActive('admin.city*') }}">
                     <a href="{{ route('admin.city.index') }}"><i class="bi bi-record-circle"></i>@lang('Cities')</a>
-                </li>
-            </ul>
-        </li>
-
-        <li
-            class="sidebar--menu sidebar--dropdown {{ menuActive(['admin.service*']) }}">
-            <a href="javascript:;" class="has-arrow">
-                <div class="parent-icon"><i class="bi bi-database-fill"></i>
-                </div>
-                <div class="menu-title">@lang('Service')</div>
-            </a>
-            <ul>
-                <li class="{{ menuActive('admin.service*') }}">
-                    <a href="{{ route('admin.service.create') }}"><i
-                            class="bi bi-record-circle"></i>@lang('Add New')</a>
-                </li>
-                <li class="{{ menuActive('admin.service*') }}">
-                    <a href="{{ route('admin.service.index') }}"><i class="bi bi-record-circle"></i>@lang('View All')</a>
-                </li>
-            </ul>
-        </li>
-
-        <li
-            class="sidebar--menu sidebar--dropdown {{ menuActive(['admin.categories*']) }}">
-            <a href="javascript:;" class="has-arrow">
-                <div class="parent-icon"><i class="bi bi-file"></i>
-                </div>
-                <div class="menu-title">@lang('Categories')</div>
-            </a>
-            <ul>
-                <li class="{{ menuActive('admin.categories*') }}">
-                    <a href="{{ route('admin.categories.create') }}"><i
-                            class="bi bi-record-circle"></i>@lang('Add New')</a>
-                </li>
-                <li class="{{ menuActive('admin.categories*') }}">
-                    <a href="{{ route('admin.categories.index') }}"><i class="bi bi-record-circle"></i>@lang('View All')</a>
                 </li>
             </ul>
         </li>

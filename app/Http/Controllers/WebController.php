@@ -2,29 +2,35 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Order;
-use App\Models\Message;
 use Exception;
-use Illuminate\Support\Facades\Cookie;
 use Carbon\Carbon;
 use App\Models\Blog;
 use App\Models\Page;
+use App\Models\Order;
+use App\Models\Auction;
+use App\Models\Message;
 use App\Models\Frontend;
 use App\Models\Language;
 use App\Constants\Status;
+use App\Models\OurService;
 use App\Models\Subscriber;
 use Illuminate\Http\Request;
+use App\Models\PrivateSector;
 use App\Models\SupportTicket;
 use App\Models\SupportMessage;
 use App\Models\AdminNotification;
-use App\Models\Auction;
+use Illuminate\Support\Facades\Cookie;
+use App\Models\InvestmentOpportunityCategory;
 
 class WebController extends Controller
 {
     public function index()
     {
         $sections = Page::where('slug', '/')->first();
-        return view('web.home', compact('sections'));
+        $our_services = OurService::where('status', 'active')->get();
+        $private_sectors = PrivateSector::where('status', 'active')->get();
+        $investment_opportunity_categories = InvestmentOpportunityCategory::where('status', 'active')->get();
+        return view('web.home', compact('sections', 'our_services', 'private_sectors', 'investment_opportunity_categories'));
     }
 
     public function contact()

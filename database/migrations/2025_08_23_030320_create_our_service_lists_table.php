@@ -11,12 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('investment_categories', function (Blueprint $table) {
+        Schema::create('our_service_lists', function (Blueprint $table) {
             $table->id();
             $table->string('title');
             $table->string('title_ar');
-            $table->tinyInteger('status')->default(1);
-            $table->timestamps(); 
+            $table->foreignId('our_service_id')->constrained('our_services')->cascadeOnDelete();
+            $table->enum('status', ['active', 'inactive'])->default('active');
+            $table->timestamps();
         });
     }
 
@@ -25,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('investment_categories');
+        Schema::dropIfExists('our_service_lists');
     }
 };

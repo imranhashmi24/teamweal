@@ -10,4 +10,5 @@
          @stack('breadcrumb-plugins')
         @yield('panel')
     </main>
+    
 @endsection

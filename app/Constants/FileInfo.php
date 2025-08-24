@@ -99,9 +99,29 @@ class FileInfo
             'size' => '400x400',
         ];
 
+        $data['our_service'] = [
+            'path' => 'assets/admin/images/our_service',
+            'size' => '300x190',
+        ];
+
         $data['service'] = [
             'path' => 'assets/admin/images/services',
             'size' => '300x190',
+        ];
+
+        $data['private_sector'] = [
+            'path' => 'assets/admin/images/private_sectors',
+            'size' => '100x100',
+        ];
+
+        $data['investment_opportunity_category'] = [
+            'path' => 'assets/admin/images/investment_opportunity_category',
+            'size' => '100x100',
+        ];
+
+        $data['investment_opportunity'] = [
+            'path' => 'assets/admin/images/investment_opportunity',
+            'size' => '300x220',
         ];
 
         return $data;

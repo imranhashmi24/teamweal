@@ -274,6 +274,14 @@ function fileUploader($file, $location, $size = null, $old = null, $thumb = null
     return $fileManager->filename;
 }
 
+function fileDeleter($file, $location)
+{
+    $file = public_path($location . '/' . $file);
+    if (file_exists($file)) {
+        unlink($file);
+    }
+}
+
 function strLimit($title = null, $length = 10)
 {
     return Str::limit($title, $length);
@@ -471,3 +479,54 @@ if(!function_exists('makeDotStr')){
     }
 }
 
+
+if(!function_exists('getForm')){
+    function getForm($service_id, $form_model, $form_model_id){
+     
+        $forms = [];
+
+        if(!$form_model || !$form_model_id || !$service_id){
+            return $forms;
+        }
+
+        $model = "App\Models\\" . $form_model;
+
+        $forms = $model::where($form_model_id, $service_id)->get();
+
+        if($forms->isEmpty()){
+            return $forms;
+        }
+
+        return view('frontend.form', compact('forms', 'service_id'));
+    }
+}
+
+
+if (!function_exists('base64urlEncode')) {
+    function base64urlEncode($string) {
+        return rtrim(strtr(base64_encode($string), '+/', '-_'), '=');
+    }
+}
+
+if (!function_exists('base64urlDecode')) {
+    function base64urlDecode($string) {
+        return base64_decode(strtr($string, '-_', '+/'));
+    }
+}
+
+if(!function_exists('requestTypes')){
+    function requestTypes(){
+        return [
+            [   
+                'model' => 'OurService',
+                'name' => 'Our Service Request',
+                'name_ar' => 'طلب خدمة',
+            ],
+            [
+                'model' => 'PrivateSector',
+                'name' => 'Private Sector Request',
+                'name_ar' => 'طلب القطاع الخاص',
+            ],
+        ];
+    }
+}
