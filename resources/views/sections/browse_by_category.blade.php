@@ -9,7 +9,7 @@
             @foreach ($investment_opportunity_categories as $category)
                 <div class="col-12 col-md-6 col-lg-3 mb-4">
                     <div class="browser-card card  shadow-sm h-100 text-center p-4 bg-white">
-                        <a href="#" class="text-decoration-none text-dark">
+                        <a href="{{ route('web.pages.investment-opportunity.view', ['id' => base64urlEncode($category->id)]) }}" class="text-decoration-none text-dark">
                             <div class="icon-circle mx-auto mb-3">
                                 <img src="{{ getImage(getFilepath('investment_opportunity_category') . '/' . $category->image) }}"
                                     alt="Category" class="img-fluid">

@@ -47,6 +47,8 @@ Route::controller(WebRequestController::class)->group(function () {
     // private sector request
     Route::get('private-sector-request', 'privateSectorRequest')->name('private-sector-request.index');
     
+    // financial investment request
+    Route::get('financial-investment-request', 'financialInvestmentRequest')->name('financial-investment-request.index');
     
 });
 
@@ -81,7 +83,6 @@ Route::controller(WebController::class)->group(function () {
 
 
     //Menu routes
-    
 
 
     //pages routes
@@ -96,10 +97,8 @@ Route::controller(WebController::class)->group(function () {
         Route::get('marketing', 'marketing')->name('marketing');
         Route::get('jobs', 'jobs')->name('jobs');
         Route::get('investment-opportunities', 'investmentOpportunities')->name('investment-opportunities');
-      
-        
-
-
+        Route::get('investment-opportunities-details', 'investmentOpportunityView')->name('investment-opportunity.view');
+    
 
         Route::get('about-us', 'about_us')->name('about-us');
         Route::view('contact-us', 'web.pages.contact-us')->name('contact-us');

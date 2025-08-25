@@ -76,6 +76,42 @@
 
 
         <li
+            class="sidebar--menu sidebar--dropdown {{ menuActive(['admin.sectors*']) }}">
+
+            <a href="javascript:;" class="has-arrow">
+                <div class="parent-icon"><i class="bi bi-globe-asia-australia"></i>
+                </div>
+                <div class="menu-title">@lang('Sectors')</div>
+            </a>
+
+            <ul>
+                <li class="{{ menuActive('admin.sectors*') }}">
+                    <a href="{{ route('admin.sectors.index') }}"><i
+                            class="bi bi-record-circle"></i>@lang('Sectors')</a>
+                </li>
+            </ul>
+        </li>
+
+
+        <li
+            class="sidebar--menu sidebar--dropdown {{ menuActive(['admin.financial_investments*']) }}">
+
+            <a href="javascript:;" class="has-arrow">
+                <div class="parent-icon"><i class="bi bi-globe-asia-australia"></i>
+                </div>
+                <div class="menu-title">@lang('Financial Investments')</div>
+            </a>
+
+            <ul>
+                <li class="{{ menuActive('admin.financial_investments*') }}">
+                    <a href="{{ route('admin.financial_investments.index') }}"><i
+                            class="bi bi-record-circle"></i>@lang('Financial Investments')</a>
+                </li>
+            </ul>
+        </li>
+
+
+        <li
             class="sidebar--menu sidebar--dropdown {{ menuActive(['admin.investment_opportunities*']) }}">
 
             <a href="javascript:;" class="has-arrow">

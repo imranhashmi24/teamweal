@@ -39,8 +39,8 @@
 
                 <!-- Button + Caption -->
                 <div class="settlement-button mt-3 d-flex align-items-center">
-                    <a href="#" class="btn btn-primary btn-lg ">Settlement Request Now</a>
-                    <p class="mt-2 small text-muted ms-2">with complete privacy and high efficiency</p>
+                    <a href="{{route('web.pages.smart-collection')}}" class="btn btn-primary btn-lg ">{{__('Settlement Request Now')}}</a>
+                    <p class="mt-2 small text-muted ms-2">{{__('with complete privacy and high efficiency')}}</p>
                 </div>
             </div>
         </div>

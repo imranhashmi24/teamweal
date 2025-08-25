@@ -24,8 +24,15 @@ class DatabaseSeeder extends Seeder
             // CitySeeder::class,
             //    PropertyTypeAreaSeeder::class,
 
-           // TemplateSeeder::class
-        ]);
+           // TemplateSeeder::class,
 
+          // OurServiceSeeder::class,
+          // PrivateSeeder::class,
+
+          //InvestmentOpportunitiesSeeder::class,
+          // FinancialInvestmentSeeder::class,
+
+          SectorSeeder::class,
+        ]);
     }
 }

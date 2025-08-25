@@ -36,4 +36,10 @@ class InvestmentOpportunityCategory extends Model
 
 
     public static $searchable = ['title', 'title_ar'];
+
+
+    public function investmentOpportunities()
+    {
+        return $this->hasMany(InvestmentOpportunity::class, 'category_id');
+    }
 }

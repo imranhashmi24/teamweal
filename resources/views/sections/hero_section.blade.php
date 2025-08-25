@@ -11,7 +11,7 @@
             <p>
                 {{ @$heroSectionContent->lang('description') }}
             </p>
-            <a href="#" class="btn btn-custom mt-3">@lang('Create Investor Account')</a>
+            <a href="{{ route('user.register') }}" class="btn btn-custom mt-3">@lang('Create Investor Account')</a>
         </div>
     </div>
 </section>

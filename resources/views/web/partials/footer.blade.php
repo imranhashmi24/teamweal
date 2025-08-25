@@ -1,4 +1,4 @@
-{{-- @php
+@php
     $socialMediaElements = getContent('social_media.element', null, false, true);
     $footerContents = getContent('footer.content', true);
     $pages = App\Models\Page::where('is_default', Status::NO)->get();
@@ -32,10 +32,10 @@
                         <div class="my-3 footer-title">
                             <h6 class="pb-2 text-white"> @lang('Social Connect')</h6>
                         </div>
-                        <ul class="d-flex">
+                        <ul class="d-flex" style="list-style: none;">
                             @foreach ($socialMediaElements as $socialMediaElement)
                                 <li class="mx-2">
-                                    <a href="{{ @$socialMediaElement->data_values->link }}" class="text-white" target="_blank">
+                                    <a href="{{ @$socialMediaElement->data_values->link }}" class="text-white" target="_blank" >
                                         @php echo @$socialMediaElement->data_values->icon @endphp
                                     </a>
                                 </li>
@@ -46,32 +46,39 @@
             </div>
             <div class="col-12 col-lg-6">
                 <div class="footer-title">
-                    <h5 class="pb-3 text-white"> @lang('Useful Links') </h5>
+                    <h5 class="pb-3 text-white ml-4"> @lang('Useful Links') </h5>
                 </div>
                 <div class="footer-link">
-                    <ul>
-                        <div class="row">
-                            <div class="pb-2 col-6">
-                                <li>
-                                    <a href="{{ route('blogs') }}"> @lang('Blogs') </a>
-                                </li>
-                                @foreach ($categories->take(10) as $category)
-                                    <li>
-                                        <a href="{{ route('services', [$category->id]) }}">
-                                            {{ app()->getLocale() == 'en' ? $category->name : $category->name_ar }} </a>
-                                    </li>
-                                @endforeach
-                            </div>
+                    <ul style="list-style: none;">
+                        <li>
+                        <a href="{{ route('web.pages.sectors') }}"> {{ __('Sectors') }} </a>
+                        </li>
 
-                            <div class="pb-2 col-6">
-                                @foreach ($categories->skip(10) as $category)
-                                    <li>
-                                        <a href="{{ route('services', [$category->id]) }}">
-                                            {{ app()->getLocale() == 'en' ? $category->name : $category->name_ar }} </a>
-                                    </li>
-                                @endforeach
-                            </div>
-                        </div>
+                        <li>
+                            <a href="{{ route('web.pages.embedded-finance') }}"> {{ __('Embeded Finance') }} </a>
+                        </li>
+
+                        <li>
+                            <a href="{{ route('web.pages.smart-collection') }}"> {{ __('Smart Collection') }} </a>
+                        </li>
+
+                        <li>
+                            <a href="{{ route('web.pages.open-banking') }}"> {{ __('Open Banking') }} </a>
+                        </li>
+
+                        <li>
+                            <a href="{{ route('web.pages.events') }}"> {{ __('Events') }} </a>
+                        </li>
+
+                        <li>
+                            <a href="{{ route('web.pages.marketing') }}"> {{ __('Marketing') }} </a>
+                        </li>
+
+
+
+                        <li>
+                            <a href="{{ route('blogs') }}"> @lang('Blogs')</a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -84,14 +91,7 @@
                         <li>
                             <a href="{{ route('home') }}"> @lang('Homepage')</a>
                         </li>
-                        @foreach ($pages as $page)
-                            <li>
-                                <a href="{{ route('pages', [$page->slug]) }}">
-                                    {{ __($page->name) }} </a>
-                            </li>
-                        @endforeach
-
-
+                        
 
                         @foreach ($policyPages as $policyPage)
                             <li>
@@ -159,4 +159,4 @@
             }
         });
     </script>
-@endpush --}}
+@endpush

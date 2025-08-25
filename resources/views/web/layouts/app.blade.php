@@ -131,6 +131,11 @@
                 $('.select2-multiple').select2({
                     tags: true
                 });
+
+                $('.mobile-menu-click').on('click', function () {
+                    $('body').addClass('padding-right-0');
+                    
+                });
             });
 
         })(jQuery);

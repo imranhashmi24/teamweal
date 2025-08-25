@@ -98,6 +98,11 @@ body {
     color: var(--color-text-primary);
     line-height: 1.6;
     font-size: var(--fs-body);
+    padding: 0;
+}
+
+body.padding-right-0{
+    padding-right: 0 !important;
 }
 
 body a {
@@ -278,9 +283,9 @@ header {
     cursor: pointer;
 }
 
-/*.menubar ul {*/
-/*    text-align: right;*/
-/*}*/
+.menubar ul {
+    text-align: right;
+}
 
 .menubar ul li {
     display: inline-block;
@@ -421,6 +426,43 @@ header {
 /*HEADER*/
 
 /*MOBILE MENU*/
+
+
+.canvas-mobile-menu a {
+    display: block;
+    width: 100%;
+    font-size: 15px;
+    padding: 10px;
+}
+
+.canvas-mobile-menu a:hover {
+    background: #e4e4e4;
+}
+
+.offcanvas.offcanvas-mobile-menu {
+    max-width: 300px !important;
+}
+
+.footer-title>h5 {
+    border-bottom: 1px solid #cccccc45;
+    color: #ffffffb0 !important;
+}
+
+.footer-title>h6 {
+    border-bottom: 1px solid #cccccc45;
+    color: #ffffffb0 !important;
+}
+
+.offcanvas-mobile-menu .offcanvas-header .btn-close {
+    border: 1px solid #cccccc;
+    outline: none;
+    box-shadow: none;
+}
+
+.offcanvas-mobile-menu .offcanvas-header {
+    align-items: start;
+}
+
 
 /*ACCORDION CUSTOM*/
 .mobile-logo img {
@@ -726,3 +768,139 @@ header {
 }
 
 /* ================================ Private Sector Section End================================ */
+
+/* ====================================================== FOOTER SECTION  ============================================================================================ */
+
+.footer-logo img {
+    width: 180px;
+}
+
+.footer-part {
+    background: var(--bgc);
+}
+
+.footer-left p {
+    font-size: 14px;
+    line-height: 18px;
+    color: #ffffffb0;
+}
+
+.footer-title .paragraph {
+    font-weight: 500;
+    font-size: 18px;
+    color: var(--wc);
+    position: relative;
+}
+
+.footer-title .paragraph::after {
+    position: absolute;
+    width: 30px;
+    height: 2px;
+    background: var(--pyc);
+    top: 30px;
+    left: 0px;
+    content: '';
+}
+
+.footer-link ul li {
+    transition: .3s ease;
+    padding: 4px 0;
+}
+
+.footer-link ul li i {
+    color: var(--pyc);
+}
+
+.footer-link ul li a {
+    color: #ffffffb0;
+    font-size: 14px;
+}
+
+.footer-link ul li:hover {
+    margin-left: 3px;
+}
+
+.footer-part .media img {
+    border: 5px solid var(--wc);
+    width: 80px;
+}
+
+.footer-part .media p {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+    color: var(--wc);
+}
+
+.footer-part .media span {
+    color: var(--pyc);
+}
+
+.footer-part .custom-control {
+    height: 45px;
+    font-weight: 400;
+    font-size: 14px;
+    padding-left: 10px;
+    color: #474747;
+    border: none;
+    background: var(--wc);
+    outline: none;
+    border-radius: 5px;
+}
+
+.footer-part button {
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--wc);
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    padding-left: 12px;
+    padding-right: 12px;
+    background: #8022a3;
+}
+
+.social-media-link ul li {
+    background: var(--rvc);
+    height: 30px;
+    width: 30px;
+    color: var(--ac);
+    border: 1px solid #8022a3;
+    border-radius: 50px;
+    line-height: 30px;
+    text-align: center;
+}
+
+.social-media-link ul li {
+    color: #ffffff81;
+}
+
+.social-media-link ul li:hover {
+    background: none;
+    border: 1px solid #8022a3;
+}
+
+.social-media-link ul li:hover a {
+    color: var(--pyc);
+}
+
+.social-media-link ul li i {
+    font-size: 14px;
+}
+
+/* copyright section */
+.copyright-part {
+    background: #230030;
+}
+
+.copyright-part span {
+    color: var(--pyc);
+}
+
+.copyright-part p {
+    margin: 0;
+    color: #d5d5d5;
+}
+
+/* ===========================================================  FOOTER PART END ============================================================== */

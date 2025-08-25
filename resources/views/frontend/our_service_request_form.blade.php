@@ -35,6 +35,7 @@
                        @php
                            echo getForm($service_id, $model, $field);
                        @endphp
+
                        <button type="submit" class="btn btn-primary submit-btn">{{ __('Submit Request') }}</button>
                     </form>
                 </div>

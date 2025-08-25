@@ -8,11 +8,13 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-12 col-md-10">
-                <div class="card custom-card">
+                <div class="card border-0">
+
                     <div class="card-header">
                         <h5 class="card-title text-center">@lang('Join our network of verified service providers')</h5>
                         <p class="text-center mb-0">@lang('Start offering your services to businesses and organizations seeking advanced tech solutions')</p>
                     </div>
+
                     <div class="card-body px-4">
                         <form method="POST" action="{{ route('user.register') }}" enctype="multipart/form-data">
                             @csrf
@@ -271,7 +273,7 @@
                             
                             <div class="col-12 pb-3">
                                 <div class="form-group">
-                                    <button type="submit" id="recaptcha" class="btn btn-base w-100">@lang('Submit Application')</button>
+                                    <button type="submit" id="recaptcha" class="btn btn-primary w-100">@lang('Submit Application')</button>
                                 </div>
                                 
                                 <p class="mb-0 text-center pt-3">@lang('Already have an account?') <a href="{{ route('user.login') }}">@lang('Sign In')</a></p>
@@ -343,4 +345,29 @@
             });
         })(jQuery);
     </script>
+@endpush
+
+
+@push('style')
+    <style>
+        .card {
+            border: none;
+            background: transparent;
+        }
+
+        .card:hover {
+            background: transparent;
+            border: none;
+            box-shadow: none;
+        }
+
+        .form-control,
+        .form-select,
+        .form-check-input {
+           border-radius: 0px !important;
+           border: 1px solid #ddd !important;
+        }
+
+       
+    </style>
 @endpush

@@ -1,9 +1,29 @@
 @php
     $lang = app()->getLocale() ?? 'en';
+    $conditional_on = [];
 @endphp
 
+
 <div class="row">
+
+    @php
+        $count = 1;
+    @endphp
     @foreach($forms as $form)
+
+    
+        {{-- TITLE --}}
+        @if($form->type == 'title')
+            <div class="col-{{ $form->col }}">
+                <div class="form-group my-2 border-bottom pb-2">
+                    <h5> {{ $count }} . {{ $lang == 'ar' ? $form->name_ar : $form->name }}</h5>
+                </div>
+            </div>
+            @php
+                $count++;
+            @endphp
+        @endif
+
 
         {{-- TEXT --}}
         @if($form->type == 'text')
@@ -65,6 +85,26 @@
                 </div>
             </div>
 
+        {{-- TEL --}}
+        @elseif($form->type == 'tel')
+            <div class="col-{{ $form->col }}">
+                <div class="form-group my-2">
+                    <label for="{{ Str::slug($form->name, '_') }}" class="form-label">
+                        {{ $lang == 'ar' ? $form->name_ar : $form->name }}
+                        @if($form->required == 'yes') <span class="text-danger">*</span> @endif
+                    </label>
+                    <input 
+                        type="tel" 
+                        class="form-control rounded-0" 
+                        id="{{ Str::slug($form->name, '_') }}" 
+                        name="form_data[{{ Str::slug($form->name, '_') }}]" 
+                        value="{{ old('form_data.'.Str::slug($form->name, '_')) }}"
+                        placeholder="{{ $form->placeholder ? ($lang=='ar' ? $form->placeholder_ar : $form->placeholder) : ($lang=='ar' ? $form->name_ar : $form->name) }}"
+                        @if($form->required == 'yes') required @endif
+                    >
+                </div>
+            </div>
+
         {{-- SELECT --}}
         @elseif($form->type == 'select')
             <div class="col-{{ $form->col }}">
@@ -74,15 +114,22 @@
                         @if($form->required == 'yes') <span class="text-danger">*</span> @endif
                     </label>
                     <select 
-                        class="form-control rounded-0" 
+                        class="form-select rounded-0" 
                         id="{{ Str::slug($form->name, '_') }}" 
                         name="form_data[{{ Str::slug($form->name, '_') }}]"
                         @if($form->required == 'yes') required @endif
                     >
                         <option value="">{{ $lang == 'ar' ? $form->name_ar : $form->name }}</option>
-                        @foreach ($form->options as $option)
-                            <option value="{{ $option }}">{{ $option }}</option>
-                        @endforeach
+
+                        @if($lang == 'ar')
+                            @foreach ($form->options_ar as $option)
+                                <option value="{{ $option }}">{{ $option }}</option>
+                            @endforeach
+                        @else
+                            @foreach ($form->options as $option)
+                                <option value="{{ $option }}">{{ $option }}</option>
+                            @endforeach
+                        @endif
                     </select>
                 </div>
             </div>
@@ -125,12 +172,23 @@
         @elseif($form->type == 'checkbox')
             <div class="col-{{ $form->col }}">
                 <div class="form-group my-2">
-                    <label class="form-label">
+                    @php
+                        $display = isset($form->display) ? $form->display : '';
+                    @endphp
+
+                    <div class="form-label">
                         {{ $lang == 'ar' ? $form->name_ar : $form->name }}
                         @if($form->required == 'yes') <span class="text-danger">*</span> @endif
-                    </label>
+                    </div>
+
+
+                    @if ($display == 'form-check-inline')
+                        <br />
+                    @endif
+
+
                     @foreach($lang=='ar' ? $form->options_ar : $form->options as $option)
-                        <div class="form-check">
+                        <div class="form-check {{ $display }}">
                             <input type="checkbox" 
                                 class="form-check-input rounded-0" 
                                 id="{{ Str::slug($form->name, '_').$option }}" 
@@ -140,6 +198,8 @@
                             <label for="{{ Str::slug($form->name, '_').$option }}">{{ $option }}</label>
                         </div>
                     @endforeach
+
+
                 </div>
             </div>
 
@@ -151,8 +211,17 @@
                         {{ $lang == 'ar' ? $form->name_ar : $form->name }}
                         @if($form->required == 'yes') <span class="text-danger">*</span> @endif
                     </label>
+
+                    @php
+                        $display = isset($form->display) ? $form->display : '';
+                    @endphp
+
+                    @if ($display == 'form-check-inline')
+                        <br />
+                    @endif
+
                     @foreach($lang=='ar' ? $form->options_ar : $form->options as $option)
-                        <div class="form-check">
+                        <div class="form-check {{ $display }}">
                             <input type="radio" 
                                 class="form-check-input rounded-0" 
                                 id="{{ Str::slug($form->name, '_').$option }}" 
@@ -185,6 +254,6 @@
                 </div>
             </div>
         @endif
-
     @endforeach
 </div>
+

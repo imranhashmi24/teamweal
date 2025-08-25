@@ -101,12 +101,12 @@ class FileInfo
 
         $data['our_service'] = [
             'path' => 'assets/admin/images/our_service',
-            'size' => '300x190',
+            'size' => '460x242',
         ];
 
         $data['service'] = [
             'path' => 'assets/admin/images/services',
-            'size' => '300x190',
+            'size' => '460x242',
         ];
 
         $data['private_sector'] = [
@@ -122,6 +122,21 @@ class FileInfo
         $data['investment_opportunity'] = [
             'path' => 'assets/admin/images/investment_opportunity',
             'size' => '300x220',
+        ];
+
+        $data['financial_investment'] = [
+            'path' => 'assets/admin/images/financial_investment',
+            'size' => '300x220',
+        ];
+
+        $data['sector'] = [
+            'path' => 'assets/admin/images/sectors',
+            'size' => '300x220',
+        ];
+
+        $data['sector_form'] = [
+            'path' => 'assets/admin/images/sector_form',
+            'size' => '100x100',
         ];
 
         return $data;

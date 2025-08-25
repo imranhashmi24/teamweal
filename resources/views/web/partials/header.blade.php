@@ -37,7 +37,7 @@
                                         <i class="fa-solid fa-arrow-right-to-bracket"></i> @lang('Sign In')
                                     </a>
                                     <a href="{{ route('user.register') }}">
-                                        <i class="fa-solid fa-arrow-right-to-bracket"></i> @lang('Service providers registration')
+                                        <i class="fa-solid fa-arrow-right-to-bracket"></i> @lang('Register')
                                     </a>
                                 </div>
                             @endguest
@@ -70,7 +70,9 @@
 
 <header class="py-2 d-flex align-items-center scrolled">
     <div class="container">
+
         <div class="row align-items-center">
+
             <div class="col-12 col-xl-2">
                 <div class="logo d-flex justify-content-between align-items-center">
                     <a href="{{ route('home') }}">
@@ -81,64 +83,59 @@
                             <i class="bi bi-search mt-2"></i>
                         </div>
 
-                        <i class="fa fa-bars d-xl-none" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"
+                        <i class="fa fa-bars d-xl-none mobile-menu-click" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"
                             aria-controls="offcanvasExample" onclick="mobileClick()" aria-hidden="true"></i>
                     </div>
                 </div>
             </div>
+
             <div class="col-md-10 d-none d-xl-block">
                 <div class="menubar">
+
                     <ul>
                         <li>
                             <a href="{{ route('home') }}"> @lang('Home') </a>
                         </li>
-                        @foreach ($pages as $page)
-                            <li>
-                                <a href="{{ route('pages', [$page->slug]) }}"> {{ __($page->name) }} </a>
-                            </li>
-                        @endforeach
-                         
-{{--                         
-                        @php 
-                            $catsss = App\Models\Category::where('parent_id',0)->get();
-                            
-                        @endphp
-                            
-                        <li class="sub-btn">
-                            <a href="javascript:void(0)">
-                                @lang('Services')
-                                
-                                <i class="fa-solid fa-angle-down"></i>
-                            </a> --}}
-                            {{-- <div class="sub-menu">
-                                 
-                                <a href="{{ route('services') }}"> @lang('All Services')</a>
-                                 
-                                @foreach($catsss as $catss)
-                                <a href="{{ route('categorywiseservices',$catss->id) }}">
-                                    {{ app()->getLocale() == 'en' ? $catss->name : $catss->name_ar }}
-                                 </a>
-                                @endforeach
-                            </div> --}}
-                        </li>
-                            
-                        {{-- <li>
-                            <a href="{{ route('blogs') }}"> @lang('Blogs') </a>
-                        </li>
+
                         <li>
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#searchModal">
-                                <i class="bi bi-search"></i>
-                            </button>
-                        </li> --}}
+                            <a href="{{ route('web.pages.sectors') }}"> {{ __('Sectors') }} </a>
+                        </li>
+
+                        <li>
+                            <a href="{{ route('web.pages.embedded-finance') }}"> {{ __('Embeded Finance') }} </a>
+                        </li>
+
+                        <li>
+                            <a href="{{ route('web.pages.smart-collection') }}"> {{ __('Smart Collection') }} </a>
+                        </li>
+
+                        <li>
+                            <a href="{{ route('web.pages.open-banking') }}"> {{ __('Open Banking') }} </a>
+                        </li>
+
+                        <li>
+                            <a href="{{ route('web.pages.events') }}"> {{ __('Events') }} </a>
+                        </li>
+
+                        <li>
+                            <a href="{{ route('web.pages.marketing') }}"> {{ __('Marketing') }} </a>
+                        </li>
+
+                       
+                        <li>
+                            <a href="{{ route('web.pages.contact-us') }}"> {{ __('Contact Us') }} </a>
+                        </li>
                     </ul>
                 </div>
             </div>
+
         </div>
     </div>
 </header>
 
 <div class="offcanvas offcanvas-mobile-menu {{ $lang == 'ar' ? 'offcanvas-end' : 'offcanvas-start' }}" tabindex="-1"
     id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+
     <div class="offcanvas-header">
         <h5 class="offcanvas-title" id="offcanvasExampleLabel">
             <a href="{{ route('home') }}" class="mobile-logo">
@@ -147,38 +144,17 @@
         </h5>
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
+
     <div class="offcanvas-body">
         <div class="canvas-mobile-menu">
-
-            <a href="{{ route('home') }}"> <i class="bi bi-chevron-right"></i> @lang('Homepage') </a>
-
-            @foreach ($pages as $page)
-                <a href="{{ route('pages', [$page->slug]) }}">
-                  <i class="bi bi-chevron-right"></i>  {{ __($page->name) }} </a>
-            @endforeach
-            
-            
-            {{-- <div class="accordion accordion-flush" id="accordionFlushExample">
-              <div class="accordion-item">
-                <h2 class="accordion-header" id="flush-headingOne">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                     <i class="bi bi-chevron-right"></i> @lang('Services')
-                  </button>
-                </h2>
-                <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                  <div class="accordion-body">
-                       <a href="{{ route('services') }}"> @lang('All Services')</a>
-                       @foreach($catsss as $catss)
-                        <a href="{{ route('categorywiseservices',$catss->id) }}">
-                            {{ app()->getLocale() == 'en' ? $catss->name : $catss->name_ar }}
-                        </a>
-                       @endforeach
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <a href="{{ route('blogs') }}"><i class="bi bi-chevron-right"></i> @lang('Blogs') </a> --}}
+            <a href="{{ route('home') }}"> <i class="bi bi-chevron-right"></i> @lang('Home') </a>
+            <a href="{{ route('web.pages.sectors') }}"> <i class="bi bi-chevron-right"></i> {{ __('Sectors') }} </a>
+            <a href="{{ route('web.pages.embedded-finance') }}"> <i class="bi bi-chevron-right"></i> {{ __('Embeded Finance') }} </a>
+            <a href="{{ route('web.pages.smart-collection') }}"> <i class="bi bi-chevron-right"></i> {{ __('Smart Collection') }} </a>
+            <a href="{{ route('web.pages.open-banking') }}"> <i class="bi bi-chevron-right"></i> {{ __('Open Banking') }} </a>
+            <a href="{{ route('web.pages.events') }}"> <i class="bi bi-chevron-right"></i> {{ __('Events') }} </a>
+            <a href="{{ route('web.pages.marketing') }}"> <i class="bi bi-chevron-right"></i> {{ __('Marketing') }} </a>
+            <a href="{{ route('web.pages.contact-us') }}"> <i class="bi bi-chevron-right"></i> {{ __('Contact Us') }} </a>
         </div>
     </div>
 </div>

@@ -23,6 +23,9 @@ class PrivateSectorForm extends Model
         'placeholder',
         'placeholder_ar',
         'status',
+        'conditional_on',
+        'conditional_value',
+        'display',
     ];
 
     public function service()

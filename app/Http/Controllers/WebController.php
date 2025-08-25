@@ -19,6 +19,7 @@ use App\Models\PrivateSector;
 use App\Models\SupportTicket;
 use App\Models\SupportMessage;
 use App\Models\AdminNotification;
+use App\Models\FinancialInvestment;
 use Illuminate\Support\Facades\Cookie;
 use App\Models\InvestmentOpportunityCategory;
 
@@ -30,6 +31,7 @@ class WebController extends Controller
         $our_services = OurService::where('status', 'active')->get();
         $private_sectors = PrivateSector::where('status', 'active')->get();
         $investment_opportunity_categories = InvestmentOpportunityCategory::where('status', 'active')->get();
+        
         return view('web.home', compact('sections', 'our_services', 'private_sectors', 'investment_opportunity_categories'));
     }
 
@@ -61,7 +63,8 @@ class WebController extends Controller
     }
     public function events()
     {
-        $sections = Page::where('slug', 'events')->first();
+        $sections = Page::where('slug', 'events')->first()->secs;
+
         return view('web.pages.events', compact('sections'));
     }
     public function marketing()
@@ -73,6 +76,29 @@ class WebController extends Controller
     {
         $sections = Page::where('slug', 'investment-opportunities')->first();
         return view('web.pages.investment-opportunities', compact('sections'));
+    }
+
+
+
+    public function investmentOpportunityView(Request $request)
+    {
+        $id = base64urlDecode($request->id);
+        
+        if(!$id){
+            return to_route('home');
+        }
+
+        $investment_opportunity_category = InvestmentOpportunityCategory::find($id);
+
+        if(!$investment_opportunity_category){
+            return to_route('web.pages.investment-opportunities');
+        } 
+
+
+        $investment_opportunities = $investment_opportunity_category->investmentOpportunities;
+
+        $sections = Page::where('slug', 'investment-opportunities-details')->first();
+        return view('web.pages.investment_opportunity_view', compact('sections', 'investment_opportunity_category', 'investment_opportunities'));
     }
 
     public function contactSubmit(Request $request)

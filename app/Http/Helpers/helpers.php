@@ -527,6 +527,11 @@ if(!function_exists('requestTypes')){
                 'name' => 'Private Sector Request',
                 'name_ar' => 'طلب القطاع الخاص',
             ],
+            [
+                'model' => 'FinancialInvestment',
+                'name' => 'Financial Investment Request',
+                'name_ar' => 'طلب الاستثمار المالي',
+            ],
         ];
     }
 }

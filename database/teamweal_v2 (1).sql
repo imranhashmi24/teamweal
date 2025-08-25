@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Aug 24, 2025 at 12:16 PM
+-- Generation Time: Aug 25, 2025 at 12:56 PM
 -- Server version: 8.0.30
 -- PHP Version: 8.3.24
 
@@ -873,6 +873,146 @@ CREATE TABLE `favorites` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `financial_investments`
+--
+
+CREATE TABLE `financial_investments` (
+  `id` bigint UNSIGNED NOT NULL,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `title_ar` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci,
+  `description_ar` text COLLATE utf8mb4_unicode_ci,
+  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` enum('active','inactive') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'active',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `financial_investments`
+--
+
+INSERT INTO `financial_investments` (`id`, `title`, `title_ar`, `description`, `description_ar`, `image`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'Advanced Financing Services', 'خدمات التمويل المتقدمة', NULL, NULL, NULL, 'active', '2025-08-25 04:05:28', '2025-08-25 04:05:28'),
+(2, 'Developmental & Investment Programs', 'البرامج التنموية والاستثمارية', NULL, NULL, NULL, 'active', '2025-08-25 04:05:28', '2025-08-25 04:05:28');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `financial_investment_forms`
+--
+
+CREATE TABLE `financial_investment_forms` (
+  `id` bigint UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name_ar` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'text',
+  `required` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT 'no',
+  `placeholder` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `placeholder_ar` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `options` json DEFAULT NULL,
+  `options_ar` json DEFAULT NULL,
+  `col` int DEFAULT '12',
+  `service_id` bigint UNSIGNED NOT NULL,
+  `status` enum('active','inactive') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'active',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `financial_investment_forms`
+--
+
+INSERT INTO `financial_investment_forms` (`id`, `name`, `name_ar`, `type`, `required`, `placeholder`, `placeholder_ar`, `options`, `options_ar`, `col`, `service_id`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'Basic Information', 'معلومات أساسية', 'title', 'no', '', '', '[]', '[]', 12, 1, 'active', '2025-08-25 04:05:28', '2025-08-25 04:05:28'),
+(2, 'Company Name', 'اسم المنشأة', 'text', 'yes', '', '', '[]', '[]', 12, 1, 'active', '2025-08-25 04:05:28', '2025-08-25 04:05:28'),
+(3, 'Business Activity', 'نوع النشاط', 'text', 'yes', '', '', '[]', '[]', 12, 1, 'active', '2025-08-25 04:05:28', '2025-08-25 04:05:28'),
+(4, 'City / Region', 'المدينة / المنطقة', 'text', 'yes', '', '', '[]', '[]', 12, 1, 'active', '2025-08-25 04:05:28', '2025-08-25 04:05:28'),
+(5, 'Commercial Registration Number', 'رقم السجل التجاري', 'text', 'yes', '', '', '[]', '[]', 12, 1, 'active', '2025-08-25 04:05:28', '2025-08-25 04:05:28'),
+(6, 'Establishment Date', 'تاريخ التأسيس', 'date', 'yes', '', '', '[]', '[]', 12, 1, 'active', '2025-08-25 04:05:28', '2025-08-25 04:05:28'),
+(7, 'Number of Employees', 'عدد الموظفين', 'number', 'yes', '', '', '[]', '[]', 12, 1, 'active', '2025-08-25 04:05:28', '2025-08-25 04:05:28'),
+(8, 'Contact Information', 'معلومات الاتصال', 'title', 'no', '', '', '[]', '[]', 12, 1, 'active', '2025-08-25 04:05:28', '2025-08-25 04:05:28'),
+(9, 'Contact Person Name', 'اسم ممثل المنشأة', 'text', 'yes', '', '', '[]', '[]', 12, 1, 'active', '2025-08-25 04:05:28', '2025-08-25 04:05:28'),
+(10, 'Email Address', 'البريد الإلكتروني', 'email', 'yes', '', '', '[]', '[]', 12, 1, 'active', '2025-08-25 04:05:28', '2025-08-25 04:05:28'),
+(11, 'Mobile Number', 'رقم الجوال', 'tel', 'yes', '', '', '[]', '[]', 12, 1, 'active', '2025-08-25 04:05:28', '2025-08-25 04:05:28'),
+(12, 'Job Title', 'المسمى الوظيفي', 'text', 'yes', '', '', '[]', '[]', 12, 1, 'active', '2025-08-25 04:05:28', '2025-08-25 04:05:28'),
+(13, 'Requested Service(s)', 'الخدمة المطلوبة', 'title', 'no', '', '', '[]', '[]', 12, 1, 'active', '2025-08-25 04:05:28', '2025-08-25 04:05:28'),
+(14, 'Requested Service(s)', 'الخدمة المطلوبة', 'checkbox', 'yes', 'Select one or more financing services', 'اختر واحدة أو أكثر من خدمات التمويل', '[\"Payroll Financing for Companies\", \"Credit Card Financing\", \"Financing Against POS Collections\", \"Contract Financing (Construction/Supply Contracts)\", \"Financing Guarantee Programs (Kafalah, SME Guarantee)\", \"Commercial Financing / Overdraft Facilities\", \"Micro Consumer Financing\", \"Long-Term Residential Financing\", \"Industrial \'Land and Loan\' Program\", \"Working Capital Financing\", \"Equipment & Asset Financing\", \"Industrial and Commercial Incentive Programs\"]', '[\"تمويل الرواتب للشركات\", \"تمويل بطاقات الائتمان\", \"التمويل مقابل متحصلات نقاط البيع\", \"تمويل العقود (مقاولات/توريد)\", \"برامج الضمان التمويلية (كفالة/ضمان المنشآت)\", \"التمويل التجاري / السحب على المكشوف\", \"التمويل الاستهلاكي المصغر\", \"التمويل السكني طويل الأجل\", \"برنامج أرض وقرض الصناعي\", \"تمويل رأس المال العامل\", \"تمويل المعدات والأصول\", \"برامج التحفيز الصناعي والتجاري\"]', 12, 1, 'active', '2025-08-25 04:05:28', '2025-08-25 04:05:28'),
+(15, 'Requested Financing Amount', 'مبلغ التمويل المطلوب', 'title', 'no', '', '', '[]', '[]', 12, 1, 'active', '2025-08-25 04:05:28', '2025-08-25 04:05:28'),
+(16, 'Requested Financing Amount', 'مبلغ التمويل المطلوب', 'text', 'no', '', '', '[]', '[]', 12, 1, 'active', '2025-08-25 04:05:28', '2025-08-25 04:05:28'),
+(17, 'Attachments', 'مرفقات', 'file', 'no', '', '', '[\"Commercial Registration\", \"National ID / Authorized Person ID\", \"Company Profile or Introduction Letter\", \"Bank Statement (Last 3 Months - Optional)\"]', '[\"السجل التجاري\", \"الهوية الوطنية / الهوية للمفوض\", \"خطاب تعريف بالمنشأة\", \"كشف حساب بنكي 3 أشهر (اختياري)\"]', 12, 1, 'active', '2025-08-25 04:05:28', '2025-08-25 04:05:28'),
+(18, 'Additional Notes', 'ملاحظات إضافية', 'textarea', 'no', '', '', '[]', '[]', 12, 1, 'active', '2025-08-25 04:05:28', '2025-08-25 04:05:28'),
+(19, 'Basic Information', 'معلومات أساسية', 'title', 'no', '', '', '[]', '[]', 12, 2, 'active', '2025-08-25 04:05:28', '2025-08-25 04:05:28'),
+(20, 'Organization / Company Name', 'اسم الجهة/المنشأة', 'text', 'yes', '', '', '[]', '[]', 12, 2, 'active', '2025-08-25 04:05:28', '2025-08-25 04:05:28'),
+(21, 'Business Sector', 'نوع النشاط', 'text', 'yes', '', '', '[]', '[]', 12, 2, 'active', '2025-08-25 04:05:28', '2025-08-25 04:05:28'),
+(22, 'City / Region', 'المدينة / المنطقة', 'text', 'yes', '', '', '[]', '[]', 12, 2, 'active', '2025-08-25 04:05:28', '2025-08-25 04:05:28'),
+(23, 'Unified ID / Commercial Registration', 'الرقم الموحد / السجل التجاري', 'text', 'yes', '', '', '[]', '[]', 12, 2, 'active', '2025-08-25 04:05:28', '2025-08-25 04:05:28'),
+(24, 'Start Date of Operations', 'تاريخ بداية النشاط', 'date', 'yes', '', '', '[]', '[]', 12, 2, 'active', '2025-08-25 04:05:28', '2025-08-25 04:05:28'),
+(25, 'Contact Information', 'معلومات الاتصال', 'title', 'no', '', '', '[]', '[]', 12, 2, 'active', '2025-08-25 04:05:28', '2025-08-25 04:05:28'),
+(26, 'Authorized Person Name', 'اسم الشخص المفوض', 'text', 'yes', '', '', '[]', '[]', 12, 2, 'active', '2025-08-25 04:05:28', '2025-08-25 04:05:28'),
+(27, 'Email Address', 'البريد الإلكتروني', 'email', 'yes', '', '', '[]', '[]', 12, 2, 'active', '2025-08-25 04:05:28', '2025-08-25 04:05:28'),
+(28, 'Mobile Number', 'رقم الجوال', 'tel', 'yes', '', '', '[]', '[]', 12, 2, 'active', '2025-08-25 04:05:28', '2025-08-25 04:05:28'),
+(29, 'Job Title', 'المسمى الوظيفي', 'text', 'yes', '', '', '[]', '[]', 12, 2, 'active', '2025-08-25 04:05:28', '2025-08-25 04:05:28'),
+(30, 'Requested Service(s)', 'الخدمة المطلوبة', 'title', 'no', '', '', '[]', '[]', 12, 2, 'active', '2025-08-25 04:05:28', '2025-08-25 04:05:28'),
+(31, 'Requested Program(s)', 'البرنامج المطلوب', 'checkbox', 'yes', 'Select one or more investment programs', 'اختر واحدًا أو أكثر من البرامج الاستثمارية', '[\"“Tawteen” Program (Local & Foreign Investment Promotion)\", \"Export Incentive Program\", \"Employment Support Programs (Industrial / Tourism)\", \"\\\"Made in Saudi\\\" Program\", \"Venture Investment Initiative\", \"Startup Tech Financing\", \"Incubators & Accelerators Financing\", \"Credit Facility Program for Enterprises\", \"E-commerce Support Programs\", \"Agricultural Support Program (Palm Farmers)\", \"Jaddah 30\", \"Tomouh\", \"Forsah\", \"Jadeer\", \"Rafed\", \"Ahalina\"]', '[\"برنامج توطين\", \"برنامج تحفيز الصادرات\", \"برامج دعم التوظيف (الصناعي/السياحي)\", \"برنامج صنع في السعودية\", \"مبادرة الاستثمار الجرئ\", \"تمويل التقنية الناشئة\", \"تمويل حاضنات ومسرعات الأعمال\", \"برنامج التسهيلات الائتمانية للمنشآت\", \"برامج التجارة الإلكترونية\", \"برنامج الدعم الزراعي للنخيل والمزارعين\", \"جادة 30\", \"طموح\", \"فرصة\", \"جدير\", \"رفد\", \"أهالينا\"]', 12, 2, 'active', '2025-08-25 04:05:28', '2025-08-25 04:05:28'),
+(32, 'Brief Description of the Project / Initiative', 'وصف مختصر عن المشروع/المبادرة', 'title', 'no', '', '', '[]', '[]', 12, 2, 'active', '2025-08-25 04:05:28', '2025-08-25 04:05:28'),
+(33, 'Brief Description of the Project / Initiative', 'وصف مختصر عن المشروع/المبادرة', 'textarea', 'no', '', '', '[]', '[]', 12, 2, 'active', '2025-08-25 04:05:28', '2025-08-25 04:05:28'),
+(34, 'Attachments (if available)', 'المرفقات (إن وجدت)', 'file', 'no', '', '', '[\"Project Profile\", \"Pitch Deck / Presentation\", \"Letters of Support or Partnership Agreements\"]', '[\"ملف تعريفي للمشروع\", \"عروض تقديمية\", \"أي خطابات أو شهادات دعم/شراكة\"]', 12, 2, 'active', '2025-08-25 04:05:28', '2025-08-25 04:05:28'),
+(35, 'Additional Notes', 'ملاحظات إضافية', 'textarea', 'no', '', '', '[]', '[]', 12, 2, 'active', '2025-08-25 04:05:28', '2025-08-25 04:05:28');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `financial_investment_lists`
+--
+
+CREATE TABLE `financial_investment_lists` (
+  `id` bigint UNSIGNED NOT NULL,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `title_ar` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `service_id` bigint UNSIGNED NOT NULL,
+  `status` enum('active','inactive') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'active',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `financial_investment_lists`
+--
+
+INSERT INTO `financial_investment_lists` (`id`, `title`, `title_ar`, `service_id`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'Payroll Financing for Companies', 'تمويل الرواتب للشركات', 1, 'active', '2025-08-25 04:05:28', '2025-08-25 04:05:28'),
+(2, 'Credit Card Financing', 'تمويل بطاقات الائتمان', 1, 'active', '2025-08-25 04:05:28', '2025-08-25 04:05:28'),
+(3, 'Financing Against POS Collections', 'التمويل مقابل متحصلات نقاط البيع', 1, 'active', '2025-08-25 04:05:28', '2025-08-25 04:05:28'),
+(4, 'Contract Financing (Construction/Supply Contracts)', 'تمويل العقود (مقاولات/توريد)', 1, 'active', '2025-08-25 04:05:28', '2025-08-25 04:05:28'),
+(5, 'Financing Guarantee Programs (Kafalah, SME Guarantee)', 'برامج الضمان التمويلية (كفالة/ضمان المنشآت)', 1, 'active', '2025-08-25 04:05:28', '2025-08-25 04:05:28'),
+(6, 'Commercial Financing / Overdraft Facilities', 'التمويل التجاري / السحب على المكشوف', 1, 'active', '2025-08-25 04:05:28', '2025-08-25 04:05:28'),
+(7, 'Micro Consumer Financing', 'التمويل الاستهلاكي المصغر', 1, 'active', '2025-08-25 04:05:28', '2025-08-25 04:05:28'),
+(8, 'Long-Term Residential Financing', 'التمويل السكني طويل الأجل', 1, 'active', '2025-08-25 04:05:28', '2025-08-25 04:05:28'),
+(9, 'Industrial Land & Loan Program', 'برنامج أرض وقرض الصناعي', 1, 'active', '2025-08-25 04:05:28', '2025-08-25 04:05:28'),
+(10, 'Working Capital Financing', 'تمويل رأس المال العامل', 1, 'active', '2025-08-25 04:05:28', '2025-08-25 04:05:28'),
+(11, 'Equipment & Asset Financing', 'تمويل المعدات والأصول', 1, 'active', '2025-08-25 04:05:28', '2025-08-25 04:05:28'),
+(12, 'Industrial & Commercial Incentive Programs', 'برامج التحفيز الصناعي والتجاري', 1, 'active', '2025-08-25 04:05:28', '2025-08-25 04:05:28'),
+(13, 'Tawteen Program', 'برنامج توطين', 2, 'active', '2025-08-25 04:05:28', '2025-08-25 04:05:28'),
+(14, 'Export Incentive Program', 'برنامج تحفيز الصادرات', 2, 'active', '2025-08-25 04:05:28', '2025-08-25 04:05:28'),
+(15, 'Employment Support Programs (Industrial / Tourism)', 'برامج دعم التوظيف (الصناعي/السياحي)', 2, 'active', '2025-08-25 04:05:28', '2025-08-25 04:05:28'),
+(16, '\"Made in Saudi\" Program', 'برنامج صنع في السعودية', 2, 'active', '2025-08-25 04:05:28', '2025-08-25 04:05:28'),
+(17, 'Venture Investment Initiative', 'مبادرة الاستثمار الجرئ', 2, 'active', '2025-08-25 04:05:28', '2025-08-25 04:05:28'),
+(18, 'Startup Tech Financing', 'تمويل التقنية الناشئة', 2, 'active', '2025-08-25 04:05:28', '2025-08-25 04:05:28'),
+(19, 'Incubators & Accelerators Financing', 'تمويل حاضنات ومسرعات الأعمال', 2, 'active', '2025-08-25 04:05:28', '2025-08-25 04:05:28'),
+(20, 'Credit Facility Program for Enterprises', 'برنامج التسهيلات الائتمانية للمنشآت', 2, 'active', '2025-08-25 04:05:28', '2025-08-25 04:05:28'),
+(21, 'E-commerce Support Programs', 'برامج التجارة الإلكترونية', 2, 'active', '2025-08-25 04:05:28', '2025-08-25 04:05:28'),
+(22, 'Agricultural Support Program (Palm Farmers)', 'برنامج الدعم الزراعي للنخيل والمزارعين', 2, 'active', '2025-08-25 04:05:28', '2025-08-25 04:05:28'),
+(23, 'Jada 30', 'جادة 30', 2, 'active', '2025-08-25 04:05:28', '2025-08-25 04:05:28'),
+(24, 'Tomouh', 'طموح', 2, 'active', '2025-08-25 04:05:28', '2025-08-25 04:05:28'),
+(25, 'Forsah', 'فرصة', 2, 'active', '2025-08-25 04:05:28', '2025-08-25 04:05:28'),
+(26, 'Jadeer', 'جدير', 2, 'active', '2025-08-25 04:05:28', '2025-08-25 04:05:28'),
+(27, 'Rafed', 'رفد', 2, 'active', '2025-08-25 04:05:28', '2025-08-25 04:05:28'),
+(28, 'Ahalina', 'أهالينا', 2, 'active', '2025-08-25 04:05:28', '2025-08-25 04:05:28');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `forms`
 --
 
@@ -1461,7 +1601,53 @@ CREATE TABLE `investment_opportunities` (
 --
 
 INSERT INTO `investment_opportunities` (`id`, `category_id`, `title`, `title_ar`, `description`, `description_ar`, `image`, `status`, `created_at`, `updated_at`) VALUES
-(1, 1, 'Digital apps & innovative platforms', 'التطبيقات الرقمية والمنصات المبتكرة', NULL, NULL, '68ab004d939d41756037197.png', 'active', '2025-08-24 05:56:01', '2025-08-24 06:06:37');
+(1, 1, 'Digital apps & innovative platforms', 'تطبيقات رقمية ومنصات مبتكرة', NULL, NULL, NULL, 'active', '2025-08-25 01:44:12', '2025-08-25 01:44:12'),
+(2, 1, 'E-commerce & quick-service projects', 'التجارة الإلكترونية والخدمات السريعة', NULL, NULL, NULL, 'active', '2025-08-25 01:44:12', '2025-08-25 01:44:12'),
+(3, 1, 'Financial technology (Fintech)', 'التقنيات المالية (Fintech)', NULL, NULL, NULL, 'active', '2025-08-25 01:44:12', '2025-08-25 01:44:12'),
+(4, 1, 'Incubators and accelerators', 'الحاضنات والمسرّعات', NULL, NULL, NULL, 'active', '2025-08-25 01:44:12', '2025-08-25 01:44:12'),
+(5, 1, 'Student-led & early-stage ideas', 'المشاريع الطلابية والأفكار الريادية', NULL, NULL, NULL, 'active', '2025-08-25 01:44:12', '2025-08-25 01:44:12'),
+(6, 1, 'Subscription-based SaaS models', 'مشاريع تعتمد نموذج الاشتراك الشهري (SaaS)', NULL, NULL, NULL, 'active', '2025-08-25 01:44:12', '2025-08-25 01:44:12'),
+(7, 2, 'Residential real estate funds', 'صناديق عقارية سكنية', NULL, NULL, NULL, 'active', '2025-08-25 01:44:12', '2025-08-25 01:44:12'),
+(8, 2, 'Commercial & office development funds', 'صناديق تطوير تجاري ومكتبي', NULL, NULL, NULL, 'active', '2025-08-25 01:44:12', '2025-08-25 01:44:12'),
+(9, 2, 'Hospitality & tourism real estate funds', 'صناديق فندقية وسياحية', NULL, NULL, NULL, 'active', '2025-08-25 01:44:12', '2025-08-25 01:44:12'),
+(10, 2, 'Developed land investment portfolios', 'صناديق أراضي مطورة', NULL, NULL, NULL, 'active', '2025-08-25 01:44:12', '2025-08-25 01:44:12'),
+(11, 2, 'Urban development and REITs', 'صناديق تطوير عمراني', NULL, NULL, NULL, 'active', '2025-08-25 01:44:12', '2025-08-25 01:44:12'),
+(12, 2, 'Real estate Sukuks & crowdfunding', 'صكوك عقارية وتمويل عقاري جماعي', NULL, NULL, NULL, 'active', '2025-08-25 01:44:12', '2025-08-25 01:44:12'),
+(13, 3, 'Solar and renewable energy ventures', 'مشاريع الطاقة الشمسية والمتجددة', NULL, NULL, NULL, 'active', '2025-08-25 01:44:12', '2025-08-25 01:44:12'),
+(14, 3, 'Recycling and waste management solutions', 'مشاريع التدوير وإدارة النفايات', NULL, NULL, NULL, 'active', '2025-08-25 01:44:12', '2025-08-25 01:44:12'),
+(15, 3, 'Smart & organic agriculture', 'الزراعة الذكية والعضوية', NULL, NULL, NULL, 'active', '2025-08-25 01:44:12', '2025-08-25 01:44:12'),
+(16, 3, 'Water conservation & environmental projects', 'مشاريع الحفاظ على المياه والبيئة', NULL, NULL, NULL, 'active', '2025-08-25 01:44:12', '2025-08-25 01:44:12'),
+(17, 3, 'Green transport & electric mobility', 'النقل الأخضر والمركبات الكهربائية', NULL, NULL, NULL, 'active', '2025-08-25 01:44:12', '2025-08-25 01:44:12'),
+(18, 3, 'Eco-friendly and sustainable products', 'منتجات مستدامة وصديقة للبيئة', NULL, NULL, NULL, 'active', '2025-08-25 01:44:13', '2025-08-25 01:44:13'),
+(19, 4, 'Local manufacturing initiatives', 'مشاريع التصنيع المحلي', NULL, NULL, NULL, 'active', '2025-08-25 01:44:13', '2025-08-25 01:44:13'),
+(20, 4, 'Industrial transformation & processing', 'مشاريع الصناعات التحويلية', NULL, NULL, NULL, 'active', '2025-08-25 01:44:13', '2025-08-25 01:44:13'),
+(21, 4, 'Artificial intelligence in industry', 'الذكاء الاصطناعي في الصناعة', NULL, NULL, NULL, 'active', '2025-08-25 01:44:13', '2025-08-25 01:44:13'),
+(22, 4, 'Robotics and automation', 'الروبوتات والأتمتة', NULL, NULL, NULL, 'active', '2025-08-25 01:44:13', '2025-08-25 01:44:13'),
+(23, 4, 'Food & pharmaceutical industries', 'الصناعات الغذائية والدوائية', NULL, NULL, NULL, 'active', '2025-08-25 01:44:13', '2025-08-25 01:44:13'),
+(24, 4, 'Light and medium manufacturing', 'الصناعات الخفيفة والمتوسطة', NULL, NULL, NULL, 'active', '2025-08-25 01:44:13', '2025-08-25 01:44:13'),
+(25, 4, 'Smart & future-ready industrial solutions', 'حلول صناعية ذكية ومستقبلية', NULL, NULL, NULL, 'active', '2025-08-25 01:44:13', '2025-08-25 01:44:13'),
+(26, 5, 'AI and data analytics solutions', 'الذكاء الاصطناعي وتحليل البيانات', NULL, NULL, NULL, 'active', '2025-08-25 01:44:13', '2025-08-25 01:44:13'),
+(27, 5, 'Cybersecurity and system protection', 'الأمن السيبراني وحماية الأنظمة', NULL, NULL, NULL, 'active', '2025-08-25 01:44:13', '2025-08-25 01:44:13'),
+(28, 5, 'E-learning and digital training platforms', 'منصات التعليم والتدريب الرقمي', NULL, NULL, NULL, 'active', '2025-08-25 01:44:13', '2025-08-25 01:44:13'),
+(29, 5, 'SaaS and business software solutions', 'حلول SaaS وأنظمة الأعمال', NULL, NULL, NULL, 'active', '2025-08-25 01:44:13', '2025-08-25 01:44:13'),
+(30, 5, 'Mobile apps and wearables', 'تطبيقات الجوال والأجهزة القابلة للارتداء', NULL, NULL, NULL, 'active', '2025-08-25 01:44:13', '2025-08-25 01:44:13'),
+(31, 5, 'Blockchain and digital assets', 'تقنيات البلوكتشين والعملات الرقمية', NULL, NULL, NULL, 'active', '2025-08-25 01:44:13', '2025-08-25 01:44:13'),
+(32, 5, 'Internet of Things (IoT) and smart control', 'إنترنت الأشياء (IoT) والتحكم الذكي', NULL, NULL, NULL, 'active', '2025-08-25 01:44:13', '2025-08-25 01:44:13'),
+(33, 6, 'Education and vocational training', 'التعليم والتأهيل المهني', NULL, NULL, NULL, 'active', '2025-08-25 01:44:13', '2025-08-25 01:44:13'),
+(34, 6, 'CSR-based investments', 'استثمارات المسؤولية الاجتماعية', NULL, NULL, NULL, 'active', '2025-08-25 01:44:13', '2025-08-25 01:44:13'),
+(35, 6, 'Women and youth empowerment', 'تمكين المرأة والشباب', NULL, NULL, NULL, 'active', '2025-08-25 01:44:13', '2025-08-25 01:44:13'),
+(36, 6, 'Projects targeting low-income groups', 'مشاريع الفئات محدودة الدخل', NULL, NULL, NULL, 'active', '2025-08-25 01:44:13', '2025-08-25 01:44:13'),
+(37, 6, 'Non-profit and community partnerships', 'شراكات مجتمعية وغير ربحية', NULL, NULL, NULL, 'active', '2025-08-25 01:44:13', '2025-08-25 01:44:13'),
+(38, 6, 'Social innovation and development', 'الابتكار الاجتماعي والتنموي', NULL, NULL, NULL, 'active', '2025-08-25 01:44:13', '2025-08-25 01:44:13'),
+(39, 7, 'Investment in Islamic Sukuk', 'الاستثمار في الصكوك الإسلامية', NULL, NULL, NULL, 'active', '2025-08-25 01:44:13', '2025-08-25 01:44:13'),
+(40, 7, 'Short- and Long-Term Debt Instruments', 'أدوات الدين قصيرة وطويلة الأجل', NULL, NULL, NULL, 'active', '2025-08-25 01:44:13', '2025-08-25 01:44:13'),
+(41, 7, 'Debt Crowdfunding', 'التمويل الجماعي بالدين', NULL, NULL, NULL, 'active', '2025-08-25 01:44:13', '2025-08-25 01:44:13'),
+(42, 7, 'Angel Investing', 'الاستثمار الملائكي', NULL, NULL, NULL, 'active', '2025-08-25 01:44:13', '2025-08-25 01:44:13'),
+(43, 7, 'Supply Chain & Invoice Financing', 'تمويل سلسلة الإمداد والفواتير', NULL, NULL, NULL, 'active', '2025-08-25 01:44:13', '2025-08-25 01:44:13'),
+(44, 7, 'Innovative Trade Finance Solutions', 'حلول تمويل تجاري مبتكرة', NULL, NULL, NULL, 'active', '2025-08-25 01:44:13', '2025-08-25 01:44:13'),
+(45, 7, 'Murabaha, Istisna, and Lease Financing', 'مرابحة، استصناع، تأجير تمويلي', NULL, NULL, NULL, 'active', '2025-08-25 01:44:13', '2025-08-25 01:44:13'),
+(46, 7, 'Marketing of Debt Instruments and Funds', 'تسويق أدوات الدين والصناديق', NULL, NULL, NULL, 'active', '2025-08-25 01:44:13', '2025-08-25 01:44:13'),
+(47, 7, 'Auctions', 'المزادات', NULL, NULL, NULL, 'active', '2025-08-25 01:44:13', '2025-08-25 01:44:13');
 
 -- --------------------------------------------------------
 
@@ -1485,13 +1671,13 @@ CREATE TABLE `investment_opportunity_categories` (
 --
 
 INSERT INTO `investment_opportunity_categories` (`id`, `title`, `title_ar`, `parent_id`, `image`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Startups & Small Enterprises', 'الشركات الناشئة والمؤسسات الصغيرة', NULL, '68aaff1e932c21756036894.png', 'active', '2025-08-24 05:52:23', '2025-08-24 06:01:34'),
-(2, 'Real Estate Funds', 'صناديق العقارات', NULL, '68aaff3e8e1f71756036926.png', 'active', '2025-08-24 06:02:06', '2025-08-24 06:02:06'),
-(3, 'Green & Sustainable Projects', 'مشاريع خضراء ومستدامة', NULL, '68aaff522d38c1756036946.png', 'active', '2025-08-24 06:02:26', '2025-08-24 06:02:26'),
-(4, 'Industrial & Innovation Projects', 'المشاريع الصناعية والابتكارية', NULL, '68aaff671fec71756036967.png', 'active', '2025-08-24 06:02:47', '2025-08-24 06:02:47'),
-(5, 'Technology & Digital Platforms', 'التكنولوجيا والمنصات الرقمية', NULL, '68aaff7fa9b8b1756036991.png', 'active', '2025-08-24 06:03:11', '2025-08-24 06:03:11'),
-(6, 'Social Impact Projects', 'مشاريع التأثير الاجتماعي', NULL, '68aaff980bcea1756037016.png', 'active', '2025-08-24 06:03:36', '2025-08-24 06:03:36'),
-(7, 'Financing Opportunities & Sukuks', 'فرص التمويل والصكوك', NULL, '68aaffaed1b741756037038.png', 'active', '2025-08-24 06:03:58', '2025-08-24 06:03:58');
+(1, 'Startups & Small Enterprises', 'الشركات الناشئة والمنشآت الصغيرة', NULL, NULL, 'active', '2025-08-25 01:44:12', '2025-08-25 01:44:12'),
+(2, 'Real Estate Funds', 'الصناديق العقارية', NULL, NULL, 'active', '2025-08-25 01:44:12', '2025-08-25 01:44:12'),
+(3, 'Green & Sustainable Projects', 'المشاريع الخضراء والمستدامة', NULL, NULL, 'active', '2025-08-25 01:44:12', '2025-08-25 01:44:12'),
+(4, 'Industrial & Innovation Projects', 'الصناعة والابتكار', NULL, NULL, 'active', '2025-08-25 01:44:13', '2025-08-25 01:44:13'),
+(5, 'Technology & Digital Platforms', 'التقنية والمنصات الرقمية', NULL, NULL, 'active', '2025-08-25 01:44:13', '2025-08-25 01:44:13'),
+(6, 'Social Impact Projects', 'المشاريع ذات الأثر الاجتماعي', NULL, NULL, 'active', '2025-08-25 01:44:13', '2025-08-25 01:44:13'),
+(7, 'Financing Opportunities & Sukuks', 'الفرص التمويلية والصكوك', NULL, NULL, 'active', '2025-08-25 01:44:13', '2025-08-25 01:44:13');
 
 -- --------------------------------------------------------
 
@@ -1994,7 +2180,13 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (133, '2025_08_24_082448_create_private_sector_lists_table', 30),
 (134, '2025_08_24_082450_create_private_sector_forms_table', 30),
 (135, '2025_08_24_113923_create_investment_opportunity_categories_table', 31),
-(136, '2025_08_24_114052_create_investment_opportunities_table', 31);
+(136, '2025_08_24_114052_create_investment_opportunities_table', 31),
+(137, '2025_08_25_090916_create_financial_investments_table', 32),
+(138, '2025_08_25_090929_create_financial_investment_forms_table', 32),
+(139, '2025_08_25_090945_create_financial_investment_lists_table', 32),
+(143, '2025_08_25_103418_create_sectors_table', 33),
+(144, '2025_08_25_103438_create_sector_lists_table', 33),
+(145, '2025_08_25_103455_create_sector_forms_table', 33);
 
 -- --------------------------------------------------------
 
@@ -5658,7 +5850,18 @@ CREATE TABLE `our_services` (
 --
 
 INSERT INTO `our_services` (`id`, `title`, `title_ar`, `description`, `description_ar`, `image`, `status`, `created_at`, `updated_at`) VALUES
-(2, 'Real Estate Development Fund', 'صندوق التنمية العقارية', NULL, NULL, '68aabe34324981756020276.png', 'active', '2025-08-23 01:41:04', '2025-08-24 01:24:39');
+(1, 'Real Estate Development Fund', 'صندوق التنمية العقارية', NULL, NULL, NULL, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(2, 'Agricultural Development Fund', 'صندوق التنمية الزراعية', NULL, NULL, NULL, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(3, 'Saudi Industrial Development Fund', 'صندوق التنمية الصناعية السعودي', NULL, NULL, NULL, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(4, 'Human Resources Development Fund (HRDF)', 'صندوق تنمية الموارد البشرية (هدف)', NULL, NULL, NULL, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(5, 'Tourism Development Fund', 'صندوق التنمية السياحي', NULL, NULL, NULL, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(6, 'Cultural Development Fund', 'صندوق التنمية الثقافي', NULL, NULL, NULL, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(7, 'Social Development Bank', 'بنك التنمية الاجتماعية', NULL, NULL, NULL, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(8, 'Small and Medium Enterprises Bank', 'بنك المنشآت الصغيرة والمتوسطة', NULL, NULL, NULL, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(9, 'Events Investment Fund', 'صندوق الفعاليات الاستثماري', NULL, NULL, NULL, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(10, 'National Infrastructure Fund', 'صندوق البنية التحتية الوطني', NULL, NULL, NULL, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(11, 'Saudi Fund for Development', 'الصندوق السعودي للتنمية', NULL, NULL, NULL, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(12, 'Export-Import Bank', 'بنك التصدير والاستيراد', NULL, NULL, NULL, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30');
 
 -- --------------------------------------------------------
 
@@ -5670,7 +5873,7 @@ CREATE TABLE `our_service_forms` (
   `id` bigint UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `name_ar` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `type` enum('text','number','email','select','radio','checkbox','date','time','datetime','file','image') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'text',
+  `type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT 'text',
   `required` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'no',
   `placeholder` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `placeholder_ar` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -5688,8 +5891,259 @@ CREATE TABLE `our_service_forms` (
 --
 
 INSERT INTO `our_service_forms` (`id`, `name`, `name_ar`, `type`, `required`, `placeholder`, `placeholder_ar`, `options`, `options_ar`, `col`, `our_service_id`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Name', 'Name Arabic', 'text', 'yes', 'Enter your name english', 'Enter your name arabic', '[null]', '[null]', 12, 2, 'active', '2025-08-24 00:16:29', '2025-08-24 00:16:29'),
-(2, 'Required Services', 'Required Services Arabic', 'checkbox', 'yes', NULL, NULL, '[\"IT services\", \"Bussines Service\", \"Web Service\"]', '[\"IT Service Arabic\", \"Bussines Service Arabic\", \"Web Service Arabic\"]', 12, 2, 'active', '2025-08-24 00:21:55', '2025-08-24 00:40:28');
+(1, 'Full Name', 'الاسم الكامل', 'text', 'yes', 'Enter Full Name', 'أدخل الاسم الكامل', '[]', '[]', 12, 1, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(2, 'National ID Number', 'رقم الهوية الوطنية', 'text', 'yes', 'Enter National ID', 'أدخل رقم الهوية', '[]', '[]', 6, 1, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(3, 'Date of Birth', 'تاريخ الميلاد', 'date', 'yes', 'Select Date of Birth', 'اختر تاريخ الميلاد', '[]', '[]', 6, 1, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(4, 'Marital Status', 'الحالة الاجتماعية', 'select', 'yes', 'Select Marital Status', 'اختر الحالة الاجتماعية', '[\"Single\", \"Married\", \"Divorced\", \"Widowed\"]', '[\"أعزب\", \"متزوج\", \"مطلق\", \"أرمل\"]', 6, 1, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(5, 'City / Region', 'المدينة / المنطقة', 'text', 'yes', 'Enter City/Region', 'أدخل المدينة/المنطقة', '[]', '[]', 6, 1, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(6, 'Mobile Number', 'رقم الجوال', 'text', 'yes', 'Enter Mobile Number', 'أدخل رقم الجوال', '[]', '[]', 6, 1, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(7, 'Email Address', 'البريد الإلكتروني', 'email', 'yes', 'Enter Email Address', 'أدخل البريد الإلكتروني', '[]', '[]', 6, 1, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(8, 'Current Occupation', 'نوع العمل الحالي', 'text', 'no', 'Enter Current Occupation', 'أدخل نوع العمل الحالي', '[]', '[]', 6, 1, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(9, 'Average Monthly Income', 'متوسط الدخل الشهري', 'number', 'yes', 'Enter Average Monthly Income', 'أدخل متوسط الدخل الشهري', '[]', '[]', 6, 1, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(10, 'Estimated funding amount', 'القيمة التقديرية للتمويل المطلوب', 'number', 'yes', 'Enter amount in SAR', 'أدخل المبلغ بالريال السعودي', '[]', '[]', 6, 1, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(11, 'Applicant\'s contribution', 'مساهمة مقدم الطلب', 'number', 'no', 'Enter amount in SAR', 'أدخل المبلغ بالريال السعودي', '[]', '[]', 6, 1, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(12, 'Brief description of the idea / activity / property to be financed', 'وصف موجز للفكرة أو النشاط / العقار المطلوب تمويله', 'textarea', 'yes', 'Enter detailed description', 'أدخل وصفًا مفصلاً', '[]', '[]', 12, 1, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(13, 'Do you have a feasibility study or business plan?', 'هل يوجد دراسة جدوى أو خطة عمل؟', 'radio', 'yes', '', '', '[\"Yes\", \"No\"]', '[\"نعم\", \"لا\"]', 12, 1, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(14, 'Feasibility Study / Business Plan', 'دراسة جدوى / خطة عمل', 'file', 'no', 'Upload PDF/Word file', 'رفع ملف PDF/Word', '[]', '[]', 12, 1, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(15, 'National ID / Commercial Registration', 'الهوية الوطنية / السجل التجاري', 'file', 'yes', 'Upload document', 'رفع المستند', '[]', '[]', 6, 1, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(16, 'National Address', 'العنوان الوطني', 'file', 'yes', 'Upload document', 'رفع المستند', '[]', '[]', 6, 1, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(17, 'Bank Statement (last 3 months)', 'كشف حساب بنكي (آخر 3 أشهر)', 'file', 'yes', 'Upload bank statement', 'رفع كشف الحساب البنكي', '[]', '[]', 6, 1, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(18, 'Any required licenses or permits for the activity', 'أي تراخيص أو تصاريح مطلوبة للنشاط', 'file', 'no', 'Upload licenses/permits', 'رفع التراخيص/التصاريح', '[]', '[]', 6, 1, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(19, 'I confirm the accuracy of the above information', 'أقرّ بصحة البيانات المذكورة أعلاه', 'checkbox', 'yes', '', '', '[\"Agree\"]', '[\"موافق\"]', 12, 1, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(20, 'I consent to sharing my data with participating development funds and banks', 'أوافق على مشاركة بياناتي مع الصناديق والبنوك التنموية الشريكة', 'checkbox', 'yes', '', '', '[\"Agree\"]', '[\"موافق\"]', 12, 1, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(21, 'I agree to receive notifications regarding my request via email or mobile', 'أوافق على استقبال إشعارات بخصوص الطلب عن طريق البريد الإلكتروني أو الجوال', 'checkbox', 'no', '', '', '[\"Agree\"]', '[\"موافق\"]', 12, 1, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(22, 'Full Name', 'الاسم الكامل', 'text', 'yes', 'Enter Full Name', 'أدخل الاسم الكامل', '[]', '[]', 12, 2, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(23, 'National ID Number', 'رقم الهوية الوطنية', 'text', 'yes', 'Enter National ID', 'أدخل رقم الهوية', '[]', '[]', 6, 2, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(24, 'Date of Birth', 'تاريخ الميلاد', 'date', 'yes', 'Select Date of Birth', 'اختر تاريخ الميلاد', '[]', '[]', 6, 2, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(25, 'Marital Status', 'الحالة الاجتماعية', 'select', 'yes', 'Select Marital Status', 'اختر الحالة الاجتماعية', '[\"Single\", \"Married\", \"Divorced\", \"Widowed\"]', '[\"أعزب\", \"متزوج\", \"مطلق\", \"أرمل\"]', 6, 2, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(26, 'City / Region', 'المدينة / المنطقة', 'text', 'yes', 'Enter City/Region', 'أدخل المدينة/المنطقة', '[]', '[]', 6, 2, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(27, 'Mobile Number', 'رقم الجوال', 'text', 'yes', 'Enter Mobile Number', 'أدخل رقم الجوال', '[]', '[]', 6, 2, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(28, 'Email Address', 'البريد الإلكتروني', 'email', 'yes', 'Enter Email Address', 'أدخل البريد الإلكتروني', '[]', '[]', 6, 2, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(29, 'Current Occupation', 'نوع العمل الحالي', 'text', 'no', 'Enter Current Occupation', 'أدخل نوع العمل الحالي', '[]', '[]', 6, 2, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(30, 'Average Monthly Income', 'متوسط الدخل الشهري', 'number', 'yes', 'Enter Average Monthly Income', 'أدخل متوسط الدخل الشهري', '[]', '[]', 6, 2, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(31, 'Estimated funding amount', 'القيمة التقديرية للتمويل المطلوب', 'number', 'yes', 'Enter amount in SAR', 'أدخل المبلغ بالريال السعودي', '[]', '[]', 6, 2, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(32, 'Applicant\'s contribution', 'مساهمة مقدم الطلب', 'number', 'no', 'Enter amount in SAR', 'أدخل المبلغ بالريال السعودي', '[]', '[]', 6, 2, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(33, 'Brief description of the idea / activity / property to be financed', 'وصف موجز للفكرة أو النشاط / العقار المطلوب تمويله', 'textarea', 'yes', 'Enter detailed description', 'أدخل وصفًا مفصلاً', '[]', '[]', 12, 2, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(34, 'Do you have a feasibility study or business plan?', 'هل يوجد دراسة جدوى أو خطة عمل؟', 'radio', 'yes', '', '', '[\"Yes\", \"No\"]', '[\"نعم\", \"لا\"]', 12, 2, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(35, 'Feasibility Study / Business Plan', 'دراسة جدوى / خطة عمل', 'file', 'no', 'Upload PDF/Word file', 'رفع ملف PDF/Word', '[]', '[]', 12, 2, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(36, 'National ID / Commercial Registration', 'الهوية الوطنية / السجل التجاري', 'file', 'yes', 'Upload document', 'رفع المستند', '[]', '[]', 6, 2, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(37, 'National Address', 'العنوان الوطني', 'file', 'yes', 'Upload document', 'رفع المستند', '[]', '[]', 6, 2, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(38, 'Bank Statement (last 3 months)', 'كشف حساب بنكي (آخر 3 أشهر)', 'file', 'yes', 'Upload bank statement', 'رفع كشف الحساب البنكي', '[]', '[]', 6, 2, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(39, 'Any required licenses or permits for the activity', 'أي تراخيص أو تصاريح مطلوبة للنشاط', 'file', 'no', 'Upload licenses/permits', 'رفع التراخيص/التصاريح', '[]', '[]', 6, 2, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(40, 'I confirm the accuracy of the above information', 'أقرّ بصحة البيانات المذكورة أعلاه', 'checkbox', 'yes', '', '', '[\"Agree\"]', '[\"موافق\"]', 12, 2, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(41, 'I consent to sharing my data with participating development funds and banks', 'أوافق على مشاركة بياناتي مع الصناديق والبنوك التنموية الشريكة', 'checkbox', 'yes', '', '', '[\"Agree\"]', '[\"موافق\"]', 12, 2, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(42, 'I agree to receive notifications regarding my request via email or mobile', 'أوافق على استقبال إشعارات بخصوص الطلب عن طريق البريد الإلكتروني أو الجوال', 'checkbox', 'no', '', '', '[\"Agree\"]', '[\"موافق\"]', 12, 2, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(43, 'Full Name', 'الاسم الكامل', 'text', 'yes', 'Enter Full Name', 'أدخل الاسم الكامل', '[]', '[]', 12, 3, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(44, 'National ID Number', 'رقم الهوية الوطنية', 'text', 'yes', 'Enter National ID', 'أدخل رقم الهوية', '[]', '[]', 6, 3, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(45, 'Date of Birth', 'تاريخ الميلاد', 'date', 'yes', 'Select Date of Birth', 'اختر تاريخ الميلاد', '[]', '[]', 6, 3, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(46, 'Marital Status', 'الحالة الاجتماعية', 'select', 'yes', 'Select Marital Status', 'اختر الحالة الاجتماعية', '[\"Single\", \"Married\", \"Divorced\", \"Widowed\"]', '[\"أعزب\", \"متزوج\", \"مطلق\", \"أرمل\"]', 6, 3, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(47, 'City / Region', 'المدينة / المنطقة', 'text', 'yes', 'Enter City/Region', 'أدخل المدينة/المنطقة', '[]', '[]', 6, 3, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(48, 'Mobile Number', 'رقم الجوال', 'text', 'yes', 'Enter Mobile Number', 'أدخل رقم الجوال', '[]', '[]', 6, 3, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(49, 'Email Address', 'البريد الإلكتروني', 'email', 'yes', 'Enter Email Address', 'أدخل البريد الإلكتروني', '[]', '[]', 6, 3, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(50, 'Current Occupation', 'نوع العمل الحالي', 'text', 'no', 'Enter Current Occupation', 'أدخل نوع العمل الحالي', '[]', '[]', 6, 3, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(51, 'Average Monthly Income', 'متوسط الدخل الشهري', 'number', 'yes', 'Enter Average Monthly Income', 'أدخل متوسط الدخل الشهري', '[]', '[]', 6, 3, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(52, 'Estimated funding amount', 'القيمة التقديرية للتمويل المطلوب', 'number', 'yes', 'Enter amount in SAR', 'أدخل المبلغ بالريال السعودي', '[]', '[]', 6, 3, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(53, 'Applicant\'s contribution', 'مساهمة مقدم الطلب', 'number', 'no', 'Enter amount in SAR', 'أدخل المبلغ بالريال السعودي', '[]', '[]', 6, 3, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(54, 'Brief description of the idea / activity / property to be financed', 'وصف موجز للفكرة أو النشاط / العقار المطلوب تمويله', 'textarea', 'yes', 'Enter detailed description', 'أدخل وصفًا مفصلاً', '[]', '[]', 12, 3, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(55, 'Do you have a feasibility study or business plan?', 'هل يوجد دراسة جدوى أو خطة عمل؟', 'radio', 'yes', '', '', '[\"Yes\", \"No\"]', '[\"نعم\", \"لا\"]', 12, 3, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(56, 'Feasibility Study / Business Plan', 'دراسة جدوى / خطة عمل', 'file', 'no', 'Upload PDF/Word file', 'رفع ملف PDF/Word', '[]', '[]', 12, 3, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(57, 'National ID / Commercial Registration', 'الهوية الوطنية / السجل التجاري', 'file', 'yes', 'Upload document', 'رفع المستند', '[]', '[]', 6, 3, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(58, 'National Address', 'العنوان الوطني', 'file', 'yes', 'Upload document', 'رفع المستند', '[]', '[]', 6, 3, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(59, 'Bank Statement (last 3 months)', 'كشف حساب بنكي (آخر 3 أشهر)', 'file', 'yes', 'Upload bank statement', 'رفع كشف الحساب البنكي', '[]', '[]', 6, 3, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(60, 'Any required licenses or permits for the activity', 'أي تراخيص أو تصاريح مطلوبة للنشاط', 'file', 'no', 'Upload licenses/permits', 'رفع التراخيص/التصاريح', '[]', '[]', 6, 3, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(61, 'I confirm the accuracy of the above information', 'أقرّ بصحة البيانات المذكورة أعلاه', 'checkbox', 'yes', '', '', '[\"Agree\"]', '[\"موافق\"]', 12, 3, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(62, 'I consent to sharing my data with participating development funds and banks', 'أوافق على مشاركة بياناتي مع الصناديق والبنوك التنموية الشريكة', 'checkbox', 'yes', '', '', '[\"Agree\"]', '[\"موافق\"]', 12, 3, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(63, 'I agree to receive notifications regarding my request via email or mobile', 'أوافق على استقبال إشعارات بخصوص الطلب عن طريق البريد الإلكتروني أو الجوال', 'checkbox', 'no', '', '', '[\"Agree\"]', '[\"موافق\"]', 12, 3, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(64, 'Full Name', 'الاسم الكامل', 'text', 'yes', 'Enter Full Name', 'أدخل الاسم الكامل', '[]', '[]', 12, 4, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(65, 'National ID Number', 'رقم الهوية الوطنية', 'text', 'yes', 'Enter National ID', 'أدخل رقم الهوية', '[]', '[]', 6, 4, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(66, 'Date of Birth', 'تاريخ الميلاد', 'date', 'yes', 'Select Date of Birth', 'اختر تاريخ الميلاد', '[]', '[]', 6, 4, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(67, 'Marital Status', 'الحالة الاجتماعية', 'select', 'yes', 'Select Marital Status', 'اختر الحالة الاجتماعية', '[\"Single\", \"Married\", \"Divorced\", \"Widowed\"]', '[\"أعزب\", \"متزوج\", \"مطلق\", \"أرمل\"]', 6, 4, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(68, 'City / Region', 'المدينة / المنطقة', 'text', 'yes', 'Enter City/Region', 'أدخل المدينة/المنطقة', '[]', '[]', 6, 4, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(69, 'Mobile Number', 'رقم الجوال', 'text', 'yes', 'Enter Mobile Number', 'أدخل رقم الجوال', '[]', '[]', 6, 4, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(70, 'Email Address', 'البريد الإلكتروني', 'email', 'yes', 'Enter Email Address', 'أدخل البريد الإلكتروني', '[]', '[]', 6, 4, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(71, 'Current Occupation', 'نوع العمل الحالي', 'text', 'no', 'Enter Current Occupation', 'أدخل نوع العمل الحالي', '[]', '[]', 6, 4, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(72, 'Average Monthly Income', 'متوسط الدخل الشهري', 'number', 'yes', 'Enter Average Monthly Income', 'أدخل متوسط الدخل الشهري', '[]', '[]', 6, 4, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(73, 'Estimated funding amount', 'القيمة التقديرية للتمويل المطلوب', 'number', 'yes', 'Enter amount in SAR', 'أدخل المبلغ بالريال السعودي', '[]', '[]', 6, 4, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(74, 'Applicant\'s contribution', 'مساهمة مقدم الطلب', 'number', 'no', 'Enter amount in SAR', 'أدخل المبلغ بالريال السعودي', '[]', '[]', 6, 4, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(75, 'Brief description of the idea / activity / property to be financed', 'وصف موجز للفكرة أو النشاط / العقار المطلوب تمويله', 'textarea', 'yes', 'Enter detailed description', 'أدخل وصفًا مفصلاً', '[]', '[]', 12, 4, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(76, 'Do you have a feasibility study or business plan?', 'هل يوجد دراسة جدوى أو خطة عمل؟', 'radio', 'yes', '', '', '[\"Yes\", \"No\"]', '[\"نعم\", \"لا\"]', 12, 4, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(77, 'Feasibility Study / Business Plan', 'دراسة جدوى / خطة عمل', 'file', 'no', 'Upload PDF/Word file', 'رفع ملف PDF/Word', '[]', '[]', 12, 4, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(78, 'National ID / Commercial Registration', 'الهوية الوطنية / السجل التجاري', 'file', 'yes', 'Upload document', 'رفع المستند', '[]', '[]', 6, 4, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(79, 'National Address', 'العنوان الوطني', 'file', 'yes', 'Upload document', 'رفع المستند', '[]', '[]', 6, 4, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(80, 'Bank Statement (last 3 months)', 'كشف حساب بنكي (آخر 3 أشهر)', 'file', 'yes', 'Upload bank statement', 'رفع كشف الحساب البنكي', '[]', '[]', 6, 4, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(81, 'Any required licenses or permits for the activity', 'أي تراخيص أو تصاريح مطلوبة للنشاط', 'file', 'no', 'Upload licenses/permits', 'رفع التراخيص/التصاريح', '[]', '[]', 6, 4, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(82, 'I confirm the accuracy of the above information', 'أقرّ بصحة البيانات المذكورة أعلاه', 'checkbox', 'yes', '', '', '[\"Agree\"]', '[\"موافق\"]', 12, 4, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(83, 'I consent to sharing my data with participating development funds and banks', 'أوافق على مشاركة بياناتي مع الصناديق والبنوك التنموية الشريكة', 'checkbox', 'yes', '', '', '[\"Agree\"]', '[\"موافق\"]', 12, 4, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(84, 'I agree to receive notifications regarding my request via email or mobile', 'أوافق على استقبال إشعارات بخصوص الطلب عن طريق البريد الإلكتروني أو الجوال', 'checkbox', 'no', '', '', '[\"Agree\"]', '[\"موافق\"]', 12, 4, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(85, 'Full Name', 'الاسم الكامل', 'text', 'yes', 'Enter Full Name', 'أدخل الاسم الكامل', '[]', '[]', 12, 5, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(86, 'National ID Number', 'رقم الهوية الوطنية', 'text', 'yes', 'Enter National ID', 'أدخل رقم الهوية', '[]', '[]', 6, 5, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(87, 'Date of Birth', 'تاريخ الميلاد', 'date', 'yes', 'Select Date of Birth', 'اختر تاريخ الميلاد', '[]', '[]', 6, 5, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(88, 'Marital Status', 'الحالة الاجتماعية', 'select', 'yes', 'Select Marital Status', 'اختر الحالة الاجتماعية', '[\"Single\", \"Married\", \"Divorced\", \"Widowed\"]', '[\"أعزب\", \"متزوج\", \"مطلق\", \"أرمل\"]', 6, 5, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(89, 'City / Region', 'المدينة / المنطقة', 'text', 'yes', 'Enter City/Region', 'أدخل المدينة/المنطقة', '[]', '[]', 6, 5, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(90, 'Mobile Number', 'رقم الجوال', 'text', 'yes', 'Enter Mobile Number', 'أدخل رقم الجوال', '[]', '[]', 6, 5, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(91, 'Email Address', 'البريد الإلكتروني', 'email', 'yes', 'Enter Email Address', 'أدخل البريد الإلكتروني', '[]', '[]', 6, 5, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(92, 'Current Occupation', 'نوع العمل الحالي', 'text', 'no', 'Enter Current Occupation', 'أدخل نوع العمل الحالي', '[]', '[]', 6, 5, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(93, 'Average Monthly Income', 'متوسط الدخل الشهري', 'number', 'yes', 'Enter Average Monthly Income', 'أدخل متوسط الدخل الشهري', '[]', '[]', 6, 5, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(94, 'Estimated funding amount', 'القيمة التقديرية للتمويل المطلوب', 'number', 'yes', 'Enter amount in SAR', 'أدخل المبلغ بالريال السعودي', '[]', '[]', 6, 5, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(95, 'Applicant\'s contribution', 'مساهمة مقدم الطلب', 'number', 'no', 'Enter amount in SAR', 'أدخل المبلغ بالريال السعودي', '[]', '[]', 6, 5, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(96, 'Brief description of the idea / activity / property to be financed', 'وصف موجز للفكرة أو النشاط / العقار المطلوب تمويله', 'textarea', 'yes', 'Enter detailed description', 'أدخل وصفًا مفصلاً', '[]', '[]', 12, 5, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(97, 'Do you have a feasibility study or business plan?', 'هل يوجد دراسة جدوى أو خطة عمل؟', 'radio', 'yes', '', '', '[\"Yes\", \"No\"]', '[\"نعم\", \"لا\"]', 12, 5, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(98, 'Feasibility Study / Business Plan', 'دراسة جدوى / خطة عمل', 'file', 'no', 'Upload PDF/Word file', 'رفع ملف PDF/Word', '[]', '[]', 12, 5, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(99, 'National ID / Commercial Registration', 'الهوية الوطنية / السجل التجاري', 'file', 'yes', 'Upload document', 'رفع المستند', '[]', '[]', 6, 5, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(100, 'National Address', 'العنوان الوطني', 'file', 'yes', 'Upload document', 'رفع المستند', '[]', '[]', 6, 5, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(101, 'Bank Statement (last 3 months)', 'كشف حساب بنكي (آخر 3 أشهر)', 'file', 'yes', 'Upload bank statement', 'رفع كشف الحساب البنكي', '[]', '[]', 6, 5, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(102, 'Any required licenses or permits for the activity', 'أي تراخيص أو تصاريح مطلوبة للنشاط', 'file', 'no', 'Upload licenses/permits', 'رفع التراخيص/التصاريح', '[]', '[]', 6, 5, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(103, 'I confirm the accuracy of the above information', 'أقرّ بصحة البيانات المذكورة أعلاه', 'checkbox', 'yes', '', '', '[\"Agree\"]', '[\"موافق\"]', 12, 5, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(104, 'I consent to sharing my data with participating development funds and banks', 'أوافق على مشاركة بياناتي مع الصناديق والبنوك التنموية الشريكة', 'checkbox', 'yes', '', '', '[\"Agree\"]', '[\"موافق\"]', 12, 5, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(105, 'I agree to receive notifications regarding my request via email or mobile', 'أوافق على استقبال إشعارات بخصوص الطلب عن طريق البريد الإلكتروني أو الجوال', 'checkbox', 'no', '', '', '[\"Agree\"]', '[\"موافق\"]', 12, 5, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(106, 'Full Name', 'الاسم الكامل', 'text', 'yes', 'Enter Full Name', 'أدخل الاسم الكامل', '[]', '[]', 12, 6, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(107, 'National ID Number', 'رقم الهوية الوطنية', 'text', 'yes', 'Enter National ID', 'أدخل رقم الهوية', '[]', '[]', 6, 6, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(108, 'Date of Birth', 'تاريخ الميلاد', 'date', 'yes', 'Select Date of Birth', 'اختر تاريخ الميلاد', '[]', '[]', 6, 6, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(109, 'Marital Status', 'الحالة الاجتماعية', 'select', 'yes', 'Select Marital Status', 'اختر الحالة الاجتماعية', '[\"Single\", \"Married\", \"Divorced\", \"Widowed\"]', '[\"أعزب\", \"متزوج\", \"مطلق\", \"أرمل\"]', 6, 6, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(110, 'City / Region', 'المدينة / المنطقة', 'text', 'yes', 'Enter City/Region', 'أدخل المدينة/المنطقة', '[]', '[]', 6, 6, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(111, 'Mobile Number', 'رقم الجوال', 'text', 'yes', 'Enter Mobile Number', 'أدخل رقم الجوال', '[]', '[]', 6, 6, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(112, 'Email Address', 'البريد الإلكتروني', 'email', 'yes', 'Enter Email Address', 'أدخل البريد الإلكتروني', '[]', '[]', 6, 6, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(113, 'Current Occupation', 'نوع العمل الحالي', 'text', 'no', 'Enter Current Occupation', 'أدخل نوع العمل الحالي', '[]', '[]', 6, 6, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(114, 'Average Monthly Income', 'متوسط الدخل الشهري', 'number', 'yes', 'Enter Average Monthly Income', 'أدخل متوسط الدخل الشهري', '[]', '[]', 6, 6, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(115, 'Estimated funding amount', 'القيمة التقديرية للتمويل المطلوب', 'number', 'yes', 'Enter amount in SAR', 'أدخل المبلغ بالريال السعودي', '[]', '[]', 6, 6, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(116, 'Applicant\'s contribution', 'مساهمة مقدم الطلب', 'number', 'no', 'Enter amount in SAR', 'أدخل المبلغ بالريال السعودي', '[]', '[]', 6, 6, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(117, 'Brief description of the idea / activity / property to be financed', 'وصف موجز للفكرة أو النشاط / العقار المطلوب تمويله', 'textarea', 'yes', 'Enter detailed description', 'أدخل وصفًا مفصلاً', '[]', '[]', 12, 6, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(118, 'Do you have a feasibility study or business plan?', 'هل يوجد دراسة جدوى أو خطة عمل؟', 'radio', 'yes', '', '', '[\"Yes\", \"No\"]', '[\"نعم\", \"لا\"]', 12, 6, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(119, 'Feasibility Study / Business Plan', 'دراسة جدوى / خطة عمل', 'file', 'no', 'Upload PDF/Word file', 'رفع ملف PDF/Word', '[]', '[]', 12, 6, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(120, 'National ID / Commercial Registration', 'الهوية الوطنية / السجل التجاري', 'file', 'yes', 'Upload document', 'رفع المستند', '[]', '[]', 6, 6, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(121, 'National Address', 'العنوان الوطني', 'file', 'yes', 'Upload document', 'رفع المستند', '[]', '[]', 6, 6, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(122, 'Bank Statement (last 3 months)', 'كشف حساب بنكي (آخر 3 أشهر)', 'file', 'yes', 'Upload bank statement', 'رفع كشف الحساب البنكي', '[]', '[]', 6, 6, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(123, 'Any required licenses or permits for the activity', 'أي تراخيص أو تصاريح مطلوبة للنشاط', 'file', 'no', 'Upload licenses/permits', 'رفع التراخيص/التصاريح', '[]', '[]', 6, 6, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(124, 'I confirm the accuracy of the above information', 'أقرّ بصحة البيانات المذكورة أعلاه', 'checkbox', 'yes', '', '', '[\"Agree\"]', '[\"موافق\"]', 12, 6, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(125, 'I consent to sharing my data with participating development funds and banks', 'أوافق على مشاركة بياناتي مع الصناديق والبنوك التنموية الشريكة', 'checkbox', 'yes', '', '', '[\"Agree\"]', '[\"موافق\"]', 12, 6, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(126, 'I agree to receive notifications regarding my request via email or mobile', 'أوافق على استقبال إشعارات بخصوص الطلب عن طريق البريد الإلكتروني أو الجوال', 'checkbox', 'no', '', '', '[\"Agree\"]', '[\"موافق\"]', 12, 6, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(127, 'Full Name', 'الاسم الكامل', 'text', 'yes', 'Enter Full Name', 'أدخل الاسم الكامل', '[]', '[]', 12, 7, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(128, 'National ID Number', 'رقم الهوية الوطنية', 'text', 'yes', 'Enter National ID', 'أدخل رقم الهوية', '[]', '[]', 6, 7, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(129, 'Date of Birth', 'تاريخ الميلاد', 'date', 'yes', 'Select Date of Birth', 'اختر تاريخ الميلاد', '[]', '[]', 6, 7, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(130, 'Marital Status', 'الحالة الاجتماعية', 'select', 'yes', 'Select Marital Status', 'اختر الحالة الاجتماعية', '[\"Single\", \"Married\", \"Divorced\", \"Widowed\"]', '[\"أعزب\", \"متزوج\", \"مطلق\", \"أرمل\"]', 6, 7, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(131, 'City / Region', 'المدينة / المنطقة', 'text', 'yes', 'Enter City/Region', 'أدخل المدينة/المنطقة', '[]', '[]', 6, 7, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(132, 'Mobile Number', 'رقم الجوال', 'text', 'yes', 'Enter Mobile Number', 'أدخل رقم الجوال', '[]', '[]', 6, 7, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(133, 'Email Address', 'البريد الإلكتروني', 'email', 'yes', 'Enter Email Address', 'أدخل البريد الإلكتروني', '[]', '[]', 6, 7, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(134, 'Current Occupation', 'نوع العمل الحالي', 'text', 'no', 'Enter Current Occupation', 'أدخل نوع العمل الحالي', '[]', '[]', 6, 7, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(135, 'Average Monthly Income', 'متوسط الدخل الشهري', 'number', 'yes', 'Enter Average Monthly Income', 'أدخل متوسط الدخل الشهري', '[]', '[]', 6, 7, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(136, 'Estimated funding amount', 'القيمة التقديرية للتمويل المطلوب', 'number', 'yes', 'Enter amount in SAR', 'أدخل المبلغ بالريال السعودي', '[]', '[]', 6, 7, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(137, 'Applicant\'s contribution', 'مساهمة مقدم الطلب', 'number', 'no', 'Enter amount in SAR', 'أدخل المبلغ بالريال السعودي', '[]', '[]', 6, 7, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(138, 'Brief description of the idea / activity / property to be financed', 'وصف موجز للفكرة أو النشاط / العقار المطلوب تمويله', 'textarea', 'yes', 'Enter detailed description', 'أدخل وصفًا مفصلاً', '[]', '[]', 12, 7, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(139, 'Do you have a feasibility study or business plan?', 'هل يوجد دراسة جدوى أو خطة عمل؟', 'radio', 'yes', '', '', '[\"Yes\", \"No\"]', '[\"نعم\", \"لا\"]', 12, 7, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(140, 'Feasibility Study / Business Plan', 'دراسة جدوى / خطة عمل', 'file', 'no', 'Upload PDF/Word file', 'رفع ملف PDF/Word', '[]', '[]', 12, 7, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(141, 'National ID / Commercial Registration', 'الهوية الوطنية / السجل التجاري', 'file', 'yes', 'Upload document', 'رفع المستند', '[]', '[]', 6, 7, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(142, 'National Address', 'العنوان الوطني', 'file', 'yes', 'Upload document', 'رفع المستند', '[]', '[]', 6, 7, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(143, 'Bank Statement (last 3 months)', 'كشف حساب بنكي (آخر 3 أشهر)', 'file', 'yes', 'Upload bank statement', 'رفع كشف الحساب البنكي', '[]', '[]', 6, 7, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(144, 'Any required licenses or permits for the activity', 'أي تراخيص أو تصاريح مطلوبة للنشاط', 'file', 'no', 'Upload licenses/permits', 'رفع التراخيص/التصاريح', '[]', '[]', 6, 7, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(145, 'I confirm the accuracy of the above information', 'أقرّ بصحة البيانات المذكورة أعلاه', 'checkbox', 'yes', '', '', '[\"Agree\"]', '[\"موافق\"]', 12, 7, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(146, 'I consent to sharing my data with participating development funds and banks', 'أوافق على مشاركة بياناتي مع الصناديق والبنوك التنموية الشريكة', 'checkbox', 'yes', '', '', '[\"Agree\"]', '[\"موافق\"]', 12, 7, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(147, 'I agree to receive notifications regarding my request via email or mobile', 'أوافق على استقبال إشعارات بخصوص الطلب عن طريق البريد الإلكتروني أو الجوال', 'checkbox', 'no', '', '', '[\"Agree\"]', '[\"موافق\"]', 12, 7, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(148, 'Full Name', 'الاسم الكامل', 'text', 'yes', 'Enter Full Name', 'أدخل الاسم الكامل', '[]', '[]', 12, 8, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(149, 'National ID Number', 'رقم الهوية الوطنية', 'text', 'yes', 'Enter National ID', 'أدخل رقم الهوية', '[]', '[]', 6, 8, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(150, 'Date of Birth', 'تاريخ الميلاد', 'date', 'yes', 'Select Date of Birth', 'اختر تاريخ الميلاد', '[]', '[]', 6, 8, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(151, 'Marital Status', 'الحالة الاجتماعية', 'select', 'yes', 'Select Marital Status', 'اختر الحالة الاجتماعية', '[\"Single\", \"Married\", \"Divorced\", \"Widowed\"]', '[\"أعزب\", \"متزوج\", \"مطلق\", \"أرمل\"]', 6, 8, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(152, 'City / Region', 'المدينة / المنطقة', 'text', 'yes', 'Enter City/Region', 'أدخل المدينة/المنطقة', '[]', '[]', 6, 8, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(153, 'Mobile Number', 'رقم الجوال', 'text', 'yes', 'Enter Mobile Number', 'أدخل رقم الجوال', '[]', '[]', 6, 8, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(154, 'Email Address', 'البريد الإلكتروني', 'email', 'yes', 'Enter Email Address', 'أدخل البريد الإلكتروني', '[]', '[]', 6, 8, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(155, 'Current Occupation', 'نوع العمل الحالي', 'text', 'no', 'Enter Current Occupation', 'أدخل نوع العمل الحالي', '[]', '[]', 6, 8, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(156, 'Average Monthly Income', 'متوسط الدخل الشهري', 'number', 'yes', 'Enter Average Monthly Income', 'أدخل متوسط الدخل الشهري', '[]', '[]', 6, 8, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(157, 'Estimated funding amount', 'القيمة التقديرية للتمويل المطلوب', 'number', 'yes', 'Enter amount in SAR', 'أدخل المبلغ بالريال السعودي', '[]', '[]', 6, 8, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(158, 'Applicant\'s contribution', 'مساهمة مقدم الطلب', 'number', 'no', 'Enter amount in SAR', 'أدخل المبلغ بالريال السعودي', '[]', '[]', 6, 8, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(159, 'Brief description of the idea / activity / property to be financed', 'وصف موجز للفكرة أو النشاط / العقار المطلوب تمويله', 'textarea', 'yes', 'Enter detailed description', 'أدخل وصفًا مفصلاً', '[]', '[]', 12, 8, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(160, 'Do you have a feasibility study or business plan?', 'هل يوجد دراسة جدوى أو خطة عمل؟', 'radio', 'yes', '', '', '[\"Yes\", \"No\"]', '[\"نعم\", \"لا\"]', 12, 8, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(161, 'Feasibility Study / Business Plan', 'دراسة جدوى / خطة عمل', 'file', 'no', 'Upload PDF/Word file', 'رفع ملف PDF/Word', '[]', '[]', 12, 8, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(162, 'National ID / Commercial Registration', 'الهوية الوطنية / السجل التجاري', 'file', 'yes', 'Upload document', 'رفع المستند', '[]', '[]', 6, 8, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(163, 'National Address', 'العنوان الوطني', 'file', 'yes', 'Upload document', 'رفع المستند', '[]', '[]', 6, 8, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(164, 'Bank Statement (last 3 months)', 'كشف حساب بنكي (آخر 3 أشهر)', 'file', 'yes', 'Upload bank statement', 'رفع كشف الحساب البنكي', '[]', '[]', 6, 8, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(165, 'Any required licenses or permits for the activity', 'أي تراخيص أو تصاريح مطلوبة للنشاط', 'file', 'no', 'Upload licenses/permits', 'رفع التراخيص/التصاريح', '[]', '[]', 6, 8, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(166, 'I confirm the accuracy of the above information', 'أقرّ بصحة البيانات المذكورة أعلاه', 'checkbox', 'yes', '', '', '[\"Agree\"]', '[\"موافق\"]', 12, 8, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(167, 'I consent to sharing my data with participating development funds and banks', 'أوافق على مشاركة بياناتي مع الصناديق والبنوك التنموية الشريكة', 'checkbox', 'yes', '', '', '[\"Agree\"]', '[\"موافق\"]', 12, 8, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(168, 'I agree to receive notifications regarding my request via email or mobile', 'أوافق على استقبال إشعارات بخصوص الطلب عن طريق البريد الإلكتروني أو الجوال', 'checkbox', 'no', '', '', '[\"Agree\"]', '[\"موافق\"]', 12, 8, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(169, 'Full Name', 'الاسم الكامل', 'text', 'yes', 'Enter Full Name', 'أدخل الاسم الكامل', '[]', '[]', 12, 9, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(170, 'National ID Number', 'رقم الهوية الوطنية', 'text', 'yes', 'Enter National ID', 'أدخل رقم الهوية', '[]', '[]', 6, 9, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(171, 'Date of Birth', 'تاريخ الميلاد', 'date', 'yes', 'Select Date of Birth', 'اختر تاريخ الميلاد', '[]', '[]', 6, 9, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(172, 'Marital Status', 'الحالة الاجتماعية', 'select', 'yes', 'Select Marital Status', 'اختر الحالة الاجتماعية', '[\"Single\", \"Married\", \"Divorced\", \"Widowed\"]', '[\"أعزب\", \"متزوج\", \"مطلق\", \"أرمل\"]', 6, 9, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(173, 'City / Region', 'المدينة / المنطقة', 'text', 'yes', 'Enter City/Region', 'أدخل المدينة/المنطقة', '[]', '[]', 6, 9, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(174, 'Mobile Number', 'رقم الجوال', 'text', 'yes', 'Enter Mobile Number', 'أدخل رقم الجوال', '[]', '[]', 6, 9, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(175, 'Email Address', 'البريد الإلكتروني', 'email', 'yes', 'Enter Email Address', 'أدخل البريد الإلكتروني', '[]', '[]', 6, 9, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(176, 'Current Occupation', 'نوع العمل الحالي', 'text', 'no', 'Enter Current Occupation', 'أدخل نوع العمل الحالي', '[]', '[]', 6, 9, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(177, 'Average Monthly Income', 'متوسط الدخل الشهري', 'number', 'yes', 'Enter Average Monthly Income', 'أدخل متوسط الدخل الشهري', '[]', '[]', 6, 9, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(178, 'Estimated funding amount', 'القيمة التقديرية للتمويل المطلوب', 'number', 'yes', 'Enter amount in SAR', 'أدخل المبلغ بالريال السعودي', '[]', '[]', 6, 9, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(179, 'Applicant\'s contribution', 'مساهمة مقدم الطلب', 'number', 'no', 'Enter amount in SAR', 'أدخل المبلغ بالريال السعودي', '[]', '[]', 6, 9, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(180, 'Brief description of the idea / activity / property to be financed', 'وصف موجز للفكرة أو النشاط / العقار المطلوب تمويله', 'textarea', 'yes', 'Enter detailed description', 'أدخل وصفًا مفصلاً', '[]', '[]', 12, 9, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(181, 'Do you have a feasibility study or business plan?', 'هل يوجد دراسة جدوى أو خطة عمل؟', 'radio', 'yes', '', '', '[\"Yes\", \"No\"]', '[\"نعم\", \"لا\"]', 12, 9, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(182, 'Feasibility Study / Business Plan', 'دراسة جدوى / خطة عمل', 'file', 'no', 'Upload PDF/Word file', 'رفع ملف PDF/Word', '[]', '[]', 12, 9, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(183, 'National ID / Commercial Registration', 'الهوية الوطنية / السجل التجاري', 'file', 'yes', 'Upload document', 'رفع المستند', '[]', '[]', 6, 9, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(184, 'National Address', 'العنوان الوطني', 'file', 'yes', 'Upload document', 'رفع المستند', '[]', '[]', 6, 9, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(185, 'Bank Statement (last 3 months)', 'كشف حساب بنكي (آخر 3 أشهر)', 'file', 'yes', 'Upload bank statement', 'رفع كشف الحساب البنكي', '[]', '[]', 6, 9, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(186, 'Any required licenses or permits for the activity', 'أي تراخيص أو تصاريح مطلوبة للنشاط', 'file', 'no', 'Upload licenses/permits', 'رفع التراخيص/التصاريح', '[]', '[]', 6, 9, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(187, 'I confirm the accuracy of the above information', 'أقرّ بصحة البيانات المذكورة أعلاه', 'checkbox', 'yes', '', '', '[\"Agree\"]', '[\"موافق\"]', 12, 9, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(188, 'I consent to sharing my data with participating development funds and banks', 'أوافق على مشاركة بياناتي مع الصناديق والبنوك التنموية الشريكة', 'checkbox', 'yes', '', '', '[\"Agree\"]', '[\"موافق\"]', 12, 9, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(189, 'I agree to receive notifications regarding my request via email or mobile', 'أوافق على استقبال إشعارات بخصوص الطلب عن طريق البريد الإلكتروني أو الجوال', 'checkbox', 'no', '', '', '[\"Agree\"]', '[\"موافق\"]', 12, 9, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(190, 'Full Name', 'الاسم الكامل', 'text', 'yes', 'Enter Full Name', 'أدخل الاسم الكامل', '[]', '[]', 12, 10, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(191, 'National ID Number', 'رقم الهوية الوطنية', 'text', 'yes', 'Enter National ID', 'أدخل رقم الهوية', '[]', '[]', 6, 10, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(192, 'Date of Birth', 'تاريخ الميلاد', 'date', 'yes', 'Select Date of Birth', 'اختر تاريخ الميلاد', '[]', '[]', 6, 10, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(193, 'Marital Status', 'الحالة الاجتماعية', 'select', 'yes', 'Select Marital Status', 'اختر الحالة الاجتماعية', '[\"Single\", \"Married\", \"Divorced\", \"Widowed\"]', '[\"أعزب\", \"متزوج\", \"مطلق\", \"أرمل\"]', 6, 10, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(194, 'City / Region', 'المدينة / المنطقة', 'text', 'yes', 'Enter City/Region', 'أدخل المدينة/المنطقة', '[]', '[]', 6, 10, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(195, 'Mobile Number', 'رقم الجوال', 'text', 'yes', 'Enter Mobile Number', 'أدخل رقم الجوال', '[]', '[]', 6, 10, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(196, 'Email Address', 'البريد الإلكتروني', 'email', 'yes', 'Enter Email Address', 'أدخل البريد الإلكتروني', '[]', '[]', 6, 10, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(197, 'Current Occupation', 'نوع العمل الحالي', 'text', 'no', 'Enter Current Occupation', 'أدخل نوع العمل الحالي', '[]', '[]', 6, 10, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(198, 'Average Monthly Income', 'متوسط الدخل الشهري', 'number', 'yes', 'Enter Average Monthly Income', 'أدخل متوسط الدخل الشهري', '[]', '[]', 6, 10, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(199, 'Estimated funding amount', 'القيمة التقديرية للتمويل المطلوب', 'number', 'yes', 'Enter amount in SAR', 'أدخل المبلغ بالريال السعودي', '[]', '[]', 6, 10, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(200, 'Applicant\'s contribution', 'مساهمة مقدم الطلب', 'number', 'no', 'Enter amount in SAR', 'أدخل المبلغ بالريال السعودي', '[]', '[]', 6, 10, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(201, 'Brief description of the idea / activity / property to be financed', 'وصف موجز للفكرة أو النشاط / العقار المطلوب تمويله', 'textarea', 'yes', 'Enter detailed description', 'أدخل وصفًا مفصلاً', '[]', '[]', 12, 10, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(202, 'Do you have a feasibility study or business plan?', 'هل يوجد دراسة جدوى أو خطة عمل؟', 'radio', 'yes', '', '', '[\"Yes\", \"No\"]', '[\"نعم\", \"لا\"]', 12, 10, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(203, 'Feasibility Study / Business Plan', 'دراسة جدوى / خطة عمل', 'file', 'no', 'Upload PDF/Word file', 'رفع ملف PDF/Word', '[]', '[]', 12, 10, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(204, 'National ID / Commercial Registration', 'الهوية الوطنية / السجل التجاري', 'file', 'yes', 'Upload document', 'رفع المستند', '[]', '[]', 6, 10, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(205, 'National Address', 'العنوان الوطني', 'file', 'yes', 'Upload document', 'رفع المستند', '[]', '[]', 6, 10, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(206, 'Bank Statement (last 3 months)', 'كشف حساب بنكي (آخر 3 أشهر)', 'file', 'yes', 'Upload bank statement', 'رفع كشف الحساب البنكي', '[]', '[]', 6, 10, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(207, 'Any required licenses or permits for the activity', 'أي تراخيص أو تصاريح مطلوبة للنشاط', 'file', 'no', 'Upload licenses/permits', 'رفع التراخيص/التصاريح', '[]', '[]', 6, 10, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(208, 'I confirm the accuracy of the above information', 'أقرّ بصحة البيانات المذكورة أعلاه', 'checkbox', 'yes', '', '', '[\"Agree\"]', '[\"موافق\"]', 12, 10, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(209, 'I consent to sharing my data with participating development funds and banks', 'أوافق على مشاركة بياناتي مع الصناديق والبنوك التنموية الشريكة', 'checkbox', 'yes', '', '', '[\"Agree\"]', '[\"موافق\"]', 12, 10, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(210, 'I agree to receive notifications regarding my request via email or mobile', 'أوافق على استقبال إشعارات بخصوص الطلب عن طريق البريد الإلكتروني أو الجوال', 'checkbox', 'no', '', '', '[\"Agree\"]', '[\"موافق\"]', 12, 10, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(211, 'Full Name', 'الاسم الكامل', 'text', 'yes', 'Enter Full Name', 'أدخل الاسم الكامل', '[]', '[]', 12, 11, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(212, 'National ID Number', 'رقم الهوية الوطنية', 'text', 'yes', 'Enter National ID', 'أدخل رقم الهوية', '[]', '[]', 6, 11, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(213, 'Date of Birth', 'تاريخ الميلاد', 'date', 'yes', 'Select Date of Birth', 'اختر تاريخ الميلاد', '[]', '[]', 6, 11, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(214, 'Marital Status', 'الحالة الاجتماعية', 'select', 'yes', 'Select Marital Status', 'اختر الحالة الاجتماعية', '[\"Single\", \"Married\", \"Divorced\", \"Widowed\"]', '[\"أعزب\", \"متزوج\", \"مطلق\", \"أرمل\"]', 6, 11, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(215, 'City / Region', 'المدينة / المنطقة', 'text', 'yes', 'Enter City/Region', 'أدخل المدينة/المنطقة', '[]', '[]', 6, 11, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(216, 'Mobile Number', 'رقم الجوال', 'text', 'yes', 'Enter Mobile Number', 'أدخل رقم الجوال', '[]', '[]', 6, 11, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(217, 'Email Address', 'البريد الإلكتروني', 'email', 'yes', 'Enter Email Address', 'أدخل البريد الإلكتروني', '[]', '[]', 6, 11, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(218, 'Current Occupation', 'نوع العمل الحالي', 'text', 'no', 'Enter Current Occupation', 'أدخل نوع العمل الحالي', '[]', '[]', 6, 11, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(219, 'Average Monthly Income', 'متوسط الدخل الشهري', 'number', 'yes', 'Enter Average Monthly Income', 'أدخل متوسط الدخل الشهري', '[]', '[]', 6, 11, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(220, 'Estimated funding amount', 'القيمة التقديرية للتمويل المطلوب', 'number', 'yes', 'Enter amount in SAR', 'أدخل المبلغ بالريال السعودي', '[]', '[]', 6, 11, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(221, 'Applicant\'s contribution', 'مساهمة مقدم الطلب', 'number', 'no', 'Enter amount in SAR', 'أدخل المبلغ بالريال السعودي', '[]', '[]', 6, 11, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(222, 'Brief description of the idea / activity / property to be financed', 'وصف موجز للفكرة أو النشاط / العقار المطلوب تمويله', 'textarea', 'yes', 'Enter detailed description', 'أدخل وصفًا مفصلاً', '[]', '[]', 12, 11, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(223, 'Do you have a feasibility study or business plan?', 'هل يوجد دراسة جدوى أو خطة عمل؟', 'radio', 'yes', '', '', '[\"Yes\", \"No\"]', '[\"نعم\", \"لا\"]', 12, 11, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(224, 'Feasibility Study / Business Plan', 'دراسة جدوى / خطة عمل', 'file', 'no', 'Upload PDF/Word file', 'رفع ملف PDF/Word', '[]', '[]', 12, 11, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(225, 'National ID / Commercial Registration', 'الهوية الوطنية / السجل التجاري', 'file', 'yes', 'Upload document', 'رفع المستند', '[]', '[]', 6, 11, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(226, 'National Address', 'العنوان الوطني', 'file', 'yes', 'Upload document', 'رفع المستند', '[]', '[]', 6, 11, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(227, 'Bank Statement (last 3 months)', 'كشف حساب بنكي (آخر 3 أشهر)', 'file', 'yes', 'Upload bank statement', 'رفع كشف الحساب البنكي', '[]', '[]', 6, 11, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(228, 'Any required licenses or permits for the activity', 'أي تراخيص أو تصاريح مطلوبة للنشاط', 'file', 'no', 'Upload licenses/permits', 'رفع التراخيص/التصاريح', '[]', '[]', 6, 11, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(229, 'I confirm the accuracy of the above information', 'أقرّ بصحة البيانات المذكورة أعلاه', 'checkbox', 'yes', '', '', '[\"Agree\"]', '[\"موافق\"]', 12, 11, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(230, 'I consent to sharing my data with participating development funds and banks', 'أوافق على مشاركة بياناتي مع الصناديق والبنوك التنموية الشريكة', 'checkbox', 'yes', '', '', '[\"Agree\"]', '[\"موافق\"]', 12, 11, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(231, 'I agree to receive notifications regarding my request via email or mobile', 'أوافق على استقبال إشعارات بخصوص الطلب عن طريق البريد الإلكتروني أو الجوال', 'checkbox', 'no', '', '', '[\"Agree\"]', '[\"موافق\"]', 12, 11, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(232, 'Full Name', 'الاسم الكامل', 'text', 'yes', 'Enter Full Name', 'أدخل الاسم الكامل', '[]', '[]', 12, 12, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(233, 'National ID Number', 'رقم الهوية الوطنية', 'text', 'yes', 'Enter National ID', 'أدخل رقم الهوية', '[]', '[]', 6, 12, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(234, 'Date of Birth', 'تاريخ الميلاد', 'date', 'yes', 'Select Date of Birth', 'اختر تاريخ الميلاد', '[]', '[]', 6, 12, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(235, 'Marital Status', 'الحالة الاجتماعية', 'select', 'yes', 'Select Marital Status', 'اختر الحالة الاجتماعية', '[\"Single\", \"Married\", \"Divorced\", \"Widowed\"]', '[\"أعزب\", \"متزوج\", \"مطلق\", \"أرمل\"]', 6, 12, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(236, 'City / Region', 'المدينة / المنطقة', 'text', 'yes', 'Enter City/Region', 'أدخل المدينة/المنطقة', '[]', '[]', 6, 12, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(237, 'Mobile Number', 'رقم الجوال', 'text', 'yes', 'Enter Mobile Number', 'أدخل رقم الجوال', '[]', '[]', 6, 12, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(238, 'Email Address', 'البريد الإلكتروني', 'email', 'yes', 'Enter Email Address', 'أدخل البريد الإلكتروني', '[]', '[]', 6, 12, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(239, 'Current Occupation', 'نوع العمل الحالي', 'text', 'no', 'Enter Current Occupation', 'أدخل نوع العمل الحالي', '[]', '[]', 6, 12, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30');
+INSERT INTO `our_service_forms` (`id`, `name`, `name_ar`, `type`, `required`, `placeholder`, `placeholder_ar`, `options`, `options_ar`, `col`, `our_service_id`, `status`, `created_at`, `updated_at`) VALUES
+(240, 'Average Monthly Income', 'متوسط الدخل الشهري', 'number', 'yes', 'Enter Average Monthly Income', 'أدخل متوسط الدخل الشهري', '[]', '[]', 6, 12, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(241, 'Estimated funding amount', 'القيمة التقديرية للتمويل المطلوب', 'number', 'yes', 'Enter amount in SAR', 'أدخل المبلغ بالريال السعودي', '[]', '[]', 6, 12, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(242, 'Applicant\'s contribution', 'مساهمة مقدم الطلب', 'number', 'no', 'Enter amount in SAR', 'أدخل المبلغ بالريال السعودي', '[]', '[]', 6, 12, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(243, 'Brief description of the idea / activity / property to be financed', 'وصف موجز للفكرة أو النشاط / العقار المطلوب تمويله', 'textarea', 'yes', 'Enter detailed description', 'أدخل وصفًا مفصلاً', '[]', '[]', 12, 12, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(244, 'Do you have a feasibility study or business plan?', 'هل يوجد دراسة جدوى أو خطة عمل؟', 'radio', 'yes', '', '', '[\"Yes\", \"No\"]', '[\"نعم\", \"لا\"]', 12, 12, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(245, 'Feasibility Study / Business Plan', 'دراسة جدوى / خطة عمل', 'file', 'no', 'Upload PDF/Word file', 'رفع ملف PDF/Word', '[]', '[]', 12, 12, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(246, 'National ID / Commercial Registration', 'الهوية الوطنية / السجل التجاري', 'file', 'yes', 'Upload document', 'رفع المستند', '[]', '[]', 6, 12, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(247, 'National Address', 'العنوان الوطني', 'file', 'yes', 'Upload document', 'رفع المستند', '[]', '[]', 6, 12, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(248, 'Bank Statement (last 3 months)', 'كشف حساب بنكي (آخر 3 أشهر)', 'file', 'yes', 'Upload bank statement', 'رفع كشف الحساب البنكي', '[]', '[]', 6, 12, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(249, 'Any required licenses or permits for the activity', 'أي تراخيص أو تصاريح مطلوبة للنشاط', 'file', 'no', 'Upload licenses/permits', 'رفع التراخيص/التصاريح', '[]', '[]', 6, 12, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(250, 'I confirm the accuracy of the above information', 'أقرّ بصحة البيانات المذكورة أعلاه', 'checkbox', 'yes', '', '', '[\"Agree\"]', '[\"موافق\"]', 12, 12, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(251, 'I consent to sharing my data with participating development funds and banks', 'أوافق على مشاركة بياناتي مع الصناديق والبنوك التنموية الشريكة', 'checkbox', 'yes', '', '', '[\"Agree\"]', '[\"موافق\"]', 12, 12, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(252, 'I agree to receive notifications regarding my request via email or mobile', 'أوافق على استقبال إشعارات بخصوص الطلب عن طريق البريد الإلكتروني أو الجوال', 'checkbox', 'no', '', '', '[\"Agree\"]', '[\"موافق\"]', 12, 12, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30');
 
 -- --------------------------------------------------------
 
@@ -5712,7 +6166,74 @@ CREATE TABLE `our_service_lists` (
 --
 
 INSERT INTO `our_service_lists` (`id`, `title`, `title_ar`, `our_service_id`, `status`, `created_at`, `updated_at`) VALUES
-(2, 'Subsidized Housing Loan: Providing subsidized home loans to citizens in partnership with banks.', 'قرض الإسكان المدعوم: تقديم قروض سكنية مدعومة للمواطنين بالشراكة مع البنوك.', 2, 'active', '2025-08-23 02:17:00', '2025-08-24 01:25:38');
+(1, 'Subsidized Housing Loan: Providing subsidized home loans to citizens in partnership with banks', 'التمويل العقاري المدعوم: تقديم قروض سكنية مدعومة للمواطنين بالتعاون مع البنوك', 1, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(2, 'Self-Build Financing: Supporting citizens in building their own homes on private land', 'تمويل البناء الذاتي: دعم المواطنين لبناء منازلهم على أراضيهم الخاصة', 1, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(3, 'Ready and Under-Construction Units Financing: Offering financing options for purchasing ready or under-construction housing units', 'تمويل الوحدات الجاهزة وتحت الإنشاء: توفير خيارات تمويل لشراء وحدات سكنية جاهزة أو تحت الإنشاء', 1, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(4, 'Real Estate Advisor Service: Offering financial and housing consultations to beneficiaries', 'خدمة المستشار العقاري: تقديم استشارات مالية وسكنية للمستفيدين', 1, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(5, 'Various E-Services: Such as activating/deactivating payment deductions and refunding excess payments', 'خدمات إلكترونية متنوعة: مثل تفعيل/إيقاف الحسم، واستعادة المبالغ الزائدة', 1, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(6, 'Subsidized and facilitated real estate financing', 'التمويل العقاري المدعوم والميسر', 1, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(7, 'Mortgage', 'الرهن العقاري', 1, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(8, 'Prefabricated units for the Ministry of Housing', 'الوحدات الجاهزة لوزارة الإسكان', 1, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(9, 'Agricultural Project Financing: Supporting farmers and investors in the agricultural sector', 'تمويل المشاريع الزراعية: دعم المزارعين والمستثمرين في القطاع الزراعي', 2, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(10, 'Cooperative Associations Financing: Supporting agricultural cooperative associations', 'تمويل الجمعيات التعاونية: دعم الجمعيات الزراعية التعاونية', 2, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(11, 'E-Services for Individuals: Such as clearance certificates and transaction data', 'خدمات إلكترونية للأفراد: إصدار إخلاء طرف وبيانات التعامل', 2, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(12, 'Working capital financing for specialized projects', 'تمويل رأس المال العامل للمشاريع المتخصصة', 2, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(13, 'Loan for innovative start-ups', 'قرض الشركات الناشئة الابتكارية', 2, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(14, 'Aquaculture projects', 'مشاريع الاستزراع المائي', 2, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(15, 'Mobile beekeeping', 'تربية النحل المتنقل', 2, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(16, 'Traditional farms', 'المزارع التقليدية', 2, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(17, 'Agricultural tourism loans', 'قروض السياحة الزراعية', 2, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(18, 'Ensuring the import of green fodder', 'ضمان استيراد الأعلاف الخضراء', 2, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(19, 'Guaranteeing the import of firewood', 'ضمان استيراد الحطب', 2, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(20, 'Agricultural subsidy program for palm farmers', 'برنامج الاعانات الزراعية لمزارعي النخيل', 2, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(21, 'Industrial Project Financing: Providing loans for new or expansion industrial projects', 'تمويل المشاريع الصناعية: تقديم قروض للمشاريع الصناعية الجديدة أو التوسعية', 3, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(22, 'Land and Loan Program: Offering industrial land with financing support', 'برنامج أرض وقرض: توفير أراضٍ صناعية مع تمويل للمشاريع', 3, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(23, 'Investor E-Services: Such as loan applications and non-indebtedness certificates', 'خدمات إلكترونية للمستثمرين: مثل طلب قرض وشهادة عدم اقتراض', 3, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(24, 'Promising Factories Initiative \"Facilitated Financing\"', 'مبادرة المصانع الواعدة \"التمويل الميسر\"', 3, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(25, 'Future Factories Initiative \"Competitive Accelerated Incentives Path\"', 'مبادرة مصانع المستقبل \"مسار حوافز مسرعة تنافسية\"', 3, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(26, 'Financing the mining sector', 'تمويل قطاع التعدين', 3, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(27, 'Financing the renewable energy sector', 'تمويل قطاع الطاقة المتجددة', 3, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(28, 'Training and Qualification Programs: Offering programs to qualify the national workforce', 'برامج التدريب والتأهيل: تقديم برامج تدريبية لتأهيل القوى العاملة الوطنية', 4, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(29, 'Employment Support Programs: Supporting the employment of Saudi citizens in the private sector', 'برامج دعم التوظيف: دعم توظيف المواطنين في القطاع الخاص', 4, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(30, 'Various E-Services: Including career guidance and job market readiness programs', 'خدمات إلكترونية متنوعة: مثل الإرشاد المهني والتأهيل لسوق العمل', 4, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(31, 'Tourism Project Financing: Supporting investors in the tourism sector', 'تمويل المشاريع السياحية: دعم المستثمرين في القطاع السياحي', 5, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(32, 'Flexible Financing Programs: Offering competitive rates and flexible repayment terms', 'برامج تمويلية مرنة: تقديم تمويل بفترات سداد مرنة ورسوم تنافسية', 5, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(33, 'E-Services for Beneficiaries: Such as registration and service application procedures', 'خدمات إلكترونية للمستفيدين: مثل التسجيل وبدء إجراءات الاستفادة من الخدمات', 5, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(34, 'Aoun Tourism Hospitality', 'عون السياحة للضيافة', 5, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(35, 'Tourism Aid for Experiences', 'عون السياحة للتجارب', 5, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(36, 'Cultural Project Support: Financing projects across various cultural sectors', 'دعم المشاريع الثقافية: تمويل المشاريع في مختلف القطاعات الثقافية', 6, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(37, 'Sustainable Financing Programs: Providing long-term funding from public and private sectors', 'برامج تمويل مستدامة: توفير تمويل مستدام من القطاعين العام والخاص', 6, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(38, 'E-Services for Beneficiaries: Including applications for cultural financing programs', 'خدمات إلكترونية للمستفيدين: مثل التقديم على برامج التمويل الثقافي', 6, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(39, 'Film sector financing program', 'برنامج تمويل قطاع الأفلام', 6, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(40, 'Individual Financing: Such as family loans, marriage loans, and home renovation loans', 'تمويل الأفراد: مثل تمويل الأسرة، وتمويل الزواج، وتمويل الترميم', 7, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(41, 'Productive Family Financing: Supporting home-based businesses through dedicated programs', 'تمويل الأسر المنتجة: دعم الأسر المنتجة من خلال برامج تمويلية', 7, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(42, 'Savings Programs: Including the \"Zood\" and \"Zood Generations\" saving plans', 'برامج ادخارية: مثل برنامج زود الادخاري وبرنامج زود الأجيال', 7, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(43, 'Various E-Services: Such as electronic account statements and guarantee management', 'خدمات إلكترونية متنوعة: مثل كشف الحساب الإلكتروني وإدارة الكفالات', 7, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(44, 'Financing excellence projects', 'تمويل مشاريع التميز', 7, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(45, 'Financing emerging technology', 'تمويل التقنية الناشئة', 7, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(46, 'Microfinance: Supporting micro-enterprises with financing up to SAR 500,000', 'التمويل متناهي الصغر: دعم المنشآت متناهية الصغر بتمويل يصل إلى 500 ألف ريال', 8, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(47, 'Working Capital Financing: Offering financing to cover operational expenses', 'تمويل رأس المال العامل: توفير تمويل لتغطية احتياجات رأس المال العامل', 8, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(48, 'Various Financing Programs: In collaboration with financial institutions', 'برامج تمويلية متنوعة: بالتعاون مع مؤسسات القطاع المالي', 8, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(49, 'Microfinance whose annual revenues do not exceed 3', 'التمويل متناهي الصغر التي لا تتجاوز إيراداتها السنوية 3', 8, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(50, 'Working capital financing whose revenues do not exceed 200 million riyals', 'تمويل رأس المال العامل لا تتجاوز إيراداتها 200 مليون ريال', 8, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(51, 'Term financing whose revenues do not exceed 200 million riyals as capital expenditures', 'تمويل لأجل لا تتجاوز إيراداتها 200 مليون ريال النفقات الرأسمالية', 8, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(52, 'Financing online stores to finance immediate needs for inventory and finished goods', 'تمويل المتاجر الإلكترونية تمويل الاحتياجات الفورية للمخزون والسلع النهائية', 8, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(53, 'Financing with a revolving credit line for operating expenses', 'التمويل بحد ائتماني متجدد مصاريف التشغيل', 8, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(54, 'Event Infrastructure Development: Building and developing sites for hosting events in culture, tourism, entertainment, and sports sectors', 'تطوير بنية تحتية للفعاليات: إنشاء وتطوير مواقع لاستضافة فعاليات في قطاعات الثقافة، السياحة، الترفيه، والرياضة', 9, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(55, 'Strategic Partnerships: Collaborating with global and local operators to maximize impact', 'بناء شراكات استراتيجية: التعاون مع مشغلين ومطورين دوليين ومحليين لتعظيم الأثر في القطاعات المستهدفة', 9, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(56, 'Positioning the Kingdom as a Global Events Hub: By developing over 35 unique sites by 2030', 'تعزيز مكانة المملكة كمركز عالمي للفعاليات: من خلال تطوير أكثر من 35 موقعًا فريدًا بحلول عام 2030', 9, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(57, 'Financing the development of multiple sports sites', 'تمويل تطوير مواقع رياضية متعددة', 9, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(58, 'Develop a strong entertainment infrastructure', 'تطوير بنية تحتية قوية للترفيه', 9, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(59, 'Art galleries, theaters and conference centres', 'المعارض الفنية والمسارح ومراكز المؤتمرات', 9, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(60, 'Infrastructure Project Financing: Supporting projects in transport, energy, water, health, education, textecommunications, and digital infrastructure', 'تمويل مشاريع البنية التحتية: دعم وتمويل مشاريع في قطاعات النقل، الطاقة، المياه، الصحة، التعليم، الاتصالات، والبنية التحتية الرقمية', 10, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(61, 'Innovative Financing Solutions: Enhancing investment attractiveness for infrastructure projects', 'توفير حلول تمويلية مبتكرة: لزيادة جاذبية الفرص الاستثمارية لمشاريع البنية التحتية', 10, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(62, 'Private Sector Participation: Promoting public-private partnerships in infrastructure development', 'تعزيز مشاركة القطاع الخاص: في مشاريع البنية التحتية من خلال شراكات استراتيجية', 10, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(63, 'International Development Project Financing: Offering loans and grants to developing countries for economic and social development', 'تمويل مشاريع تنموية دولية: تقديم قروض ومنح للدول النامية لتمويل مشاريع تنموية', 11, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(64, 'Strengthening International Cooperation: Supporting projects that promote sustainable development in beneficiary countries', 'تعزيز التعاون الدولي: من خلال دعم المشاريع التي تسهم في التنمية الاقتصادية والاجتماعية في الدول المستفيدة', 11, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(65, 'Contributing to Sustainable Development Goals (SDGs): Funding projects in education, health, infrastructure, and energy', 'المساهمة في تحقيق أهداف التنمية المستدامة: من خلال تمويل مشاريع في قطاعات مثل التعليم، الصحة، البنية التحتية، والطاقة', 11, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(66, 'Export Sector: Saudi Export Incentive Program', 'قطاع الصادرات برنامج تحفيز الصادرات السعودية', 12, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(67, 'Providing the necessary support to enterprises to enhance their capabilities and potential to enter and expand into international markets', 'توفير الدعم اللازم للمنشآت لرفع قدراتها وإمكانياتها للدخول والتوسع في الأسواق الدولية', 12, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30'),
+(68, 'Pre-export financing', 'تمويل ما قبل التصدير', 12, 'active', '2025-08-24 23:08:30', '2025-08-24 23:08:30');
 
 -- --------------------------------------------------------
 
@@ -5761,7 +6282,7 @@ INSERT INTO `pages` (`id`, `name`, `slug`, `secs`, `is_default`, `created_at`, `
 (39, 'Embedded Finance', 'embedded-finance', NULL, 0, '2025-08-17 23:24:02', '2025-08-17 23:24:02'),
 (40, 'Smart Collection', 'smart-collection', NULL, 0, '2025-08-17 23:24:28', '2025-08-17 23:24:28'),
 (41, 'Open Banking', 'open-banking', NULL, 0, '2025-08-17 23:24:45', '2025-08-17 23:24:45'),
-(42, 'Events', 'events', NULL, 0, '2025-08-17 23:25:18', '2025-08-17 23:25:18'),
+(42, 'Events', 'events', NULL, 0, '2025-08-17 23:25:18', '2025-08-25 05:24:58'),
 (43, 'Marketing', 'marketing', NULL, 0, '2025-08-17 23:25:46', '2025-08-17 23:25:46'),
 (44, 'Jobs', 'jobs', NULL, 0, '2025-08-17 23:26:15', '2025-08-17 23:26:15'),
 (45, 'Contact Us', 'contact-us', NULL, 0, '2025-08-17 23:26:55', '2025-08-17 23:26:55'),
@@ -5851,7 +6372,9 @@ CREATE TABLE `private_sectors` (
 --
 
 INSERT INTO `private_sectors` (`id`, `title`, `title_ar`, `description`, `description_ar`, `image`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Real Estate Development Fund', 'صندوق التنمية العقارية', NULL, NULL, '68aaedcb248fa1756032459.png', 'active', '2025-08-24 04:47:39', '2025-08-24 04:47:39');
+(1, 'Individual Financing Services', 'خدمات التمويل للأفراد', NULL, NULL, NULL, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(2, 'SME Financing Services', 'خدمات التمويل للمنشآت الصغيرة والمتوسطة (SMEs)', NULL, NULL, NULL, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(3, 'Corporate Financing Services', 'خدمات تمويل الشركات الكبرى', NULL, NULL, NULL, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38');
 
 -- --------------------------------------------------------
 
@@ -5863,13 +6386,16 @@ CREATE TABLE `private_sector_forms` (
   `id` bigint UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `name_ar` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `type` enum('text','number','email','select','radio','checkbox','date','time','datetime','file','image') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'text',
+  `type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'text',
   `required` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'no',
   `placeholder` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `placeholder_ar` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `options` json DEFAULT NULL,
   `options_ar` json DEFAULT NULL,
   `col` int DEFAULT '12',
+  `conditional_on` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `conditional_value` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `display` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT 'block',
   `service_id` bigint UNSIGNED NOT NULL,
   `status` enum('active','inactive') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'active',
   `created_at` timestamp NULL DEFAULT NULL,
@@ -5880,10 +6406,121 @@ CREATE TABLE `private_sector_forms` (
 -- Dumping data for table `private_sector_forms`
 --
 
-INSERT INTO `private_sector_forms` (`id`, `name`, `name_ar`, `type`, `required`, `placeholder`, `placeholder_ar`, `options`, `options_ar`, `col`, `service_id`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Name', 'اسم', 'text', 'yes', 'Enter your name', 'أدخل اسمك', '[null]', '[null]', 12, 1, 'active', '2025-08-24 04:55:50', '2025-08-24 04:55:50'),
-(2, 'Required Sectors', 'القطاعات المطلوبة', 'checkbox', 'no', NULL, NULL, '[\"Test 1\", \"Test 2\", \"Test 3\"]', '[\"الاختبار 1\", \"الاختبار 1\", \"الاختبار 1\"]', 12, 1, 'active', '2025-08-24 04:56:55', '2025-08-24 04:57:47'),
-(3, 'Attachments', 'المرفقات', 'file', 'yes', NULL, NULL, 'null', 'null', 12, 1, 'active', '2025-08-24 04:57:27', '2025-08-24 04:57:42');
+INSERT INTO `private_sector_forms` (`id`, `name`, `name_ar`, `type`, `required`, `placeholder`, `placeholder_ar`, `options`, `options_ar`, `col`, `conditional_on`, `conditional_value`, `display`, `service_id`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'Applicant Information', 'معلومات مقدم الطلب', 'title', 'no', '', '', '[]', '[]', 12, NULL, '[]', 'form-check-block', 1, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(2, 'Type', 'النوع', 'radio', 'yes', '', '', '[\"Individual\", \"SME\", \"Corporate\"]', '[\"فرد\", \"منشأة صغيرة/متوسطة\", \"شركة كبرى\"]', 12, NULL, '[]', 'form-check-inline', 1, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(3, 'Full Name', 'الاسم الكامل', 'text', 'yes', 'Enter Full Name', 'أدخل الاسم الكامل', '[]', '[]', 12, 'Type', '\"Individual\"', 'form-check-block', 1, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(4, 'National ID Number', 'رقم الهوية الوطنية', 'text', 'yes', 'e.g., 10XXXXXXX', 'مثال: 10XXXXXXX', '[]', '[]', 6, 'Type', '\"Individual\"', 'form-check-block', 1, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(5, 'Date of Birth', 'تاريخ الميلاد', 'date', 'yes', 'YYYY-MM-DD', 'سنة-شهر-يوم', '[]', '[]', 6, 'Type', '\"Individual\"', 'form-check-block', 1, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(6, 'Marital Status', 'الحالة الاجتماعية', 'select', 'yes', 'Select Status', 'اختر الحالة', '[\"Single\", \"Married\", \"Divorced\", \"Widowed\"]', '[\"أعزب\", \"متزوج\", \"مطلق\", \"أرمل\"]', 6, 'Type', '\"Individual\"', 'form-check-block', 1, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(7, 'City / Region', 'المدينة / المنطقة', 'text', 'yes', 'e.g., Riyadh', 'مثال: الرياض', '[]', '[]', 6, 'Type', '\"Individual\"', 'form-check-block', 1, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(8, 'Mobile Number', 'رقم الجوال', 'text', 'yes', 'e.g., 05XXXXXXXX', 'مثال: 05XXXXXXXX', '[]', '[]', 6, 'Type', '\"Individual\"', 'form-check-block', 1, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(9, 'Email Address', 'البريد الإلكتروني', 'email', 'yes', 'name@example.com', 'name@example.com', '[]', '[]', 6, 'Type', '\"Individual\"', 'form-check-block', 1, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(10, 'Current Occupation', 'نوع العمل الحالي', 'text', 'yes', 'e.g., Engineer, Teacher, etc.', 'مثال: مهندس، مدرس، إلخ', '[]', '[]', 6, 'Type', '\"Individual\"', 'form-check-block', 1, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(11, 'Average Monthly Income', 'متوسط الدخل الشهري', 'number', 'yes', 'Amount in SAR', 'المبلغ بالريال السعودي', '[]', '[]', 6, 'Type', '\"Individual\"', 'form-check-block', 1, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(12, 'Company / Entity Name', 'اسم المنشأة / الشركة', 'text', 'yes', 'Enter Official Name', 'أدخل الاسم الرسمي', '[]', '[]', 12, 'Type', '[\"SME\",\"Corporate\"]', 'form-check-block', 1, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(13, 'Commercial Registration Number', 'رقم السجل التجاري', 'text', 'yes', 'e.g., 1010XXXXXX', 'مثال: 1010XXXXXX', '[]', '[]', 6, 'Type', '[\"SME\",\"Corporate\"]', 'form-check-block', 1, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(14, 'Type of Business Activity', 'نوع النشاط', 'text', 'yes', 'e.g., Retail, Construction, IT', 'مثال: تجارة التجزئة، المقاولات، تقنية المعلومات', '[]', '[]', 6, 'Type', '[\"SME\",\"Corporate\"]', 'form-check-block', 1, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(15, 'Establishment Date', 'تاريخ التأسيس', 'date', 'yes', 'YYYY-MM-DD', 'سنة-شهر-يوم', '[]', '[]', 6, 'Type', '[\"SME\",\"Corporate\"]', 'form-check-block', 1, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(16, 'City / Region', 'المدينة / المنطقة', 'text', 'yes', 'e.g., Jeddah', 'مثال: جدة', '[]', '[]', 6, 'Type', '[\"SME\",\"Corporate\"]', 'form-check-block', 1, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(17, 'Number of Employees', 'عدد الموظفين', 'number', 'yes', 'e.g., 15', 'مثال: 15', '[]', '[]', 6, 'Type', '[\"SME\",\"Corporate\"]', 'form-check-block', 1, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(18, 'Annual Revenue', 'الإيرادات السنوية', 'number', 'yes', 'Amount in SAR', 'المبلغ بالريال السعودي', '[]', '[]', 6, 'Type', '[\"SME\",\"Corporate\"]', 'form-check-block', 1, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(19, 'Representative Name', 'اسم ممثل الجهة', 'text', 'yes', 'Full Name of Representative', 'الاسم الكامل للممثل', '[]', '[]', 6, 'Type', '[\"SME\",\"Corporate\"]', 'form-check-block', 1, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(20, 'Mobile Number', 'رقم الجوال', 'text', 'yes', 'e.g., 05XXXXXXXX', 'مثال: 05XXXXXXXX', '[]', '[]', 6, 'Type', '[\"SME\",\"Corporate\"]', 'form-check-block', 1, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(21, 'Email Address', 'البريد الإلكتروني', 'email', 'yes', 'name@company.com', 'name@company.com', '[]', '[]', 6, 'Type', '[\"SME\",\"Corporate\"]', 'form-check-block', 1, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(22, 'Type of Requested Service', 'نوع الخدمة المطلوبة', 'title', 'no', '', '', '[]', '[]', 12, NULL, '[]', 'form-check-block', 1, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(23, 'Service Type', 'نوع الخدمة التمويلية', 'checkbox', 'yes', 'Please select one or more', 'يرجى اختيار واحد أو أكثر', '[\"Personal Financing\", \"Consumer Financing\", \"Mortgage Financing\", \"Auto Financing\", \"Medical Financing\", \"Educational Financing\", \"Startup Project Financing\", \"Equipment and Asset Financing\", \"Working Capital Financing\", \"Strategic Financing (Corporate)\", \"Financing Guarantee\", \"Advisory Services\", \"Other\"]', '[\"تمويل شخصي\", \"تمويل استهلاكي\", \"تمويل عقاري\", \"تمويل سيارات\", \"تمويل طبي\", \"تمويل تعليمي\", \"تمويل مشروع ناشئ\", \"تمويل معدات وأصول\", \"تمويل رأس مال عامل\", \"تمويل استراتيجي (شركات كبرى)\", \"ضمان تمويلي\", \"خدمات استشارية\", \"أخرى\"]', 12, NULL, '[]', 'form-check-block', 1, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(24, 'Other Service Type', 'نوع آخر', 'text', 'no', 'Please specify', 'يرجى التحديد', '[]', '[]', 12, 'Service Type', '\"Other\"', 'form-check-block', 1, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(25, 'Service or Project Details', 'تفاصيل الخدمة أو المشروع', 'title', 'no', '', '', '[]', '[]', 12, NULL, '[]', 'form-check-block', 1, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(26, 'Project Description', 'وصف مختصر للهدف', 'textarea', 'yes', 'Briefly describe the purpose of the financing...', 'اشرح بإيجاز الهدف من التمويل...', '[]', '[]', 12, NULL, '[]', 'form-check-block', 1, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(27, 'Requested Financing Amount', 'قيمة التمويل المطلوبة', 'number', 'yes', 'Amount in SAR', 'المبلغ بالريال السعودي', '[]', '[]', 6, NULL, '[]', 'form-check-block', 1, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(28, 'Applicant\'s Contribution', 'نسبة مساهمة مقدم الطلب', 'number', 'no', 'Amount in SAR (if any)', 'المبلغ بالريال (إن وجدت)', '[]', '[]', 6, NULL, '[]', 'form-check-block', 1, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(29, 'Desired Financing Term', 'مدة التمويل المطلوبة', 'radio', 'yes', '', '', '[\"1 year\", \"2 years\", \"3 years or more\"]', '[\"سنة\", \"سنتان\", \"3 سنوات أو أكثر\"]', 12, NULL, '[]', 'form-check-block', 1, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(30, 'Feasibility Study', 'دراسة جدوى / خطة عمل', 'radio', 'yes', '', '', '[\"Yes\", \"No\"]', '[\"نعم\", \"لا\"]', 6, NULL, '[]', 'form-check-block', 1, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(31, 'Feasibility Study File', 'ملف دراسة الجدوى', 'file', 'no', 'Attach PDF, DOC, etc.', 'أرفق PDF, DOC, إلخ', '[]', '[]', 6, 'Feasibility Study', '\"Yes\"', 'form-check-block', 1, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(32, 'Required Documents', 'المستندات المطلوبة', 'title', 'no', '', '', '[]', '[]', 12, NULL, '[]', 'form-check-block', 1, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(33, 'Attached Documents', 'المستندات المرفقة', 'checkbox', 'yes', 'Please check what you are attaching', 'يرجى تحديد ما سيتم إرفاقه', '[\"National ID / Commercial Registration\", \"National Address Certificate\", \"Bank Statement for the Last 3 Months\", \"Feasibility Study / Business Plan\", \"Any Relevant Licenses or Permits\"]', '[\"الهوية الوطنية / السجل التجاري\", \"العنوان الوطني\", \"كشف حساب بنكي لآخر 3 أشهر\", \"دراسة جدوى / خطة عمل\", \"أي تراخيص أو وثائق إضافية\"]', 12, NULL, '[]', 'form-check-block', 1, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(34, 'Document Upload', 'رفع المستندات', 'file', 'yes', 'Upload all files in ZIP or individually', 'ارفع جميع الملفات في ZIP أو بشكل فردي', '[]', '[]', 12, NULL, '[]', 'form-check-block', 1, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(35, 'Terms and Conditions Agreement', 'الموافقة على الشروط', 'title', 'no', '', '', '[]', '[]', 12, NULL, '[]', 'form-check-block', 1, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(36, 'Agreement 1', 'الإقرار بصحة المعلومات', 'checkbox', 'yes', 'I hereby confirm the accuracy of the provided information and documents.', 'أقرّ بصحة المعلومات والمستندات المقدّمة.', '[\"I hereby confirm the accuracy of the provided information and documents.\"]', '[\"أقرّ بصحة المعلومات والمستندات المقدّمة.\"]', 12, NULL, '[]', 'form-check-block', 1, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(37, 'Agreement 2', 'موافقة مشاركة البيانات', 'checkbox', 'yes', 'I agree to share my data with relevant financing entities.', 'أوافق على مشاركة بياناتي مع الجهات التمويلية ذات العلاقة.', '[\"I agree to share my data with relevant financing entities.\"]', '[\"أوافق على مشاركة بياناتي مع الجهات التمويلية ذات العلاقة.\"]', 12, NULL, '[]', 'form-check-block', 1, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(38, 'Agreement 3', 'موافقة الاستلام', 'checkbox', 'no', 'I consent to receive notifications via email or mobile.', 'أوافق على استقبال إشعارات عبر البريد الإلكتروني أو الجوال.', '[\"I consent to receive notifications via email or mobile.\"]', '[\"أوافق على استقبال إشعارات عبر البريد الإلكتروني أو الجوال.\"]', 12, NULL, '[]', 'form-check-block', 1, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(39, 'Applicant Information', 'معلومات مقدم الطلب', 'title', 'no', '', '', '[]', '[]', 12, NULL, '[]', 'form-check-block', 2, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(40, 'Type', 'النوع', 'radio', 'yes', '', '', '[\"Individual\", \"SME\", \"Corporate\"]', '[\"فرد\", \"منشأة صغيرة/متوسطة\", \"شركة كبرى\"]', 12, NULL, '[]', 'form-check-inline', 2, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(41, 'Full Name', 'الاسم الكامل', 'text', 'yes', 'Enter Full Name', 'أدخل الاسم الكامل', '[]', '[]', 12, 'Type', '\"Individual\"', 'form-check-block', 2, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(42, 'National ID Number', 'رقم الهوية الوطنية', 'text', 'yes', 'e.g., 10XXXXXXX', 'مثال: 10XXXXXXX', '[]', '[]', 6, 'Type', '\"Individual\"', 'form-check-block', 2, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(43, 'Date of Birth', 'تاريخ الميلاد', 'date', 'yes', 'YYYY-MM-DD', 'سنة-شهر-يوم', '[]', '[]', 6, 'Type', '\"Individual\"', 'form-check-block', 2, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(44, 'Marital Status', 'الحالة الاجتماعية', 'select', 'yes', 'Select Status', 'اختر الحالة', '[\"Single\", \"Married\", \"Divorced\", \"Widowed\"]', '[\"أعزب\", \"متزوج\", \"مطلق\", \"أرمل\"]', 6, 'Type', '\"Individual\"', 'form-check-block', 2, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(45, 'City / Region', 'المدينة / المنطقة', 'text', 'yes', 'e.g., Riyadh', 'مثال: الرياض', '[]', '[]', 6, 'Type', '\"Individual\"', 'form-check-block', 2, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(46, 'Mobile Number', 'رقم الجوال', 'text', 'yes', 'e.g., 05XXXXXXXX', 'مثال: 05XXXXXXXX', '[]', '[]', 6, 'Type', '\"Individual\"', 'form-check-block', 2, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(47, 'Email Address', 'البريد الإلكتروني', 'email', 'yes', 'name@example.com', 'name@example.com', '[]', '[]', 6, 'Type', '\"Individual\"', 'form-check-block', 2, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(48, 'Current Occupation', 'نوع العمل الحالي', 'text', 'yes', 'e.g., Engineer, Teacher, etc.', 'مثال: مهندس، مدرس، إلخ', '[]', '[]', 6, 'Type', '\"Individual\"', 'form-check-block', 2, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(49, 'Average Monthly Income', 'متوسط الدخل الشهري', 'number', 'yes', 'Amount in SAR', 'المبلغ بالريال السعودي', '[]', '[]', 6, 'Type', '\"Individual\"', 'form-check-block', 2, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(50, 'Company / Entity Name', 'اسم المنشأة / الشركة', 'text', 'yes', 'Enter Official Name', 'أدخل الاسم الرسمي', '[]', '[]', 12, 'Type', '[\"SME\",\"Corporate\"]', 'form-check-block', 2, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(51, 'Commercial Registration Number', 'رقم السجل التجاري', 'text', 'yes', 'e.g., 1010XXXXXX', 'مثال: 1010XXXXXX', '[]', '[]', 6, 'Type', '[\"SME\",\"Corporate\"]', 'form-check-block', 2, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(52, 'Type of Business Activity', 'نوع النشاط', 'text', 'yes', 'e.g., Retail, Construction, IT', 'مثال: تجارة التجزئة، المقاولات، تقنية المعلومات', '[]', '[]', 6, 'Type', '[\"SME\",\"Corporate\"]', 'form-check-block', 2, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(53, 'Establishment Date', 'تاريخ التأسيس', 'date', 'yes', 'YYYY-MM-DD', 'سنة-شهر-يوم', '[]', '[]', 6, 'Type', '[\"SME\",\"Corporate\"]', 'form-check-block', 2, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(54, 'City / Region', 'المدينة / المنطقة', 'text', 'yes', 'e.g., Jeddah', 'مثال: جدة', '[]', '[]', 6, 'Type', '[\"SME\",\"Corporate\"]', 'form-check-block', 2, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(55, 'Number of Employees', 'عدد الموظفين', 'number', 'yes', 'e.g., 15', 'مثال: 15', '[]', '[]', 6, 'Type', '[\"SME\",\"Corporate\"]', 'form-check-block', 2, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(56, 'Annual Revenue', 'الإيرادات السنوية', 'number', 'yes', 'Amount in SAR', 'المبلغ بالريال السعودي', '[]', '[]', 6, 'Type', '[\"SME\",\"Corporate\"]', 'form-check-block', 2, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(57, 'Representative Name', 'اسم ممثل الجهة', 'text', 'yes', 'Full Name of Representative', 'الاسم الكامل للممثل', '[]', '[]', 6, 'Type', '[\"SME\",\"Corporate\"]', 'form-check-block', 2, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(58, 'Mobile Number', 'رقم الجوال', 'text', 'yes', 'e.g., 05XXXXXXXX', 'مثال: 05XXXXXXXX', '[]', '[]', 6, 'Type', '[\"SME\",\"Corporate\"]', 'form-check-block', 2, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(59, 'Email Address', 'البريد الإلكتروني', 'email', 'yes', 'name@company.com', 'name@company.com', '[]', '[]', 6, 'Type', '[\"SME\",\"Corporate\"]', 'form-check-block', 2, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(60, 'Type of Requested Service', 'نوع الخدمة المطلوبة', 'title', 'no', '', '', '[]', '[]', 12, NULL, '[]', 'form-check-block', 2, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(61, 'Service Type', 'نوع الخدمة التمويلية', 'checkbox', 'yes', 'Please select one or more', 'يرجى اختيار واحد أو أكثر', '[\"Personal Financing\", \"Consumer Financing\", \"Mortgage Financing\", \"Auto Financing\", \"Medical Financing\", \"Educational Financing\", \"Startup Project Financing\", \"Equipment and Asset Financing\", \"Working Capital Financing\", \"Strategic Financing (Corporate)\", \"Financing Guarantee\", \"Advisory Services\", \"Other\"]', '[\"تمويل شخصي\", \"تمويل استهلاكي\", \"تمويل عقاري\", \"تمويل سيارات\", \"تمويل طبي\", \"تمويل تعليمي\", \"تمويل مشروع ناشئ\", \"تمويل معدات وأصول\", \"تمويل رأس مال عامل\", \"تمويل استراتيجي (شركات كبرى)\", \"ضمان تمويلي\", \"خدمات استشارية\", \"أخرى\"]', 12, NULL, '[]', 'form-check-block', 2, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(62, 'Other Service Type', 'نوع آخر', 'text', 'no', 'Please specify', 'يرجى التحديد', '[]', '[]', 12, 'Service Type', '\"Other\"', 'form-check-block', 2, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(63, 'Service or Project Details', 'تفاصيل الخدمة أو المشروع', 'title', 'no', '', '', '[]', '[]', 12, NULL, '[]', 'form-check-block', 2, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(64, 'Project Description', 'وصف مختصر للهدف', 'textarea', 'yes', 'Briefly describe the purpose of the financing...', 'اشرح بإيجاز الهدف من التمويل...', '[]', '[]', 12, NULL, '[]', 'form-check-block', 2, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(65, 'Requested Financing Amount', 'قيمة التمويل المطلوبة', 'number', 'yes', 'Amount in SAR', 'المبلغ بالريال السعودي', '[]', '[]', 6, NULL, '[]', 'form-check-block', 2, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(66, 'Applicant\'s Contribution', 'نسبة مساهمة مقدم الطلب', 'number', 'no', 'Amount in SAR (if any)', 'المبلغ بالريال (إن وجدت)', '[]', '[]', 6, NULL, '[]', 'form-check-block', 2, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(67, 'Desired Financing Term', 'مدة التمويل المطلوبة', 'radio', 'yes', '', '', '[\"1 year\", \"2 years\", \"3 years or more\"]', '[\"سنة\", \"سنتان\", \"3 سنوات أو أكثر\"]', 12, NULL, '[]', 'form-check-block', 2, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(68, 'Feasibility Study', 'دراسة جدوى / خطة عمل', 'radio', 'yes', '', '', '[\"Yes\", \"No\"]', '[\"نعم\", \"لا\"]', 6, NULL, '[]', 'form-check-block', 2, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(69, 'Feasibility Study File', 'ملف دراسة الجدوى', 'file', 'no', 'Attach PDF, DOC, etc.', 'أرفق PDF, DOC, إلخ', '[]', '[]', 6, 'Feasibility Study', '\"Yes\"', 'form-check-block', 2, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(70, 'Required Documents', 'المستندات المطلوبة', 'title', 'no', '', '', '[]', '[]', 12, NULL, '[]', 'form-check-block', 2, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(71, 'Attached Documents', 'المستندات المرفقة', 'checkbox', 'yes', 'Please check what you are attaching', 'يرجى تحديد ما سيتم إرفاقه', '[\"National ID / Commercial Registration\", \"National Address Certificate\", \"Bank Statement for the Last 3 Months\", \"Feasibility Study / Business Plan\", \"Any Relevant Licenses or Permits\"]', '[\"الهوية الوطنية / السجل التجاري\", \"العنوان الوطني\", \"كشف حساب بنكي لآخر 3 أشهر\", \"دراسة جدوى / خطة عمل\", \"أي تراخيص أو وثائق إضافية\"]', 12, NULL, '[]', 'form-check-block', 2, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(72, 'Document Upload', 'رفع المستندات', 'file', 'yes', 'Upload all files in ZIP or individually', 'ارفع جميع الملفات في ZIP أو بشكل فردي', '[]', '[]', 12, NULL, '[]', 'form-check-block', 2, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(73, 'Terms and Conditions Agreement', 'الموافقة على الشروط', 'title', 'no', '', '', '[]', '[]', 12, NULL, '[]', 'form-check-block', 2, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(74, 'Agreement 1', 'الإقرار بصحة المعلومات', 'checkbox', 'yes', 'I hereby confirm the accuracy of the provided information and documents.', 'أقرّ بصحة المعلومات والمستندات المقدّمة.', '[\"I hereby confirm the accuracy of the provided information and documents.\"]', '[\"أقرّ بصحة المعلومات والمستندات المقدّمة.\"]', 12, NULL, '[]', 'form-check-block', 2, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(75, 'Agreement 2', 'موافقة مشاركة البيانات', 'checkbox', 'yes', 'I agree to share my data with relevant financing entities.', 'أوافق على مشاركة بياناتي مع الجهات التمويلية ذات العلاقة.', '[\"I agree to share my data with relevant financing entities.\"]', '[\"أوافق على مشاركة بياناتي مع الجهات التمويلية ذات العلاقة.\"]', 12, NULL, '[]', 'form-check-block', 2, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(76, 'Agreement 3', 'موافقة الاستلام', 'checkbox', 'no', 'I consent to receive notifications via email or mobile.', 'أوافق على استقبال إشعارات عبر البريد الإلكتروني أو الجوال.', '[\"I consent to receive notifications via email or mobile.\"]', '[\"أوافق على استقبال إشعارات عبر البريد الإلكتروني أو الجوال.\"]', 12, NULL, '[]', 'form-check-block', 2, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(77, 'Applicant Information', 'معلومات مقدم الطلب', 'title', 'no', '', '', '[]', '[]', 12, NULL, '[]', 'form-check-block', 3, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(78, 'Type', 'النوع', 'radio', 'yes', '', '', '[\"Individual\", \"SME\", \"Corporate\"]', '[\"فرد\", \"منشأة صغيرة/متوسطة\", \"شركة كبرى\"]', 12, NULL, '[]', 'form-check-inline', 3, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(79, 'Full Name', 'الاسم الكامل', 'text', 'yes', 'Enter Full Name', 'أدخل الاسم الكامل', '[]', '[]', 12, 'Type', '\"Individual\"', 'form-check-block', 3, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(80, 'National ID Number', 'رقم الهوية الوطنية', 'text', 'yes', 'e.g., 10XXXXXXX', 'مثال: 10XXXXXXX', '[]', '[]', 6, 'Type', '\"Individual\"', 'form-check-block', 3, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(81, 'Date of Birth', 'تاريخ الميلاد', 'date', 'yes', 'YYYY-MM-DD', 'سنة-شهر-يوم', '[]', '[]', 6, 'Type', '\"Individual\"', 'form-check-block', 3, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(82, 'Marital Status', 'الحالة الاجتماعية', 'select', 'yes', 'Select Status', 'اختر الحالة', '[\"Single\", \"Married\", \"Divorced\", \"Widowed\"]', '[\"أعزب\", \"متزوج\", \"مطلق\", \"أرمل\"]', 6, 'Type', '\"Individual\"', 'form-check-block', 3, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(83, 'City / Region', 'المدينة / المنطقة', 'text', 'yes', 'e.g., Riyadh', 'مثال: الرياض', '[]', '[]', 6, 'Type', '\"Individual\"', 'form-check-block', 3, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(84, 'Mobile Number', 'رقم الجوال', 'text', 'yes', 'e.g., 05XXXXXXXX', 'مثال: 05XXXXXXXX', '[]', '[]', 6, 'Type', '\"Individual\"', 'form-check-block', 3, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(85, 'Email Address', 'البريد الإلكتروني', 'email', 'yes', 'name@example.com', 'name@example.com', '[]', '[]', 6, 'Type', '\"Individual\"', 'form-check-block', 3, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(86, 'Current Occupation', 'نوع العمل الحالي', 'text', 'yes', 'e.g., Engineer, Teacher, etc.', 'مثال: مهندس، مدرس، إلخ', '[]', '[]', 6, 'Type', '\"Individual\"', 'form-check-block', 3, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(87, 'Average Monthly Income', 'متوسط الدخل الشهري', 'number', 'yes', 'Amount in SAR', 'المبلغ بالريال السعودي', '[]', '[]', 6, 'Type', '\"Individual\"', 'form-check-block', 3, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(88, 'Company / Entity Name', 'اسم المنشأة / الشركة', 'text', 'yes', 'Enter Official Name', 'أدخل الاسم الرسمي', '[]', '[]', 12, 'Type', '[\"SME\",\"Corporate\"]', 'form-check-block', 3, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(89, 'Commercial Registration Number', 'رقم السجل التجاري', 'text', 'yes', 'e.g., 1010XXXXXX', 'مثال: 1010XXXXXX', '[]', '[]', 6, 'Type', '[\"SME\",\"Corporate\"]', 'form-check-block', 3, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(90, 'Type of Business Activity', 'نوع النشاط', 'text', 'yes', 'e.g., Retail, Construction, IT', 'مثال: تجارة التجزئة، المقاولات، تقنية المعلومات', '[]', '[]', 6, 'Type', '[\"SME\",\"Corporate\"]', 'form-check-block', 3, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(91, 'Establishment Date', 'تاريخ التأسيس', 'date', 'yes', 'YYYY-MM-DD', 'سنة-شهر-يوم', '[]', '[]', 6, 'Type', '[\"SME\",\"Corporate\"]', 'form-check-block', 3, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(92, 'City / Region', 'المدينة / المنطقة', 'text', 'yes', 'e.g., Jeddah', 'مثال: جدة', '[]', '[]', 6, 'Type', '[\"SME\",\"Corporate\"]', 'form-check-block', 3, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(93, 'Number of Employees', 'عدد الموظفين', 'number', 'yes', 'e.g., 15', 'مثال: 15', '[]', '[]', 6, 'Type', '[\"SME\",\"Corporate\"]', 'form-check-block', 3, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(94, 'Annual Revenue', 'الإيرادات السنوية', 'number', 'yes', 'Amount in SAR', 'المبلغ بالريال السعودي', '[]', '[]', 6, 'Type', '[\"SME\",\"Corporate\"]', 'form-check-block', 3, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(95, 'Representative Name', 'اسم ممثل الجهة', 'text', 'yes', 'Full Name of Representative', 'الاسم الكامل للممثل', '[]', '[]', 6, 'Type', '[\"SME\",\"Corporate\"]', 'form-check-block', 3, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(96, 'Mobile Number', 'رقم الجوال', 'text', 'yes', 'e.g., 05XXXXXXXX', 'مثال: 05XXXXXXXX', '[]', '[]', 6, 'Type', '[\"SME\",\"Corporate\"]', 'form-check-block', 3, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(97, 'Email Address', 'البريد الإلكتروني', 'email', 'yes', 'name@company.com', 'name@company.com', '[]', '[]', 6, 'Type', '[\"SME\",\"Corporate\"]', 'form-check-block', 3, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(98, 'Type of Requested Service', 'نوع الخدمة المطلوبة', 'title', 'no', '', '', '[]', '[]', 12, NULL, '[]', 'form-check-block', 3, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(99, 'Service Type', 'نوع الخدمة التمويلية', 'checkbox', 'yes', 'Please select one or more', 'يرجى اختيار واحد أو أكثر', '[\"Personal Financing\", \"Consumer Financing\", \"Mortgage Financing\", \"Auto Financing\", \"Medical Financing\", \"Educational Financing\", \"Startup Project Financing\", \"Equipment and Asset Financing\", \"Working Capital Financing\", \"Strategic Financing (Corporate)\", \"Financing Guarantee\", \"Advisory Services\", \"Other\"]', '[\"تمويل شخصي\", \"تمويل استهلاكي\", \"تمويل عقاري\", \"تمويل سيارات\", \"تمويل طبي\", \"تمويل تعليمي\", \"تمويل مشروع ناشئ\", \"تمويل معدات وأصول\", \"تمويل رأس مال عامل\", \"تمويل استراتيجي (شركات كبرى)\", \"ضمان تمويلي\", \"خدمات استشارية\", \"أخرى\"]', 12, NULL, '[]', 'form-check-block', 3, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(100, 'Other Service Type', 'نوع آخر', 'text', 'no', 'Please specify', 'يرجى التحديد', '[]', '[]', 12, 'Service Type', '\"Other\"', 'form-check-block', 3, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(101, 'Service or Project Details', 'تفاصيل الخدمة أو المشروع', 'title', 'no', '', '', '[]', '[]', 12, NULL, '[]', 'form-check-block', 3, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(102, 'Project Description', 'وصف مختصر للهدف', 'textarea', 'yes', 'Briefly describe the purpose of the financing...', 'اشرح بإيجاز الهدف من التمويل...', '[]', '[]', 12, NULL, '[]', 'form-check-block', 3, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(103, 'Requested Financing Amount', 'قيمة التمويل المطلوبة', 'number', 'yes', 'Amount in SAR', 'المبلغ بالريال السعودي', '[]', '[]', 6, NULL, '[]', 'form-check-block', 3, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(104, 'Applicant\'s Contribution', 'نسبة مساهمة مقدم الطلب', 'number', 'no', 'Amount in SAR (if any)', 'المبلغ بالريال (إن وجدت)', '[]', '[]', 6, NULL, '[]', 'form-check-block', 3, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(105, 'Desired Financing Term', 'مدة التمويل المطلوبة', 'radio', 'yes', '', '', '[\"1 year\", \"2 years\", \"3 years or more\"]', '[\"سنة\", \"سنتان\", \"3 سنوات أو أكثر\"]', 12, NULL, '[]', 'form-check-block', 3, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(106, 'Feasibility Study', 'دراسة جدوى / خطة عمل', 'radio', 'yes', '', '', '[\"Yes\", \"No\"]', '[\"نعم\", \"لا\"]', 6, NULL, '[]', 'form-check-block', 3, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(107, 'Feasibility Study File', 'ملف دراسة الجدوى', 'file', 'no', 'Attach PDF, DOC, etc.', 'أرفق PDF, DOC, إلخ', '[]', '[]', 6, 'Feasibility Study', '\"Yes\"', 'form-check-block', 3, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(108, 'Required Documents', 'المستندات المطلوبة', 'title', 'no', '', '', '[]', '[]', 12, NULL, '[]', 'form-check-block', 3, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(109, 'Attached Documents', 'المستندات المرفقة', 'checkbox', 'yes', 'Please check what you are attaching', 'يرجى تحديد ما سيتم إرفاقه', '[\"National ID / Commercial Registration\", \"National Address Certificate\", \"Bank Statement for the Last 3 Months\", \"Feasibility Study / Business Plan\", \"Any Relevant Licenses or Permits\"]', '[\"الهوية الوطنية / السجل التجاري\", \"العنوان الوطني\", \"كشف حساب بنكي لآخر 3 أشهر\", \"دراسة جدوى / خطة عمل\", \"أي تراخيص أو وثائق إضافية\"]', 12, NULL, '[]', 'form-check-block', 3, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(110, 'Document Upload', 'رفع المستندات', 'file', 'yes', 'Upload all files in ZIP or individually', 'ارفع جميع الملفات في ZIP أو بشكل فردي', '[]', '[]', 12, NULL, '[]', 'form-check-block', 3, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(111, 'Terms and Conditions Agreement', 'الموافقة على الشروط', 'title', 'no', '', '', '[]', '[]', 12, NULL, '[]', 'form-check-block', 3, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(112, 'Agreement 1', 'الإقرار بصحة المعلومات', 'checkbox', 'yes', 'I hereby confirm the accuracy of the provided information and documents.', 'أقرّ بصحة المعلومات والمستندات المقدّمة.', '[\"I hereby confirm the accuracy of the provided information and documents.\"]', '[\"أقرّ بصحة المعلومات والمستندات المقدّمة.\"]', 12, NULL, '[]', 'form-check-block', 3, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(113, 'Agreement 2', 'موافقة مشاركة البيانات', 'checkbox', 'yes', 'I agree to share my data with relevant financing entities.', 'أوافق على مشاركة بياناتي مع الجهات التمويلية ذات العلاقة.', '[\"I agree to share my data with relevant financing entities.\"]', '[\"أوافق على مشاركة بياناتي مع الجهات التمويلية ذات العلاقة.\"]', 12, NULL, '[]', 'form-check-block', 3, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(114, 'Agreement 3', 'موافقة الاستلام', 'checkbox', 'no', 'I consent to receive notifications via email or mobile.', 'أوافق على استقبال إشعارات عبر البريد الإلكتروني أو الجوال.', '[\"I consent to receive notifications via email or mobile.\"]', '[\"أوافق على استقبال إشعارات عبر البريد الإلكتروني أو الجوال.\"]', 12, NULL, '[]', 'form-check-block', 3, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38');
 
 -- --------------------------------------------------------
 
@@ -5906,7 +6543,37 @@ CREATE TABLE `private_sector_lists` (
 --
 
 INSERT INTO `private_sector_lists` (`id`, `title`, `title_ar`, `service_id`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Personal Financing', 'التمويل الشخصي', 1, 'active', '2025-08-24 04:52:34', '2025-08-24 04:52:34');
+(1, 'Personal Financing', 'التمويل الشخصي', 1, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(2, 'Consumer Financing', 'التمويل الاستهلاكي', 1, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(3, 'Auto Financing', 'تمويل السيارات', 1, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(4, 'Mortgage Financing', 'التمويل العقاري', 1, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(5, 'Educational Financing', 'التمويل التعليمي', 1, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(6, 'Medical Financing', 'التمويل الطبي', 1, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(7, 'Travel and Tourism Financing', 'تمويل السفر والسياحة', 1, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(8, 'Micro Financing', 'التمويل متناهي الصغر', 1, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(9, 'Financing via Digital Wallets and Applications', 'التمويل عبر التطبيقات والمحافظ الرقمية', 1, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(10, 'Startup Project Financing', 'تمويل تأسيس المشاريع', 2, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(11, 'Working Capital Financing', 'تمويل رأس المال العامل', 2, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(12, 'Expansion and Development Financing', 'تمويل التوسع والتطوير', 2, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(13, 'Equipment and Asset Financing', 'تمويل شراء المعدات والأصول', 2, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(14, 'Supply Chain Financing (Suppliers & Distributors)', 'تمويل سلسلة الإمداد (الموردين والموزعين)', 2, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(15, 'Invoice Financing (Accounts Receivable Financing)', 'تمويل الفواتير (التمويل مقابل الذمم المدينة)', 2, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(16, 'Micro Financing for Emerging Enterprises', 'التمويل متناهي الصغر للمنشآت الناشئة', 2, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(17, 'Export Financing', 'تمويل الصادرات', 2, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(18, 'Bank Guarantees and Complementary Financing', 'الضمانات البنكية والتمويل المكمل', 2, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(19, 'Crowdfunding Platform Financing', 'التمويل عبر منصات التمويل الجماعي', 2, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(20, 'Major Project Financing', 'تمويل المشاريع الكبرى', 3, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(21, 'Long-Term Capital Financing', 'تمويل رأس المال طويل الأجل', 3, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(22, 'Mergers & Acquisitions (M&A) Financing', 'تمويل الاستحواذ والاندماج', 3, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(23, 'Structured Finance', 'التمويل الهيكلي', 3, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(24, 'Commercial Real Estate Financing', 'التمويل العقاري التجاري', 3, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(25, 'Export & Import Financing (International Trade)', 'تمويل الصادرات والواردات (التجارة الدولية)', 3, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(26, 'Heavy Equipment and Asset Financing', 'تمويل الأصول والمعدات الثقيلة', 3, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(27, 'Sukuk and Bonds Financing', 'التمويل عبر الصكوك والسندات', 3, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(28, 'Digital Transformation and Infrastructure Financing', 'تمويل التحول الرقمي والبنية التحتية', 3, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(29, 'Credit Facilities (Lines of Credit – Revolving Loans)', 'التسهيلات الائتمانية (خطوط ائتمان – قروض دوّارة)', 3, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(30, 'Islamic Financing (Murabaha, Ijara, Istisna’a, etc.)', 'التمويل الإسلامي (مرابحة، إجارة، استصناع...)', 3, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38'),
+(31, 'Investment Banking Services', 'الخدمات المصرفية الاستثمارية', 3, 'active', '2025-08-25 00:32:38', '2025-08-25 00:32:38');
 
 -- --------------------------------------------------------
 
@@ -5934,7 +6601,110 @@ CREATE TABLE `request_orders` (
 --
 
 INSERT INTO `request_orders` (`id`, `user_id`, `service_id`, `type`, `form_data`, `form_checkbox`, `form_radio`, `form_file`, `status`, `is_seen`, `created_at`, `updated_at`) VALUES
-(3, 0, 1, 'PrivateSector', '{\"name\": \"hello test private sector request\"}', '{\"required_sectors\": [\"Test 1\", \"Test 2\", \"Test 3\"]}', '[]', '[]', 'pending', '0', '2025-08-24 05:03:56', '2025-08-24 05:03:56');
+(3, 0, 1, 'PrivateSector', '{\"name\": \"hello test private sector request\"}', '{\"required_sectors\": [\"Test 1\", \"Test 2\", \"Test 3\"]}', '[]', '[]', 'pending', '0', '2025-08-24 05:03:56', '2025-08-24 05:03:56'),
+(4, 0, 4, 'OurService', '{\"full_name\": \"Md Rabbi Hasan\", \"city_region\": \"Dhaka\", \"date_of_birth\": \"2025-08-28\", \"email_address\": \"md@gmail.com\", \"mobile_number\": \"01710528972\", \"marital_status\": \"Married\", \"current_occupation\": \"Developer\", \"national_id_number\": \"123456789\", \"average_monthly_income\": \"28000\", \"applicants_contribution\": \"1000\", \"estimated_funding_amount\": \"5000\", \"brief_description_of_the_idea_activity_property_to_be_financed\": \"Development fund\"}', '{\"i_confirm_the_accuracy_of_the_above_information\": [\"Agree\"], \"i_agree_to_receive_notifications_regarding_my_request_via_email_or_mobile\": [\"Agree\"], \"i_consent_to_sharing_my_data_with_participating_development_funds_and_banks\": [\"Agree\"]}', '{\"do_you_have_a_feasibility_study_or_business_plan\": \"Yes\"}', '[]', 'pending', '0', '2025-08-24 23:18:28', '2025-08-24 23:18:28');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sectors`
+--
+
+CREATE TABLE `sectors` (
+  `id` bigint UNSIGNED NOT NULL,
+  `type` enum('default','private','financial') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'default' COMMENT 'default, private, financial',
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `title_ar` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci,
+  `description_ar` text COLLATE utf8mb4_unicode_ci,
+  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'active',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `sectors`
+--
+
+INSERT INTO `sectors` (`id`, `type`, `title`, `title_ar`, `description`, `description_ar`, `image`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'default', 'Saudi Fund for Development', 'الصندوق السعودي للتنمية', '', '', NULL, 'active', '2025-08-25 05:20:05', '2025-08-25 05:20:05'),
+(2, 'default', 'Agricultural Development Fund', 'صندوق التنمية الزراعية', '', '', NULL, 'active', '2025-08-25 05:20:05', '2025-08-25 05:20:05'),
+(3, 'default', 'Social Development Bank', 'بنك التنمية الاجتماعية', '', '', NULL, 'active', '2025-08-25 05:20:05', '2025-08-25 05:20:05'),
+(4, 'default', 'Cultural Development Fund', 'صندوق التنمية الثقافي', '', '', NULL, 'active', '2025-08-25 05:20:05', '2025-08-25 05:20:05'),
+(5, 'default', 'Tourism Development Fund', 'صندوق التنمية السياحي', '', '', NULL, 'active', '2025-08-25 05:20:05', '2025-08-25 05:20:05'),
+(6, 'default', 'Saudi Industrial Development Fund', 'صندوق التنمية الصناعية السعودي', '', '', NULL, 'active', '2025-08-25 05:20:05', '2025-08-25 05:20:05'),
+(7, 'default', 'Human Resources Development Fund', 'صندوق تنمية الموارد البشرية', '', '', NULL, 'active', '2025-08-25 05:20:05', '2025-08-25 05:20:05'),
+(8, 'default', 'Real Estate Development Fund', 'صندوق التنمية العقارية', '', '', NULL, 'active', '2025-08-25 05:20:05', '2025-08-25 05:20:05'),
+(9, 'default', 'Investment Events Fund', 'صندوق الفعاليات الاستثماري', '', '', NULL, 'active', '2025-08-25 05:20:05', '2025-08-25 05:20:05'),
+(10, 'default', 'Small and Medium Enterprises Bank', 'بنك المنشآت الصغيرة والمتوسطة', '', '', NULL, 'active', '2025-08-25 05:20:05', '2025-08-25 05:20:05'),
+(11, 'default', 'National Infrastructure Fund', 'صندوق البنية التحتية الوطني', '', '', NULL, 'active', '2025-08-25 05:20:05', '2025-08-25 05:20:05'),
+(12, 'default', 'Saudi Export-Import Bank', 'بنك التصدير والاستيراد السعودي', '', '', NULL, 'active', '2025-08-25 05:20:05', '2025-08-25 05:20:05'),
+(13, 'private', 'Agriculture sector', 'قطاع الزراعة', 'Financing the agricultural sector is one of the basic pillars of supporting the economy and increasing capital.', 'يعد تمويل القطاع الزراعي احد الركائز الاساسية لدعم الاقتصاد وزيادة رأس المال.', NULL, 'active', '2025-08-25 05:20:05', '2025-08-25 05:20:05'),
+(14, 'private', 'Agricultural Development Fund', 'صندوق التنمية الزراعية', 'It is represented in contributing to the development of the agricultural sector and raising its production efficiency by providing soft, interest-free loans to farmers to secure what is necessary to achieve this activity.', 'يتمثل في الإسهام في تنمية القطاع الزراعي، ورفع كفاءته الإنتاجية وذلك عن طريق تقديم قروض ميسرة بدون فوائد للمزارعين لتأمين ما يلزم لتحقيق هذا النشاط', NULL, 'active', '2025-08-25 05:20:05', '2025-08-25 05:20:05'),
+(15, 'private', 'Social Development Bank', 'بنك التنمية الاجتماعية', 'The Social Development Bank provides financing and non-financial services to micro-projects, associations, and civil society institutions, and loans to emerging enterprises, in addition to providing social financing for people with limited income. The bank also works to provide technical and administrative services, and encourage savings for individuals and institutions in the Kingdom.', 'يقدم بنك التنمية الاجتماعية تمويل وخدمات غير مالية للمشاريع المتناهية الصغر، وللجمعيات، والمؤسسات الأهلية، وقروض للمنشآت الناشئة، بالإضافة إلى توفير التمويل الاجتماعي لذوي الدخل المحدود كما يعمل البنك على تقديم خدمات فنية وإدارية، وتشجيع الادخار للأفراد والمؤسسات في المملكة', NULL, 'active', '2025-08-25 05:20:05', '2025-08-25 05:20:05'),
+(16, 'private', 'Industrial sector', 'الصندوق الصناعي', 'Financing the industrial sector has a role in creating job opportunities and supporting economic growth rates.', 'تمويل القطاع الصناعي له دوره في خلق فرص العمل ودعم معدلات النمو الاقتصادي', NULL, 'active', '2025-08-25 05:20:05', '2025-08-25 05:20:05'),
+(17, 'private', 'Saudi Industrial Development Fund', 'صندوق التنمية الصناعية السعودي', 'To enhance industrial investment opportunities, develop local industry and raise the level of its performance, by contributing to the formation of industrial sectors, developing competitive institutions, supporting strategic initiatives, and providing innovative solutions; To grow and develop the local industry and raise its performance.', 'لتعزيز فرص الاستثمار الصناعي، وتطوير الصناعة المحلية ورفع مستوى أدائها، من خلال الإسهام في تشكيل القطاعات الصناعية، وتطوير المؤسسات التنافسية، ودعم المبادرات الاستراتيجية، وتقديم الحلول المبتكرة؛ لنمو وتطوير الصناعة المحلية، ورفع أدائها', NULL, 'active', '2025-08-25 05:20:05', '2025-08-25 05:20:05'),
+(18, 'private', 'Tourism Development Fund', 'صندوق التنمية السياحي', 'The Fund provides a wide range of appropriate solutions to meet the needs of various areas of tourism, especially to support projects that serve developing tourism areas in the Kingdom.', 'يوفر الصندوق مجموعة واسعة من الحلول المناسبة لتلبية احتياجات مختلف مجالات السياحة لا سيما لدعم المشاريع التي تخدم المناطق السياحية النامية في المملكة', NULL, 'active', '2025-08-25 05:20:05', '2025-08-25 05:20:05'),
+(19, 'private', 'Small Enterprises Bank', 'بنك المنشآت الصغيرة', 'The Small and Medium Enterprises Bank seeks to facilitate access to financing for sectors promising to provide services and products through digital channels. To enhance the contributions of financial institutions in financing the small and medium enterprises sector by empowering them and integrating with them the Kafalah Program, the financing guarantee program for small and medium enterprises.', 'بنك المنشآات الصغيرة و المتوسطة يسعى إلى تسهيل الوصول للتمويل للقطاعات الواعدة بتقديم الخدمات والمنتجات عبر القنوات الرقمية؛ لتعزيز إسهامات المؤسسات المالية في تمويل قطاع المنشآت الصغيرة والمتوسطة عبر تمكينها والتكامل معها  برنامج كفالة, برنامج ضمان التمويل للمنشآت الصغيرة والمتوسطة', NULL, 'active', '2025-08-25 05:20:05', '2025-08-25 05:20:05'),
+(20, 'private', 'Real Estate Development Fund', 'صندوق التنمية العقارية', 'Financing the real estate sector contributes to providing job and investment opportunities and achieving economic and social growth.', 'يساهم تمويل قطاع العقارات في توفير فرص العمل والاستثمار وتحقيق النمو الاقتصادي والاجتماعي', NULL, 'active', '2025-08-25 05:20:05', '2025-08-25 05:20:05'),
+(21, 'private', 'Export-Import Bank', 'بنك التصدير والاستيراد', 'Financing the export sector has an essential role in promoting economic growth and raising the productivity of goods and services.', 'تمويل قطاع الصادرات له دور اساسي في تعزيز النمو الاقتصادي والرفع من انتاجية السلع والخدمات', NULL, 'active', '2025-08-25 05:20:05', '2025-08-25 05:20:05'),
+(22, 'private', 'National Infrastructure Fund', 'صندوق البنية التحتية الوطني', 'It works to enable and accelerate strategic infrastructure projects in the Kingdom, enhance the quality of life of the individual and society, and encourage partnership with the private sector by motivating local and international investors and attracting them to participate and invest in the implementation of quality infrastructure projects through a package of valuable products and innovative solutions whose impact will be reflected in deepening infrastructure financing markets. Infrastructure in the Kingdom', 'يعمل على تمكين مشاريع البنية التحتية الإستراتيجية بالمملكة وتسريعها وتعزيز جودة حياة الفرد والمجتمع وتشجيع الشراكة مع القطاع الخاص من خلال تحفيز المستثمرين المحليين والدوليين وجذبهم للمشاركة والاستثمار في تنفيذ مشاريع البنية التحتية النوعية وذلك عبر حزمة من المنتجات القيمة والحلول المبتكرة التي سينعكس أثرها على تعميق أسواق تمويل البنية التحتية في المملكة', NULL, 'active', '2025-08-25 05:20:05', '2025-08-25 05:20:05'),
+(23, 'private', 'Events Investment Fund', 'صندوق الفعاليات الاستثماري', 'The Events Investment Fund aims to develop world-class events infrastructure; To support the entertainment, tourism, culture, and sports sectors in the Kingdom of Saudi Arabia; By working with the private sector, ensuring sustainability.', 'صندوق الفعاليات الاستثماري يهدف إلى تطوير بنية تحتية للفعاليات على مستوى عالمي؛ لدعم قطاعات الترفيه، والسياحة، والثقافة، والرياضة في المملكة العربية السعودية؛ من خلال العمل مع القطاع الخاص، وضمان الاستدامة', NULL, 'active', '2025-08-25 05:20:05', '2025-08-25 05:20:05'),
+(24, 'private', 'Human Resources Development Fund', 'صندوق تنمية الموارد البشرية', 'The Human Resources Development Fund aims to focus efforts; To raise the skills of national human cadres by qualifying them, providing them with knowledge, and aligning them with the needs of the labor market and jobs by providing work and services to beneficiaries, taking into account their needs and requirements.', 'صندوق تنمية الموارد البشرية يهدف إلى تركيز الجهود؛ لرفع مهارات الكوادر البشرية الوطنية بتأهيلها وتزويدها بالمعرفة، وموائمتها مع احتياجات سوق العمل والوظائف عبر تقديم الأعمال والخدمات للمستفيدين، تراعي احتياجاتهم ومتطلباتهم', NULL, 'active', '2025-08-25 05:20:05', '2025-08-25 05:20:05'),
+(25, 'private', 'Cultural Fund', 'الصندوق الثقافي', 'The Fund will contribute to enhancing Saudi cultural production and achieving economic development opportunities, leading to the development of the cultural scene and raising the level of appreciation for national culture locally and globally.', 'سيساهم الصندوق بتعزيز الإنتاج الثقافي السعودي وتحقيق فرص اقتصادية تنموية مما يؤدي إلى تطوير المشهد الثقافي ورفع منسوب تقدير الثقافة الوطنية محليًا وعالميًا', NULL, 'active', '2025-08-25 05:20:05', '2025-08-25 05:20:05'),
+(26, 'financial', 'Working Capital Financing', 'تمويل رأس المال العامل', '', '', NULL, 'active', '2025-08-25 05:20:05', '2025-08-25 05:20:05'),
+(27, 'financial', 'Industrial Equipment Financing', 'تمويل المعدات الصناعية', '', '', NULL, 'active', '2025-08-25 05:20:05', '2025-08-25 05:20:05'),
+(28, 'financial', 'Trade Financing', 'التمويل التجاري', '', '', NULL, 'active', '2025-08-25 05:20:05', '2025-08-25 05:20:05'),
+(29, 'financial', 'Commercial Loans', 'القروض التجارية', '', '', NULL, 'active', '2025-08-25 05:20:05', '2025-08-25 05:20:05'),
+(30, 'financial', 'Logistics Financing', 'تمويل الخدمات اللوجستية', '', '', NULL, 'active', '2025-08-25 05:20:05', '2025-08-25 05:20:05'),
+(31, 'financial', 'Invoice Financing', 'تمويل الفواتير', '', '', NULL, 'active', '2025-08-25 05:20:05', '2025-08-25 05:20:05'),
+(32, 'financial', 'Medical Equipment Financing', 'تمويل المعدات الطبية', '', '', NULL, 'active', '2025-08-25 05:20:05', '2025-08-25 05:20:05'),
+(33, 'financial', 'Point of Sale Financing', 'تمويل نقاط البيع', '', '', NULL, 'active', '2025-08-25 05:20:05', '2025-08-25 05:20:05'),
+(34, 'financial', 'Receivables Financing', 'تمويل المستحقات', '', '', NULL, 'active', '2025-08-25 05:20:05', '2025-08-25 05:20:05'),
+(35, 'financial', 'Insurance', 'التأمين', '', '', NULL, 'active', '2025-08-25 05:20:05', '2025-08-25 05:20:05'),
+(36, 'financial', 'Flight Booking Platforms', 'منصات حجوزات الطيران', '', '', NULL, 'active', '2025-08-25 05:20:05', '2025-08-25 05:20:05'),
+(37, 'financial', 'Education', 'التعليم', '', '', NULL, 'active', '2025-08-25 05:20:05', '2025-08-25 05:20:05'),
+(38, 'financial', 'Providing an electronic payment gateway for purchases through the platform', 'توفير بوابة دفع إلكتروني للمشتريات عبر المنصة', '', '', NULL, 'active', '2025-08-25 05:20:05', '2025-08-25 05:20:05');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sector_forms`
+--
+
+CREATE TABLE `sector_forms` (
+  `id` bigint UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name_ar` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'text',
+  `required` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT 'no',
+  `placeholder` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `placeholder_ar` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `options` json DEFAULT NULL,
+  `options_ar` json DEFAULT NULL,
+  `col` int DEFAULT '12',
+  `service_id` bigint UNSIGNED NOT NULL,
+  `status` enum('active','inactive') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'active',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sector_lists`
+--
+
+CREATE TABLE `sector_lists` (
+  `id` bigint UNSIGNED NOT NULL,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `title_ar` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `service_id` bigint UNSIGNED NOT NULL,
+  `status` enum('active','inactive') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'active',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -6511,6 +7281,24 @@ ALTER TABLE `favorites`
   ADD KEY `favorites_property_id_foreign` (`property_id`);
 
 --
+-- Indexes for table `financial_investments`
+--
+ALTER TABLE `financial_investments`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `financial_investment_forms`
+--
+ALTER TABLE `financial_investment_forms`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `financial_investment_lists`
+--
+ALTER TABLE `financial_investment_lists`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `forms`
 --
 ALTER TABLE `forms`
@@ -6732,6 +7520,24 @@ ALTER TABLE `request_orders`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `sectors`
+--
+ALTER TABLE `sectors`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `sector_forms`
+--
+ALTER TABLE `sector_forms`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `sector_lists`
+--
+ALTER TABLE `sector_lists`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `sms_configs`
 --
 ALTER TABLE `sms_configs`
@@ -6903,6 +7709,24 @@ ALTER TABLE `favorites`
   MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
+-- AUTO_INCREMENT for table `financial_investments`
+--
+ALTER TABLE `financial_investments`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `financial_investment_forms`
+--
+ALTER TABLE `financial_investment_forms`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+
+--
+-- AUTO_INCREMENT for table `financial_investment_lists`
+--
+ALTER TABLE `financial_investment_lists`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+
+--
 -- AUTO_INCREMENT for table `forms`
 --
 ALTER TABLE `forms`
@@ -6942,7 +7766,7 @@ ALTER TABLE `investments`
 -- AUTO_INCREMENT for table `investment_opportunities`
 --
 ALTER TABLE `investment_opportunities`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT for table `investment_opportunity_categories`
@@ -6990,7 +7814,7 @@ ALTER TABLE `messages`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=137;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=146;
 
 --
 -- AUTO_INCREMENT for table `notification_logs`
@@ -7032,19 +7856,19 @@ ALTER TABLE `orders`
 -- AUTO_INCREMENT for table `our_services`
 --
 ALTER TABLE `our_services`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `our_service_forms`
 --
 ALTER TABLE `our_service_forms`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=253;
 
 --
 -- AUTO_INCREMENT for table `our_service_lists`
 --
 ALTER TABLE `our_service_lists`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
 
 --
 -- AUTO_INCREMENT for table `our_service_requests`
@@ -7068,25 +7892,43 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `private_sectors`
 --
 ALTER TABLE `private_sectors`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `private_sector_forms`
 --
 ALTER TABLE `private_sector_forms`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=115;
 
 --
 -- AUTO_INCREMENT for table `private_sector_lists`
 --
 ALTER TABLE `private_sector_lists`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `request_orders`
 --
 ALTER TABLE `request_orders`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `sectors`
+--
+ALTER TABLE `sectors`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+
+--
+-- AUTO_INCREMENT for table `sector_forms`
+--
+ALTER TABLE `sector_forms`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `sector_lists`
+--
+ALTER TABLE `sector_lists`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `sms_configs`

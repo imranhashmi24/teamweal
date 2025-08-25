@@ -7,6 +7,7 @@ use App\Models\OurService;
 use App\Models\RequestOrder;
 use Illuminate\Http\Request;
 use App\Models\PrivateSector;
+use App\Models\FinancialInvestment;
 
 class WebRequestController extends Controller
 {
@@ -53,6 +54,31 @@ class WebRequestController extends Controller
         $route = 'our-service-request.store';
         $type = 'PrivateSector';
         $model = 'PrivateSectorForm';
+        $field = 'service_id';
+
+        return view('frontend.our_service_request_form', compact('service_id', 'title', 'route', 'type', 'model', 'field'));
+    }
+
+
+    public function financialInvestmentRequest(Request $request)
+    {
+        $id = base64urlDecode($request->id);
+        
+        if(!$id){
+            return to_route('home');
+        }
+
+        $financial_investment = FinancialInvestment::find($id);
+
+        if(!$financial_investment){
+            return to_route('home');
+        }
+
+        $service_id = $financial_investment->id;
+        $title = $financial_investment->lang('title');
+        $route = 'our-service-request.store';
+        $type = 'FinancialInvestment';
+        $model = 'FinancialInvestmentForm';
         $field = 'service_id';
 
         return view('frontend.our_service_request_form', compact('service_id', 'title', 'route', 'type', 'model', 'field'));

@@ -17,13 +17,14 @@
                         <input 
                             type="email" 
                             name="email"
-                            class="form-control px-4 py-3 shadow-sm" 
+                            class="form-control" 
                             placeholder="@lang('Enter your email')"
                             required
                             value="{{ old('email') }}"
-                            aria-label="Recipient's email">
+                            aria-label="Recipient's email"
+                        />
                         
-                        <button class="btn btn-primary px-4 py-3 fw-semibold mt-2 shadow-sm" type="submit">
+                        <button class="btn btn-primary px-4 py-0 fw-semibold mt-2 shadow-sm" type="submit">
                             @lang('Subscribe')
                         </button>
                     </form>

@@ -60,8 +60,7 @@
                 <h2>{{ __('Our Market Place') }}</h2>
                 <div class="divider"><span></span>◆<span></span></div>
                 <p>
-                    {{ __('Empowering individuals and businesses to explore and apply for funding and support services provided by
-                    government development funds through a unified platform — with ease and transparency.') }}
+                    {{ __('Empowering individuals and businesses to explore and apply for funding and support services provided by government development funds through a unified platform — with ease and transparency.') }}
                 </p>
                 <h5 class="mt-4 fw-bold">
                     {{ __('Development Funds and Banks Affiliated with the National Development Fund') }}
@@ -101,7 +100,7 @@
                                 <!-- Button at bottom -->
 
                                 <div class="mt-auto">
-                                    <a href="{{ route('our-service-request.index', ['id' => base64urlEncode($our_service->id)]) }}" class="btn btn-request">Request Service</a>
+                                    <a href="{{ route('our-service-request.index', ['id' => base64urlEncode($our_service->id)]) }}" class="btn btn-request">{{ __('Send Request') }}</a>
                                 </div>
 
                             </div>
@@ -148,7 +147,7 @@
                             @endif
                         </ul>
                         <div class="mt-auto">
-                            <a href="{{ route('private-sector-request.index', ['id' => base64urlEncode($private_sector->id)]) }}" class="btn btn-sector">Send Request</a>
+                            <a href="{{ route('private-sector-request.index', ['id' => base64urlEncode($private_sector->id)]) }}" class="btn btn-sector">{{ __('Send Request') }}</a>
                         </div>
                     </div>
                 </div>

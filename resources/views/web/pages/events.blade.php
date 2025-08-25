@@ -3,8 +3,6 @@
 
 
 
-
-
     @if ($sections != null)
         @foreach (json_decode($sections) as $sec)
             @include('sections.' . $sec)

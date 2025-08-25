@@ -1,0 +1,134 @@
+<?php
+
+namespace App\Http\Controllers\Admin\Sectors;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use App\Models\Sector;
+
+class SectorController extends Controller
+{
+
+    public $model = Sector::class;
+    public $searchable = ['title', 'title_ar'];
+    public $view = "admin.sectors";
+    public $route = "admin.sectors";
+    public $redirect = "admin.sectors";
+    public $notify = "Sector";
+    public $file_path = "sector";
+    
+    public function index()
+    {
+        $datas = $this->model::searchable(request()->search, $this->searchable)->latest()->paginate(10);
+        $route = $this->route;
+        $title = $this->notify;
+        $file_path = $this->file_path;
+        $emptyMessage = __('No data found');
+        $is_list = false;
+        $is_form = false;
+        return view($this->view . '.index', compact('datas', 'route', 'title', 'file_path', 'emptyMessage', 'is_list', 'is_form'));
+    }
+
+    public function create()
+    {
+        $route = $this->route;
+        $title = $this->notify;
+        $file_path = $this->file_path;
+        return view($this->view . '.create', compact('route', 'title', 'file_path'));
+    }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'type' => 'required|string|max:255',
+            'title' => 'required|string|max:255',
+            'title_ar' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'description_ar' => 'nullable|string',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+
+
+        $data = $this->model::create([
+            'type' => $request->type,
+            'title' => $request->title,
+            'title_ar' => $request->title_ar,
+            'description' => $request->description,
+            'description_ar' => $request->description_ar,
+            'status' => $request->status,
+        ]);
+
+
+        if ($request->hasFile('image')) {
+            $data->update([
+                'image' => fileUploader($request->image, getFilePath($this->file_path)),
+            ]);
+        }
+
+
+        $notify[] = ['success', $this->notify . __('created successfully')];
+
+        return redirect()->route($this->route . '.index')->withNotify($notify);
+    }
+
+    public function edit($id)
+    {
+        $data = $this->model::findOrFail($id);
+        $route = $this->route;
+        $title = $this->notify;
+        $file_path = $this->file_path;
+        return view($this->view . '.edit', compact('data', 'route', 'title', 'file_path'));
+    }
+
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'type' => 'required|string|max:255',
+            'title' => 'required|string|max:255',
+            'title_ar' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'description_ar' => 'nullable|string',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+
+        $data = $this->model::findOrFail($id);
+
+        $data->update([
+            'type' => $request->type,
+            'title' => $request->title,
+            'title_ar' => $request->title_ar,
+            'description' => $request->description,
+            'description_ar' => $request->description_ar,
+            'status' => $request->status,
+        ]);
+
+
+        if ($request->hasFile('image')) {
+            $data->update([
+                'image' => fileUploader($request->image, getFilePath($this->file_path)),
+            ]);
+        }
+
+
+        $notify[] = ['success', $this->notify . __('updated successfully')];
+
+        return redirect()->route($this->route . '.index')->withNotify($notify);
+    }
+
+    public function destroy($id)
+    {
+        $data = $this->model::findOrFail($id);
+
+        if ($data->image) {
+            fileDeleter($data->image, getFilePath($this->file_path));
+        }
+
+        
+        $data->delete();
+
+        $notify[] = ['success', $this->notify . __('deleted successfully')];
+
+        return redirect()->route($this->route . '.index')->withNotify($notify);
+    }
+}
