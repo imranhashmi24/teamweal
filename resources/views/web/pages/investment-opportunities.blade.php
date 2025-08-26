@@ -1,7 +1,8 @@
 @extends('web.layouts.frontend', ['title' => @$title])
 @section('content')
-    <section class="page-bg py-5" style="background-color: #23072D">
-        <div class="container">
+<section class="py-5"
+style="background-image: url('{{ asset('assets/web/img/Common-banner.png') }}'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+<div class="container">
             <div class="row">
                 <div class="col-12">
                     <div class="text-center ">

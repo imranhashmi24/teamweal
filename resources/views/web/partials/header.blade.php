@@ -110,7 +110,7 @@
                         </li>
 
                         <li>
-                            <a href="{{ route('web.pages.open-banking') }}"> {{ __('Open Banking') }} </a>
+                            <a href="{{ route('web.pages.open-banking') }}"> {{ __('Open Banking Services') }} </a>
                         </li>
 
                         <li>

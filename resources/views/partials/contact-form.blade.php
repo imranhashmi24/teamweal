@@ -62,7 +62,7 @@
                               </div>
                           </div>
                           <div class="py-3 col-12">
-                              <button class="custom-btn support-btn" type="submit">@lang('Send Queries')</button>
+                              <button class="btn btn-primary" type="submit">@lang('Send Queries')</button>
                           </div>
                       </div>
                   </form>

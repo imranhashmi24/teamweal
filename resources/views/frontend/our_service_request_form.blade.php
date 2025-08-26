@@ -6,7 +6,7 @@
 @endphp
 @section('content')
 
-    <section class="py-5 pages-banner" style="background-image: url({{ asset('assets/images/frontend/breadcrumb/65c196d169df31707185873.png') }});">
+    <section class="py-5 pages-banner"  style="background-image: url('{{ asset('assets/web/img/Common-banner.png') }}'); background-size: cover; background-position: center; background-repeat: no-repeat;">
         <div class="container">
             <div class="row">
                 <div class="py-5 col-12">

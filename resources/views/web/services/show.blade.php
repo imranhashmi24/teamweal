@@ -49,7 +49,7 @@ $og_image = asset('media/images/services/' . $service->image);
 <!--    SERVICE SECTION-->
 <section class="py-5 service-main" id="services">
     <div class="container">
-        <h5 class="mb-3 fw-bold">Popular Services</h5>
+        <h5 class="mb-3 fw-bold">@lang('Popular Services')</h5>
         <div class="row">
             <div class="col-12 col-md-4 col-lg-4 col-xl-3">
                 <div class="service-left service-left-main">
